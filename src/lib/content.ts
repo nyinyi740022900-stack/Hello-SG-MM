@@ -119,6 +119,65 @@ export async function listPublishedContent(
 }
 
 /** Admin-only — pending items awaiting review, oldest first. */
+/**
+ * Upcoming events, soonest first.
+ *
+ * Ordered by when the event happens, not when we published it — a notice
+ * posted last week about tomorrow's gathering has to outrank one posted today
+ * about next month. An event stays listed until its end time (or its start,
+ * for single-moment events) has passed.
+ */
+export async function listUpcomingEvents(
+  limit = 20,
+): Promise<{ data: ContentItem[] | null; error: string | null }> {
+  if (!supabase) {
+    return { data: null, error: "Supabase is not configured." };
+  }
+
+  const nowIso = new Date().toISOString();
+
+  const { data, error } = await supabase
+    .from("content_items")
+    .select(CONTENT_COLUMNS)
+    .eq("status", "published")
+    .eq("type", "event")
+    .or(`ends_at.gte.${nowIso},and(ends_at.is.null,starts_at.gte.${nowIso})`)
+    .order("starts_at", { ascending: true })
+    .limit(limit)
+    .returns<ContentItem[]>();
+
+  if (error) {
+    return { data: null, error: error.message };
+  }
+  return { data: data ?? [], error: null };
+}
+
+/** Service directory entries, alphabetical. These change rarely. */
+export async function listDirectoryEntries(
+  category?: ContentCategory,
+): Promise<{ data: ContentItem[] | null; error: string | null }> {
+  if (!supabase) {
+    return { data: null, error: "Supabase is not configured." };
+  }
+
+  let query = supabase
+    .from("content_items")
+    .select(CONTENT_COLUMNS)
+    .eq("status", "published")
+    .eq("type", "directory")
+    .order("title_en", { ascending: true })
+    .limit(200);
+
+  if (category) query = query.eq("category", category);
+
+  const { data, error } = await query.returns<ContentItem[]>();
+
+  if (error) {
+    return { data: null, error: error.message };
+  }
+  return { data: data ?? [], error: null };
+}
+
 export async function listPendingContent(): Promise<{
   data: ContentItem[] | null;
   error: string | null;

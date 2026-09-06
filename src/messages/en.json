@@ -14,7 +14,10 @@
     "analytics": "Analytics",
     "help": "Help",
     "contact": "Contact",
-    "cookies": "Cookies"
+    "cookies": "Cookies",
+    "news": "News",
+    "events": "Events",
+    "directory": "Services"
   },
   "home": {
     "badge": "Free for all workers",
@@ -22,12 +25,6 @@
     "subtitle": "Simple steps for Myanmar workers in Singapore.",
     "ctaStart": "Start Wizard",
     "ctaChecklist": "Open Checklist",
-    "factGuidedLabel": "Guided Forms",
-    "factGuidedValue": "Step-by-step",
-    "factLanguageLabel": "Language",
-    "factLanguageValue": "EN + Myanmar",
-    "factCostLabel": "Cost",
-    "factCostValue": "Always free",
     "quickChecklist": "Passport Checklist",
     "quickEmergency": "Emergency Contacts",
     "quickGuide": "Myanmar Guide",
@@ -46,7 +43,13 @@
     "toolRestDayHint": "Know your weekly rest day entitlement",
     "toolOffDayGuide": "Off-Day Guide",
     "toolOffDayGuideHint": "Where Myanmar workers gather in Singapore",
-    "latestUpdateLabel": "Latest Update"
+    "urgentLabel": "Important",
+    "topNewsTitle": "Latest updates",
+    "seeAllNews": "See all news",
+    "browseByCategory": "Browse by topic",
+    "eventsTitle": "Coming up",
+    "seeAllEvents": "See all events",
+    "noEventsYet": "No upcoming events listed right now."
   },
   "news": {
     "badge": "Daily updates",
@@ -64,7 +67,15 @@
       "health": "Health",
       "community": "Community",
       "education": "Training"
-    }
+    },
+    "allCategories": "All",
+    "readMore": "Read more",
+    "backToNews": "Back to news",
+    "publishedOn": "Published {date}",
+    "sourceLabel": "Source",
+    "notFoundTitle": "Update not found",
+    "notFoundBody": "This update may have been removed or has expired.",
+    "emptyInCategory": "No updates in this topic yet."
   },
   "salaryLog": {
     "badge": "Free · PDF export included",
@@ -348,5 +359,44 @@
     "hint": "Skip the wizard — download the blank official form, print it, fill it in by hand, sign, and bring it to your embassy appointment.",
     "generalButton": "General Worker Form",
     "maidButton": "Domestic Worker (Maid) Form"
+  },
+  "rates": {
+    "title": "SGD → MMK",
+    "indicative": "Indicative only",
+    "observedAt": "Checked {time}",
+    "noData": "No rate recorded yet.",
+    "perSgd": "per 1 SGD",
+    "disclaimer": "Indicative rates collected from public sources — not a quote. Always confirm the exact rate with your provider before sending money.",
+    "provider": {
+      "kbzpay": "KBZPay",
+      "wavepay": "WavePay",
+      "bank": "Bank",
+      "market": "Market",
+      "other": "Other"
+    }
+  },
+  "events": {
+    "badge": "Community",
+    "title": "Events & Gatherings",
+    "subtitle": "Myanmar community events, embassy notices and gatherings in Singapore. Confirm details with the organiser before you travel.",
+    "empty": "No upcoming events listed right now. Check back soon.",
+    "whenLabel": "When",
+    "whereLabel": "Where",
+    "pastLabel": "Finished",
+    "disclaimer": "Event details are collected from public sources and reviewed before publishing, but times and venues can change — always confirm with the organiser."
+  },
+  "directory": {
+    "badge": "Directory",
+    "title": "Help & Services",
+    "subtitle": "Clinics, legal aid, helplines and embassy services that support migrant workers in Singapore.",
+    "empty": "No services listed yet. Check back soon.",
+    "searchPlaceholder": "Search by name or service",
+    "noResults": "No services match your search.",
+    "callLabel": "Call",
+    "websiteLabel": "Website",
+    "hoursLabel": "Hours",
+    "languagesLabel": "Languages",
+    "freeLabel": "Free",
+    "disclaimer": "Listings are for information only and are not an endorsement. Confirm opening hours and fees before visiting."
   }
 }

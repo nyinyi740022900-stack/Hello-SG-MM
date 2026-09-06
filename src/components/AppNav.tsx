@@ -9,6 +9,7 @@ import {
   GuideIcon,
   HelpIcon,
   HomeIcon,
+  MegaphoneIcon,
   PhoneAlertIcon,
   WizardIcon,
 } from "@/components/icons";
@@ -19,6 +20,7 @@ type AppNavProps = {
 
 const ICONS = {
   home: HomeIcon,
+  news: MegaphoneIcon,
   checklist: ChecklistIcon,
   guide: GuideIcon,
   contacts: PhoneAlertIcon,
@@ -32,11 +34,14 @@ export default function AppNav({ locale }: AppNavProps) {
 
   const links = useMemo(
     () => [
+      // News sits second because it is the reason to come back daily. Help
+      // moved out of the bar to keep five targets reachable by thumb — it
+      // stays linked from the footer on every page.
       { href: "/", key: "home" as const, label: t("home") },
+      { href: "/news", key: "news" as const, label: t("news") },
       { href: "/passport/checklist", key: "checklist" as const, label: t("checklist") },
       { href: "/emergency-contacts", key: "contacts" as const, label: t("contacts") },
       { href: "/guide", key: "guide" as const, label: t("guide") },
-      { href: "/help", key: "help" as const, label: t("help") },
     ],
     [t],
   );
