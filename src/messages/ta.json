@@ -1,0 +1,127 @@
+{
+  "common": {
+    "appName": "Hello SG",
+    "tagline": "சிங்கப்பூரில் வாழ்வதற்கான செய்திகள் மற்றும் அன்றாட உதவி",
+    "home": "முகப்பு",
+    "checklist": "சரிபார்ப்புப் பட்டியல்",
+    "guide": "வழிகாட்டி",
+    "contacts": "அவசரநிலை",
+    "wizard": "படிவ உதவியாளர்",
+    "login": "உள்நுழைய",
+    "register": "பதிவு செய்ய",
+    "account": "கணக்கு",
+    "adminPayments": "நிர்வாக பணம் செலுத்துதல்",
+    "analytics": "பகுப்பாய்வு",
+    "help": "உதவி",
+    "contact": "தொடர்பு",
+    "cookies": "குக்கீகள்",
+    "news": "செய்திகள்",
+    "events": "நிகழ்வுகள்",
+    "directory": "சேவைகள்",
+    "transport": "போக்குவரத்து",
+    "rates": "மாற்று விகிதங்கள்"
+  },
+  "home": {
+    "shortcutsTitle": "விரைவு அணுகல்",
+    "topNewsTitle": "சமீபத்திய புதுப்பிப்புகள்",
+    "seeAllNews": "அனைத்து செய்திகளையும் காண்க",
+    "browseByCategory": "தலைப்பு வாரியாக உலாவு",
+    "eventsTitle": "விரைவில் வருபவை",
+    "seeAllEvents": "அனைத்து நிகழ்வுகளையும் காண்க",
+    "feedEmpty": "இன்னும் புதுப்பிப்புகள் வெளியிடப்படவில்லை. சரிபார்த்த பிறகு இங்கே தோன்றும்.",
+    "urgentLabel": "முக்கியம்",
+    "viewMore": "மேலும்",
+    "quickChecklist": "பாஸ்போர்ட் சரிபார்ப்புப் பட்டியல்",
+    "quickEmergency": "அவசர தொடர்புகள்",
+    "quickGuide": "மியான்மர் வழிகாட்டி",
+    "quickAccountsGuide": "அத்தியாவசிய கணக்குகள் வழிகாட்டி",
+    "toolSalaryLog": "சம்பள பதிவு",
+    "toolRecruitmentFee": "ஆட்சேர்ப்பு கட்டண கண்காணிப்பு",
+    "toolRestDay": "ஓய்வு நாள் உரிமைகள்",
+    "toolOffDayGuide": "விடுமுறை நாள் வழிகாட்டி",
+    "ctaStart": "உதவியாளரைத் தொடங்கு",
+    "formGeneralShort": "பொது படிவம்",
+    "formMaidShort": "வேலைக்காரி படிவம்"
+  },
+  "news": {
+    "badge": "தினசரி புதுப்பிப்புகள்",
+    "title": "செய்திகள் & புதுப்பிப்புகள்",
+    "category": {
+      "mom_policy": "MOM கொள்கை",
+      "embassy": "தூதரகம்",
+      "safety_scam": "மோசடி எச்சரிக்கை",
+      "finance": "பணம்",
+      "legal": "உரிமைகள்",
+      "health": "சுகாதாரம்",
+      "community": "சமூகம்",
+      "education": "பயிற்சி",
+      "transport": "போக்குவரத்து",
+      "jobs": "வேலைகள்"
+    },
+    "allCategories": "அனைத்தும்",
+    "readMore": "மேலும் படிக்க",
+    "backToNews": "செய்திகளுக்குத் திரும்பு",
+    "sourceLabel": "மூலம்",
+    "notFoundTitle": "புதுப்பிப்பு கிடைக்கவில்லை",
+    "emptyInCategory": "இந்த தலைப்பில் இன்னும் புதுப்பிப்புகள் இல்லை.",
+    "empty": "இன்னும் புதுப்பிப்புகள் இல்லை. விரைவில் மீண்டும் பாருங்கள்."
+  },
+  "conditions": {
+    "title": "இப்போது சிங்கப்பூர்",
+    "psiLabel": "PSI",
+    "uvLabel": "UV",
+    "psiBand": {
+      "good": "நல்லது",
+      "moderate": "மிதமான",
+      "unhealthy": "ஆரோக்கியமற்ற",
+      "very_unhealthy": "மிகவும் ஆரோக்கியமற்ற",
+      "hazardous": "ஆபத்தான"
+    },
+    "uvBand": {
+      "low": "குறைவு",
+      "moderate": "மிதமான",
+      "high": "அதிகம்",
+      "very_high": "மிக அதிகம்",
+      "extreme": "தீவிரம்"
+    }
+  },
+  "menu": {
+    "open": "மெனு",
+    "close": "மெனுவை மூடு",
+    "sectionMain": "தகவல்",
+    "sectionPassport": "பாஸ்போர்ட்",
+    "sectionTools": "கருவிகள்",
+    "sectionRights": "உரிமைகள் & வழிகாட்டிகள்",
+    "sectionHelp": "உதவி",
+    "sectionAccount": "கணக்கு",
+    "sectionAbout": "பற்றி"
+  },
+  "search": {
+    "placeholder": "செய்திகள் மற்றும் வழிகாட்டிகளைத் தேடுங்கள்",
+    "button": "தேடு",
+    "resultsFor": "“{query}” க்கான முடிவுகள்",
+    "noResults": "எதுவும் கிடைக்கவில்லை. வேறு சொல்லை முயற்சிக்கவும்.",
+    "empty": "தேட ஏதாவது தட்டச்சு செய்யவும்.",
+    "countOne": "1 முடிவு",
+    "countMany": "{count} முடிவுகள்"
+  },
+  "rates": {
+    "title": "SGD → MMK",
+    "indicative": "குறிப்புக்கு மட்டும்",
+    "noData": "இன்னும் விகிதம் பதிவு செய்யப்படவில்லை.",
+    "officialLabel": "அதிகாரப்பூர்வ விகிதம்",
+    "heroTitle": "மாற்று விகிதம்"
+  },
+  "events": {
+    "badge": "சமூகம்",
+    "title": "நிகழ்வுகள் & கூட்டங்கள்"
+  },
+  "directory": {
+    "badge": "அடைவு",
+    "title": "உதவி & சேவைகள்"
+  },
+  "transport": {
+    "badge": "நடமாட்டம்",
+    "heroTitle": "பேருந்து & MRT வழிகாட்டி"
+  }
+}

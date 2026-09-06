@@ -75,8 +75,20 @@ export default function AuthStatus({ locale }: AuthStatusProps) {
 
   if (!user) {
     return (
+      // Six languages made the header crowded enough to truncate the product
+      // name on a phone. Sign-up stays visible; sign-in moves into the menu,
+      // where an existing account holder will look for it anyway.
       <div className="flex items-center gap-1.5 sm:gap-2">
-        <LinkButton href="/login" locale={locale} variant="secondary" size="md" className="h-9 px-2.5 text-xs sm:px-4">
+        <LinkButton
+          href="/login"
+          locale={locale}
+          variant="secondary"
+          size="md"
+          // max-sm:hidden, not `hidden sm:inline-flex` — LinkButton's base class
+          // already sets inline-flex, and two unprefixed display utilities are
+          // decided by CSS order, not by which is written last.
+          className="h-9 px-2.5 text-xs max-sm:hidden sm:px-4"
+        >
           {t("loginTitle")}
         </LinkButton>
         <LinkButton href="/register" locale={locale} variant="primary" size="md" className="h-9 px-2.5 text-xs sm:px-4">

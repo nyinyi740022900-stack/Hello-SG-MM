@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
+import { useAuth } from "@/context/AuthContext";
 import type { AppLocale } from "@/i18n/routing";
 import { PASSPORT_FORM_DOWNLOAD_PATHS } from "@/lib/passportForms";
 import {
@@ -17,6 +18,7 @@ import {
   MapPinIcon,
   MegaphoneIcon,
   MenuIcon,
+  UserIcon,
   TransferIcon,
   WalletIcon,
   PhoneAlertIcon,
@@ -49,6 +51,7 @@ export default function AppNav({ locale }: AppNavProps) {
   const tLegal = useTranslations("legal");
   const tForms = useTranslations("formDownloads");
   const pathname = usePathname();
+  const { user } = useAuth();
 
   const [isOpen, setIsOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement | null>(null);
@@ -130,8 +133,19 @@ export default function AppNav({ locale }: AppNavProps) {
           { href: "/contact", label: t("contact"), icon: HelpIcon },
         ],
       },
+      {
+        // Sign-in is hidden from the header on phones to keep the product name
+        // readable, so it has to be reachable here or it is reachable nowhere.
+        title: tMenu("sectionAccount"),
+        links: user
+          ? [{ href: "/account", label: t("account"), icon: UserIcon }]
+          : [
+              { href: "/login", label: t("login"), icon: UserIcon },
+              { href: "/register", label: t("register"), icon: UserIcon },
+            ],
+      },
     ],
-    [t, tMenu, tHome],
+    [t, tMenu, tHome, user],
   );
 
   const isActive = (href: string) => {

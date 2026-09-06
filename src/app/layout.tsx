@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { getLocale } from "next-intl/server";
 import { Geist, Geist_Mono, Noto_Sans_Myanmar } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
@@ -47,10 +48,17 @@ type RootLayoutProps = {
   children: ReactNode;
 };
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  // Every page previously declared lang="en", including the Myanmar ones. That
+  // told browsers' built-in translation the wrong source language, made screen
+  // readers pronounce Myanmar text with an English voice, and had search
+  // engines index the wrong language. Declaring the real locale is also what
+  // makes browser translation work for readers whose language we do not ship.
+  const locale = await getLocale();
+
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} ${myanmarFont.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>

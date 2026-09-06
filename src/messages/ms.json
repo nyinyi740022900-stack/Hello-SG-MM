@@ -1,0 +1,127 @@
+{
+  "common": {
+    "appName": "Hello SG",
+    "tagline": "Berita dan bantuan harian untuk kehidupan di Singapura",
+    "home": "Laman Utama",
+    "checklist": "Senarai Semak",
+    "guide": "Panduan",
+    "contacts": "Kecemasan",
+    "wizard": "Bantuan Borang",
+    "login": "Log Masuk",
+    "register": "Daftar",
+    "account": "Akaun",
+    "adminPayments": "Pembayaran Admin",
+    "analytics": "Analitik",
+    "help": "Bantuan",
+    "contact": "Hubungi",
+    "cookies": "Kuki",
+    "news": "Berita",
+    "events": "Acara",
+    "directory": "Perkhidmatan",
+    "transport": "Pengangkutan",
+    "rates": "Kadar Pertukaran"
+  },
+  "home": {
+    "shortcutsTitle": "Akses pantas",
+    "topNewsTitle": "Kemas kini terkini",
+    "seeAllNews": "Lihat semua berita",
+    "browseByCategory": "Layari mengikut topik",
+    "eventsTitle": "Akan datang",
+    "seeAllEvents": "Lihat semua acara",
+    "feedEmpty": "Belum ada kemas kini diterbitkan. Item baharu akan muncul di sini selepas disemak.",
+    "urgentLabel": "Penting",
+    "viewMore": "Lagi",
+    "quickChecklist": "Senarai Semak Pasport",
+    "quickEmergency": "Hubungan Kecemasan",
+    "quickGuide": "Panduan Myanmar",
+    "quickAccountsGuide": "Panduan Akaun Penting",
+    "toolSalaryLog": "Log Gaji",
+    "toolRecruitmentFee": "Penjejak Yuran Pengambilan",
+    "toolRestDay": "Hak Hari Rehat",
+    "toolOffDayGuide": "Panduan Hari Cuti",
+    "ctaStart": "Mula Bantuan Borang",
+    "formGeneralShort": "Borang Am",
+    "formMaidShort": "Borang Pembantu Rumah"
+  },
+  "news": {
+    "badge": "Kemas kini harian",
+    "title": "Berita & Kemas Kini",
+    "category": {
+      "mom_policy": "Dasar MOM",
+      "embassy": "Kedutaan",
+      "safety_scam": "Amaran Penipuan",
+      "finance": "Wang",
+      "legal": "Hak",
+      "health": "Kesihatan",
+      "community": "Komuniti",
+      "education": "Latihan",
+      "transport": "Pengangkutan",
+      "jobs": "Pekerjaan"
+    },
+    "allCategories": "Semua",
+    "readMore": "Baca lagi",
+    "backToNews": "Kembali ke berita",
+    "sourceLabel": "Sumber",
+    "notFoundTitle": "Kemas kini tidak dijumpai",
+    "emptyInCategory": "Belum ada kemas kini dalam topik ini.",
+    "empty": "Belum ada kemas kini. Sila semak semula tidak lama lagi."
+  },
+  "conditions": {
+    "title": "Singapura sekarang",
+    "psiLabel": "PSI",
+    "uvLabel": "UV",
+    "psiBand": {
+      "good": "Baik",
+      "moderate": "Sederhana",
+      "unhealthy": "Tidak sihat",
+      "very_unhealthy": "Sangat tidak sihat",
+      "hazardous": "Berbahaya"
+    },
+    "uvBand": {
+      "low": "Rendah",
+      "moderate": "Sederhana",
+      "high": "Tinggi",
+      "very_high": "Sangat tinggi",
+      "extreme": "Melampau"
+    }
+  },
+  "menu": {
+    "open": "Menu",
+    "close": "Tutup menu",
+    "sectionMain": "Maklumat",
+    "sectionPassport": "Pasport",
+    "sectionTools": "Alatan",
+    "sectionRights": "Hak & Panduan",
+    "sectionHelp": "Bantuan",
+    "sectionAccount": "Akaun",
+    "sectionAbout": "Tentang"
+  },
+  "search": {
+    "placeholder": "Cari berita dan panduan",
+    "button": "Cari",
+    "resultsFor": "Hasil untuk \"{query}\"",
+    "noResults": "Tiada hasil dijumpai. Cuba perkataan lain.",
+    "empty": "Taip sesuatu untuk mencari.",
+    "countOne": "1 hasil",
+    "countMany": "{count} hasil"
+  },
+  "rates": {
+    "title": "SGD → MMK",
+    "indicative": "Petunjuk sahaja",
+    "noData": "Belum ada kadar direkodkan.",
+    "officialLabel": "Kadar rasmi",
+    "heroTitle": "Kadar pertukaran"
+  },
+  "events": {
+    "badge": "Komuniti",
+    "title": "Acara & Perhimpunan"
+  },
+  "directory": {
+    "badge": "Direktori",
+    "title": "Bantuan & Perkhidmatan"
+  },
+  "transport": {
+    "badge": "Pergerakan",
+    "heroTitle": "Panduan Bas & MRT"
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "common": {
+    "appName": "Hello SG",
+    "tagline": "সিঙ্গাপুরে জীবনযাত্রার জন্য খবর এবং প্রতিদিনের সাহায্য",
+    "home": "হোম",
+    "checklist": "চেকলিস্ট",
+    "guide": "গাইড",
+    "contacts": "জরুরি",
+    "wizard": "ফর্ম উইজার্ড",
+    "login": "লগইন",
+    "register": "নিবন্ধন",
+    "account": "অ্যাকাউন্ট",
+    "adminPayments": "অ্যাডমিন পেমেন্ট",
+    "analytics": "বিশ্লেষণ",
+    "help": "সাহায্য",
+    "contact": "যোগাযোগ",
+    "cookies": "কুকিজ",
+    "news": "খবর",
+    "events": "অনুষ্ঠান",
+    "directory": "সেবা",
+    "transport": "পরিবহন",
+    "rates": "বিনিময় হার"
+  },
+  "home": {
+    "shortcutsTitle": "দ্রুত অ্যাক্সেস",
+    "topNewsTitle": "সর্বশেষ আপডেট",
+    "seeAllNews": "সব খবর দেখুন",
+    "browseByCategory": "বিষয় অনুসারে ব্রাউজ করুন",
+    "eventsTitle": "আসন্ন অনুষ্ঠান",
+    "seeAllEvents": "সব অনুষ্ঠান দেখুন",
+    "feedEmpty": "এখনও কোনো আপডেট প্রকাশিত হয়নি। পর্যালোচনার পর এখানে দেখা যাবে।",
+    "urgentLabel": "গুরুত্বপূর্ণ",
+    "viewMore": "আরও",
+    "quickChecklist": "পাসপোর্ট চেকলিস্ট",
+    "quickEmergency": "জরুরি যোগাযোগ",
+    "quickGuide": "মিয়ানমার গাইড",
+    "quickAccountsGuide": "প্রয়োজনীয় অ্যাকাউন্ট গাইড",
+    "toolSalaryLog": "বেতন লগ",
+    "toolRecruitmentFee": "নিয়োগ ফি ট্র্যাকার",
+    "toolRestDay": "বিশ্রামের দিনের অধিকার",
+    "toolOffDayGuide": "ছুটির দিনের গাইড",
+    "ctaStart": "উইজার্ড শুরু করুন",
+    "formGeneralShort": "সাধারণ ফর্ম",
+    "formMaidShort": "গৃহকর্মী ফর্ম"
+  },
+  "news": {
+    "badge": "প্রতিদিনের আপডেট",
+    "title": "খবর ও আপডেট",
+    "category": {
+      "mom_policy": "MOM নীতি",
+      "embassy": "দূতাবাস",
+      "safety_scam": "প্রতারণা সতর্কতা",
+      "finance": "টাকা",
+      "legal": "অধিকার",
+      "health": "স্বাস্থ্য",
+      "community": "সম্প্রদায়",
+      "education": "প্রশিক্ষণ",
+      "transport": "পরিবহন",
+      "jobs": "চাকরি"
+    },
+    "allCategories": "সব",
+    "readMore": "আরও পড়ুন",
+    "backToNews": "খবরে ফিরে যান",
+    "sourceLabel": "সূত্র",
+    "notFoundTitle": "আপডেট পাওয়া যায়নি",
+    "emptyInCategory": "এই বিষয়ে এখনও কোনো আপডেট নেই।",
+    "empty": "এখনও কোনো আপডেট নেই। শীঘ্রই আবার দেখুন।"
+  },
+  "conditions": {
+    "title": "সিঙ্গাপুর এখন",
+    "psiLabel": "PSI",
+    "uvLabel": "UV",
+    "psiBand": {
+      "good": "ভালো",
+      "moderate": "মাঝারি",
+      "unhealthy": "অস্বাস্থ্যকর",
+      "very_unhealthy": "অত্যন্ত অস্বাস্থ্যকর",
+      "hazardous": "বিপজ্জনক"
+    },
+    "uvBand": {
+      "low": "কম",
+      "moderate": "মাঝারি",
+      "high": "বেশি",
+      "very_high": "অনেক বেশি",
+      "extreme": "চরম"
+    }
+  },
+  "menu": {
+    "open": "মেনু",
+    "close": "মেনু বন্ধ করুন",
+    "sectionMain": "তথ্য",
+    "sectionPassport": "পাসপোর্ট",
+    "sectionTools": "টুলস",
+    "sectionRights": "অধিকার ও গাইড",
+    "sectionHelp": "সাহায্য",
+    "sectionAccount": "অ্যাকাউন্ট",
+    "sectionAbout": "সম্পর্কে"
+  },
+  "search": {
+    "placeholder": "খবর এবং গাইড খুঁজুন",
+    "button": "খুঁজুন",
+    "resultsFor": "“{query}” এর ফলাফল",
+    "noResults": "কিছু পাওয়া যায়নি। অন্য শব্দ চেষ্টা করুন।",
+    "empty": "খুঁজতে কিছু টাইপ করুন।",
+    "countOne": "১টি ফলাফল",
+    "countMany": "{count}টি ফলাফল"
+  },
+  "rates": {
+    "title": "SGD → MMK",
+    "indicative": "শুধুমাত্র নির্দেশক",
+    "noData": "এখনও কোনো হার রেকর্ড করা হয়নি।",
+    "officialLabel": "সরকারি হার",
+    "heroTitle": "বিনিময় হার"
+  },
+  "events": {
+    "badge": "সম্প্রদায়",
+    "title": "অনুষ্ঠান ও সমাবেশ"
+  },
+  "directory": {
+    "badge": "ডিরেক্টরি",
+    "title": "সাহায্য ও সেবা"
+  },
+  "transport": {
+    "badge": "চলাচল",
+    "heroTitle": "বাস ও এমআরটি গাইড"
+  }
+}
