@@ -19,7 +19,7 @@ import {
   BankIcon,
 } from "@/components/icons";
 import type { AppLocale } from "@/i18n/routing";
-import { listPublishedNews } from "@/lib/news";
+import { listPublishedContent } from "@/lib/content";
 
 type HomePageProps = {
   params: Promise<{ locale: string }>;
@@ -38,8 +38,8 @@ export default async function HomePage({ params }: HomePageProps) {
     { href: "/accounts-guide", icon: BankIcon, label: t("quickAccountsGuide") },
   ];
 
-  const { data: latestNews } = await listPublishedNews(1);
-  const latestItem = latestNews?.[0] ?? null;
+  const { data: latestContent } = await listPublishedContent({ limit: 1 });
+  const latestItem = latestContent?.[0] ?? null;
   const isMy = locale === "my";
 
   return (

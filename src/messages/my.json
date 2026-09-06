@@ -56,10 +56,14 @@
     "sourceLink": "Source ကို ဖတ်ရန်",
     "disclaimer": "Update များကို နေ့စဉ် research လုပ်ပြီး admin က publish မလုပ်ခင် စစ်ဆေးပါသည်၊ ဒါပေမယ့် အရေးကြီးဆုံးဖြတ်ချက်များ (visa၊ ဥပဒေ၊ ငွေကြီး) အတွက်တော့ official source ကို တိုက်ရိုက် ထပ်မံစစ်ဆေးပါ။",
     "category": {
-      "mom_policy": "MOM / သံရုံး မူဝါဒ",
-      "exchange_rate": "ငွေလဲနှုန်း",
-      "safety_scam": "Safety / Scam သတိပေးချက်",
-      "community": "Community သတင်း"
+      "mom_policy": "MOM စည်းမျဉ်း",
+      "embassy": "သံရုံး",
+      "safety_scam": "လိမ်လည်မှု သတိပေးချက်",
+      "finance": "ငွေကြေး",
+      "legal": "အခွင့်အရေး",
+      "health": "ကျန်းမာရေး",
+      "community": "ရပ်ရွာ",
+      "education": "သင်တန်း"
     }
   },
   "salaryLog": {

@@ -56,10 +56,14 @@
     "sourceLink": "Read source",
     "disclaimer": "Updates are researched daily and reviewed by an admin before publishing, but always confirm important decisions (visa, legal, large payments) with the official source directly.",
     "category": {
-      "mom_policy": "MOM / Embassy Policy",
-      "exchange_rate": "Exchange Rate",
-      "safety_scam": "Safety / Scam Alert",
-      "community": "Community News"
+      "mom_policy": "MOM Policy",
+      "embassy": "Embassy",
+      "safety_scam": "Scam Alert",
+      "finance": "Money",
+      "legal": "Rights",
+      "health": "Health",
+      "community": "Community",
+      "education": "Training"
     }
   },
   "salaryLog": {

@@ -5,28 +5,41 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import {
-  approveNewsItem,
-  createManualNewsItem,
-  deleteNewsItem,
-  listPendingNews,
-  rejectNewsItem,
-  type NewsCategory,
-  type NewsItem,
-} from "@/lib/news";
+  approveContentItem,
+  createManualContentItem,
+  deleteContentItem,
+  listPendingContent,
+  rejectContentItem,
+  type ContentCategory,
+  type ContentItem,
+} from "@/lib/content";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import FormField, { INPUT_CLASS } from "@/components/ui/FormField";
 import StatusMessage from "@/components/ui/StatusMessage";
 
-const CATEGORY_LABELS: Record<NewsCategory, string> = {
-  mom_policy: "MOM / Embassy Policy",
-  exchange_rate: "Exchange Rate",
+const CATEGORY_LABELS: Record<ContentCategory, string> = {
+  mom_policy: "MOM Policy",
+  embassy: "Embassy",
   safety_scam: "Safety / Scam Alert",
-  community: "Community News",
+  finance: "Money",
+  legal: "Rights",
+  health: "Health",
+  community: "Community",
+  education: "Training",
 };
 
 const manualSchema = z.object({
-  category: z.enum(["mom_policy", "exchange_rate", "safety_scam", "community"]),
+  category: z.enum([
+    "mom_policy",
+    "embassy",
+    "safety_scam",
+    "finance",
+    "legal",
+    "health",
+    "community",
+    "education",
+  ]),
   titleEn: z.string().min(4, "Title (English) is required."),
   titleMy: z.string().min(4, "Title (Myanmar) is required."),
   bodyEn: z.string().min(10, "Body (English) is required."),
@@ -37,7 +50,7 @@ const manualSchema = z.object({
 type ManualFormValues = z.infer<typeof manualSchema>;
 
 export default function NewsReviewPanel() {
-  const [pending, setPending] = useState<NewsItem[]>([]);
+  const [pending, setPending] = useState<ContentItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
@@ -62,7 +75,7 @@ export default function NewsReviewPanel() {
 
   const refresh = useCallback(async () => {
     setIsLoading(true);
-    const { data, error } = await listPendingNews();
+    const { data, error } = await listPendingContent();
     if (error) setLoadError(error);
     else setPending(data ?? []);
     setIsLoading(false);
@@ -76,7 +89,7 @@ export default function NewsReviewPanel() {
 
   const handleApprove = async (id: string) => {
     setActionError(null);
-    const { error } = await approveNewsItem(id);
+    const { error } = await approveContentItem(id);
     if (error) {
       setActionError(error);
       return;
@@ -86,7 +99,7 @@ export default function NewsReviewPanel() {
 
   const handleReject = async (id: string) => {
     setActionError(null);
-    const { error } = await rejectNewsItem(id);
+    const { error } = await rejectContentItem(id);
     if (error) {
       setActionError(error);
       return;
@@ -96,7 +109,7 @@ export default function NewsReviewPanel() {
 
   const handleDelete = async (id: string) => {
     setActionError(null);
-    const { error } = await deleteNewsItem(id);
+    const { error } = await deleteContentItem(id);
     if (error) {
       setActionError(error);
       return;
@@ -106,7 +119,7 @@ export default function NewsReviewPanel() {
 
   const onSubmitManual = async (values: ManualFormValues) => {
     setManualSuccess(false);
-    const { error } = await createManualNewsItem({
+    const { error } = await createManualContentItem({
       category: values.category,
       titleEn: values.titleEn,
       titleMy: values.titleMy,

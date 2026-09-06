@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
-import { consumeRateLimit } from "@/lib/rateLimit";
-import { logServerEvent } from "@/lib/serverLogger";
+import { handleContentSubmit, checkAgentAuth, errorResponse } from "@/lib/contentSubmit.server";
 
-const submitSchema = z.object({
+// Backwards-compatible alias. The deployed cloud research agent still posts
+// to this route with the old news-only payload shape. Once the agent
+// routine is updated to call /api/content/submit directly with the richer
+// payload, this alias can be removed (tracked for Phase 4).
+
+const legacySubmitSchema = z.object({
   category: z.enum(["mom_policy", "exchange_rate", "safety_scam", "community"]),
   titleEn: z.string().min(4).max(200),
   titleMy: z.string().min(4).max(200),
@@ -13,84 +16,43 @@ const submitSchema = z.object({
   sourceUrl: z.string().url().optional(),
 });
 
-function errorResponse(message: string, status: number): NextResponse {
-  return NextResponse.json({ error: message }, { status });
-}
-
-/**
- * POST /api/news/submit
- *
- * Used by the automated daily research agent (not by browser clients) to
- * submit a candidate news item. Requires a shared-secret Bearer token
- * (AGENT_API_SECRET). Items are always created with status "pending" and
- * must be approved by an admin in /admin/news before they appear publicly.
- */
 export async function POST(request: NextRequest): Promise<NextResponse> {
-  const forwardedFor = request.headers.get("x-forwarded-for");
-  const ip = forwardedFor?.split(",")[0]?.trim() || "unknown";
+  // Authorize before touching the body, so an unauthenticated caller cannot
+  // probe the payload shape through validation errors.
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const authFailure = checkAgentAuth(request, "news_submit_alias", ip);
+  if (authFailure) return authFailure;
 
-  const ipLimit = consumeRateLimit({
-    key: `news-submit-ip:${ip}`,
-    limit: 20,
-    windowMs: 60 * 60 * 1000,
-  });
-  if (!ipLimit.allowed) {
-    return errorResponse("Too many submissions. Please try again later.", 429);
-  }
-
-  const agentSecret = process.env.AGENT_API_SECRET;
-  if (!agentSecret) {
-    return errorResponse("Server configuration error.", 500);
-  }
-
-  const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${agentSecret}`) {
-    logServerEvent("warn", "news_submit_unauthorized", { ip });
-    return errorResponse("Unauthorized.", 401);
-  }
-
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!supabaseUrl || !serviceRoleKey) {
-    return errorResponse("Server configuration error.", 500);
-  }
-
-  let body: z.infer<typeof submitSchema>;
+  let rawBody: unknown;
   try {
-    const rawBody: unknown = await request.json();
-    const parsed = submitSchema.safeParse(rawBody);
-    if (!parsed.success) {
-      const firstError = parsed.error.issues[0]?.message ?? "Invalid request body.";
-      return errorResponse(firstError, 400);
-    }
-    body = parsed.data;
+    rawBody = await request.json();
   } catch {
     return errorResponse("Invalid JSON body.", 400);
   }
 
-  const supabase = createClient(supabaseUrl, serviceRoleKey);
-
-  const { data, error } = await supabase
-    .from("news_items")
-    .insert({
-      category: body.category,
-      title_en: body.titleEn,
-      title_my: body.titleMy,
-      body_en: body.bodyEn,
-      body_my: body.bodyMy,
-      source_url: body.sourceUrl ?? null,
-      status: "pending",
-      created_by: "agent",
-    })
-    .select("id")
-    .single<{ id: string }>();
-
-  if (error) {
-    logServerEvent("error", "news_submit_failed", { ip, reason: error.message });
-    return errorResponse("Failed to save news item.", 500);
+  const parsed = legacySubmitSchema.safeParse(rawBody);
+  if (!parsed.success) {
+    const firstError = parsed.error.issues[0]?.message ?? "Invalid request body.";
+    return errorResponse(firstError, 400);
   }
 
-  logServerEvent("info", "news_submit_success", { ip, newsItemId: data.id });
+  // 'exchange_rate' widened into 'finance' in the new 8-category taxonomy.
+  const category = parsed.data.category === "exchange_rate" ? "finance" : parsed.data.category;
 
-  return NextResponse.json({ status: "ok", id: data.id, note: "Pending admin approval." });
+  const forwardedRequest = new NextRequest(request.url, {
+    method: "POST",
+    headers: request.headers,
+    body: JSON.stringify({
+      type: "news",
+      category,
+      priority: "normal",
+      titleEn: parsed.data.titleEn,
+      titleMy: parsed.data.titleMy,
+      bodyEn: parsed.data.bodyEn,
+      bodyMy: parsed.data.bodyMy,
+      sourceUrl: parsed.data.sourceUrl,
+    }),
+  });
+
+  return handleContentSubmit(forwardedRequest, "news_submit_alias");
 }

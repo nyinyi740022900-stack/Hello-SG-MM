@@ -3,13 +3,17 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { PageHeader, Card } from "@/components/ui/Card";
 import { routing } from "@/i18n/routing";
-import { listPublishedNews, type NewsCategory } from "@/lib/news";
+import { listPublishedContent, type ContentCategory } from "@/lib/content";
 
-const CATEGORY_STYLE: Record<NewsCategory, string> = {
+const CATEGORY_STYLE: Record<ContentCategory, string> = {
   mom_policy: "bg-brand-soft text-brand-strong",
-  exchange_rate: "bg-warning-soft text-warning",
+  embassy: "bg-brand-soft text-brand-strong",
   safety_scam: "bg-danger-soft text-danger",
+  finance: "bg-warning-soft text-warning",
+  legal: "bg-danger-soft text-danger",
+  health: "bg-accent-soft text-accent",
   community: "bg-accent-soft text-accent",
+  education: "bg-warning-soft text-warning",
 };
 
 export default async function NewsPage({
@@ -24,7 +28,7 @@ export default async function NewsPage({
   const isMy = locale === "my";
   const t = await getTranslations("news");
 
-  const { data: items, error } = await listPublishedNews();
+  const { data: items, error } = await listPublishedContent();
 
   return (
     <section className="space-y-5">
