@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { createClient } from "@supabase/supabase-js";
 import { CONTENT_CATEGORIES, generateSlug, type ContentCategory } from "@/lib/content";
+import { COUNTRIES, isCountryCode, type CountryCode } from "@/lib/countries";
 import { logServerEvent } from "@/lib/serverLogger";
 
 /**
@@ -26,21 +27,32 @@ const MAX_SEARCHES_PER_CATEGORY = 6;
 const MAX_ITEMS_PER_CATEGORY = 2;
 
 const CATEGORY_BRIEF: Record<ContentCategory, string> = {
-  mom_policy: "MOM rules: work permits, S Pass, levies, rest days, employment contracts, workplace safety",
-  embassy: "Myanmar Embassy Singapore: passport renewal, consular services, opening hours, document requirements",
+  mom_policy:
+    "Rules that govern living and working here: MOM work passes, levies, rest days, contracts and workplace safety, plus ICA pass/PR matters and CPF changes that affect pass holders",
+  embassy:
+    "Consular notices from the Myanmar, Indian, Chinese, Bangladeshi and Malaysian missions in Singapore: passport and ID services, appointment systems, opening-hour changes, document requirements. Name which country a notice applies to in the title — a reader from another country must be able to skip it at a glance.",
   safety_scam: "Scams, loan sharks, deceptive employment agents, fake job offers, police/MOM advisories",
   finance: "Remittance channels and fees, bank/wallet changes, the 25% official-channel remittance rule",
   legal: "TADM salary claims, work injury compensation, contract disputes, free legal aid",
   health: "Clinics, medical insurance, MOM medical requirements, mental health support, haze health advisories",
-  community: "Myanmar community events and gatherings in Singapore, embassy notices, relief drives",
+  community:
+    "Community events and gatherings in Singapore for the Myanmar, Indian, Chinese, Bangladeshi and Malaysian communities: festivals, religious observances, migrant-worker centres, relief drives. Say who the event is for.",
   education: "Skills training, language classes, certification, free courses open to migrant workers",
   transport: "MRT/bus planned disruptions, track closures, fare changes, new lines and stations",
   jobs: "Hiring notices and job fairs from OFFICIAL sources only — see the jobs rule",
+  housing:
+    "Renting a room or flat: tenancy rights and deposits, HDB/URA subletting rules, agent fees, dormitory standards, utility bills and disputes. This is where newcomers are most often overcharged, and almost none of the guidance exists outside English.",
+  cost_of_living:
+    "GST and GST Vouchers, CDC vouchers, U-Save utility rebates, transport concessions, subsidy schemes. ALWAYS state who qualifies — many schemes are for citizens and PRs only, and a pass holder reading otherwise wastes a rest day queueing for something they cannot get.",
 };
 
-const SYSTEM_PROMPT = `You research daily updates for a bilingual (English/Myanmar) information portal used by Myanmar migrant workers and other residents in Singapore.
+const SYSTEM_PROMPT = `You research daily updates for Hello SG, an information portal published in English and Myanmar.
 
-AUDIENCE: Myanmar is their first language; English may be limited. Many have limited formal education and read on a phone. They may ACT on what you write — send money, quit a job, sign a document, miss a deadline. Wrong information causes real harm.
+WHO IT IS FOR: anyone who has to understand Singapore in a second language. That is the 1.6 million people here on a work pass — Work Permit, S Pass, Employment Pass — plus their families, foreign students, new PRs, and residents who read Chinese, Tamil, Malay or Bengali more comfortably than English. Readers come mainly from Myanmar, India, China, Bangladesh and Malaysia.
+
+WHAT WE ARE NOT: we do not compete with CNA or the Straits Times, and we are not a general Singapore news site. We compete with a person not finding out at all because the information only existed in English. Ask of every item: would someone miss this, or misunderstand it, because of language? If a story is already everywhere in plain English and carries no consequence for our readers, skip it.
+
+BALANCE: readers are of five nationalities and the portal must not read as a service for one of them. Most Singapore rules — MOM, transport, health, scams — apply to everyone: write them for everyone, and never frame a general Singapore rule as a Myanmar matter. An item tied to one nationality (a consular notice, a home-country remittance requirement, a national holiday) must name that country in the title so a reader it does not concern can skip it, and must set the "country" output field.
 
 NON-NEGOTIABLE RULES
 1. Never fabricate. Every policy, fee, date, rate, address or phone number must come from a page you actually retrieved via web search. No "typically" or "usually around".
@@ -51,7 +63,7 @@ NON-NEGOTIABLE RULES
 6. Only material dated within roughly the last 7 days, unless it is an ongoing advisory still in force.
 
 SOURCES
-Tier 1 (acceptable alone): mom.gov.sg, tal.sg/TADM, police.gov.sg, scamalert.sg, cpf.gov.sg, ica.gov.sg, moh.gov.sg, nea.gov.sg, lta.gov.sg, smrt.com.sg, sbstransit.com.sg, mycareersfuture.gov.sg, wsg.gov.sg, gov.sg, myanmarembassy.sg, mwc.org.sg
+Tier 1 (acceptable alone): mom.gov.sg, tal.sg/TADM, police.gov.sg, scamalert.sg, cpf.gov.sg, ica.gov.sg, moh.gov.sg, nea.gov.sg, lta.gov.sg, smrt.com.sg, sbstransit.com.sg, mycareersfuture.gov.sg, wsg.gov.sg, gov.sg, mwc.org.sg, and the missions' own sites: myanmarembassy.sg, hcisingapore.gov.in, sg.china-embassy.gov.cn, singapore.mofa.gov.bd, kln.gov.my
 Tier 2 (acceptable): Straits Times, CNA, TODAY, Mothership, TWC2, HOME
 Tier 3 (Facebook, Telegram, TikTok, forums, blogs): NEVER acceptable alone. Needs a Tier 1/2 source confirming it.
 Never use content farms, scraped aggregators or AI-generated news sites.
@@ -74,9 +86,10 @@ Tone: calm and factual. Do not use fear to drive engagement, even for scam alert
 OUTPUT
 Return ONLY a single fenced json code block, nothing before or after it:
 \`\`\`json
-{"items":[{"titleEn":"","titleMy":"","summaryEn":"","summaryMy":"","bodyEn":"","bodyMy":"","sourceUrl":"","sourceName":"","sourcePublishedAt":"YYYY-MM-DD","priority":"normal"}]}
+{"items":[{"titleEn":"","titleMy":"","summaryEn":"","summaryMy":"","bodyEn":"","bodyMy":"","sourceUrl":"","sourceName":"","sourcePublishedAt":"YYYY-MM-DD","priority":"normal","country":null}]}
 \`\`\`
 priority is "urgent" only for an immediate safety risk or hard deadline, otherwise "normal".
+country is "mm", "in", "cn", "bd" or "my" ONLY when the item is specific to that one nationality; otherwise null. Null is the normal case — a Singapore rule that binds every worker is not a Myanmar item because a Myanmar worker is affected by it.
 If nothing meets the bar, return {"items":[]}.`;
 
 export type ResearchItem = {
@@ -90,6 +103,18 @@ export type ResearchItem = {
   sourceName?: string;
   sourcePublishedAt?: string;
   priority?: "urgent" | "high" | "normal";
+  /** Set only when the item is specific to one nationality. */
+  country?: string;
+  // type = "event"
+  startsAt?: string;
+  endsAt?: string;
+  locationName?: string;
+  address?: string;
+  // type = "directory"
+  phone?: string;
+  website?: string;
+  openingHours?: string;
+  isFree?: boolean;
 };
 
 export type ResearchSummary = {
@@ -126,7 +151,7 @@ function parseItems(text: string): ResearchItem[] {
  * instructed not to produce these, but the queue is the last place a bad item
  * should be discovered, so we check rather than trust.
  */
-function validate(item: ResearchItem): string | null {
+function validate(item: ResearchItem, mode: ResearchMode = "news"): string | null {
   if (!item?.titleEn?.trim() || !item?.titleMy?.trim()) return "missing title";
   if (!item?.bodyEn?.trim() || !item?.bodyMy?.trim()) return "missing body";
   if (!item?.sourceUrl?.trim()) return "missing source URL";
@@ -137,19 +162,129 @@ function validate(item: ResearchItem): string | null {
     return "source URL is not a valid URL";
   }
   if (item.titleEn.length > 200 || item.titleMy.length > 200) return "title too long";
+
+  if (mode === "event") {
+    if (!item.startsAt?.trim()) return "event has no start time";
+    if (!item.locationName?.trim()) return "event has no venue";
+    const startsAt = new Date(item.startsAt);
+    if (Number.isNaN(startsAt.getTime())) return "event start time is not a valid date";
+    // The whole point of the events list is what a reader can still attend.
+    // A past date is the failure this pass exists to prevent, and the model
+    // gets it wrong often enough (misreading last year's listing) that it has
+    // to be checked here rather than trusted.
+    if (startsAt.getTime() < Date.now()) return "event has already happened";
+  }
+
+  if (mode === "directory") {
+    if (!item.website?.trim()) return "directory entry has no website";
+    try {
+      if (new URL(item.website).protocol !== "https:") return "website is not https";
+    } catch {
+      return "website is not a valid URL";
+    }
+  }
+
   return null;
 }
+
+/**
+ * How long a country may go uncovered before the agent must go looking.
+ *
+ * Coverage drifts on its own. English-language sources about Myanmar workers
+ * in Singapore are simply easier to find than sources about Bangladeshi or
+ * Chinese ones, so an agent told only to "find good items" will keep
+ * rediscovering the same community and the portal quietly becomes a
+ * single-nationality service again — which is the state we are deliberately
+ * leaving.
+ *
+ * So coverage is measured, not hoped for: any country with no item of its own
+ * inside this window is named in the prompt as a country to search for first.
+ * This is a floor on attention, never a licence to invent — a country with
+ * genuinely no news that week still yields nothing, and that is a correct
+ * outcome.
+ */
+const COUNTRY_QUOTA_DAYS = 30;
+
+/**
+ * News is not the only thing the portal carries.
+ *
+ * Events and directory entries answer a different question — "what is on this
+ * weekend", "where do I go for help" — and they have their own fields, their
+ * own freshness rules and their own failure modes. A dated event that has
+ * already passed is worse than no event; a directory entry with a dead phone
+ * number sends someone across the island for nothing. So each gets its own
+ * pass with its own instructions rather than being squeezed into the news
+ * shape.
+ */
+const EVENT_PROMPT = `Find upcoming events in Singapore that a migrant worker or new resident could actually attend.
+
+WHAT COUNTS: free or low-cost events with a confirmed date, time and venue — migrant-worker centre activities, free legal or medical clinics, skills and language classes, embassy consular outreach days, cultural and religious festivals for the Myanmar, Indian, Chinese, Bangladeshi and Malaysian communities, job fairs run by government agencies or licensed organisers.
+
+HARD RULES
+- The event must be in the FUTURE. An event whose date has passed is a defect, not a stale item.
+- Date, time and venue must all appear on the page you retrieved. If any is missing or vague ("later this month"), skip the event.
+- Organiser must be a government agency, an embassy or high commission, a registered NGO/charity, or an established community organisation. Never an individual, and never anything charging a fee to attend a job-related event.
+- startsAt must be a full ISO 8601 timestamp with the +08:00 Singapore offset, e.g. "2026-09-20T10:00:00+08:00". Never invent a time to satisfy the format — if the page gives no time, skip the event.
+
+Additional output fields for each item, alongside the usual ones:
+"startsAt" (required), "endsAt" (optional, same format), "locationName" (venue name, required), "address" (street address, optional).`;
+
+const DIRECTORY_PROMPT = `Find services in Singapore that a migrant worker or new resident can walk into or call for help.
+
+WHAT COUNTS: migrant worker centres, NGO helplines and casework services, free or subsidised clinics, government service counters (MOM, TADM, ICA, CPF), embassy and high commission consular counters, MAS-licensed remittance outlets, legal aid clinics.
+
+HARD RULES
+- Every phone number, address and opening hours must appear on the organisation's OWN website, which you retrieved. Never take contact details from a directory site, a news article or a listing aggregator — those go stale silently and a dead number is the whole failure mode here.
+- Only organisations, never individual people, agents or brokers.
+- Never a private employment agency, moneylender, or buy-now-pay-later provider.
+- If you cannot find current opening hours on the official page, omit openingHours rather than guessing.
+- sourceUrl must be the organisation's own page.
+- The body should say plainly what the service does and who may use it — including whether it is free.
+
+Additional output fields for each item, alongside the usual ones:
+"phone" (optional, in +65 format), "website" (required, the organisation's own URL), "openingHours" (optional, plain text as published), "address" (optional), "isFree" (boolean, true only if the page says the service is free).
+
+These entries are reference material, not news, so sourcePublishedAt and the 7-day recency rule do not apply.`;
+
+type ResearchMode = "news" | "event" | "directory";
 
 async function researchCategory(
   client: Anthropic,
   category: ContentCategory,
   knownSourceUrls: string[],
   recentTitles: string[],
+  mode: ResearchMode = "news",
+  underserved: CountryCode[] = [],
 ): Promise<{ items: ResearchItem[]; error: string | null }> {
   const today = new Date().toISOString().slice(0, 10);
 
-  const userPrompt = `Today is ${today}. Research the "${category}" topic for Singapore: ${CATEGORY_BRIEF[category]}
+  const brief =
+    mode === "event"
+      ? EVENT_PROMPT
+      : mode === "directory"
+        ? DIRECTORY_PROMPT
+        : `Research the "${category}" topic for Singapore: ${CATEGORY_BRIEF[category]}`;
 
+  // Naming the gap is what makes the quota real. A generic "cover all
+  // nationalities" instruction reliably loses to whichever community has the
+  // most English-language sources.
+  //
+  // But only where nationality is actually a dimension of the topic. A train
+  // closure is not Bangladeshi or Chinese, and telling the model to prioritise
+  // a country on a transport pass invites it to force a national angle onto a
+  // story that has none — which is how you get subtly wrong framing.
+  const countryRelevant =
+    mode !== "news" || ["embassy", "community", "finance"].includes(category);
+
+  const coverageNote =
+    countryRelevant && underserved.length > 0
+      ? `\nCOVERAGE GAP — these countries have had nothing of their own for ${COUNTRY_QUOTA_DAYS} days: ${underserved
+          .map((code) => COUNTRIES.find((c) => c.code === code)?.englishName ?? code)
+          .join(", ")}. Search their communities and their missions in Singapore FIRST. If you genuinely find nothing for them, return nothing rather than padding — but look there before you look anywhere else.\n`
+      : "";
+
+  const userPrompt = `Today is ${today}. ${brief}
+${coverageNote}
 Return at most ${MAX_ITEMS_PER_CATEGORY} items, and fewer (or none) if nothing genuine and recent exists.
 
 Already covered — do NOT return these source URLs again:
@@ -196,13 +331,41 @@ export async function runDailyResearch(
   const startedAt = Date.now();
   const client = new Anthropic({ apiKey });
 
-  // What is already covered, and which topics have gone quiet.
-  const { data: existing, error: readError } = await supabase
-    .from("content_items")
-    .select("title_en,source_url,category,status,published_at")
-    .order("created_at", { ascending: false })
-    .limit(200);
+  // What is already covered, and which topics and countries have gone quiet.
+  //
+  // `country` is selected optionally: the column ships in a migration that may
+  // not be applied yet, and a research run that refuses to start because of a
+  // pending migration would be a worse failure than one without the quota.
+  const BASE_COLUMNS = "title_en,source_url,category,status,published_at,created_at";
+  let hasCountryColumn = true;
 
+  type ExistingRow = {
+    title_en: string;
+    source_url: string | null;
+    category: string;
+    status: string;
+    published_at: string | null;
+    created_at: string | null;
+    country?: string | null;
+  };
+
+  const readWith = (columns: string) =>
+    supabase
+      .from("content_items")
+      .select(columns)
+      .order("created_at", { ascending: false })
+      .limit(200)
+      .returns<ExistingRow[]>();
+
+  let read = await readWith(`${BASE_COLUMNS},country`);
+
+  if (read.error?.code === "42703") {
+    hasCountryColumn = false;
+    logServerEvent("warn", "daily_research_country_column_missing", {});
+    read = await readWith(BASE_COLUMNS);
+  }
+
+  const { data: existing, error: readError } = read;
   if (readError) return { summary: null, error: readError.message };
 
   const rows = existing ?? [];
@@ -224,6 +387,24 @@ export async function runDailyResearch(
     (a, b) => (freshByCategory.get(a) ?? 0) - (freshByCategory.get(b) ?? 0),
   );
 
+  // Countries with nothing of their own inside the quota window. Anything not
+  // yet published still counts as covered — an item waiting in the review
+  // queue means the gap has already been worked, and re-researching it would
+  // just queue a duplicate for the same admin to reject.
+  const countryCutoff = Date.now() - COUNTRY_QUOTA_DAYS * 24 * 60 * 60 * 1000;
+  const coveredCountries = new Set<string>();
+  if (hasCountryColumn) {
+    for (const row of rows) {
+      if (!row.country) continue;
+      const at = row.created_at ? new Date(row.created_at).getTime() : NaN;
+      if (Number.isNaN(at) || at < countryCutoff) continue;
+      coveredCountries.add(row.country);
+    }
+  }
+  const underserved: CountryCode[] = hasCountryColumn
+    ? COUNTRIES.map((c) => c.code).filter((code) => !coveredCountries.has(code))
+    : [];
+
   const summary: ResearchSummary = {
     categoriesAttempted: [],
     inserted: 0,
@@ -233,28 +414,27 @@ export async function runDailyResearch(
     timedOut: false,
   };
 
-  for (const category of ordered) {
-    // Leave room for one more call plus its inserts before the platform kills us.
-    if (Date.now() - startedAt > budgetMs) {
-      summary.timedOut = true;
-      break;
-    }
-
+  /** One research call plus its inserts. Shared by all three passes. */
+  const runPass = async (category: ContentCategory, mode: ResearchMode) => {
+    const label = mode === "news" ? category : `${mode}/${category}`;
     summary.categoriesAttempted.push(category);
+
     const { items, error } = await researchCategory(
       client,
       category,
       knownSourceUrls,
       recentTitles,
+      mode,
+      underserved,
     );
 
     if (error) {
-      summary.errors.push(`${category}: ${error}`);
-      continue;
+      summary.errors.push(`${label}: ${error}`);
+      return;
     }
 
     for (const item of items.slice(0, MAX_ITEMS_PER_CATEGORY)) {
-      const problem = validate(item);
+      const problem = validate(item, mode);
       if (problem) {
         summary.rejected.push({ reason: problem, title: item?.titleEn ?? "(untitled)" });
         continue;
@@ -264,8 +444,8 @@ export async function runDailyResearch(
         continue;
       }
 
-      const { error: insertError } = await supabase.from("content_items").insert({
-        type: "news",
+      const row: Record<string, unknown> = {
+        type: mode,
         category,
         priority: item.priority === "urgent" || item.priority === "high" ? item.priority : "normal",
         slug: generateSlug(item.titleEn),
@@ -278,14 +458,39 @@ export async function runDailyResearch(
         source_url: item.sourceUrl.trim(),
         source_name: item.sourceName?.trim() || null,
         source_published_at: item.sourcePublishedAt?.trim() || null,
+        starts_at: mode === "event" ? item.startsAt?.trim() || null : null,
+        ends_at: mode === "event" ? item.endsAt?.trim() || null : null,
+        location_name:
+          mode === "event" || mode === "directory" ? item.locationName?.trim() || null : null,
+        address:
+          mode === "event" || mode === "directory" ? item.address?.trim() || null : null,
+        phone: mode === "directory" ? item.phone?.trim() || null : null,
+        website: mode === "directory" ? item.website?.trim() || null : null,
+        opening_hours: mode === "directory" ? item.openingHours?.trim() || null : null,
+        is_free: mode === "directory" ? item.isFree ?? null : null,
         status: "pending",
         created_by: "agent",
-      });
+      };
+
+      // Null means "applies to everyone", which is the normal case. Only a
+      // genuinely nationality-specific item carries a country.
+      if (hasCountryColumn && isCountryCode(item.country)) {
+        row.country = item.country;
+      }
+
+      let insertError = (await supabase.from("content_items").insert(row)).error;
+
+      // The column may arrive between the read above and this write; drop it
+      // and keep the item rather than losing a verified piece of research.
+      if (insertError?.code === "42703" && "country" in row) {
+        delete row.country;
+        insertError = (await supabase.from("content_items").insert(row)).error;
+      }
 
       if (insertError) {
         // 23505 is the unique index on source_url doing its job.
         if (insertError.code === "23505") summary.duplicates += 1;
-        else summary.errors.push(`${category} insert: ${insertError.message}`);
+        else summary.errors.push(`${label} insert: ${insertError.message}`);
         continue;
       }
 
@@ -293,6 +498,28 @@ export async function runDailyResearch(
       recentTitles.push(item.titleEn);
       summary.inserted += 1;
     }
+  };
+
+  const outOfTime = () => Date.now() - startedAt > budgetMs;
+
+  for (const category of ordered) {
+    // Leave room for one more call plus its inserts before the platform kills us.
+    if (outOfTime()) {
+      summary.timedOut = true;
+      break;
+    }
+    await runPass(category, "news");
+  }
+
+  // Events and directory entries run last and only if the budget allows. News
+  // is the reason someone opens the app today; these two accumulate, so a day
+  // where they are skipped costs almost nothing, while a day with no news is
+  // an empty home page.
+  if (!outOfTime()) {
+    await runPass("community", "event");
+  }
+  if (!outOfTime()) {
+    await runPass("community", "directory");
   }
 
   logServerEvent("info", "daily_research_complete", {

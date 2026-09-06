@@ -126,7 +126,7 @@ export default async function AdminLayout({
       </div>
 
       {/* Admin sub-nav */}
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <Link
           href="/admin/payments"
           locale={resolvedLocale}
@@ -147,6 +147,13 @@ export default async function AdminLayout({
           className="rounded-xl border border-border bg-surface px-4 py-2 text-sm font-medium text-ink-muted transition hover:border-accent-border hover:text-accent"
         >
           News / သတင်း
+        </Link>
+        <Link
+          href="/admin/rates"
+          locale={resolvedLocale}
+          className="rounded-xl border border-border bg-surface px-4 py-2 text-sm font-medium text-ink-muted transition hover:border-accent-border hover:text-accent"
+        >
+          Rates / ငွေလဲနှုန်း
         </Link>
       </div>
 

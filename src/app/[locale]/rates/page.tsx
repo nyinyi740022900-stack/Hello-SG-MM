@@ -4,17 +4,32 @@ import { notFound } from "next/navigation";
 import { PageHeader, Card } from "@/components/ui/Card";
 import { routing } from "@/i18n/routing";
 import PageCard from "@/components/ui/PageCard";
-import StatusMessage from "@/components/ui/StatusMessage";
 import { listLatestRates, formatRate, formatObservedAt } from "@/lib/exchangeRates";
-import { getMidMarketRate } from "@/lib/fxRate";
+import ExchangeRatePanel from "@/components/ExchangeRatePanel";
+import { resolveSelectedCountry, getSelectedCountryCode } from "@/lib/country.server";
 
-const CHECK_LINKS = [
-  { key: "kbzpay", label: "KBZPay", href: "https://www.kbzbank.com/" },
-  { key: "wavemoney", label: "Wave Money", href: "https://www.wavemoney.com.mm/" },
-  { key: "mas", label: "MAS licensed remittance list", href: "https://eservices.mas.gov.sg/fid" },
-] as const;
+/**
+ * Where to check a live rate.
+ *
+ * The MAS licensed-remitter register is the one link that matters for every
+ * reader regardless of where they send money, so it is always shown. Named
+ * providers are listed only for the country they serve — offering KBZPay to
+ * someone remitting to Dhaka is noise that makes the useful link harder to
+ * find.
+ */
+const MAS_REGISTER = {
+  key: "mas",
+  label: "MAS licensed remittance list",
+  href: "https://eservices.mas.gov.sg/fid",
+};
 
-const COMPARE_KEYS = ["compareFee", "compareOfficial"] as const;
+const COUNTRY_PROVIDER_LINKS: Record<string, { key: string; label: string; href: string }[]> = {
+  mm: [
+    { key: "kbzpay", label: "KBZPay", href: "https://www.kbzbank.com/" },
+    { key: "wavemoney", label: "Wave Money", href: "https://www.wavemoney.com.mm/" },
+  ],
+};
+
 
 export default async function RatesPage({
   params,
@@ -27,40 +42,27 @@ export default async function RatesPage({
   }
 
   const t = await getTranslations("rates");
-  const { data: rates } = await listLatestRates();
-  const official = await getMidMarketRate("MMK");
+  const country = await resolveSelectedCountry();
+  const selectedCountry = await getSelectedCountryCode();
+  const { data: rates } = await listLatestRates(`SGD_${country.currency}`);
+
+  const checkLinks = [...(COUNTRY_PROVIDER_LINKS[country.code] ?? []), MAS_REGISTER];
+
+  // The mandatory-remittance rule is Myanmar's, not a general one. Showing it
+  // to an Indian or Malaysian reader would assert a legal obligation on them
+  // that does not exist.
+  const compareKeys = country.code === "mm" ? ["compareFee", "compareOfficial"] : ["compareFee"];
 
   return (
     <PageCard>
       <section className="space-y-5">
-        <PageHeader eyebrow={t("pageBadge")} title={t("pageTitle")} subtitle={t("pageSubtitle")} />
+        <PageHeader
+          eyebrow={t("pageBadge")}
+          title={t("pageTitle", { currency: country.currency })}
+          subtitle={t("pageSubtitle")}
+        />
 
-        {/* The official figure is shown because people will look it up anyway,
-            and knowing the gap exists is what stops someone being talked into
-            accepting it. It is never presented as the amount they will get. */}
-        {official ? (
-          <Card className="space-y-3">
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <span className="text-xs font-semibold uppercase tracking-wide text-ink-subtle">
-                {t("officialLabel")}
-              </span>
-              {official.updatedAt ? (
-                <span className="text-xs text-ink-subtle">
-                  {t("officialUpdated", { time: official.updatedAt })}
-                </span>
-              ) : null}
-            </div>
-            <p className="text-2xl font-bold tabular-nums text-ink">
-              {t("officialValue", { rate: formatRate(official.rate, locale) })}
-            </p>
-            <StatusMessage variant="warning">
-              <span className="block space-y-1">
-                <span className="block font-semibold">{t("officialWarnTitle")}</span>
-                <span className="block">{t("officialWarnBody")}</span>
-              </span>
-            </StatusMessage>
-          </Card>
-        ) : null}
+        <ExchangeRatePanel locale={locale} selectedCountry={selectedCountry} />
 
         <Card className="space-y-3">
           <div className="flex items-center justify-between gap-3">
@@ -101,7 +103,7 @@ export default async function RatesPage({
           <h3 className="font-semibold text-ink">{t("checkTitle")}</h3>
           <p className="text-sm text-ink-muted">{t("checkIntro")}</p>
           <ul className="space-y-2">
-            {CHECK_LINKS.map(({ key, label, href }) => (
+            {checkLinks.map(({ key, label, href }) => (
               <li key={key}>
                 <a
                   href={href}
@@ -123,7 +125,7 @@ export default async function RatesPage({
         <Card className="space-y-3">
           <h3 className="font-semibold text-ink">{t("compareTitle")}</h3>
           <ul className="space-y-2 text-ink">
-            {COMPARE_KEYS.map((key) => (
+            {compareKeys.map((key) => (
               <li key={key}>{t(key)}</li>
             ))}
           </ul>

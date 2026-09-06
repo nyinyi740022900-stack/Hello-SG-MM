@@ -77,10 +77,21 @@ export async function listLatestRates(
   return { data: [...latestByProvider.values()], error: null };
 }
 
-/** Format a rate for display: grouped thousands, no misleading decimal precision. */
+/**
+ * Format a rate for display, at a precision the currency actually needs.
+ *
+ * Decimals are chosen by magnitude rather than fixed, because the five
+ * currencies here span three orders of magnitude. 1,655 MMK per SGD carries no
+ * information after the decimal point, but 3.34 MYR rounded to whole numbers
+ * becomes "3" — an 11% error presented as a rate. So small numbers keep two
+ * decimals and large ones drop them.
+ */
 export function formatRate(rate: number, locale: string): string {
+  const decimals = rate >= 1000 ? 0 : rate >= 100 ? 1 : 2;
+
   return new Intl.NumberFormat(locale === "my" ? "my-MM" : "en-SG", {
-    maximumFractionDigits: 0,
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
   }).format(rate);
 }
 
