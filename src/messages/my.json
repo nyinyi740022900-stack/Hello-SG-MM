@@ -1,0 +1,351 @@
+{
+  "common": {
+    "appName": "SG Migrant Worker App",
+    "tagline": "မြန်မာအလုပ်သမားများအတွက် အကူအညီပေး Platform",
+    "home": "ပင်မ",
+    "checklist": "စာရင်း",
+    "guide": "လမ်းညွှန်",
+    "contacts": "အရေးပေါ်",
+    "wizard": "ဖောင်ဖြည့်",
+    "login": "အကောင့်ဝင်ရန်",
+    "register": "အကောင့်ဖွင့်ရန်",
+    "account": "အကောင့်",
+    "payment": "ငွေပေးချေမှု",
+    "adminPayments": "Admin ငွေပေးချေမှု",
+    "analytics": "စာရင်းခွဲခြမ်း",
+    "help": "အကူအညီ",
+    "contact": "ဆက်သွယ်ရန်",
+    "cookies": "Cookies"
+  },
+  "home": {
+    "badge": "အခမဲ့ + Premium အကူအညီ",
+    "title": "ပတ်စပို့ ပြန်လည်လျှောက်ရန် အကူအညီ",
+    "subtitle": "စင်္ကာပူရှိ မြန်မာအလုပ်သမားများအတွက် လွယ်ကူသောအဆင့်လိုက်လမ်းညွှန်။",
+    "ctaStart": "Wizard စတင်ရန်",
+    "ctaChecklist": "စာရင်းဖွင့်ရန်",
+    "factGuidedLabel": "ဖောင်ဖြည့်နည်း",
+    "factGuidedValue": "အဆင့်လိုက်",
+    "factLanguageLabel": "ဘာသာစကား",
+    "factLanguageValue": "English + မြန်မာ",
+    "factPaymentLabel": "ငွေပေးချေမှု",
+    "factPaymentValue": "KBZPay / WavePay",
+    "quickChecklist": "ပတ်စပို့ စာရင်း",
+    "quickEmergency": "အရေးပေါ် ဆက်သွယ်ရန်",
+    "quickGuide": "မြန်မာလို လမ်းညွှန်",
+    "quickAccountsGuide": "လိုအပ်သော Account များ",
+    "sponsorLabel": "ကျွန်ုပ်တို့၏ Sponsor များ",
+    "sponsorHeadline": "နိုင်ငံခြားရှိ မြန်မာအလုပ်သမားများကို ပံ့ပိုးခြင်း",
+    "sponsorDescription": "ဒီ app ကို community sponsor များ၏ အကူအညီဖြင့် အခမဲ့ဖြစ်ပါသည်။ အလုပ်သမားများကို ကူညီပေးသော ဝန်ဆောင်မှုများကို ကြည့်ရှုပါ။",
+    "sponsorCta": "Sponsor များကို ကြည့်ရန်",
+    "toolsSectionTitle": "ငွေကြေး နှင့် အထောက်အထား ကိရိယာများ",
+    "toolSalaryLog": "လစာမှတ်တမ်း",
+    "toolSalaryLogHint": "ကတိထားသလား ရသလား — မှတ်တမ်းတင်ပါ",
+    "toolRecruitmentFee": "အေဂျင့်ကြေး ရှင်းလင်းရေး Tracker",
+    "toolRecruitmentFeeHint": "အေဂျင့်ကြေး ဘယ်အချိန် ပြီးဆုံးမလဲ ကြည့်ပါ",
+    "rightsSectionTitle": "အခွင့်အရေးနှင့် Community",
+    "toolRestDay": "နားရက် အခွင့်အရေး",
+    "toolRestDayHint": "တစ်ပတ်လျှင် နားရက်ရဖို့ အခွင့်အရေးကို သိထားပါ",
+    "toolOffDayGuide": "ပိတ်ရက် လမ်းညွှန်",
+    "toolOffDayGuideHint": "မြန်မာအလုပ်သမားများ စုစည်းရာနေရာများ",
+    "latestUpdateLabel": "နောက်ဆုံးရ Update"
+  },
+  "news": {
+    "badge": "နေ့စဉ် Update",
+    "title": "သတင်းနှင့် Update",
+    "subtitle": "MOM/သံရုံး မူဝါဒပြောင်းလဲမှု၊ ငွေလဲနှုန်း၊ scam သတိပေးချက်၊ community သတင်းများ — ဒီနေရာတွင် ပေါ်မလာခင် admin က အရင် စစ်ဆေးပါသည်။",
+    "empty": "Update မရှိသေးပါ — နောက်ပိုင်း ပြန်လာကြည့်ပါ။",
+    "sourceLink": "Source ကို ဖတ်ရန်",
+    "disclaimer": "Update များကို နေ့စဉ် research လုပ်ပြီး admin က publish မလုပ်ခင် စစ်ဆေးပါသည်၊ ဒါပေမယ့် အရေးကြီးဆုံးဖြတ်ချက်များ (visa၊ ဥပဒေ၊ ငွေကြီး) အတွက်တော့ official source ကို တိုက်ရိုက် ထပ်မံစစ်ဆေးပါ။",
+    "category": {
+      "mom_policy": "MOM / သံရုံး မူဝါဒ",
+      "exchange_rate": "ငွေလဲနှုန်း",
+      "safety_scam": "Safety / Scam သတိပေးချက်",
+      "community": "Community သတင်း"
+    }
+  },
+  "salaryLog": {
+    "badge": "PDF export = Premium · မှတ်တမ်းတင်ခြင်း = အခမဲ့",
+    "title": "လစာမှတ်တမ်း",
+    "subtitle": "လစဉ် ကတိထားတဲ့ ပမာဏနဲ့ တကယ်ရတဲ့ ပမာဏကို မှတ်တမ်းတင်ထားပါ။ နောက်ပိုင်း salary claim တင်စရာ လိုလာရင် ဒီမှတ်တမ်းကို အသုံးပြုနိုင်ပါတယ်။",
+    "fieldDate": "လစာရက်စွဲ",
+    "fieldCurrency": "ငွေကြေးအမျိုးအစား",
+    "fieldExpected": "ရရမယ့်ပမာဏ",
+    "fieldReceived": "လက်တွေ့ရသောပမာဏ",
+    "fieldNote": "မှတ်ချက် (ရွေးချယ်ခွင့်)",
+    "fieldNoteHint": "ဥပမာ - ၃ ရက်နောက်ကျ၊ cash ချည်းသာ",
+    "addEntry": "မှတ်တမ်းထည့်ရန်",
+    "summaryExpected": "စုစုပေါင်း ရရမည့်ငွေ",
+    "summaryReceived": "စုစုပေါင်း ရရှိငွေ",
+    "summaryShortfall": "စုစုပေါင်း လိုငွေ",
+    "loadingEntries": "မှတ်တမ်းများ ဖတ်နေသည်…",
+    "noEntries": "မှတ်တမ်း မရှိသေးပါ — အထက်မှာ ပထမဆုံး မှတ်တမ်း ထည့်ပါ။",
+    "ok": "အပြည့်ရရှိ",
+    "delete": "ဖျက်ရန်",
+    "exportTitle": "PDF အဖြစ် ထုတ်ယူရန်",
+    "exportSubtitle": "TADM, HOME, သို့မဟုတ် ရှေ့နေဆီ ယူသွားနိုင်တဲ့ ရက်စွဲပါ summary တစ်ခု ထုတ်ပေးမည်။",
+    "fieldFullName": "သင့်အမည်အပြည့်အစုံ (report အတွက်)",
+    "fieldFullNamePlaceholder": "ပတ်စပို့ပေါ်ပါအတိုင်း",
+    "exportButton": "PDF report ဒေါင်းလုဒ်ရယူရန်",
+    "exporting": "PDF ထုတ်နေသည်…",
+    "exportLocked": "PDF export သည် premium feature ဖြစ်ပါသည်။ Payment page မှတစ်ဆင့် ငွေပေးချေမှု ပြီးမြောက်ပါက ဖွင့်ပေးမည် — အထက်က မှတ်တမ်းတင်ခြင်းကတော့ အခမဲ့ ဆက်ဖြစ်နေပါမည်။",
+    "exportSuccess": "PDF ဒေါင်းလုဒ်ပြီးပါပြီ။",
+    "errorNameRequired": "အမည်အပြည့်အစုံ အရင်ထည့်ပါ။",
+    "errorSessionExpired": "Session သက်တမ်းကုန်သွားပါပြီ — ပြန်ဝင်ပါ။",
+    "errorExportFailed": "Export မအောင်မြင်ပါ — ထပ်စမ်းကြည့်ပါ။"
+  },
+  "recruitmentFee": {
+    "badge": "အခမဲ့",
+    "title": "အေဂျင့်ကြေး ရှင်းလင်းရေး Tracker",
+    "subtitle": "အလုပ်သမားအများစုမှာ အေဂျင့်/recruitment ကြေးပြန်ဆပ်ဖို့ လစာ ၆-၉ လ ဖြတ်တောက်ခံရလေ့ရှိပါတယ်။ သင့်ကြေးက ဘယ်အချိန် ပြီးဆုံးမလဲ တွက်ကြည့်ပါ။",
+    "fieldTotalFee": "အေဂျင့်ကြေး စုစုပေါင်း",
+    "fieldTotalFeeHint": "အေဂျင့်က တောင်းခံခဲ့သော ပမာဏအပြည့်",
+    "fieldMonthlyDeduction": "လစဉ် လစာမှ ဖြတ်တောက်ခံရသောပမာဏ",
+    "fieldMonthlyDeductionHint": "လစဉ် လစာထဲက ဘယ်လောက် ဖြတ်ယူသလဲ",
+    "fieldStartDate": "ဖြတ်တောက်စတင်သည့်ရက်စွဲ",
+    "resultTitle": "သင့်တွက်ချက်မှု ရလဒ်",
+    "resultPaidSoFar": "အခုအထိ ပေးဆပ်ပြီးငွေ",
+    "resultRemainingBalance": "ကျန်ရှိသေးသောပမာဏ",
+    "resultMonthsRemaining": "ကျန်ရှိသေးသောလ",
+    "resultPayoffDate": "ခန့်မှန်း ပြီးဆုံးမည့်ရက်",
+    "resultPaidOffNote": "သင့်ကိန်းဂဏန်းများအရ ဒီအေဂျင့်ကြေး အပြည့်ပြီးဆုံးသွားပါပြီ။",
+    "disclaimer": "ဒါဟာ သင်ထည့်သွင်းထားသော ကိန်းဂဏန်းများအပေါ် ခန့်မှန်းချက်သာဖြစ်ပြီး အေဂျင့်/အလုပ်ရှင်၏ အတည်ပြုချက် မဟုတ်ပါ။",
+    "printButton": "Print / PDF အဖြစ် သိမ်းရန်",
+    "emptyState": "ခန့်မှန်းချက် ကြည့်ရန် အထက်တွင် ကြေးပမာဏနှင့် လစဉ်ဖြတ်တောက်မှုကို ထည့်ပါ။"
+  },
+  "checklist": {
+    "badge": "အခမဲ့",
+    "title": "ပတ်စပို့ ပြန်လည်လျှောက်ရန် စာရင်း",
+    "subtitle": "သံရုံးချိန်းမတိုင်ခင် ဒီအရာတွေကို အရင်စုစည်းထားပါ။",
+    "items": {
+      "applicationForm": "ပြည့်စုံစွာ ဖြည့်ထားသော ဖောင် (application form) — အောက်ပါ Form Wizard သုံးပြီး ပြင်ဆင်နိုင်ပါသည်",
+      "cvForm": "CV Form (သံရုံးရောက်မှ ယူနိုင်ပါသည်)",
+      "taxReceipt": "မြန်မာသံရုံးမှ နောက်ဆုံးရရှိထားသော ဝင်ငွေခွန် ပေးဆောင်ခြင်း ပြေစာ မူရင်းနှင့် မိတ္တူ",
+      "originalPassport": "မူရင်း ပတ်စပို့ နှင့် မိတ္တူ (ဓာတ်ပုံစာမျက်နှာနှင့် သက်တမ်းစာမျက်နှာ)",
+      "workPermit": "မူရင်း Work Permit / S Pass / EP / PR ကတ် နှင့် မိတ္တူ",
+      "photo": "လတ်တလော ပတ်စပို့ဓာတ်ပုံ (၆ လအတွင်းရိုက်ထား၊ နောက်ခံဖြူ၊ နားနှစ်ဖက်မြင်ရ၊ မျက်မှန်မဆောင်း)",
+      "dependentDocs": "Dependent အနေနှင့် လျှောက်ထားပါက — Marriage Certificate / Birth Certificate / Household List မူရင်းနှင့် မိတ္တူ"
+    },
+    "ctaGuide": "လမ်းညွှန် ဖတ်ရန်",
+    "ctaWizard": "ဖောင်ဖြည့် Wizard စတင်ရန်",
+    "sourceDisclaimer": "မြန်မာသံရုံး (စင်္ကာပူ) ထုတ်ပြန်ထားသော application guideline အပေါ် အခြေခံထားပါသည်။ လိုအပ်ချက်များ ပြောင်းလဲနိုင်သဖြင့် ချိန်းဆိုမီ သံရုံးတွင် ထပ်မံစစ်ဆေးပါရန် အကြံပြုပါသည်။",
+    "remittanceWarningTitle": "Passport renewal ကို ထိခိုက်နိုင်တဲ့ ငွေလွှဲစည်းမျဉ်း",
+    "remittanceWarningBody": "၂၀၂၃ စက်တင်ဘာလကတည်းက မြန်မာအစိုးရက နိုင်ငံခြားရောက် နိုင်ငံသားများအား နိုင်ငံခြားလစာ အနည်းဆုံး ၂၅% ကို official ဘဏ် သို့မဟုတ် လိုင်စင်ရ remittance provider မှတစ်ဆင့် (hundi ကဲ့သို့ informal channel မဟုတ်ဘဲ) ပြန်လွှဲရန် သတ်မှတ်ထားပါသည်။ မလိုက်နာပါက passport renewal ကို ထိခိုက်နိုင်ကြောင်း သတင်းများအရ သိရသည် — official ငွေလွှဲမှတ်တမ်းများကို သိမ်းထားပါ။ အသေးစိတ်ကို Updates စာမျက်နှာတွင် ကြည့်ပါ။"
+  },
+  "guide": {
+    "badge": "အခမဲ့",
+    "title": "မြန်မာလို အဆင့်ဆင့် လမ်းညွှန်",
+    "subtitle": "ပတ်စပို့ ပြန်လည်လျှောက်ခြင်း မတင်ခင် ဒီအဆင့်များကို လိုက်နာပါ။",
+    "steps": {
+      "checkExpiry": "ပတ်စပို့လက်ကျန်သက်တမ်းကို အရင်စစ်ပါ။",
+      "gatherDocuments": "လိုအပ်စာရွက်စာတမ်းများကို စုစည်းပါ။",
+      "checkAppointment": "သံရုံးချိန်းလိုအပ်/မလိုအပ် စစ်ဆေးပါ။",
+      "fillSample": "ဖောင်ကို နမူနာနှင့်နှိုင်းယှဉ်ပြီး ဖြည့်ပါ။",
+      "reviewBeforeSubmit": "မတင်ခင် အချက်အလက်များကို နောက်တစ်ကြိမ် ပြန်စစ်ပါ။"
+    },
+    "sponsorLabel": "Community Partner",
+    "sponsorHeadline": "စာရွက်စာတမ်းများ အကူအညီလိုပါသလား?",
+    "sponsorDescription": "ကျွန်ုပ်တို့၏ partner များက မြန်မာအလုပ်သမားများအတွက် ပတ်စပို့လျှောက်လွှာနှင့် စာရွက်စာတမ်းပြင်ဆင်ရေးတွင် အကူအညီပေးပါသည်။",
+    "sponsorCta": "အကူအညီရယူရန်"
+  },
+  "emergency": {
+    "badge": "ဒီနံပါတ်တွေကို သိမ်းထားပါ",
+    "title": "အရေးပေါ် ဆက်သွယ်ရန်",
+    "subtitle": "ဖုန်းခေါ်ရန် card ကို နှိပ်ပါ။",
+    "tapToCall": "ခေါ်ရန် နှိပ်ပါ",
+    "otherContacts": "အခြား ဆက်သွယ်ရန်များ",
+    "police": {
+      "name": "ရဲ"
+    },
+    "ambulanceFire": {
+      "name": "လူနာတင်ယာဉ် / မီးသတ်"
+    },
+    "mom": {
+      "name": "MOM အကူအညီလိုင်း",
+      "hint": "Ministry of Manpower — အလုပ်ကိစ္စများ"
+    },
+    "embassy": {
+      "name": "မြန်မာသံရုံး (စင်္ကာပူ)",
+      "hint": "ပတ်စပို့ နှင့် သံရုံးဆိုင်ရာ ဝန်ဆောင်မှု"
+    }
+  },
+  "wizard": {
+    "badge": "အခမဲ့",
+    "title": "ပတ်စပို့ ဖောင်ဖြည့် Wizard",
+    "subtitle": "သင့်အချက်အလက်များကို ဖြည့်ပြီး ကိုးကားနိုင်စေရန် သိမ်းထားပါ၊ ပြီးရင် official form ကို download ဆွဲပြီး print ထုတ်ပါ။",
+    "lockNote": "ဒီဖောင်ဖြည့်ခြင်းသည် လုံးဝအခမဲ့ ဖြစ်ပါသည်။ login ဝင်ထားရင် draft ကို auto-save လုပ်ပေးမည်ဖြစ်သဖြင့် နောက်မှ ပြန်လာဖြည့်နိုင်ပါသည်။",
+    "sourceDisclaimer": "Field အားလုံးကို မြန်မာသံရုံး (စင်္ကာပူ) ၏ passport renewal application form (Personal History Form + Tax Application Form) အပေါ် အခြေခံထားပါသည်။ ဒါတွေက print-and-sign form များဖြစ်ပြီး official digital submission မဟုတ်ပါ — သံရုံးတွင် လက်ရှိလိုအပ်ချက်များကို ထပ်မံစစ်ဆေးပါ။",
+    "stepOf": "အဆင့် {current} / {total}",
+    "workerTypeTitle": "သင်ဘယ်လို အလုပ်သမား အမျိုးအစားလဲ?",
+    "workerTypeMaid": "အိမ်အကူ (Maid)",
+    "workerTypeMaidHint": "Maid Agency field ပါတဲ့ form (V2) ကို သုံးမည်",
+    "workerTypeGeneral": "အထွေထွေ အလုပ်သမား",
+    "workerTypeGeneralHint": "Agency field မပါတဲ့ standard form (V1)",
+    "reviewTitle": "သင့်အချက်အလက်များ ပြန်စစ်ပါ",
+    "back": "နောက်သို့",
+    "next": "ရှေ့သို့",
+    "draftNotConfigured": "Supabase ကို ပြင်ဆင်မထားသေးပါ။",
+    "draftLocalOnly": "Login မဝင်မချင်း draft ကို ဒီစက်ပေါ်မှာသာ သိမ်းထားပါမည်။",
+    "draftLoading": "သိမ်းထားသော draft ကို ဖတ်နေသည်...",
+    "draftLoadError": "Draft ဖတ်၍မရပါ",
+    "draftSaveError": "Draft သိမ်း၍မရပါ",
+    "draftSaving": "Draft သိမ်းနေသည်...",
+    "draftSaved": "Draft ကို cloud ပေါ်တွင် သိမ်းပြီးပါပြီ —",
+    "draftEmpty": "Draft မရှိသေးပါ — စတင်ရေးသားလိုက်ပါက auto-save လုပ်ပါမည်။",
+    "downloadTitle": "တရားဝင် ဖောင်ကို Download ဆွဲပါ",
+    "downloadHint": "အထက်ပါ အချက်အလက်များကို ကိုးကားပြီး ဖောင်ကို print ထုတ်ပါ။ လက်ရေးဖြင့် ဖြည့်ပြီး လက်မှတ်ထိုးပါ၊ မူရင်းစာရွက်စာတမ်းများနှင့်အတူ သံရုံးချိန်းတွင် ယူဆောင်သွားပါ။",
+    "downloadButton": "📄 Download ဆွဲပြီး Print ထုတ်ရန်"
+  },
+  "expiryReminder": {
+    "warningTitle": "သင့်ပတ်စပို့ မကြာမီ သက်တမ်းကုန်ပါတော့မည်",
+    "warningBody": "သင်မှတ်တမ်းတင်ထားသော အချက်အလက်အရ သင့်ပတ်စပို့သည် {date} ခန့်တွင် သက်တမ်းကုန်ဆုံးနိုင်ပါသည် (ကျန်ရှိရက် {days} ရက်)။ ပြန်လည်လျှောက်ထားရန် စတင်ဖို့ စဉ်းစားပါ။",
+    "urgentTitle": "သင့်ပတ်စပို့ သက်တမ်းကုန်ရန် နီးနေပါပြီ",
+    "urgentBody": "ခန့်မှန်းသက်တမ်းကုန်ရက် ({date}) အထိ {days} ရက်သာ ကျန်တော့ပါသည်။ နှောင့်နှေးမှုမရှိစေရန် ယခုပင် renewal စတင်ပါ။",
+    "expiredTitle": "သင့်ပတ်စပို့ သက်တမ်းကုန်သွားနိုင်ပါသည်",
+    "expiredBody": "သင်မှတ်တမ်းတင်ထားသော အချက်အလက်အရ ခန့်မှန်းသက်တမ်းကုန်ရက် ({date}) ကျော်လွန်သွားပါပြီ။ ဖြစ်နိုင်သမျှ မြန်မြန် renew လုပ်ပါ။",
+    "cta": "Renewal ဆက်လုပ်ရန်"
+  },
+  "ads": {
+    "sponsoredLabel": "Sponsored",
+    "sponsoredBy": "{name} မှ",
+    "transparencyNote": "ကြော်ငြာများက ဒီ app ကို မြန်မာအလုပ်သမားများအတွက် အခမဲ့ဖြစ်နေအောင် ကူညီပါသည်။"
+  },
+  "accountsGuide": {
+    "badge": "Singapore တွင် စတင်ခြင်း",
+    "title": "လိုအပ်သော Account များ လမ်းညွှန်",
+    "subtitle": "Singapore တွင် သင့်ငွေကြေးကို စီမံခန့်ခွဲရန်နှင့် ဝန်ဆောင်မှုများကို ဘေးကင်းစွာ အသုံးပြုနိုင်ရန် တကယ်အထောက်အကူပြုသော account များ။",
+    "whyLabel": "ဘာကြောင့်",
+    "howLabel": "ဘယ်လို",
+    "officialLink": "Official website",
+    "bnplNote": "ဒီလမ်းညွှန်ထဲမှာ \"Buy Now Pay Later\" app များ (ဥပမာ Atome, Grab PayLater) ကို မထည့်ထားပါ။ ၎င်းတို့မှာ credit check လုံးဝမလုပ်ဘဲ၊ late fee များက debt ကို snowball ဖြစ်စေနိုင်ပါတယ် — အထူးသဖြင့် အေဂျင့်ကြေး ဆက်ဆပ်နေရဆဲဆိုရင် ရှောင်ကြဉ်ဖို့ အကြံပြုပါတယ်။",
+    "disclaimer": "ယေဘုယျ အချက်အလက်သာ ဖြစ်ပါသည် — official website တွင် လက်ရှိအဆင့်များကို အမြဲ ထပ်မံစစ်ဆေးပြီး၊ မသေချာပါက အလုပ်ရှင် သို့မဟုတ် ဘဏ်ကို တိုက်ရိုက်မေးမြန်းပါ။",
+    "accounts": {
+      "bank": {
+        "name": "ဘဏ်အကောင့်",
+        "why": "MOM က သင့်လစာကို အလုပ်ရှင် (သို့) အေဂျင့်ဆီ မဟုတ်ဘဲ သင့်ကိုယ်ပိုင် ဘဏ်အကောင့်ထဲကို တိုက်ရိုက်ထည့်ပေးရမည်ဟု သတ်မှတ်ထားသည်။ ဘဏ်အကောင့်ရှိရင် ငွေစုနိုင်ပြီး official channel ဖြင့် ငွေလွှဲနိုင်သည် (မြန်မာ၏ ၂၅% ငွေလွှဲစည်းမျဉ်းအတွက်လည်း လိုအပ်သည်)။",
+        "how": "Passport နှင့် Work Permit/S Pass ကတ်ကို ဘဏ် (ဥပမာ POSB, DBS, OCBC, UOB) သို့ ယူဆောင်သွားပါ။ အလုပ်ရှင်အချို့က MOM ၏ WP Online စနစ်မှတစ်ဆင့် Work Permit holder အတွက် POSB အကောင့် ဖွင့်ပေးနိုင်သည် — အလုပ်ရှင်ကို အရင်မေးပါ။"
+      },
+      "paynow": {
+        "name": "PayNow",
+        "why": "PayNow ဟာ mobile number တစ်ခုတည်းသုံးပြီး ဘဏ်ချင်း ငွေလွှဲခြင်းကို အခမဲ့၊ ချက်ချင်း လုပ်ဆောင်ပေးသည် — bill ခွဲဆောင်ရန်၊ ဆိုင်ငယ်များတွင် ငွေပေးချေရန် Singapore တွင် နေရာအနှံ့ အသုံးပြုကြသည်။",
+        "how": "သင့်ဘဏ်၏ mobile app ကိုဖွင့်ပြီး \"PayNow\" ကိုရှာပါ၊ သင့် Singapore mobile number နှင့် ဘဏ်အကောင့်ကို ချိတ်ဆက်ပါ။"
+      },
+      "singpass": {
+        "name": "Singpass",
+        "why": "Singpass ဟာ Singapore ၏ တရားဝင် digital identity ဖြစ်ပြီး၊ government e-service များ (ဥပမာ Work Permit status စစ်ဆေးခြင်း၊ MOM ဝန်ဆောင်မှုများ) ကို online မှ ဝင်ရောက်သုံးစွဲရန် အသုံးပြုသည်။",
+        "how": "Work Permit holder များသည် Work Permit ထုတ်ပေးပြီး ၁-၃ ရုံးဖွင့်ရက်အကြာတွင် portal.singpass.gov.sg တွင် FIN နံပါတ်ဖြင့် register လုပ်နိုင်သည်။ Live selfie (face verification) ဖြင့် အထောက်အထားစစ်ဆေးမည်။"
+      },
+      "grabpay": {
+        "name": "GrabPay Wallet (top-up ပုံစံသာ)",
+        "why": "သယ်ယူပို့ဆောင်ရေးနှင့် အစားအစာအတွက် ပေးချေရန် prepaid e-wallet တစ်ခုဖြစ်သည်။ အရေးကြီးချက်: ဒါက \"GrabPay PayLater\" (credit product) နှင့် မတူပါ — top-up wallet ကိုသာ သုံးပါ၊ PayLater ကို မသုံးပါနှင့်။",
+        "how": "Grab app ကို download လုပ်ပြီး mobile number ဖြင့် register လုပ်ပါ၊ PayNow၊ ဘဏ်လွှဲ (သို့) cash ဖြင့် wallet ထဲကို top-up လုပ်ပါ — PayLater ဖြင့် ချေးငွေ မယူပါနှင့်။"
+      }
+    }
+  },
+  "restDay": {
+    "badge": "အခမဲ့ · သင့်အခွင့်အရေးကို သိထားပါ",
+    "title": "နားရက် အခွင့်အရေး",
+    "subtitle": "Singapore ဥပဒေအရ domestic worker နှင့် migrant worker များအတွက် အပတ်စဉ် နားရက် ဘယ်လိုအာမခံထားလဲ။",
+    "facts": {
+      "oneRestDay": "တစ်ပတ်လျှင် နားရက် အနည်းဆုံး တစ်ရက် (တစ်လလျှင် ခန့်မှန်း ၄ ရက်) ရရှိခွင့်ရှိသည် — အလုပ်ရှင်နှင့် ကြိုတင်သဘောတူထားသော ရက်သတ္တပတ်အတွင်းရက်ဖြစ်နိုင်ပြီး၊ တနင်္ဂနွေဖြစ်ရန် မလိုအပ်ပါ။",
+      "mandatoryOneDay": "၂၀၂၃ ခုနှစ် ဇန်နဝါရီလ ၁ ရက်နေ့မှစပြီး၊ တစ်လလျှင် နားရက် အနည်းဆုံး တစ်ရက်ကို အလုပ်ရှင်က ငွေနဲ့ ပြန်ပေးလို့ မရတော့ဘဲ တကယ့်နားရက်အဖြစ် ပေးရမည်။",
+      "compensation": "အခြားနားရက်များအတွက် အလုပ်လုပ်ရန် သဘောတူပါက အလုပ်ရှင်သည် အနည်းဆုံး တစ်ရက်စာ လစာ ထပ်ပေးရန် (သို့) ထိုလအတွင်းမှာပင် အစားထိုးနားရက် တစ်ရက် အပြည့် ပေးရန် လိုအပ်သည်။",
+      "penalty": "နားရက် ငြင်းပယ်သော အလုပ်ရှင်များကို S$5,000 အထိ ဒဏ်ငွေတပ်နိုင်ပြီး၊ domestic worker ငှားရမ်းခွင့် ဆုံးရှုံးနိုင်သည် — ဒါက သေးငယ်တဲ့ကိစ္စ မဟုတ်ဘဲ ပြင်းထန်တဲ့ ပြစ်မှုတစ်ခု ဖြစ်သည်။"
+    },
+    "reportTitle": "နားရက် ငြင်းပယ်ခံရပါက",
+    "reportSubtitle": "MOM ၏ domestic worker အထူး helpline ကို ခေါ်ဆိုပါ။ ဒီဖုန်းခေါ်ဆိုမှုသည် လျှို့ဝှက်ထားပါမည်။",
+    "reportHelplineName": "MOM Domestic Worker Helpline",
+    "reportHours": "တနင်္လာ–သောကြာ၊ နံနက် ၈:၃၀ – ညနေ ၅:၃၀။ နိုင်ငံခြားမှ ခေါ်ဆိုရန်: +65 6339 5505။",
+    "sourceDisclaimer": "MOM ၏ migrant domestic worker များအတွက် ထုတ်ပြန်ထားသော rest-day စည်းမျဉ်း (၂၀၂၃ ဇန်နဝါရီမှ စတင်အာဏာတည်) ကို အခြေခံထားပါသည်။ စည်းမျဉ်းများ ပြောင်းလဲနိုင်သဖြင့် သေချာစေလိုပါက MOM ကို ထပ်မံစစ်ဆေးပါ။"
+  },
+  "offDayGuide": {
+    "badge": "အခမဲ့",
+    "title": "ပိတ်ရက် လမ်းညွှန်",
+    "subtitle": "မြန်မာ community စုစည်း၊ ဈေးဝယ်၊ ဆက်သွယ်ရာ Singapore ရှိ တကယ့်နေရာများ။",
+    "locations": {
+      "peninsulaPlaza": {
+        "name": "Peninsula Plaza (\"Little Myanmar\")",
+        "description": "1990s ကတည်းက Singapore ၏ မြန်မာ hub အဖြစ် လူသိများသော shopping centre — မြန်မာစားသောက်ဆိုင်၊ ကုန်စုံဆိုင်၊ ခရီးသွားအေဂျင်စီနှင့် ငွေလဲလှယ်ရုံများ ပါဝင်ပြီး တနင်္ဂနွေနေ့တွေမှာ အထူးလူစည်ကားသည်။"
+      },
+      "burmeseTemple": {
+        "name": "မြန်မာ ဗုဒ္ဓဘာသာ ဘုန်းကြီးကျောင်း (Burmese Buddhist Temple)",
+        "description": "၁၈၇၅ ခုနှစ်တည်ထောင်ခဲ့သော Singapore ၏ တစ်ခုတည်းသော မြန်မာ့ရိုးရာပုံစံ ဗုဒ္ဓဘာသာဘုရားကျောင်း — community အတွက် ဘာသာရေးနှင့် ယဉ်ကျေးမှု စုစည်းရာနေရာ။"
+      },
+      "farrerPark": {
+        "name": "Farrer Park / Stamford Road ဒေသ",
+        "description": "Little India အနီးရှိ တနင်္ဂနွေနေ့ အလွတ်သဘော စုစည်းရာနေရာ — မြန်မာအလုပ်သမားများ ပိတ်ရက်မှာ သူငယ်ချင်းများနှင့် တွေ့ဆုံလေ့ရှိသည်။"
+      }
+    },
+    "openInMaps": "Google Maps တွင် ဖွင့်ရန်",
+    "sourceDisclaimer": "နေရာများသည် community အများသိသော စုစည်းရာနေရာများသာဖြစ်ပြီး တရားဝင်အကြံပြုချက် မဟုတ်ပါ။ ပိတ်ရက်တွင် လုံခြုံစွာ သွားလာပြီး သင့်အစီအစဉ်ကို တစ်စုံတစ်ယောက်ကို ပြောထားပါ။"
+  },
+  "legal": {
+    "privacyPolicy": "ကိုယ်ရေးအချက်အလက် မူဝါဒ",
+    "termsOfService": "ဝန်ဆောင်မှုသတ်မှတ်ချက်များ",
+    "contact": "ဆက်သွယ်ရန်",
+    "cookies": "Cookies မူဝါဒ",
+    "registerConsent": "အကောင့်ဖွင့်ခြင်းဖြင့် <terms>ဝန်ဆောင်မှုသတ်မှတ်ချက်များ</terms> နှင့် <privacy>ကိုယ်ရေးအချက်အလက် မူဝါဒ</privacy> ကို လက်ခံသည်ဟု မှတ်ယူသည်။",
+    "footerCopyright": "© {year} SG Migrant Worker App",
+    "cookieNoticeText": "ကျွန်ုပ်တို့သည် မရှိမဖြစ် cookies နှင့် analytics/ad cookies များကို အသုံးပြုပါသည်။",
+    "cookieNoticeLearnMore": "ပိုမိုသိရှိရန်",
+    "cookieNoticeAccept": "နားလည်ပါပြီ"
+  },
+  "auth": {
+    "loginTitle": "အကောင့်ဝင်ရန်",
+    "loginSubtitle": "Premium flow နှင့် PDF export ဆက်လုပ်ရန် အကောင့်ဝင်ပါ။",
+    "registerTitle": "အကောင့်ဖွင့်ရန်",
+    "registerSubtitle": "Draft သိမ်းဆည်းရန်၊ ငွေပေးချေရန်နှင့် PDF ထုတ်ယူရန် အကောင့်လိုအပ်သည်။",
+    "forgotPassword": "စကားဝှက်မေ့နေပါသလား",
+    "forgotPasswordTitle": "စကားဝှက် ပြန်ထားရန်",
+    "forgotPasswordSubtitle": "သင့် email ထည့်ပါ။ reset link ပို့ပေးပါမည်။",
+    "resetPasswordTitle": "စကားဝှက်အသစ်ပြောင်းရန်",
+    "resetPasswordSubtitle": "စကားဝှက်အသစ်သတ်မှတ်ပြီး login ပြန်ဝင်ပါ။",
+    "backToLogin": "အကောင့်ဝင်ရန် သို့ ပြန်ရန်",
+    "guestMode": "အကောင့်မဝင်ရသေးပါ",
+    "checkingSession": "Session စစ်ဆေးနေသည်...",
+    "logout": "ထွက်မည်",
+    "menuRoleAdmin": "Admin",
+    "menuRoleUser": "အသုံးပြုသူ",
+    "menuAccount": "ကျွန်ုပ်၏အကောင့်",
+    "menuPayment": "ငွေပေးချေမှု",
+    "menuAdminPanel": "Admin Panel",
+    "menuAdminAnalytics": "စာရင်းခွဲခြမ်း",
+    "menuAdminNews": "သတင်းနှင့် Update",
+    "fieldEmail": "အီးမေးလ်",
+    "fieldPassword": "စကားဝှက်",
+    "passwordHint": "အနည်းဆုံး ၆ လုံး",
+    "passwordPlaceholderNew": "စကားဝှက် သစ်တစ်ခု ဖန်တီးပါ",
+    "passwordPlaceholderExisting": "သင့်စကားဝှက်ကို ထည့်ပါ",
+    "showPassword": "ပြရန်",
+    "hidePassword": "ဖျောက်ရန်",
+    "errorInvalidEmail": "မှန်ကန်သော အီးမေးလ်လိပ်စာ ထည့်ပါ။",
+    "errorPasswordLength": "စကားဝှက် အနည်းဆုံး ၆ လုံး ရှိရမည်။",
+    "errorEmailFirst": "Email ကို အရင်ထည့်ပါ။",
+    "errorNotConfigured": "Supabase ကို ပြင်ဆင်မထားသေးပါ။",
+    "errorNotConfiguredHint": "Supabase URL နှင့် anon key ကို ထည့်ပါ —",
+    "verifyEmailNotice": "Login မဝင်ခင် inbox ထဲက email ကို verify လုပ်ပါ။",
+    "verificationResent": "Verification email ပြန်ပို့ပြီးပါပြီ။ inbox/spam ကို စစ်ပါ။",
+    "resendVerification": "Verification email ပြန်ပို့ရန်",
+    "resending": "ပြန်ပို့နေသည်…",
+    "submitting": "စောင့်ပါ…",
+    "submitLogin": "ဝင်ရောက်ရန်",
+    "submitRegister": "အကောင့်ဖွင့်ရန်",
+    "gateTitle": "Premium export အတွက် အကောင့်ဝင်ရန် လိုအပ်သည်။",
+    "gateBody": "အကောင့်ဝင်ပြီး (သို့) အကောင့်အသစ်ဖွင့်ပြီး ငွေပေးချေမှုနှင့် PDF export ကို ဆက်လုပ်ပါ။",
+    "forgotSubmit": "စကားဝှက်ပြန်ထားရန် ပို့မည်",
+    "forgotSending": "ပို့နေသည်…",
+    "forgotSent": "စကားဝှက်ပြန်ထားရန် email ပို့ပြီးပါပြီ။ inbox/spam ကို စစ်ပါ။",
+    "fieldNewPassword": "စကားဝှက်အသစ်",
+    "fieldConfirmPassword": "စကားဝှက်အတည်ပြုပါ",
+    "errorConfirmRequired": "စကားဝှက်ကို အတည်ပြုပါ။",
+    "errorPasswordsMismatch": "စကားဝှက်များ မတူညီပါ။",
+    "resetSubmit": "စကားဝှက်ပြောင်းမည်",
+    "resetUpdating": "ပြောင်းနေသည်…",
+    "resetSuccess": "စကားဝှက်အသစ်ပြောင်းပြီးပါပြီ။"
+  },
+  "formDownloads": {
+    "title": "ပတ်စပို့ ဖောင်များ Download ဆွဲရန်",
+    "hint": "Wizard ကို ကျော်ပြီး တရားဝင် ဖောင်ကို တိုက်ရိုက် download ဆွဲနိုင်ပါသည် — print ထုတ်ပြီး လက်ရေးဖြင့် ဖြည့်ပါ၊ လက်မှတ်ထိုးပြီး သံရုံးချိန်းသို့ ယူဆောင်သွားပါ။",
+    "generalButton": "အထွေထွေ အလုပ်သမား ဖောင်",
+    "maidButton": "အိမ်အကူ ဖောင်"
+  }
+}

@@ -1,0 +1,351 @@
+{
+  "common": {
+    "appName": "SG Migrant Worker App",
+    "tagline": "Myanmar workers support platform",
+    "home": "Home",
+    "checklist": "Checklist",
+    "guide": "Guide",
+    "contacts": "Emergency",
+    "wizard": "Form Wizard",
+    "login": "Login",
+    "register": "Register",
+    "account": "Account",
+    "payment": "Payment",
+    "adminPayments": "Admin Payments",
+    "analytics": "Analytics",
+    "help": "Help",
+    "contact": "Contact",
+    "cookies": "Cookies"
+  },
+  "home": {
+    "badge": "Free + Premium Support",
+    "title": "Passport Renewal Helper",
+    "subtitle": "Simple steps for Myanmar workers in Singapore.",
+    "ctaStart": "Start Wizard",
+    "ctaChecklist": "Open Checklist",
+    "factGuidedLabel": "Guided Forms",
+    "factGuidedValue": "Step-by-step",
+    "factLanguageLabel": "Language",
+    "factLanguageValue": "EN + Myanmar",
+    "factPaymentLabel": "Payment",
+    "factPaymentValue": "KBZPay / WavePay",
+    "quickChecklist": "Passport Checklist",
+    "quickEmergency": "Emergency Contacts",
+    "quickGuide": "Myanmar Guide",
+    "quickAccountsGuide": "Essential Accounts",
+    "sponsorLabel": "Our Sponsors",
+    "sponsorHeadline": "Supporting Myanmar Workers Abroad",
+    "sponsorDescription": "This app is free thanks to our community sponsors. Check out services that help migrant workers thrive.",
+    "sponsorCta": "View Sponsors",
+    "toolsSectionTitle": "Financial & Evidence Tools",
+    "toolSalaryLog": "Salary Log",
+    "toolSalaryLogHint": "Track expected vs. received pay",
+    "toolRecruitmentFee": "Recruitment Fee Tracker",
+    "toolRecruitmentFeeHint": "See when your agency debt is paid off",
+    "rightsSectionTitle": "Rights & Community",
+    "toolRestDay": "Rest Day Rights",
+    "toolRestDayHint": "Know your weekly rest day entitlement",
+    "toolOffDayGuide": "Off-Day Guide",
+    "toolOffDayGuideHint": "Where Myanmar workers gather in Singapore",
+    "latestUpdateLabel": "Latest Update"
+  },
+  "news": {
+    "badge": "Daily updates",
+    "title": "News & Updates",
+    "subtitle": "MOM/embassy policy changes, exchange rates, scam alerts, and community news — reviewed by an admin before appearing here.",
+    "empty": "No updates yet. Check back soon.",
+    "sourceLink": "Read source",
+    "disclaimer": "Updates are researched daily and reviewed by an admin before publishing, but always confirm important decisions (visa, legal, large payments) with the official source directly.",
+    "category": {
+      "mom_policy": "MOM / Embassy Policy",
+      "exchange_rate": "Exchange Rate",
+      "safety_scam": "Safety / Scam Alert",
+      "community": "Community News"
+    }
+  },
+  "salaryLog": {
+    "badge": "Premium export · Free to log",
+    "title": "Salary Log",
+    "subtitle": "Record what you were promised vs. what you actually received each pay cycle. Keep this ready in case you ever need to file a salary claim.",
+    "fieldDate": "Pay date",
+    "fieldCurrency": "Currency",
+    "fieldExpected": "Expected amount",
+    "fieldReceived": "Received amount",
+    "fieldNote": "Note (optional)",
+    "fieldNoteHint": "e.g. late by 3 days, cash only",
+    "addEntry": "Add entry",
+    "summaryExpected": "Total expected",
+    "summaryReceived": "Total received",
+    "summaryShortfall": "Total shortfall",
+    "loadingEntries": "Loading your entries…",
+    "noEntries": "No entries yet. Add your first pay record above.",
+    "ok": "Paid in full",
+    "delete": "Delete",
+    "exportTitle": "Export as PDF",
+    "exportSubtitle": "Generate a dated summary you can bring to TADM, HOME, or a lawyer.",
+    "fieldFullName": "Your full name (for the report)",
+    "fieldFullNamePlaceholder": "As it appears on your passport",
+    "exportButton": "Download PDF report",
+    "exporting": "Generating PDF…",
+    "exportLocked": "PDF export is a premium feature. Complete a payment on the Payment page to unlock it — logging entries above stays free.",
+    "exportSuccess": "PDF downloaded.",
+    "errorNameRequired": "Enter your full name first.",
+    "errorSessionExpired": "Session expired. Please log in again.",
+    "errorExportFailed": "Export failed. Please try again."
+  },
+  "recruitmentFee": {
+    "badge": "Free",
+    "title": "Recruitment Fee Tracker",
+    "subtitle": "Many workers have 6-9 months of salary deducted to repay agency/recruitment fees. See exactly when yours will be paid off.",
+    "fieldTotalFee": "Total recruitment fee",
+    "fieldTotalFeeHint": "The full amount your agency charged you",
+    "fieldMonthlyDeduction": "Monthly deduction from your salary",
+    "fieldMonthlyDeductionHint": "How much is deducted from your pay each month",
+    "fieldStartDate": "Deduction start date",
+    "resultTitle": "Your payoff estimate",
+    "resultPaidSoFar": "Paid so far",
+    "resultRemainingBalance": "Remaining balance",
+    "resultMonthsRemaining": "Months remaining",
+    "resultPayoffDate": "Estimated payoff date",
+    "resultPaidOffNote": "Based on your numbers, this fee should be fully paid off.",
+    "disclaimer": "This is an estimate based on the numbers you entered — it is not verified by your agency or employer.",
+    "printButton": "Print / Save as PDF",
+    "emptyState": "Enter your fee amount and monthly deduction above to see your payoff estimate."
+  },
+  "checklist": {
+    "badge": "Free",
+    "title": "Passport Renewal Checklist",
+    "subtitle": "Gather these before your embassy appointment.",
+    "items": {
+      "applicationForm": "Duly filled application form (use the Form Wizard below to prepare this)",
+      "cvForm": "CV Form (collected at the embassy on the day)",
+      "taxReceipt": "Original and a copy of your latest income tax payment receipt from the Myanmar Embassy",
+      "originalPassport": "Original passport and a copy (photo page and validity page)",
+      "workPermit": "Original and a copy of your Work Permit / S Pass / EP / PR card",
+      "photo": "One recent passport photo (taken within 6 months, white background, ears visible, no glasses)",
+      "dependentDocs": "If applying as a dependent: original and copy of Marriage Certificate / Birth Certificate / Household List"
+    },
+    "ctaGuide": "Read the Guide",
+    "ctaWizard": "Start Form Wizard",
+    "sourceDisclaimer": "Based on the Myanmar Embassy Singapore's published application guidelines. Requirements can change — please confirm current requirements with the embassy before your appointment.",
+    "remittanceWarningTitle": "Remittance rule that can affect your passport renewal",
+    "remittanceWarningBody": "Since September 2023, Myanmar requires citizens working abroad to remit at least 25% of foreign wages home through an official bank or licensed remittance provider (not informal channels like hundi). Reports indicate non-compliance can affect passport renewal — keep proof of your official remittances. See Updates for details."
+  },
+  "guide": {
+    "badge": "Free",
+    "title": "Myanmar Step-by-Step Guide",
+    "subtitle": "Follow these steps before you submit your passport renewal.",
+    "steps": {
+      "checkExpiry": "Check your passport's remaining validity first.",
+      "gatherDocuments": "Gather all required documents.",
+      "checkAppointment": "Check whether you need an embassy appointment.",
+      "fillSample": "Compare the form with a sample before filling it in.",
+      "reviewBeforeSubmit": "Review all details once more before you submit."
+    },
+    "sponsorLabel": "Community Partner",
+    "sponsorHeadline": "Need Help with Documents?",
+    "sponsorDescription": "Our partners offer assistance with passport applications and document preparation for Myanmar workers.",
+    "sponsorCta": "Get Help"
+  },
+  "emergency": {
+    "badge": "Save these numbers",
+    "title": "Emergency Contacts",
+    "subtitle": "Tap a card to call immediately.",
+    "tapToCall": "Tap to call",
+    "otherContacts": "Other Contacts",
+    "police": {
+      "name": "Police"
+    },
+    "ambulanceFire": {
+      "name": "Ambulance / Fire"
+    },
+    "mom": {
+      "name": "MOM Helpline",
+      "hint": "Ministry of Manpower — work issues"
+    },
+    "embassy": {
+      "name": "Myanmar Embassy (Singapore)",
+      "hint": "Passport & consular services"
+    }
+  },
+  "wizard": {
+    "badge": "Free",
+    "title": "Passport Form Wizard",
+    "subtitle": "Fill in your details for reference, then download the official form to print and complete by hand.",
+    "lockNote": "This form is completely free. Your draft autosaves once you''re logged in, so you can come back and finish later.",
+    "sourceDisclaimer": "Fields are based on the Myanmar Embassy Singapore's passport renewal application forms (Personal History Form + Tax Application Form). These are print-and-sign forms, not official digital submissions — always confirm current requirements with the embassy.",
+    "stepOf": "Step {current} of {total}",
+    "workerTypeTitle": "What type of worker are you?",
+    "workerTypeMaid": "Domestic Worker (Maid)",
+    "workerTypeMaidHint": "Uses the form with Maid Agency fields (V2)",
+    "workerTypeGeneral": "General Worker",
+    "workerTypeGeneralHint": "Standard form without agency fields (V1)",
+    "reviewTitle": "Review your details",
+    "back": "Back",
+    "next": "Next",
+    "draftNotConfigured": "Supabase is not configured yet.",
+    "draftLocalOnly": "Draft is local until you login.",
+    "draftLoading": "Loading your saved draft...",
+    "draftLoadError": "Could not load draft",
+    "draftSaveError": "Draft save failed",
+    "draftSaving": "Saving draft...",
+    "draftSaved": "Draft saved to cloud at",
+    "draftEmpty": "No saved draft yet. Start typing to autosave.",
+    "downloadTitle": "Download the official form",
+    "downloadHint": "Use the details above as a reference. Print this form, fill it in by hand, sign it, and bring it to your embassy appointment with your original documents.",
+    "downloadButton": "📄 Download & Print"
+  },
+  "expiryReminder": {
+    "warningTitle": "Your passport renews soon",
+    "warningBody": "Based on your saved details, your passport is estimated to expire around {date} ({days} days left). Consider starting your renewal soon.",
+    "urgentTitle": "Your passport expires soon",
+    "urgentBody": "Only about {days} days left until your estimated expiry ({date}). Start your renewal now to avoid delays.",
+    "expiredTitle": "Your passport may have expired",
+    "expiredBody": "Based on your saved details, your passport's estimated expiry ({date}) has passed. Please renew as soon as possible.",
+    "cta": "Continue Renewal"
+  },
+  "ads": {
+    "sponsoredLabel": "Sponsored",
+    "sponsoredBy": "by {name}",
+    "transparencyNote": "Ads help keep this app free for migrant workers."
+  },
+  "accountsGuide": {
+    "badge": "Getting started in Singapore",
+    "title": "Essential Accounts Guide",
+    "subtitle": "Accounts that genuinely help you manage your money and access services safely in Singapore.",
+    "whyLabel": "Why",
+    "howLabel": "How",
+    "officialLink": "Official website",
+    "bnplNote": "This guide does not cover \"Buy Now Pay Later\" apps (e.g. Atome, Grab PayLater). They involve no credit check and real late fees that can snowball into debt — we recommend avoiding them, especially if you're already repaying recruitment fees.",
+    "disclaimer": "General information only — always confirm current steps on the official website, and ask your employer or the bank directly if unsure.",
+    "accounts": {
+      "bank": {
+        "name": "Bank Account",
+        "why": "MOM requires your salary to be paid directly into your own bank account, not to your employer or an agent. A bank account also lets you save money and remit through official channels (required for Myanmar's 25% remittance rule).",
+        "how": "Bring your passport and Work Permit/S Pass card to a bank (e.g. POSB, DBS, OCBC, UOB). Some employers can help Work Permit holders open a POSB account via MOM's WP Online system — ask your employer first."
+      },
+      "paynow": {
+        "name": "PayNow",
+        "why": "PayNow lets you send and receive money instantly between banks for free using just a mobile number — used almost everywhere in Singapore, from splitting bills to paying small shops.",
+        "how": "Open your bank's mobile app, find \"PayNow\" in the settings, and link it to your Singapore mobile number and bank account."
+      },
+      "singpass": {
+        "name": "Singpass",
+        "why": "Singpass is Singapore's official digital identity, used to access government e-services online (e.g. checking your Work Permit status, MOM services).",
+        "how": "Work Permit holders can register at portal.singpass.gov.sg using your FIN, about 1-3 working days after your Work Permit is issued. You'll verify your identity with a live selfie (face verification)."
+      },
+      "grabpay": {
+        "name": "GrabPay Wallet (top-up only)",
+        "why": "A prepaid e-wallet for paying transport and food conveniently. Important: this is different from \"GrabPay PayLater\", which is a credit product — only use the top-up wallet, not PayLater.",
+        "how": "Download the Grab app, register with your mobile number, and top up the wallet using PayNow, bank transfer, or cash — never borrow through PayLater."
+      }
+    }
+  },
+  "restDay": {
+    "badge": "Free · Know your rights",
+    "title": "Rest Day Rights",
+    "subtitle": "What Singapore law guarantees domestic and migrant workers about weekly rest days.",
+    "facts": {
+      "oneRestDay": "You are entitled to at least one rest day every week (about 4 per month), on a weekday agreed in advance with your employer — it does not have to be a Sunday.",
+      "mandatoryOneDay": "Since 1 January 2023, at least one rest day each month must be an actual day off — your employer cannot pay it away instead of giving you the day.",
+      "compensation": "For any other rest day you agree to work, your employer must either pay you at least one extra day's salary, or give you a full replacement day off within the same month.",
+      "penalty": "Employers who deny rest days can be fined up to S$5,000, and may lose their right to hire domestic workers — this is a serious offence, not a small matter."
+    },
+    "reportTitle": "If your rest days are being denied",
+    "reportSubtitle": "Call MOM's dedicated helpline for domestic workers. This call is confidential.",
+    "reportHelplineName": "MOM Domestic Worker Helpline",
+    "reportHours": "Monday–Friday, 8:30am–5:30pm. Overseas callers: +65 6339 5505.",
+    "sourceDisclaimer": "Based on MOM's published rest-day regulations for migrant domestic workers (in force since January 2023). Rules can be updated — confirm current details with MOM if in doubt."
+  },
+  "offDayGuide": {
+    "badge": "Free",
+    "title": "Off-Day Guide",
+    "subtitle": "Real places in Singapore where the Myanmar community gathers, shops, and connects on rest days.",
+    "locations": {
+      "peninsulaPlaza": {
+        "name": "Peninsula Plaza (\"Little Myanmar\")",
+        "description": "A shopping centre known as Singapore's Myanmar hub since the 1990s — Myanmar restaurants, grocery stores, travel agencies, and money changers, especially busy on Sundays."
+      },
+      "burmeseTemple": {
+        "name": "Burmese Buddhist Temple",
+        "description": "Singapore's only traditional Burmese-style Buddhist temple, founded in 1875 — a spiritual and cultural gathering point for the community."
+      },
+      "farrerPark": {
+        "name": "Farrer Park / Stamford Road area",
+        "description": "An informal Sunday gathering spot near Little India where many Myanmar workers meet friends on their day off."
+      }
+    },
+    "openInMaps": "Open in Google Maps",
+    "sourceDisclaimer": "Locations are widely documented community gathering spots, not official recommendations. Please travel safely and let someone know your plans on your day off."
+  },
+  "legal": {
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "contact": "Contact",
+    "cookies": "Cookies Policy",
+    "registerConsent": "By creating an account you agree to our <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>.",
+    "footerCopyright": "© {year} SG Migrant Worker App",
+    "cookieNoticeText": "We use essential cookies plus analytics/ad cookies.",
+    "cookieNoticeLearnMore": "Learn more",
+    "cookieNoticeAccept": "OK"
+  },
+  "auth": {
+    "loginTitle": "Login",
+    "loginSubtitle": "Sign in first to continue premium flow and PDF export.",
+    "registerTitle": "Create Account",
+    "registerSubtitle": "Create an account to save draft, pay, and export your PDF form.",
+    "forgotPassword": "Forgot password?",
+    "forgotPasswordTitle": "Forgot Password",
+    "forgotPasswordSubtitle": "Enter your account email and we will send a reset link.",
+    "resetPasswordTitle": "Reset Password",
+    "resetPasswordSubtitle": "Set your new password, then log in again.",
+    "backToLogin": "Back to login",
+    "guestMode": "Guest mode",
+    "checkingSession": "Checking session...",
+    "logout": "Logout",
+    "menuRoleAdmin": "Administrator",
+    "menuRoleUser": "Member",
+    "menuAccount": "My Account",
+    "menuPayment": "Payments",
+    "menuAdminPanel": "Admin Panel",
+    "menuAdminAnalytics": "Analytics",
+    "menuAdminNews": "News & Updates",
+    "fieldEmail": "Email",
+    "fieldPassword": "Password",
+    "passwordHint": "At least 6 characters",
+    "passwordPlaceholderNew": "Create a password",
+    "passwordPlaceholderExisting": "Enter your password",
+    "showPassword": "Show",
+    "hidePassword": "Hide",
+    "errorInvalidEmail": "Enter a valid email address.",
+    "errorPasswordLength": "Password must be at least 6 characters.",
+    "errorEmailFirst": "Enter your email first.",
+    "errorNotConfigured": "Supabase is not set up.",
+    "errorNotConfiguredHint": "Add your Supabase URL and anon key to",
+    "verifyEmailNotice": "Please check your inbox and verify your email before logging in.",
+    "verificationResent": "Verification email resent. Check your inbox and spam folder.",
+    "resendVerification": "Resend verification email",
+    "resending": "Resending verification…",
+    "submitting": "Please wait…",
+    "submitLogin": "Log In",
+    "submitRegister": "Create Account",
+    "gateTitle": "Login required for premium export.",
+    "gateBody": "Please login or create an account, then continue to payment and PDF export.",
+    "forgotSubmit": "Send Reset Email",
+    "forgotSending": "Sending…",
+    "forgotSent": "Password reset email sent. Please check your inbox/spam.",
+    "fieldNewPassword": "New password",
+    "fieldConfirmPassword": "Confirm password",
+    "errorConfirmRequired": "Confirm your password.",
+    "errorPasswordsMismatch": "Passwords do not match.",
+    "resetSubmit": "Update Password",
+    "resetUpdating": "Updating…",
+    "resetSuccess": "Password updated successfully."
+  },
+  "formDownloads": {
+    "title": "Download passport forms",
+    "hint": "Skip the wizard — download the blank official form, print it, fill it in by hand, sign, and bring it to your embassy appointment.",
+    "generalButton": "General Worker Form",
+    "maidButton": "Domestic Worker (Maid) Form"
+  }
+}
