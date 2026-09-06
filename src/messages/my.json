@@ -429,5 +429,16 @@
       "very_high": "အလွန်မြင့်",
       "extreme": "အလွန်အမင်း"
     }
+  },
+  "menu": {
+    "open": "မီနူး",
+    "close": "မီနူး ပိတ်ရန်",
+    "sectionMain": "သတင်းအချက်အလက်",
+    "sectionPassport": "ပတ်စပို့",
+    "sectionTools": "ကိရိယာများ",
+    "sectionRights": "အခွင့်အရေးနှင့် လမ်းညွှန်",
+    "sectionHelp": "အကူအညီ",
+    "sectionAccount": "အကောင့်",
+    "sectionAbout": "အကြောင်း"
   }
 }

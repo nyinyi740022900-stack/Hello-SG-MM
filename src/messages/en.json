@@ -429,5 +429,16 @@
       "very_high": "Very high",
       "extreme": "Extreme"
     }
+  },
+  "menu": {
+    "open": "Menu",
+    "close": "Close menu",
+    "sectionMain": "Information",
+    "sectionPassport": "Passport",
+    "sectionTools": "Tools",
+    "sectionRights": "Rights & guides",
+    "sectionHelp": "Help",
+    "sectionAccount": "Account",
+    "sectionAbout": "About"
   }
 }

@@ -33,7 +33,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages}>
       <AuthProvider>
-        <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-5 px-4 pb-24 pt-4 sm:px-6 sm:pb-6 sm:pt-6">
+        <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-5 px-4 pb-6 pt-4 sm:px-6 sm:pt-6">
           <header className="sticky top-0 z-30 -mx-4 border-b border-border bg-surface px-4 py-3 sm:static sm:mx-0 sm:rounded-2xl sm:border sm:p-5 sm:shadow-sm">
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between gap-3">
@@ -48,10 +48,9 @@ export default async function LocaleLayout({
                 <div className="flex shrink-0 items-center gap-2 sm:gap-3">
                   <LanguageSwitcher />
                   <AuthStatus locale={resolvedLocale} />
+                  <AppNav locale={resolvedLocale} />
                 </div>
               </div>
-              <div className="hidden h-px bg-border md:block" />
-              <AppNav locale={resolvedLocale} />
             </div>
           </header>
           <section className="rounded-2xl border border-border bg-surface p-5 shadow-sm sm:p-6">
@@ -59,7 +58,7 @@ export default async function LocaleLayout({
           </section>
         </main>
 
-        <footer className="mx-auto w-full max-w-6xl px-4 pb-24 sm:pb-6 sm:px-6">
+        <footer className="mx-auto w-full max-w-6xl px-4 pb-6 sm:px-6">
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-ink-subtle">
             <span>{tLegal("footerCopyright", { year: new Date().getFullYear() })}</span>
             <Link
