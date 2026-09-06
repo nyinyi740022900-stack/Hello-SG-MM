@@ -59,6 +59,7 @@ export type ContentItem = {
   status: ContentStatus;
   created_by: string;
   reviewed_by: string | null;
+  review_note: string | null;
   published_at: string | null;
   created_at: string;
   updated_at: string;
@@ -69,7 +70,7 @@ const CONTENT_COLUMNS =
   "source_url,source_name,source_published_at,expires_at,tags," +
   "starts_at,ends_at,location_name,address," +
   "phone,website,opening_hours,languages,is_free," +
-  "status,created_by,reviewed_by,published_at,created_at,updated_at";
+  "status,created_by,reviewed_by,review_note,published_at,created_at,updated_at";
 
 /**
  * Build a shareable slug from an English title: lowercase, strip to
@@ -122,7 +123,6 @@ export async function listPublishedContent(
   return { data: data ?? [], error: null };
 }
 
-/** Admin-only — pending items awaiting review, oldest first. */
 /**
  * Upcoming events, soonest first.
  *
@@ -182,6 +182,7 @@ export async function listDirectoryEntries(
   return { data: data ?? [], error: null };
 }
 
+/** Admin-only — pending items awaiting review, oldest first. */
 export async function listPendingContent(): Promise<{
   data: ContentItem[] | null;
   error: string | null;
@@ -225,18 +226,97 @@ export async function getContentBySlug(
 }
 
 export async function approveContentItem(id: string): Promise<{ error: string | null }> {
+  return approveContentItems([id]);
+}
+
+/**
+ * Publish one or many items in a single round trip.
+ *
+ * Records who approved it: everything here was drafted by an agent, so when a
+ * published claim later turns out to be wrong, the useful question is who
+ * signed off on it.
+ */
+export async function approveContentItems(ids: string[]): Promise<{ error: string | null }> {
   if (!supabase) return { error: "Supabase is not configured." };
+  if (ids.length === 0) return { error: null };
+
+  const { data: userData } = await supabase.auth.getUser();
+
   const { error } = await supabase
     .from("content_items")
-    .update({ status: "published", published_at: new Date().toISOString() })
+    .update({
+      status: "published",
+      published_at: new Date().toISOString(),
+      reviewed_by: userData.user?.id ?? null,
+    })
+    .in("id", ids);
+  return { error: error?.message ?? null };
+}
+
+/**
+ * Reject an item, optionally saying why. The reason is the only feedback loop
+ * we have for improving the agent's output, so it is worth capturing.
+ */
+export async function rejectContentItem(
+  id: string,
+  reason?: string,
+): Promise<{ error: string | null }> {
+  if (!supabase) return { error: "Supabase is not configured." };
+
+  const { data: userData } = await supabase.auth.getUser();
+
+  const { error } = await supabase
+    .from("content_items")
+    .update({
+      status: "rejected",
+      reviewed_by: userData.user?.id ?? null,
+      review_note: reason?.trim() || null,
+    })
     .eq("id", id);
   return { error: error?.message ?? null };
 }
 
-export async function rejectContentItem(id: string): Promise<{ error: string | null }> {
+/** Fields an admin may correct before publishing. */
+export type ContentEditableFields = Pick<
+  ContentItem,
+  | "title_en"
+  | "title_my"
+  | "summary_en"
+  | "summary_my"
+  | "body_en"
+  | "body_my"
+  | "category"
+  | "priority"
+>;
+
+/**
+ * Save admin corrections without changing review status.
+ *
+ * This exists because the Myanmar text is the part most likely to need a human
+ * fix — agent wording has reached users with real vocabulary errors before, and
+ * catching them at review is far cheaper than correcting a published item.
+ */
+export async function updateContentItem(
+  id: string,
+  patch: Partial<ContentEditableFields>,
+): Promise<{ error: string | null }> {
   if (!supabase) return { error: "Supabase is not configured." };
-  const { error } = await supabase.from("content_items").update({ status: "rejected" }).eq("id", id);
+  if (Object.keys(patch).length === 0) return { error: null };
+
+  const { error } = await supabase.from("content_items").update(patch).eq("id", id);
   return { error: error?.message ?? null };
+}
+
+/** Number of items waiting for review, for the admin badge. */
+export async function countPendingContent(): Promise<{ count: number; error: string | null }> {
+  if (!supabase) return { count: 0, error: "Supabase is not configured." };
+
+  const { count, error } = await supabase
+    .from("content_items")
+    .select("id", { count: "exact", head: true })
+    .eq("status", "pending");
+
+  return { count: count ?? 0, error: error?.message ?? null };
 }
 
 export async function deleteContentItem(id: string): Promise<{ error: string | null }> {

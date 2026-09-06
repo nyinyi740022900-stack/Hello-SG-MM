@@ -1,6 +1,6 @@
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
-import NewsReviewPanel from "@/components/NewsReviewPanel";
+import ContentReviewPanel from "@/components/NewsReviewPanel";
 import { PageHeader } from "@/components/ui/Card";
 import { routing } from "@/i18n/routing";
 
@@ -17,10 +17,10 @@ export default async function AdminNewsPage({ params }: AdminNewsPageProps) {
   return (
     <section className="space-y-4">
       <PageHeader
-        title="News & Updates"
-        subtitle="Review daily agent submissions and post manual updates for users."
+        title="Content Review"
+        subtitle="Check what the agent drafted overnight, fix any wording, verify the source, and publish."
       />
-      <NewsReviewPanel />
+      <ContentReviewPanel />
     </section>
   );
 }
