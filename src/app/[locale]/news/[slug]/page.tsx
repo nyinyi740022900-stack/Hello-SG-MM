@@ -5,9 +5,11 @@ import type { Metadata } from "next";
 import { PageHeader, Card } from "@/components/ui/Card";
 import { Link } from "@/i18n/navigation";
 import CategoryBadge from "@/components/CategoryBadge";
-import { routing } from "@/i18n/routing";
+import { routing, type AppLocale } from "@/i18n/routing";
 import { getContentBySlug } from "@/lib/content";
 import PageCard from "@/components/ui/PageCard";
+import TranslationNotice from "@/components/TranslationNotice";
+import { resolveTranslation, isTranslatableCategory } from "@/lib/translation";
 
 async function loadItem(slug: string) {
   const { data } = await getContentBySlug(slug);
@@ -67,9 +69,16 @@ export default async function NewsDetailPage({
     );
   }
 
-  const title = isMy ? item.title_my : item.title_en;
-  const summary = isMy ? item.summary_my : item.summary_en;
-  const body = isMy ? item.body_my : item.body_en;
+  const resolved = resolveTranslation(item, locale as AppLocale);
+  const { title, summary, body } = resolved;
+  // Say plainly which of three situations the reader is in: reading a
+  // machine translation, reading English because this topic is too
+  // consequential to machine translate, or reading their own language.
+  const notice = resolved.isMachineTranslated
+    ? "machine"
+    : locale !== "en" && locale !== "my" && !isTranslatableCategory(item.category)
+      ? "notTranslated"
+      : null;
 
   let sourceHost: string | null = null;
   if (item.source_url) {
@@ -104,6 +113,12 @@ export default async function NewsDetailPage({
           <h1 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">{title}</h1>
 
           {summary ? <p className="text-lg text-ink-muted">{summary}</p> : null}
+
+          {/* Placed above the body, not below it: the reader needs to know how
+              much to trust the text before they read it, not after. */}
+          {notice ? (
+            <TranslationNotice variant={notice} contentItemId={item.id} />
+          ) : null}
 
           <div className="whitespace-pre-line text-ink">{body}</div>
 

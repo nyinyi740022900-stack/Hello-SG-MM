@@ -507,5 +507,21 @@
     "mistake4": "Boarding the same bus number twice in a row — the second ride is charged as a new journey.",
     "disclaimer": "Fares and rules are set by LTA and can change. Check the official links above before relying on anything here for a trip that matters.",
     "heroTitle": "Bus & MRT guide"
+  },
+  "translation": {
+    "machineLabel": "Machine translated",
+    "machineNote": "This text was translated automatically and has not been checked by a speaker of your language. For anything involving money, your pass or a deadline, read the original.",
+    "viewOriginal": "Read the original in English",
+    "notTranslatedTitle": "Shown in English",
+    "notTranslatedBody": "Updates about work passes, scams, money, legal matters and jobs are kept in English until a speaker of your language has checked them. A wrong translation of these can cost you money or your pass.",
+    "partialTitle": "This language is still being translated",
+    "partialBody": "Menus and labels are translated. Longer guides are still in English.",
+    "reportButton": "Report a translation problem",
+    "reportTitle": "Something wrong with this translation?",
+    "reportPlaceholder": "What looked wrong? (optional)",
+    "reportSubmit": "Send report",
+    "reportSending": "Sending…",
+    "reportThanks": "Thank you — we will look at this.",
+    "reportError": "Could not send. Please try again later."
   }
 }

@@ -60,6 +60,8 @@ export type ContentItem = {
   created_by: string;
   reviewed_by: string | null;
   review_note: string | null;
+  /** Machine translations by locale. Always shown with a label. */
+  translations: Record<string, { title?: string; summary?: string; body?: string }> | null;
   published_at: string | null;
   created_at: string;
   updated_at: string;
@@ -70,7 +72,7 @@ const CONTENT_COLUMNS =
   "source_url,source_name,source_published_at,expires_at,tags," +
   "starts_at,ends_at,location_name,address," +
   "phone,website,opening_hours,languages,is_free," +
-  "status,created_by,reviewed_by,review_note,published_at,created_at,updated_at";
+  "status,created_by,reviewed_by,review_note,translations,published_at,created_at,updated_at";
 
 /**
  * Build a shareable slug from an English title: lowercase, strip to
