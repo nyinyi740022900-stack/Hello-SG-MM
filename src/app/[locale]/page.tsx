@@ -96,8 +96,8 @@ export default async function HomePage({ params }: HomePageProps) {
               <p className="mt-1 text-lg font-bold text-ink">{t("factLanguageValue")}</p>
             </Card>
             <Card padding="sm">
-              <p className="text-xs text-ink-subtle">{t("factPaymentLabel")}</p>
-              <p className="mt-1 text-lg font-bold text-ink">{t("factPaymentValue")}</p>
+              <p className="text-xs text-ink-subtle">{t("factCostLabel")}</p>
+              <p className="mt-1 text-lg font-bold text-ink">{t("factCostValue")}</p>
             </Card>
           </div>
         </div>

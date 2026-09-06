@@ -85,13 +85,8 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
         <ul className="list-disc space-y-1 pl-5 text-ink-muted">
           <li>
             {isMy
-              ? "ပတ်စပို့ ဖောင် draft ကို သိမ်းဆည်းပြီး PDF ထုတ်ပေးရန်"
-              : "Save your passport-renewal form draft and generate the PDF export."}
-          </li>
-          <li>
-            {isMy
-              ? "Premium feature အတွက် ငွေပေးချေမှုကို အတည်ပြုရန်"
-              : "Verify your payment to unlock premium features (PDF export)."}
+              ? "ပတ်စပို့ ဖောင် အချက်အလက်များကို သိမ်းဆည်းပြီး သက်တမ်းကုန်ခါနီး သတိပေးရန်"
+              : "Save your passport form details and remind you before your passport expires."}
           </li>
           <li>
             {isMy
@@ -164,8 +159,8 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
             <strong>{isMy ? "ထုတ်ယူခြင်း" : "Export"}</strong>
             {" — "}
             {isMy
-              ? "သင်၏ passport form ကို PDF အဖြစ် ထုတ်ယူနိုင်သည် (premium feature)။"
-              : "Export your form data as a PDF at any time (premium feature)."}
+              ? "သင်၏ လစာမှတ်တမ်းကို PDF အဖြစ် အချိန်မရွေး ထုတ်ယူနိုင်သည်။"
+              : "Export your salary record as a PDF at any time."}
           </li>
         </ul>
       </div>

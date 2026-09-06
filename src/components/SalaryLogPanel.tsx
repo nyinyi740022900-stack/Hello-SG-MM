@@ -14,7 +14,6 @@ import {
   summarizeSalaryEntries,
   type SalaryEntry,
 } from "@/lib/salaryLog";
-import { getUserEntitlementSummary, PRODUCT_CODES, type EntitlementSummary } from "@/lib/entitlements";
 import FormField, { INPUT_CLASS } from "@/components/ui/FormField";
 import StatusMessage from "@/components/ui/StatusMessage";
 import { Button } from "@/components/ui/Button";
@@ -45,7 +44,6 @@ export default function SalaryLogPanel() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [fullName, setFullName] = useState("");
-  const [entitlement, setEntitlement] = useState<EntitlementSummary | null>(null);
   const [exportState, setExportState] = useState<ExportState>({ phase: "idle" });
 
   const {
@@ -81,17 +79,6 @@ export default function SalaryLogPanel() {
       void refresh();
     });
   }, [refresh]);
-
-  useEffect(() => {
-    if (!user) return;
-    let mounted = true;
-    void getUserEntitlementSummary(user.id, PRODUCT_CODES.SALARY_EVIDENCE_PDF).then(({ data }) => {
-      if (mounted) setEntitlement(data);
-    });
-    return () => {
-      mounted = false;
-    };
-  }, [user, exportState.phase]);
 
   const onSubmit = async (values: EntryFormValues) => {
     if (!user) return;
@@ -291,13 +278,9 @@ export default function SalaryLogPanel() {
           />
         </FormField>
 
-        {entitlement?.isValid ? (
-          <Button onClick={() => void handleExport()} disabled={exportState.phase === "exporting" || entries.length === 0}>
-            {exportState.phase === "exporting" ? t("exporting") : t("exportButton")}
-          </Button>
-        ) : (
-          <StatusMessage variant="warning">{t("exportLocked")}</StatusMessage>
-        )}
+        <Button onClick={() => void handleExport()} disabled={exportState.phase === "exporting" || entries.length === 0}>
+          {exportState.phase === "exporting" ? t("exporting") : t("exportButton")}
+        </Button>
 
         {exportState.phase === "error" ? (
           <StatusMessage variant="error">{exportState.message}</StatusMessage>

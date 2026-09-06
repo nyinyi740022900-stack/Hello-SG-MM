@@ -145,15 +145,6 @@ export default function AuthStatus({ locale }: AuthStatusProps) {
             >
               {t("menuAccount")}
             </Link>
-            <Link
-              href="/payment/manual"
-              locale={locale}
-              role="menuitem"
-              className="rounded-lg px-3 py-2 text-sm text-ink-muted transition hover:bg-surface-muted"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t("menuPayment")}
-            </Link>
             {isAdmin ? (
               <>
                 <Link

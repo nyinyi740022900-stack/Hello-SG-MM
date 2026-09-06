@@ -10,30 +10,38 @@ type HelpPageProps = {
 const FAQ = {
   en: [
     {
-      q: "How do I unlock PDF export?",
-      a: "Sign up, submit manual payment proof, and wait for admin approval.",
+      q: "Is this app free?",
+      a: "Yes. Every feature is free, including the PDF exports. The app is supported by ads and community sponsors, so you never have to pay.",
+    },
+    {
+      q: "Where do I get the passport renewal form?",
+      a: "Download it from the home page or the Passport Checklist page, print it, then fill it in by hand and sign it before your embassy appointment.",
     },
     {
       q: "I cannot log in after registration. Why?",
       a: "Your email may still be unverified. Open your inbox and confirm your account first.",
     },
     {
-      q: "How long does payment review take?",
-      a: "Usually 1-2 working days.",
+      q: "Do I need an account to use the app?",
+      a: "No. Guides, the checklist and the forms are open to everyone. An account is only needed to save your details and export your salary record.",
     },
   ],
   my: [
     {
-      q: "PDF export ကို ဘယ်လိုဖွင့်မလဲ?",
-      a: "အကောင့်ဖွင့်ပြီး manual payment proof တင်ပါ၊ admin အတည်ပြုပြီးမှ ဖွင့်ပေးပါမည်။",
+      q: "ဒီ app က အခမဲ့လား?",
+      a: "ဟုတ်ပါတယ်။ PDF export အပါအဝင် feature အားလုံး အခမဲ့ ဖြစ်ပါတယ်။ ကြော်ငြာနှင့် sponsor များက ပံ့ပိုးထားလို့ ငွေပေးစရာ လုံးဝ မလိုပါ။",
+    },
+    {
+      q: "ပတ်စပို့ သက်တမ်းတိုး ဖောင်ကို ဘယ်မှာ ရနိုင်လဲ?",
+      a: "ပင်မစာမျက်နှာ (သို့) ပတ်စပို့ စာရင်း စာမျက်နှာကနေ download ဆွဲပြီး print ထုတ်ပါ။ ပြီးရင် လက်ရေးနဲ့ ဖြည့်ပြီး လက်မှတ်ထိုးကာ သံရုံးချိန်းသို့ ယူသွားပါ။",
     },
     {
       q: "Register ပြီး login မရတာ ဘာကြောင့်လဲ?",
       a: "Email verify မပြီးသေးလို့ ဖြစ်နိုင်ပါတယ်။ inbox ထဲက confirmation link ကိုနှိပ်ပါ။",
     },
     {
-      q: "Payment review ဘယ်လောက်ကြာမလဲ?",
-      a: "ပုံမှန်အားဖြင့် လုပ်ငန်းရက် ၁-၂ ရက်ခန့်ကြာပါသည်။",
+      q: "App သုံးဖို့ အကောင့် လိုအပ်လား?",
+      a: "မလိုပါ။ လမ်းညွှန်၊ စာရင်းနှင့် ဖောင်များကို အားလုံး ကြည့်နိုင်ပါတယ်။ အချက်အလက် သိမ်းဆည်းဖို့နှင့် လစာမှတ်တမ်း ထုတ်ယူဖို့အတွက်သာ အကောင့် လိုအပ်ပါသည်။",
     },
   ],
 } as const;

@@ -57,38 +57,23 @@ export default async function TermsPage({ params }: TermsPageProps) {
         </p>
       </div>
 
-      {/* ── 2. Payment & Refunds ── */}
+      {/* ── 2. Cost ── */}
       <div className="space-y-3">
         <h3 className="text-lg font-semibold">
           {isMy
-            ? "၂. ငွေပေးချေမှုနှင့် ငွေပြန်အမ်းခြင်း"
-            : "2. Payment & Refunds"}
+            ? "၂. ကုန်ကျစရိတ်"
+            : "2. Cost"}
         </h3>
         <ul className="list-disc space-y-2 pl-5 text-ink-muted">
           <li>
             {isMy
-              ? "PDF export feature သည် one-time ငွေပေးချေမှု လိုအပ်သည့် premium feature ဖြစ်သည်။"
-              : "The PDF export is a one-time premium feature purchase."}
+              ? "App ရှိ feature အားလုံး၊ PDF export အပါအဝင်၊ အခမဲ့ဖြစ်ပြီး ငွေပေးချေရန်မလိုအပ်ပါ။"
+              : "All features in this app, including PDF export, are free — there is no purchase required."}
           </li>
           <li>
             {isMy
-              ? "လက်ရှိ version တွင် manual payment (KBZPay/WavePay) ဖြင့်သာ ငွေပေးချေနိုင်သည်။"
-              : "In the current release, payment is accepted via manual payment proof (KBZPay/WavePay)."}
-          </li>
-          <li>
-            {isMy
-              ? "Manual payment အတည်ပြုရန် working day ၁–၂ ကြာနိုင်သည်။ Admin မှ receipt ကို စစ်ဆေးမှသာ feature ကို ဖွင့်ပေးမည်။"
-              : "Manual payments are reviewed within 1–2 working days. Features are unlocked once an admin confirms your receipt."}
-          </li>
-          <li>
-            {isMy
-              ? "ငွေပြန်အမ်းပါက feature ကို သုံးမပြုမီနှင့် technical problem ဖြစ်ပါကသာ စစ်ဆေးပေးမည်။ ငွေပြန်အမ်းရန် support@sgmigrantworkerapp.com သို့ ဆက်သွယ်ပါ — ၇ ရက်အတွင်း ပြန်ကြားမည်။"
-              : "Refund requests are considered if you have not yet used the premium feature or in the event of a technical failure. Contact support@sgmigrantworkerapp.com within 7 days of purchase for a review."}
-          </li>
-          <li>
-            {isMy
-              ? "ကတ်ငွေပေးချေမှု (card payment) ကို လက်ရှိတွင်မထည့်သွင်းရသေးပါ။"
-              : "Card payment is not enabled in the current version."}
+              ? "ငွေပေးချေမှု (သို့) ငွေပြန်အမ်းခြင်း မရှိပါ။"
+              : "There are no payments and no refunds."}
           </li>
         </ul>
       </div>

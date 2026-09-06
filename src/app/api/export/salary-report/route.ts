@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
-import { consumeExportEntitlement, PRODUCT_CODES } from "@/lib/entitlements";
 import { consumeRateLimit } from "@/lib/rateLimit";
 import { logServerEvent } from "@/lib/serverLogger";
 import {
@@ -33,7 +32,7 @@ function errorResponse(message: string, status: number): NextResponse {
  * POST /api/export/salary-report
  *
  * Generate and download the salary evidence log as a PDF.
- * Requires a valid auth session and a remaining SALARY_EVIDENCE_PDF entitlement.
+ * Requires a valid auth session.
  */
 export async function POST(request: NextRequest): Promise<NextResponse> {
   const forwardedFor = request.headers.get("x-forwarded-for");
@@ -106,35 +105,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     return errorResponse("Failed to generate PDF.", 500);
   }
 
-  const entitlementResult = await consumeExportEntitlement({
-    supabaseClient: supabase,
-    userId,
-    productCode: PRODUCT_CODES.SALARY_EVIDENCE_PDF,
-  });
-
-  if (entitlementResult.error) {
-    logServerEvent("error", "salary_report_export_entitlement_consume_failed", {
-      userId,
-      ip,
-      reason: entitlementResult.error,
-    });
-    return errorResponse("Failed to verify export entitlement.", 500);
-  }
-
-  if (!entitlementResult.consumed) {
-    return errorResponse(
-      "No valid export entitlement. Please complete a payment to unlock PDF export.",
-      403,
-    );
-  }
-
   const filename = generateSalaryReportFilename(body.fullName);
   const pdfBuffer = Buffer.from(pdfBytes);
 
   logServerEvent("info", "salary_report_export_success", {
     userId,
     ip,
-    entitlementId: entitlementResult.entitlementId,
   });
 
   return new NextResponse(pdfBuffer, {
