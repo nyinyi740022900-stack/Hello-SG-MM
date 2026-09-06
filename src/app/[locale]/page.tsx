@@ -9,6 +9,7 @@ import ExchangeRateBar from "@/components/ExchangeRateBar";
 import SgConditionsBar from "@/components/SgConditionsBar";
 import SearchBar from "@/components/SearchBar";
 import { CATEGORY_STYLE } from "@/components/CategoryBadge";
+import CategoryTabs from "@/components/CategoryTabs";
 import {
   ChecklistIcon,
   GuideIcon,
@@ -29,20 +30,30 @@ import {
   listUpcomingEvents,
   CONTENT_CATEGORIES,
   type ContentItem,
+  type ContentCategory,
 } from "@/lib/content";
 import { getCategoryImages, type CategoryImageMap } from "@/lib/categoryImages";
 import { PASSPORT_FORM_DOWNLOAD_PATHS } from "@/lib/passportForms";
 
 type HomePageProps = {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ category?: string }>;
 };
+
+function isContentCategory(value: string | undefined): value is ContentCategory {
+  return Boolean(value) && (CONTENT_CATEGORIES as string[]).includes(value as string);
+}
 
 /** Headlines before the first in-feed ad, and between ads after that. */
 const ITEMS_BEFORE_FIRST_AD = 6;
 const ITEMS_BETWEEN_ADS = 10;
 
-export default async function HomePage({ params }: HomePageProps) {
+export default async function HomePage({ params, searchParams }: HomePageProps) {
   const { locale } = (await params) as { locale: AppLocale };
+  const { category: rawCategory } = await searchParams;
+  // An unknown value falls back to "all" rather than erroring — a stale or
+  // hand-edited link should still show the feed.
+  const activeCategory = isContentCategory(rawCategory) ? rawCategory : undefined;
   const t = await getTranslations("home");
   const tNews = await getTranslations("news");
   const tEvents = await getTranslations("events");
@@ -51,8 +62,14 @@ export default async function HomePage({ params }: HomePageProps) {
   const homeAdSlot = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_HOME_SLOT_ID;
   const isMy = locale === "my";
 
-  const { data: allNews } = await listPublishedContent({ type: "news", limit: 60 });
+  const { data: allNews } = await listPublishedContent({
+    type: "news",
+    category: activeCategory,
+    limit: 60,
+  });
   const news = allNews ?? [];
+  // Urgent items stay visible under every filter: an active safety warning is
+  // not something to hide because the reader is browsing a different topic.
   const urgentItem = news.find((item) => item.priority === "urgent") ?? null;
   const feed = news.filter((item) => item.id !== urgentItem?.id);
 
@@ -142,27 +159,7 @@ export default async function HomePage({ params }: HomePageProps) {
         </div>
       </div>
 
-      {/* Topic tabs pinned above the feed, so switching topic never means
-          scrolling back up past the whole page. */}
-      <div className="sticky top-[57px] z-20 border-b border-border bg-surface sm:static">
-        <div className="overflow-x-auto">
-          <div className="flex gap-1 px-3 py-2">
-            <span className="shrink-0 rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-ink-on-brand">
-              {tNews("allCategories")}
-            </span>
-            {CONTENT_CATEGORIES.map((category) => (
-              <Link
-                key={category}
-                href={`/news?category=${category}`}
-                locale={locale}
-                className="shrink-0 rounded-full px-3 py-1.5 text-xs font-medium text-ink-muted transition hover:bg-brand-soft hover:text-brand-strong"
-              >
-                {tNews(`category.${category}`)}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
+      <CategoryTabs locale={locale} activeCategory={activeCategory} />
 
       {urgentItem ? (
         <Link
@@ -202,7 +199,7 @@ export default async function HomePage({ params }: HomePageProps) {
         </ul>
       ) : (
         <p className="border-b border-border px-4 py-6 text-sm text-ink-muted">
-          {t("feedEmpty")}
+          {activeCategory ? tNews("emptyInCategory") : t("feedEmpty")}
         </p>
       )}
 
