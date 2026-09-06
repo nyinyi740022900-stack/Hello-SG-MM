@@ -81,8 +81,20 @@ export default async function SgConditionsBar() {
           </div>
         ) : null}
 
-        <span className="ml-auto text-xs text-ink-subtle">{t("source")}</span>
+        <a
+          href="https://data.gov.sg/open-data-licence"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ml-auto text-xs text-ink-subtle underline decoration-dotted underline-offset-2 hover:text-brand"
+        >
+          {t("source")}
+        </a>
       </div>
+
+      {/* The Singapore Open Data Licence permits commercial reuse and
+          adaptation, but only on condition that the source is acknowledged.
+          Naming NEA alone does not satisfy it — the licence has to be named. */}
+      <p className="mt-2 text-[11px] leading-relaxed text-ink-subtle">{t("licence")}</p>
 
       {showHazeAdvice ? (
         <p className="mt-3 rounded-xl bg-danger-soft px-3 py-2 text-sm text-danger">

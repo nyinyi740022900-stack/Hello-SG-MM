@@ -412,7 +412,7 @@
     "humidity": "Humidity {low}–{high}%",
     "psiLabel": "PSI",
     "uvLabel": "UV",
-    "source": "NEA · updates through the day",
+    "source": "NEA via data.gov.sg",
     "hazeAdvice": "Air quality is poor. Limit long stretches of outdoor work, take breaks indoors, and wear a mask if you have one.",
     "uvAdvice": "UV is very strong. Cover up, use sunscreen, and rest in shade when you can.",
     "psiBand": {
@@ -428,7 +428,8 @@
       "high": "High",
       "very_high": "Very high",
       "extreme": "Extreme"
-    }
+    },
+    "licence": "Contains information from NEA accessed via data.gov.sg, made available under the Singapore Open Data Licence v1.0."
   },
   "menu": {
     "open": "Menu",
