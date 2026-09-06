@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import RecruitmentFeeCalculator from "@/components/RecruitmentFeeCalculator";
 import { PageHeader } from "@/components/ui/Card";
 import { routing } from "@/i18n/routing";
+import PageCard from "@/components/ui/PageCard";
 
 type RecruitmentFeePageProps = {
   params: Promise<{ locale: string }>;
@@ -18,9 +19,11 @@ export default async function RecruitmentFeePage({ params }: RecruitmentFeePageP
   const t = await getTranslations("recruitmentFee");
 
   return (
-    <section className="space-y-5">
-      <PageHeader eyebrow={t("badge")} title={t("title")} subtitle={t("subtitle")} />
-      <RecruitmentFeeCalculator />
-    </section>
+    <PageCard>
+      <section className="space-y-5">
+        <PageHeader eyebrow={t("badge")} title={t("title")} subtitle={t("subtitle")} />
+        <RecruitmentFeeCalculator />
+      </section>
+    </PageCard>
   );
 }

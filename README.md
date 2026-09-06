@@ -1,6 +1,6 @@
-# SG Migrant Worker App (Web)
+# Hello SG (Web)
 
-Next.js web app for Myanmar workers in Singapore.
+Next.js web app — a bilingual (English/Myanmar) information portal for anyone living in Singapore, still Myanmar-first in language.
 
 ## Tech Stack
 

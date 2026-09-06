@@ -1,7 +1,7 @@
 {
   "common": {
-    "appName": "SG Migrant Worker App",
-    "tagline": "မြန်မာအလုပ်သမားများအတွက် အကူအညီပေး Platform",
+    "appName": "Hello SG",
+    "tagline": "စင်္ကာပူတွင် နေထိုင်ရေးအတွက် သတင်းနှင့် အထောက်အကူများ",
     "home": "ပင်မ",
     "checklist": "စာရင်း",
     "guide": "လမ်းညွှန်",
@@ -304,7 +304,7 @@
     "contact": "ဆက်သွယ်ရန်",
     "cookies": "Cookies မူဝါဒ",
     "registerConsent": "အကောင့်ဖွင့်ခြင်းဖြင့် <terms>ဝန်ဆောင်မှုသတ်မှတ်ချက်များ</terms> နှင့် <privacy>ကိုယ်ရေးအချက်အလက် မူဝါဒ</privacy> ကို လက်ခံသည်ဟု မှတ်ယူသည်။",
-    "footerCopyright": "© {year} SG Migrant Worker App",
+    "footerCopyright": "© {year} Hello SG",
     "cookieNoticeText": "ကျွန်ုပ်တို့သည် မရှိမဖြစ် cookies နှင့် analytics/ad cookies များကို အသုံးပြုပါသည်။",
     "cookieNoticeLearnMore": "ပိုမိုသိရှိရန်",
     "cookieNoticeAccept": "နားလည်ပါပြီ"
@@ -440,5 +440,14 @@
     "sectionHelp": "အကူအညီ",
     "sectionAccount": "အကောင့်",
     "sectionAbout": "အကြောင်း"
+  },
+  "search": {
+    "placeholder": "သတင်းနှင့် လမ်းညွှန် ရှာရန်",
+    "button": "ရှာရန်",
+    "resultsFor": "\"{query}\" အတွက် ရလဒ်များ",
+    "noResults": "ရှာမတွေ့ပါ။ အခြားစကားလုံးဖြင့် ပြန်ရှာကြည့်ပါ။",
+    "empty": "ရှာလိုသည်ကို ရိုက်ထည့်ပါ။",
+    "countOne": "ရလဒ် ၁ ခု",
+    "countMany": "ရလဒ် {count} ခု"
   }
 }

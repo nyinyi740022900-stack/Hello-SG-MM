@@ -2,6 +2,7 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { PageHeader, Card } from "@/components/ui/Card";
+import PageCard from "@/components/ui/PageCard";
 
 type HelpPageProps = {
   params: Promise<{ locale: string }>;
@@ -56,24 +57,26 @@ export default async function HelpPage({ params }: HelpPageProps) {
   const list = isMy ? FAQ.my : FAQ.en;
 
   return (
-    <section className="space-y-5">
-      <PageHeader
-        title={isMy ? "အကူအညီ နှင့် FAQ" : "Help & FAQ"}
-        subtitle={
-          isMy
-            ? "အသုံးပြုမှုအတွက် မေးလေ့မေးထရှိသောအချက်များ။"
-            : "Answers to common questions about login, payment, and export."
-        }
-      />
+    <PageCard>
+      <section className="space-y-5">
+        <PageHeader
+          title={isMy ? "အကူအညီ နှင့် FAQ" : "Help & FAQ"}
+          subtitle={
+            isMy
+              ? "အသုံးပြုမှုအတွက် မေးလေ့မေးထရှိသောအချက်များ။"
+              : "Answers to common questions about login, payment, and export."
+          }
+        />
 
-      <div className="space-y-3">
-        {list.map((item) => (
-          <Card key={item.q} as="article" padding="md" className="space-y-1">
-            <h3 className="font-semibold text-ink">{item.q}</h3>
-            <p className="text-sm text-ink-muted">{item.a}</p>
-          </Card>
-        ))}
-      </div>
-    </section>
+        <div className="space-y-3">
+          {list.map((item) => (
+            <Card key={item.q} as="article" padding="md" className="space-y-1">
+              <h3 className="font-semibold text-ink">{item.q}</h3>
+              <p className="text-sm text-ink-muted">{item.a}</p>
+            </Card>
+          ))}
+        </div>
+      </section>
+    </PageCard>
   );
 }

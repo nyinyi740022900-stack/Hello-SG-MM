@@ -5,6 +5,7 @@ import { PageHeader, Card } from "@/components/ui/Card";
 import CategoryBadge from "@/components/CategoryBadge";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { listUpcomingEvents, type ContentItem } from "@/lib/content";
+import PageCard from "@/components/ui/PageCard";
 
 function formatWhen(item: ContentItem, locale: AppLocale): string | null {
   if (!item.starts_at) {
@@ -63,66 +64,68 @@ export default async function EventsPage({
   const { data: items, error } = await listUpcomingEvents();
 
   return (
-    <section className="space-y-5">
-      <PageHeader eyebrow={t("badge")} title={t("title")} subtitle={t("subtitle")} />
+    <PageCard>
+      <section className="space-y-5">
+        <PageHeader eyebrow={t("badge")} title={t("title")} subtitle={t("subtitle")} />
 
-      {error ? (
-        <Card className="text-sm text-danger">{error}</Card>
-      ) : !items || items.length === 0 ? (
-        <Card className="text-sm text-ink-muted">{t("empty")}</Card>
-      ) : (
-        <div className="space-y-3">
-          {items.map((item) => {
-            const title = isMy ? item.title_my : item.title_en;
-            const description = isMy
-              ? item.summary_my || item.body_my
-              : item.summary_en || item.body_en;
-            const when = formatWhen(item, appLocale);
-            const hasWhere = Boolean(item.location_name || item.address);
+        {error ? (
+          <Card className="text-sm text-danger">{error}</Card>
+        ) : !items || items.length === 0 ? (
+          <Card className="text-sm text-ink-muted">{t("empty")}</Card>
+        ) : (
+          <div className="space-y-3">
+            {items.map((item) => {
+              const title = isMy ? item.title_my : item.title_en;
+              const description = isMy
+                ? item.summary_my || item.body_my
+                : item.summary_en || item.body_en;
+              const when = formatWhen(item, appLocale);
+              const hasWhere = Boolean(item.location_name || item.address);
 
-            return (
-              <Card key={item.id} className="space-y-3">
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-semibold text-ink">{title}</h3>
-                  <CategoryBadge category={item.category} />
-                </div>
-
-                {description ? <p className="text-sm text-ink-muted">{description}</p> : null}
-
-                {when || hasWhere ? (
-                  <div className="space-y-1 rounded-xl bg-surface-muted p-3 text-sm">
-                    {when ? (
-                      <p className="text-ink">
-                        <span className="font-semibold text-ink-subtle">{t("whenLabel")}: </span>
-                        {when}
-                      </p>
-                    ) : null}
-                    {hasWhere ? (
-                      <p className="text-ink">
-                        <span className="font-semibold text-ink-subtle">{t("whereLabel")}: </span>
-                        {[item.location_name, item.address].filter(Boolean).join(", ")}
-                      </p>
-                    ) : null}
+              return (
+                <Card key={item.id} className="space-y-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="font-semibold text-ink">{title}</h3>
+                    <CategoryBadge category={item.category} />
                   </div>
-                ) : null}
 
-                {item.source_url ? (
-                  <a
-                    href={item.source_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex text-sm font-medium text-brand-strong underline"
-                  >
-                    {item.source_url}
-                  </a>
-                ) : null}
-              </Card>
-            );
-          })}
-        </div>
-      )}
+                  {description ? <p className="text-sm text-ink-muted">{description}</p> : null}
 
-      <p className="text-xs text-ink-subtle">{t("disclaimer")}</p>
-    </section>
+                  {when || hasWhere ? (
+                    <div className="space-y-1 rounded-xl bg-surface-muted p-3 text-sm">
+                      {when ? (
+                        <p className="text-ink">
+                          <span className="font-semibold text-ink-subtle">{t("whenLabel")}: </span>
+                          {when}
+                        </p>
+                      ) : null}
+                      {hasWhere ? (
+                        <p className="text-ink">
+                          <span className="font-semibold text-ink-subtle">{t("whereLabel")}: </span>
+                          {[item.location_name, item.address].filter(Boolean).join(", ")}
+                        </p>
+                      ) : null}
+                    </div>
+                  ) : null}
+
+                  {item.source_url ? (
+                    <a
+                      href={item.source_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex text-sm font-medium text-brand-strong underline"
+                    >
+                      {item.source_url}
+                    </a>
+                  ) : null}
+                </Card>
+              );
+            })}
+          </div>
+        )}
+
+        <p className="text-xs text-ink-subtle">{t("disclaimer")}</p>
+      </section>
+    </PageCard>
   );
 }

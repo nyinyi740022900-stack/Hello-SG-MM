@@ -1,7 +1,7 @@
 {
   "common": {
-    "appName": "SG Migrant Worker App",
-    "tagline": "Myanmar workers support platform",
+    "appName": "Hello SG",
+    "tagline": "News and everyday help for life in Singapore",
     "home": "Home",
     "checklist": "Checklist",
     "guide": "Guide",
@@ -304,7 +304,7 @@
     "contact": "Contact",
     "cookies": "Cookies Policy",
     "registerConsent": "By creating an account you agree to our <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>.",
-    "footerCopyright": "© {year} SG Migrant Worker App",
+    "footerCopyright": "© {year} Hello SG",
     "cookieNoticeText": "We use essential cookies plus analytics/ad cookies.",
     "cookieNoticeLearnMore": "Learn more",
     "cookieNoticeAccept": "OK"
@@ -440,5 +440,14 @@
     "sectionHelp": "Help",
     "sectionAccount": "Account",
     "sectionAbout": "About"
+  },
+  "search": {
+    "placeholder": "Search news and guides",
+    "button": "Search",
+    "resultsFor": "Results for \"{query}\"",
+    "noResults": "Nothing found. Try a different word.",
+    "empty": "Type something to search.",
+    "countOne": "1 result",
+    "countMany": "{count} results"
   }
 }

@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { checkAdminAuth, isSupabaseConfiguredServer } from "@/lib/authz";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
+import PageCard from "@/components/ui/PageCard";
 
 type AdminLayoutProps = {
   children: ReactNode;
@@ -150,7 +151,7 @@ export default async function AdminLayout({
       </div>
 
       {/* Admin content */}
-      {children}
+      <PageCard>{children}</PageCard>
     </div>
   );
 }

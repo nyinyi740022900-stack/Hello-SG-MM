@@ -21,15 +21,16 @@ const myanmarFont = Noto_Sans_Myanmar({
 
 export const metadata: Metadata = {
   title: {
-    default: "SG Migrant Worker App",
-    template: "%s · SG Migrant Worker App",
+    default: "Hello SG",
+    template: "%s · Hello SG",
   },
-  description: "Passport renewal helper for Myanmar workers in Singapore",
+  description:
+    "Bilingual (English/Myanmar) news and everyday help for life in Singapore",
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "MigrantHelp SG",
+    title: "Hello SG",
   },
 };
 

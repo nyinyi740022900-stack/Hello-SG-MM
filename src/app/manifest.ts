@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "SG Migrant Worker App — Passport & Emergency Help",
-    short_name: "MigrantHelp SG",
+    name: "Hello SG — News & Everyday Help for Singapore",
+    short_name: "Hello SG",
     description:
-      "Passport renewal guide and emergency contacts for Myanmar workers in Singapore.",
+      "Bilingual (English/Myanmar) news, weather, remittance rates, guides and practical tools for anyone living in Singapore.",
     start_url: "/",
     display: "standalone",
     background_color: "#eef2f9",

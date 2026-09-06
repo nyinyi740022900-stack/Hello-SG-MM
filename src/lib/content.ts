@@ -204,6 +204,46 @@ export async function listPendingContent(): Promise<{
   return { data: data ?? [], error: null };
 }
 
+/**
+ * Search published content across both languages.
+ *
+ * Deliberately a substring match rather than Postgres full-text search:
+ * `to_tsvector` has no Myanmar configuration, so its stemming and stop-word
+ * handling would silently degrade to nonsense on exactly the half of the
+ * content most readers use. A plain case-insensitive `ilike` treats both
+ * scripts the same and behaves predictably at this size.
+ */
+export async function searchContent(
+  rawQuery: string,
+  limit = 40,
+): Promise<{ data: ContentItem[] | null; error: string | null }> {
+  if (!supabase) {
+    return { data: null, error: "Supabase is not configured." };
+  }
+
+  // Strip the PostgREST filter metacharacters that would otherwise let a
+  // search box alter the query it is embedded in.
+  const cleaned = rawQuery.trim().replace(/[%_,()]/g, " ").slice(0, 80).trim();
+  if (!cleaned) return { data: [], error: null };
+
+  const pattern = `%${cleaned}%`;
+  const fields = ["title_en", "title_my", "summary_en", "summary_my", "body_en", "body_my"];
+
+  const { data, error } = await supabase
+    .from("content_items")
+    .select(CONTENT_COLUMNS)
+    .eq("status", "published")
+    .or(fields.map((field) => `${field}.ilike.${pattern}`).join(","))
+    .order("published_at", { ascending: false })
+    .limit(limit)
+    .returns<ContentItem[]>();
+
+  if (error) {
+    return { data: null, error: error.message };
+  }
+  return { data: data ?? [], error: null };
+}
+
 /** Public detail page lookup — single published item by slug, or null. */
 export async function getContentBySlug(
   slug: string,

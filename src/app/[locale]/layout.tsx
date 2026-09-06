@@ -53,9 +53,7 @@ export default async function LocaleLayout({
               </div>
             </div>
           </header>
-          <section className="rounded-2xl border border-border bg-surface p-5 shadow-sm sm:p-6">
-            {children}
-          </section>
+          {children}
         </main>
 
         <footer className="mx-auto w-full max-w-6xl px-4 pb-6 sm:px-6">

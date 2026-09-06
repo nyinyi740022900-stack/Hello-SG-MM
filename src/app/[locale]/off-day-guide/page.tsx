@@ -3,6 +3,7 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { PageHeader, Card } from "@/components/ui/Card";
 import { routing } from "@/i18n/routing";
+import PageCard from "@/components/ui/PageCard";
 
 const LOCATIONS = [
   {
@@ -35,28 +36,30 @@ export default async function OffDayGuidePage({
   const t = await getTranslations("offDayGuide");
 
   return (
-    <section className="space-y-5">
-      <PageHeader eyebrow={t("badge")} title={t("title")} subtitle={t("subtitle")} />
+    <PageCard>
+      <section className="space-y-5">
+        <PageHeader eyebrow={t("badge")} title={t("title")} subtitle={t("subtitle")} />
 
-      <div className="space-y-3">
-        {LOCATIONS.map((loc) => (
-          <Card key={loc.key} className="space-y-2">
-            <h3 className="font-semibold text-ink">{t(`locations.${loc.key}.name`)}</h3>
-            <p className="text-sm text-ink-muted">{t(`locations.${loc.key}.description`)}</p>
-            <p className="text-xs text-ink-subtle">{loc.address}</p>
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.mapsQuery)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex text-xs font-medium text-brand-strong underline"
-            >
-              {t("openInMaps")}
-            </a>
-          </Card>
-        ))}
-      </div>
+        <div className="space-y-3">
+          {LOCATIONS.map((loc) => (
+            <Card key={loc.key} className="space-y-2">
+              <h3 className="font-semibold text-ink">{t(`locations.${loc.key}.name`)}</h3>
+              <p className="text-sm text-ink-muted">{t(`locations.${loc.key}.description`)}</p>
+              <p className="text-xs text-ink-subtle">{loc.address}</p>
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.mapsQuery)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex text-xs font-medium text-brand-strong underline"
+              >
+                {t("openInMaps")}
+              </a>
+            </Card>
+          ))}
+        </div>
 
-      <p className="text-xs text-ink-subtle">{t("sourceDisclaimer")}</p>
-    </section>
+        <p className="text-xs text-ink-subtle">{t("sourceDisclaimer")}</p>
+      </section>
+    </PageCard>
   );
 }
