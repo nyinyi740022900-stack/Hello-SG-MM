@@ -17,7 +17,9 @@
     "cookies": "Cookies",
     "news": "News",
     "events": "Events",
-    "directory": "Services"
+    "directory": "Services",
+    "transport": "Transport",
+    "rates": "Exchange rates"
   },
   "home": {
     "badge": "Free for all workers",
@@ -380,7 +382,18 @@
       "bank": "Bank",
       "market": "Market",
       "other": "Other"
-    }
+    },
+    "pageBadge": "Money",
+    "pageTitle": "SGD to MMK exchange rates",
+    "pageSubtitle": "Indicative rates we have recorded, and where to check the real rate before you send money.",
+    "latestTitle": "Latest recorded",
+    "checkTitle": "Check the live rate yourself",
+    "checkIntro": "Rates move during the day and each provider sets its own. Always confirm the rate in the provider's own app before you send.",
+    "providersNote": "We are not affiliated with any provider and receive nothing if you use them.",
+    "compareTitle": "Before you send",
+    "compareFee": "Compare the total cost, not just the rate — a good rate with a high fee can be worse overall.",
+    "compareOfficial": "Myanmar requires a share of overseas wages to be remitted through official channels. Keep your transfer receipts.",
+    "compareLicence": "Use a provider licensed by MAS. Unlicensed transfer means no recourse if the money disappears."
   },
   "events": {
     "badge": "Community",
@@ -450,5 +463,42 @@
     "empty": "Type something to search.",
     "countOne": "1 result",
     "countMany": "{count} results"
+  },
+  "transport": {
+    "badge": "Getting around",
+    "title": "Bus & MRT — how to travel in Singapore",
+    "subtitle": "How to pay, how fares are worked out, and the transfer rules that decide whether one trip counts as one journey or two.",
+    "payTitle": "1. How to pay",
+    "payIntro": "You do not buy a ticket for each ride. You tap a card or phone at the reader.",
+    "payCard": "SimplyGo EZ-Link card — buy and top up at MRT station machines and convenience stores.",
+    "payBank": "A contactless bank card or phone wallet — tap it directly, no separate transit card needed.",
+    "payBalance": "Keep at least $5 on a SimplyGo EZ-Link card. Below that, the reader can reject it and you will not be able to board.",
+    "payNoDisplay": "SimplyGo cards do not show your fare or remaining balance at the gate. Check both in the SimplyGo app.",
+    "payAxs": "From 29 August 2026 you can no longer top up EZ-Link or SimplyGo cards at AXS machines. Use station machines, the app, or a convenience store.",
+    "tapTitle": "2. Tap in and tap out — both times",
+    "tapIn": "Tap when you board the bus or enter the MRT gate.",
+    "tapOut": "Tap again when you get off the bus or leave the MRT gate.",
+    "tapWarning": "If you forget to tap out, you are charged the maximum fare for that line. This is the most common and most expensive mistake.",
+    "fareTitle": "3. How the fare is calculated",
+    "fareDistance": "Fares are based on the total distance of your whole journey, not the number of vehicles you take.",
+    "fareTransfer": "Changing between bus and train inside one journey does not start a new fare. You are charged once for the distance.",
+    "transferTitle": "4. Transfer rules",
+    "transferIntro": "Several trips count as one journey only if all of these are true:",
+    "transferTime": "No more than 2 hours between your first boarding and your last boarding in the journey.",
+    "transferSameBus": "You do not board the same bus service number twice in a row.",
+    "transferStations": "At Bukit Panjang, Newton and Tampines you must tap out of the first line and tap in again at the next. Do this within 15 minutes or it becomes a new journey with a new fare.",
+    "mapsTitle": "5. Maps and planning your trip",
+    "mapsPlanner": "LTA journey planner — official route and fare planner",
+    "mapsFare": "LTA fare calculator — check the cost before you travel",
+    "mapsNetwork": "LTA MRT and LRT system map",
+    "mapsSimplyGo": "SimplyGo — check your fares, balance and travel history",
+    "mapsGoogle": "Google Maps — live bus and train directions",
+    "mapsTip": "For a bus, the planner tells you the stop name and how many stops to stay on. Bus stops show the service numbers that stop there and a stop ID you can check in the app.",
+    "mistakesTitle": "Mistakes that cost money",
+    "mistake1": "Forgetting to tap out — you pay the maximum fare.",
+    "mistake2": "Letting the balance fall below $5 — the reader rejects the card.",
+    "mistake3": "Taking a long break mid-journey — after 2 hours it becomes a new journey and you pay again.",
+    "mistake4": "Boarding the same bus number twice in a row — the second ride is charged as a new journey.",
+    "disclaimer": "Fares and rules are set by LTA and can change. Check the official links above before relying on anything here for a trip that matters."
   }
 }

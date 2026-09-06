@@ -20,6 +20,8 @@ import {
   MegaphoneIcon,
   BankIcon,
   WizardIcon,
+  TransferIcon,
+  WalletIcon,
 } from "@/components/icons";
 import type { AppLocale } from "@/i18n/routing";
 import {
@@ -44,6 +46,7 @@ export default async function HomePage({ params }: HomePageProps) {
   const t = await getTranslations("home");
   const tNews = await getTranslations("news");
   const tEvents = await getTranslations("events");
+  const tCommon = await getTranslations("common");
   const adSenseClientId = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID;
   const homeAdSlot = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_HOME_SLOT_ID;
   const isMy = locale === "my";
@@ -74,6 +77,8 @@ export default async function HomePage({ params }: HomePageProps) {
     { href: "/rest-day-rights", icon: CalendarCheckIcon, label: t("toolRestDay") },
     { href: "/off-day-guide", icon: MapPinIcon, label: t("toolOffDayGuide") },
     { href: "/accounts-guide", icon: BankIcon, label: t("quickAccountsGuide") },
+    { href: "/transport", icon: TransferIcon, label: tCommon("transport") },
+    { href: "/rates", icon: WalletIcon, label: tCommon("rates") },
     { href: "/events", icon: MegaphoneIcon, label: tEvents("badge") },
   ];
 

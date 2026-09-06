@@ -17,6 +17,8 @@ import {
   MapPinIcon,
   MegaphoneIcon,
   MenuIcon,
+  TransferIcon,
+  WalletIcon,
   PhoneAlertIcon,
   ReceiptIcon,
   WizardIcon,
@@ -93,6 +95,8 @@ export default function AppNav({ locale }: AppNavProps) {
           { href: "/news", label: t("news"), icon: MegaphoneIcon },
           { href: "/events", label: t("events"), icon: CalendarCheckIcon },
           { href: "/directory", label: t("directory"), icon: MapPinIcon },
+          { href: "/transport", label: t("transport"), icon: TransferIcon },
+          { href: "/rates", label: t("rates"), icon: WalletIcon },
         ],
       },
       {
