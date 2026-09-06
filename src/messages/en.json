@@ -393,7 +393,13 @@
     "compareTitle": "Before you send",
     "compareFee": "Compare the total cost, not just the rate — a good rate with a high fee can be worse overall.",
     "compareOfficial": "Myanmar requires a share of overseas wages to be remitted through official channels. Keep your transfer receipts.",
-    "compareLicence": "Use a provider licensed by MAS. Unlicensed transfer means no recourse if the money disappears."
+    "compareLicence": "Use a provider licensed by MAS. Unlicensed transfer means no recourse if the money disappears.",
+    "officialLabel": "Official rate",
+    "officialValue": "1 SGD = {rate} MMK",
+    "officialWarnTitle": "This is not what you will receive",
+    "officialWarnBody": "Myanmar's official rate and the rate money changers and remittance services actually use are far apart — often close to double. Use this only as a reference point, never to work out what your family will get. Check the amount in your provider's own app before you send.",
+    "officialUpdated": "Feed updated {time}",
+    "heroTitle": "Exchange rate"
   },
   "events": {
     "badge": "Community",
@@ -499,6 +505,7 @@
     "mistake2": "Letting the balance fall below $5 — the reader rejects the card.",
     "mistake3": "Taking a long break mid-journey — after 2 hours it becomes a new journey and you pay again.",
     "mistake4": "Boarding the same bus number twice in a row — the second ride is charged as a new journey.",
-    "disclaimer": "Fares and rules are set by LTA and can change. Check the official links above before relying on anything here for a trip that matters."
+    "disclaimer": "Fares and rules are set by LTA and can change. Check the official links above before relying on anything here for a trip that matters.",
+    "heroTitle": "Bus & MRT guide"
   }
 }

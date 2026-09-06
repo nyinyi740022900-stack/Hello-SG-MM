@@ -8,6 +8,7 @@ import ExpiryReminderBanner from "@/components/ExpiryReminderBanner";
 import ExchangeRateBar from "@/components/ExchangeRateBar";
 import SgConditionsBar from "@/components/SgConditionsBar";
 import SearchBar from "@/components/SearchBar";
+import HeroBanners from "@/components/HeroBanners";
 import { CATEGORY_STYLE } from "@/components/CategoryBadge";
 import CategoryTabs from "@/components/CategoryTabs";
 import {
@@ -105,6 +106,7 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
     <section className="-mx-4 sm:-mx-6">
       <div className="space-y-2 px-4 pt-1">
         <SearchBar locale={locale} />
+        <HeroBanners locale={locale} />
         <ExpiryReminderBanner />
         <SgConditionsBar />
         <ExchangeRateBar locale={locale} />

@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { PageHeader, Card } from "@/components/ui/Card";
 import { routing } from "@/i18n/routing";
 import PageCard from "@/components/ui/PageCard";
+import StatusMessage from "@/components/ui/StatusMessage";
 import { listLatestRates, formatRate, formatObservedAt } from "@/lib/exchangeRates";
+import { getMidMarketRate } from "@/lib/fxRate";
 
 const CHECK_LINKS = [
   { key: "kbzpay", label: "KBZPay", href: "https://www.kbzbank.com/" },
@@ -26,11 +28,39 @@ export default async function RatesPage({
 
   const t = await getTranslations("rates");
   const { data: rates } = await listLatestRates();
+  const official = await getMidMarketRate("MMK");
 
   return (
     <PageCard>
       <section className="space-y-5">
         <PageHeader eyebrow={t("pageBadge")} title={t("pageTitle")} subtitle={t("pageSubtitle")} />
+
+        {/* The official figure is shown because people will look it up anyway,
+            and knowing the gap exists is what stops someone being talked into
+            accepting it. It is never presented as the amount they will get. */}
+        {official ? (
+          <Card className="space-y-3">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <span className="text-xs font-semibold uppercase tracking-wide text-ink-subtle">
+                {t("officialLabel")}
+              </span>
+              {official.updatedAt ? (
+                <span className="text-xs text-ink-subtle">
+                  {t("officialUpdated", { time: official.updatedAt })}
+                </span>
+              ) : null}
+            </div>
+            <p className="text-2xl font-bold tabular-nums text-ink">
+              {t("officialValue", { rate: formatRate(official.rate, locale) })}
+            </p>
+            <StatusMessage variant="warning">
+              <span className="block space-y-1">
+                <span className="block font-semibold">{t("officialWarnTitle")}</span>
+                <span className="block">{t("officialWarnBody")}</span>
+              </span>
+            </StatusMessage>
+          </Card>
+        ) : null}
 
         <Card className="space-y-3">
           <div className="flex items-center justify-between gap-3">
