@@ -49,7 +49,12 @@
     "browseByCategory": "ခေါင်းစဉ်အလိုက် ရှာရန်",
     "eventsTitle": "လာမည့် အစီအစဉ်များ",
     "seeAllEvents": "အစီအစဉ်အားလုံး ကြည့်ရန်",
-    "noEventsYet": "လောလောဆယ် လာမည့် အစီအစဉ် မရှိသေးပါ။"
+    "noEventsYet": "လောလောဆယ် လာမည့် အစီအစဉ် မရှိသေးပါ။",
+    "shortcutsTitle": "အမြန်သုံး",
+    "feedEmpty": "သတင်း မတင်ရသေးပါ။ စိစစ်ပြီးသည်နှင့် ဒီနေရာတွင် ပေါ်လာပါမည်။",
+    "viewMore": "ပိုမို",
+    "formGeneralShort": "အထွေထွေ ဖောင်",
+    "formMaidShort": "အိမ်အကူ ဖောင်"
   },
   "news": {
     "badge": "နေ့စဉ် Update",

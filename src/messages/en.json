@@ -49,7 +49,12 @@
     "browseByCategory": "Browse by topic",
     "eventsTitle": "Coming up",
     "seeAllEvents": "See all events",
-    "noEventsYet": "No upcoming events listed right now."
+    "noEventsYet": "No upcoming events listed right now.",
+    "shortcutsTitle": "Quick access",
+    "feedEmpty": "No updates published yet. New items appear here once reviewed.",
+    "viewMore": "More",
+    "formGeneralShort": "General form",
+    "formMaidShort": "Maid form"
   },
   "news": {
     "badge": "Daily updates",
