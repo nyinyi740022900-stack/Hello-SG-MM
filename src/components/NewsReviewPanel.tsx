@@ -27,6 +27,8 @@ const CATEGORY_LABELS: Record<ContentCategory, string> = {
   health: "Health",
   community: "Community",
   education: "Training",
+  transport: "Transport",
+  jobs: "Jobs",
 };
 
 const manualSchema = z.object({

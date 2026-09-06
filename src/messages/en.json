@@ -66,7 +66,9 @@
       "legal": "Rights",
       "health": "Health",
       "community": "Community",
-      "education": "Training"
+      "education": "Training",
+      "transport": "Transport",
+      "jobs": "Jobs"
     },
     "allCategories": "All",
     "readMore": "Read more",
@@ -398,5 +400,29 @@
     "languagesLabel": "Languages",
     "freeLabel": "Free",
     "disclaimer": "Listings are for information only and are not an endorsement. Confirm opening hours and fees before visiting."
+  },
+  "conditions": {
+    "title": "Singapore now",
+    "tempRange": "{low}–{high}°C",
+    "humidity": "Humidity {low}–{high}%",
+    "psiLabel": "PSI",
+    "uvLabel": "UV",
+    "source": "NEA · updates through the day",
+    "hazeAdvice": "Air quality is poor. Limit long stretches of outdoor work, take breaks indoors, and wear a mask if you have one.",
+    "uvAdvice": "UV is very strong. Cover up, use sunscreen, and rest in shade when you can.",
+    "psiBand": {
+      "good": "Good",
+      "moderate": "Moderate",
+      "unhealthy": "Unhealthy",
+      "very_unhealthy": "Very unhealthy",
+      "hazardous": "Hazardous"
+    },
+    "uvBand": {
+      "low": "Low",
+      "moderate": "Moderate",
+      "high": "High",
+      "very_high": "Very high",
+      "extreme": "Extreme"
+    }
   }
 }

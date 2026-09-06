@@ -6,6 +6,7 @@ import GoogleAdSlot from "@/components/GoogleAdSlot";
 import ExpiryReminderBanner from "@/components/ExpiryReminderBanner";
 import PassportFormDownloads from "@/components/PassportFormDownloads";
 import ExchangeRateBar from "@/components/ExchangeRateBar";
+import SgConditionsBar from "@/components/SgConditionsBar";
 import CategoryBadge from "@/components/CategoryBadge";
 import { LinkButton } from "@/components/ui/Button";
 import {
@@ -78,6 +79,8 @@ export default async function HomePage({ params }: HomePageProps) {
           </span>
         </Link>
       ) : null}
+
+      <SgConditionsBar />
 
       <ExchangeRateBar locale={locale} />
 

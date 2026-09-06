@@ -11,7 +11,9 @@ export type ContentCategory =
   | "legal"
   | "health"
   | "community"
-  | "education";
+  | "education"
+  | "transport"
+  | "jobs";
 
 export const CONTENT_CATEGORIES: ContentCategory[] = [
   "mom_policy",
@@ -22,6 +24,8 @@ export const CONTENT_CATEGORIES: ContentCategory[] = [
   "health",
   "community",
   "education",
+  "transport",
+  "jobs",
 ];
 
 export type ContentItem = {

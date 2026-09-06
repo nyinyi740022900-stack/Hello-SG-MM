@@ -52,15 +52,58 @@ getting something wrong.
 | `health` | Clinics, medical insurance, MOM medical requirements, mental health support |
 | `community` | Myanmar community events, religious/festival gatherings, embassy notices, relief drives |
 | `education` | Skills training, language classes, certification, free courses for migrant workers |
+| `transport` | MRT/bus disruptions, planned closures, fare changes, new lines and stations |
+| `jobs` | Hiring notices and job fairs — official sources only, see the rule below |
 
 Pick the single most relevant category. If an item fits none of these cleanly, it is
 probably not for us.
+
+## Job postings — the strictest rule in this document
+
+Fake job offers are one of the most common and most damaging scams aimed at this
+audience. A worker who believes a fake listing can lose an agency fee, a passport,
+or their legal status. Treat this category as dangerous by default.
+
+**Only ever post:**
+- Openings on official government portals (MyCareersFuture, Workforce Singapore)
+- Job fairs and hiring events run by government agencies, MOM-licensed employment
+  agencies, embassies, or established NGOs
+- Government hiring schemes and their eligibility rules
+
+**Never post:**
+- An individual job advert from Facebook, Telegram, TikTok, WhatsApp or any group chat
+- Any listing that asks the worker to pay a fee, deposit, or "processing charge"
+- Any listing from an agency you cannot verify against MOM's licensed-agency register
+- Any listing with a personal phone number or personal account as the contact
+- Anything promising unusually high pay, guaranteed placement, or fast visas
+
+When in doubt, do not post it. A missed real opening costs nothing; one fake listing
+can cost someone everything they have. Where useful, point people to the official
+portal to search for themselves rather than reproducing a specific vacancy.
+
+## Transport
+
+Report planned and confirmed disruptions — track closures, early/late openings, bus
+service changes, fare revisions — from LTA, SMRT, SBS Transit, or reputable reporting
+on them. Say clearly which line/service, which stations, and the dates. Do not report
+live minute-by-minute delays: by the time an item is approved and published it is
+already wrong.
+
+## Weather, haze and UV
+
+Do **not** submit these as content items. Live readings come straight from NEA's
+public API and are rendered on the home page automatically. Only submit a
+weather-related item when there is genuine *news* — a prolonged haze episode with
+health advisories, a monsoon warning affecting outdoor work — and file it under
+`health`.
 
 ## Source credibility tiers
 
 **Tier 1 — official, always acceptable as sole source**
 `mom.gov.sg`, `tal.sg` / TADM, `police.gov.sg` / `scamalert.sg`, `cpf.gov.sg`,
-`ica.gov.sg`, `moh.gov.sg`, `myanmarembassy.sg`, `mwc.org.sg`
+`ica.gov.sg`, `moh.gov.sg`, `myanmarembassy.sg`, `mwc.org.sg`, `lta.gov.sg`,
+`smrt.com.sg`, `sbstransit.com.sg`, `nea.gov.sg`, `mycareersfuture.gov.sg`,
+`wsg.gov.sg`, `gov.sg` and `data.gov.sg`
 
 **Tier 2 — reputable, acceptable**
 Straits Times, CNA, TODAY, Mothership, Yahoo SG, and the migrant-worker NGOs
