@@ -76,7 +76,9 @@ export default async function RatesPage({
                   className="flex items-center justify-between rounded-xl border border-border bg-surface-muted p-3"
                 >
                   <div>
-                    <p className="font-medium text-ink">{t(`provider.${row.provider}`)}</p>
+                    <p className="font-medium text-ink">
+                      {row.source_name ?? t(`provider.${row.provider}`)}
+                    </p>
                     <p className="text-xs text-ink-subtle">{formatObservedAt(row.observed_at, locale)}</p>
                   </div>
                   <div className="text-right">

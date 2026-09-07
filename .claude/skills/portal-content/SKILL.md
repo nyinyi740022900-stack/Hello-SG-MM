@@ -273,16 +273,23 @@ Rates are the highest-risk content we carry: a wrong number costs someone money.
   for a genuinely notable move or a policy/channel change.
 
 **What the automated pipeline already does** (`src/lib/rateSync.server.ts`, run by
-`/api/cron/rates`): it records the official mid-market SGD rate for **INR, CNY, BDT
-and MYR** once a day. Do not duplicate those readings by hand.
+`/api/cron/rates`): two independent, unrelated syncs run daily. Do not duplicate
+either by hand.
 
-**MMK is deliberately excluded from that sync.** Myanmar's official rate sits far
-from what money changers and remittance services actually transact at — often close
-to half — so storing it beside genuinely transactable readings would tell a worker
-their family receives half what they will. It is surfaced separately and explicitly
-labelled the official rate. If you ever obtain a real observed street rate, submit it
-under its own provider with the time and place you observed it; never as the
-mid-market figure.
+- **INR, CNY, BDT, MYR** — the official mid-market SGD rate, provider `market`.
+  Reliable: a licensed remitter's rate sits a little under this.
+- **MMK** — SGD/MMK buy and sell from EG Currency (an independent, unverified rate
+  tracker), provider `other`. This exists because Myanmar's official rate sits far
+  from what money changers actually transact at — often close to half — so storing
+  it beside genuinely transactable readings would tell a worker their family
+  receives half what they will. EG Currency is not a bank or licensed remitter,
+  discloses no methodology, and its buy/sell ordering did not match a standard
+  dealer board when checked, so its number carries real reservations — which is why
+  it is recorded under `other`, not `market`, and every row states that in
+  `note_en`/`note_my`. If you obtain a genuinely better MMK reading (a bank, a
+  licensed remitter, an observed money-changer quote), submit it under its own
+  provider and source name — it does not need to compete with or replace the
+  automated EG Currency reading, multiple readings for the same day are fine.
 
 ## Submission format
 

@@ -14,10 +14,15 @@ import type { AppLocale } from "@/i18n/routing";
  *
  * MMK has no row from the feed. Every published SGD/MMK rate — the central
  * bank's, Wise's, XE's, this feed's — is the official one near 1,650, while
- * money changers deal near 3,250, and no public API carries the second number.
- * Rather than print a figure that would halve a worker's estimate of what their
- * family receives, the kyat row shows only an observed reading when we have one
- * and says plainly when we do not.
+ * money changers deal near 3,250+, and no bank or e-wallet in this corridor
+ * publishes the second number. So the kyat row is filled from an independent
+ * daily rate tracker instead (see lib/rateSync.server.ts for the reliability
+ * caveats that come with that), or from an admin's own observed reading when
+ * one is more recent, and says plainly when neither exists.
+ *
+ * Any observed reading — the kyat's or another currency's — names its source
+ * beneath the figure. A number with no named source reads as authoritative by
+ * default; naming where a reading came from is what lets someone weigh it.
  */
 export default async function ExchangeRatePanel({
   locale,
@@ -98,6 +103,11 @@ export default async function ExchangeRatePanel({
                       {formatRate(rate, locale)}
                     </p>
                     {age ? <p className="text-[11px] text-ink-subtle">{age}</p> : null}
+                    {recorded?.source_name ? (
+                      <p className="truncate text-[11px] text-ink-subtle">
+                        {recorded.source_name}
+                      </p>
+                    ) : null}
                   </>
                 ) : (
                   <p className="text-xs text-ink-subtle">{t("noMarketRate")}</p>

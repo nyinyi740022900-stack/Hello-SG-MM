@@ -29,6 +29,41 @@ const SYNCED_COUNTRIES: CountryCode[] = ["in", "cn", "bd", "my"];
 const SOURCE_NAME = "exchangerate-api.com (mid-market)";
 const SOURCE_URL = "https://www.exchangerate-api.com/";
 
+/**
+ * A daily reading of the kyat's street rate, from an independent aggregator.
+ *
+ * This is the "real observed street rate" the comment above promised: EG
+ * Currency publishes buy/sell figures for SGD/MMK in plain server-rendered
+ * HTML, refreshed daily, which is more than any bank or e-wallet in this
+ * corridor offers publicly.
+ *
+ * It is recorded with real reservations, and those reservations are stored
+ * alongside the number, not silently assumed away:
+ *
+ *  - The site discloses no methodology and its policy pages do not resolve,
+ *    so there is no way to independently confirm how the figure is derived.
+ *  - Its buy/sell ordering does not match a standard dealer board (buy came
+ *    out higher than sell on inspection), which is either a different
+ *    convention or a data quality issue we cannot tell apart from outside.
+ *  - It reads noticeably higher than the one number we manually verified
+ *    against a real remittance quote (Western Union, ~3,159 at the same
+ *    time this was checked).
+ *
+ * So it is stored under provider "other", not "market" — the four
+ * currencies under "market" come from a clean official mid-market feed, and
+ * grouping this beside them would borrow a confidence it has not earned.
+ * `is_visible` remains the kill switch if it turns out to be wrong.
+ */
+const EG_CURRENCY_URL = "https://egcurrency.com/en/currency/MMK/blackMarket";
+const EG_CURRENCY_NOTE_EN =
+  "From an independent rate-tracking site, not a bank or licensed remitter. " +
+  "Its methodology is not published and could not be independently confirmed. " +
+  "Treat as a rough indication only, and confirm the real rate in your provider's own app before you send.";
+const EG_CURRENCY_NOTE_MY =
+  "ဘဏ် သို့မဟုတ် လိုင်စင်ရ ငွေလွှဲကုမ္ပဏီ မဟုတ်ဘဲ သီးခြား ငွေလဲနှုန်း မှတ်တမ်းတင် site တစ်ခုမှ ရယူထားပါသည်။ " +
+  "ထိုနှုန်း ဘယ်လို တွက်ချက်သည်ကို site က ထုတ်ဖော်မထားပြီး သီးခြား အတည်ပြု၍ မရပါ။ " +
+  "ခန့်မှန်းချက်အနေဖြင့်သာ သတ်မှတ်ပြီး ငွေမပို့မီ သင့်ဝန်ဆောင်မှုပေးသူ၏ app တွင် တကယ့်နှုန်းကို အတည်ပြုပါ။";
+
 export type RateSyncResult = {
   inserted: number;
   skipped: string[];
@@ -130,5 +165,99 @@ export async function syncExchangeRates(): Promise<RateSyncResult> {
   }
 
   result.inserted = data?.length ?? 0;
+  return result;
+}
+
+/**
+ * Parse the SGD row out of EG Currency's server-rendered MMK page.
+ *
+ * No API is offered, so this reads the same static HTML markup a browser
+ * would — a `<td class="text-danger">` pair immediately after the row whose
+ * link text names Singapore Dollar. Deliberately narrow: if the site changes
+ * its markup this returns null rather than guessing, so a broken parse fails
+ * closed instead of inserting whatever number happens to be nearby.
+ */
+function parseSgdMmkRow(html: string): { buy: number; sell: number } | null {
+  const anchor = html.indexOf("Singapore Dollar");
+  if (anchor === -1) return null;
+
+  const window = html.slice(anchor, anchor + 600);
+  const cells = [...window.matchAll(/class="text-danger">([\d,]+\.\d+)</g)];
+  if (cells.length < 2) return null;
+
+  const buy = Number(cells[0][1].replace(/,/g, ""));
+  const sell = Number(cells[1][1].replace(/,/g, ""));
+  if (!Number.isFinite(buy) || !Number.isFinite(sell) || buy <= 0 || sell <= 0) {
+    return null;
+  }
+
+  // A currency-conversion sanity bound, not a claim about the true rate: it
+  // exists only to reject a parse that landed on the wrong number entirely
+  // (a different currency's row, a percentage, a stray figure), while still
+  // accepting whatever this volatile corridor's real rate turns out to be.
+  if (buy < 500 || buy > 20_000 || sell < 500 || sell > 20_000) return null;
+
+  return { buy, sell };
+}
+
+export async function syncMmkStreetRate(): Promise<RateSyncResult> {
+  const result: RateSyncResult = { inserted: 0, skipped: [], errors: [] };
+
+  const db = adminClient();
+  if (!db) {
+    result.errors.push("Supabase service role is not configured.");
+    return result;
+  }
+
+  let html: string;
+  try {
+    const response = await fetch(EG_CURRENCY_URL, {
+      cache: "no-store",
+      headers: { accept: "text/html" },
+    });
+    if (!response.ok) {
+      result.errors.push(`EG Currency responded ${response.status}.`);
+      return result;
+    }
+    html = await response.text();
+  } catch (error) {
+    logServerEvent("error", "mmk_street_rate_fetch_failed", {
+      reason: error instanceof Error ? error.message : "unknown",
+    });
+    result.errors.push("Could not reach EG Currency.");
+    return result;
+  }
+
+  const parsed = parseSgdMmkRow(html);
+  if (!parsed) {
+    result.skipped.push("SGD/MMK row not found or out of bounds on EG Currency");
+    return result;
+  }
+
+  const { error: insertError } = await db.from("exchange_rates").insert({
+    pair: "SGD_MMK",
+    provider: "other",
+    rate: parsed.buy,
+    rate_sell: parsed.sell,
+    source_url: EG_CURRENCY_URL,
+    source_name: "EG Currency",
+    observed_at: new Date().toISOString(),
+    note_en: EG_CURRENCY_NOTE_EN,
+    note_my: EG_CURRENCY_NOTE_MY,
+  });
+
+  if (insertError) {
+    // 23505: the unique index on (pair, provider, observed_at) — harmless,
+    // just means this has already run once for this exact timestamp.
+    if (insertError.code !== "23505") {
+      logServerEvent("error", "mmk_street_rate_insert_failed", {
+        reason: insertError.message,
+      });
+      result.errors.push(insertError.message);
+    }
+    return result;
+  }
+
+  result.inserted = 1;
   return result;
 }

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { syncExchangeRates } from "@/lib/rateSync.server";
+import { syncExchangeRates, syncMmkStreetRate } from "@/lib/rateSync.server";
 import { logServerEvent } from "@/lib/serverLogger";
 
 /**
@@ -25,13 +25,26 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
 
-  const result = await syncExchangeRates();
+  // Two independent sources, kept as two calls: a parsing failure on the
+  // MMK side must never stop the four currencies that already work from
+  // updating, and vice versa.
+  const [feed, mmkStreet] = await Promise.all([syncExchangeRates(), syncMmkStreetRate()]);
 
-  if (result.errors.length > 0) {
-    logServerEvent("error", "cron_rates_failed", { reason: result.errors.join("; ") });
-    return NextResponse.json({ status: "error", ...result }, { status: 500 });
+  const combined = {
+    inserted: feed.inserted + mmkStreet.inserted,
+    skipped: [...feed.skipped, ...mmkStreet.skipped],
+    errors: [...feed.errors, ...mmkStreet.errors],
+    feed,
+    mmkStreet,
+  };
+
+  if (feed.errors.length > 0 || mmkStreet.errors.length > 0) {
+    logServerEvent("error", "cron_rates_failed", {
+      reason: combined.errors.join("; "),
+    });
+    return NextResponse.json({ status: "error", ...combined }, { status: 500 });
   }
 
-  logServerEvent("info", "cron_rates_ok", { inserted: result.inserted });
-  return NextResponse.json({ status: "ok", ...result });
+  logServerEvent("info", "cron_rates_ok", { inserted: combined.inserted });
+  return NextResponse.json({ status: "ok", ...combined });
 }
