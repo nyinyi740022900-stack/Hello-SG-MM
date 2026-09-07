@@ -33,15 +33,17 @@ export default async function ExchangeRatePanel({
 }) {
   const t = await getTranslations("rates");
 
-  const feedRates = await getMarketRates();
+  // The feed call and the database read do not depend on each other, so they
+  // go out together — awaiting them in sequence added the slower one's
+  // latency to the faster one's for no reason.
+  //
+  // The database read is one query for every pair: a query per currency meant
+  // five round trips before this panel could paint.
+  const [feedRates, observedByPair] = await Promise.all([
+    getMarketRates(),
+    listLatestRatesByPair(COUNTRIES.map((country) => `SGD_${country.currency}`)),
+  ]);
   const feedByCurrency = new Map(feedRates.map((rate) => [rate.currency, rate]));
-
-  // Observed money-changer readings, which is the only place a kyat rate can
-  // come from. One query for every pair: this renders on the home page, and a
-  // query per currency meant five round trips before anything could paint.
-  const observedByPair = await listLatestRatesByPair(
-    COUNTRIES.map((country) => `SGD_${country.currency}`),
-  );
 
   const feedUpdatedAt = feedRates[0]?.updatedAt ?? null;
 

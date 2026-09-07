@@ -12,6 +12,38 @@ import { AuthProvider } from "@/context/AuthContext";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 
+/**
+ * The message namespaces that client components actually read.
+ *
+ * `NextIntlClientProvider` serialises whatever it is given into the HTML of
+ * every page. Handing it the whole catalogue meant shipping around 29KB of
+ * translations to the browser on each request — 31KB in Myanmar, the largest
+ * file — when most of those namespaces are only ever read by server
+ * components, which do not need them on the client at all.
+ *
+ * This list is derived from every `useTranslations("…")` call in a file
+ * marked "use client". **A client component reading a namespace missing from
+ * this list will throw at runtime**, so add to it in the same commit that adds
+ * the component.
+ */
+const CLIENT_NAMESPACES = [
+  "ads",
+  "auth",
+  "common",
+  "country",
+  "expiryReminder",
+  "formDownloads",
+  "home",
+  "legal",
+  "menu",
+  "news",
+  "recruitmentFee",
+  "salaryLog",
+  "search",
+  "translation",
+  "wizard",
+] as const;
+
 type LocaleLayoutProps = {
   children: ReactNode;
   params: Promise<{ locale: string }>;
@@ -27,7 +59,10 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  const messages = await getMessages();
+  const allMessages = await getMessages();
+  const messages = Object.fromEntries(
+    CLIENT_NAMESPACES.filter((ns) => ns in allMessages).map((ns) => [ns, allMessages[ns]]),
+  );
   const tCommon = await getTranslations("common");
   const tLegal = await getTranslations("legal");
   const resolvedLocale = locale as AppLocale;

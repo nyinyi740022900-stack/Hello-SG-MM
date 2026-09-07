@@ -5,7 +5,9 @@ import { PageHeader, Card } from "@/components/ui/Card";
 import { routing } from "@/i18n/routing";
 import PageCard from "@/components/ui/PageCard";
 import { listLatestRates, formatRate, formatObservedAt } from "@/lib/exchangeRates";
+import { Suspense } from "react";
 import ExchangeRatePanel from "@/components/ExchangeRatePanel";
+import { RatePanelSkeleton } from "@/components/PanelSkeleton";
 import { resolveSelectedCountry, getSelectedCountryCode } from "@/lib/country.server";
 
 /**
@@ -39,8 +41,12 @@ export default async function RatesPage({
   }
 
   const t = await getTranslations("rates");
-  const country = await resolveSelectedCountry();
-  const selectedCountry = await getSelectedCountryCode();
+  // Both cookie reads and the query are independent; awaiting them one after
+  // another only stacked their latency.
+  const [country, selectedCountry] = await Promise.all([
+    resolveSelectedCountry(),
+    getSelectedCountryCode(),
+  ]);
   const { data: rates } = await listLatestRates(`SGD_${country.currency}`);
 
 
@@ -58,7 +64,10 @@ export default async function RatesPage({
           subtitle={t("pageSubtitle")}
         />
 
-        <ExchangeRatePanel locale={locale} selectedCountry={selectedCountry} />
+        {/* Waits on an external rate feed; the rest of the page does not. */}
+        <Suspense fallback={<RatePanelSkeleton />}>
+          <ExchangeRatePanel locale={locale} selectedCountry={selectedCountry} />
+        </Suspense>
 
         <Card className="space-y-3">
           <div className="flex items-center justify-between gap-3">

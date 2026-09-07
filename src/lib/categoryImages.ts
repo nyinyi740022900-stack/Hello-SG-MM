@@ -23,12 +23,25 @@ const EXTENSIONS = [".webp", ".png", ".jpg", ".svg"];
 export type CategoryImageMap = Partial<Record<ContentCategory, string>>;
 
 /**
+ * Resolved once per server process, not once per request.
+ *
+ * These files ship with the deployment and cannot change while the process is
+ * alive, but the lookup was running on every render: twelve categories times
+ * four extensions is up to forty-eight synchronous `existsSync` calls, on the
+ * critical path, before the feed could be sent. Caching the answer makes every
+ * request after the first one free.
+ */
+let cachedMap: CategoryImageMap | null = null;
+
+/**
  * Resolve which categories currently have artwork.
  *
  * Called once per render rather than per row: this touches the filesystem, and
  * a feed of thirty items should not mean thirty stat calls.
  */
 export function getCategoryImages(): CategoryImageMap {
+  if (cachedMap) return cachedMap;
+
   const map: CategoryImageMap = {};
 
   for (const category of CONTENT_CATEGORIES) {
@@ -45,5 +58,6 @@ export function getCategoryImages(): CategoryImageMap {
     }
   }
 
+  cachedMap = map;
   return map;
 }

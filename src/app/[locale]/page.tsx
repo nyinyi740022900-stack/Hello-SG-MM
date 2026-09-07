@@ -5,7 +5,9 @@ import { Link } from "@/i18n/navigation";
 import AdBanner from "@/components/AdBanner";
 import GoogleAdSlot from "@/components/GoogleAdSlot";
 import ExpiryReminderBanner from "@/components/ExpiryReminderBanner";
+import { Suspense } from "react";
 import ExchangeRatePanel from "@/components/ExchangeRatePanel";
+import { ConditionsSkeleton, RatePanelSkeleton } from "@/components/PanelSkeleton";
 import { getSelectedCountryCode } from "@/lib/country.server";
 import SgConditionsBar from "@/components/SgConditionsBar";
 import SearchBar from "@/components/SearchBar";
@@ -64,18 +66,23 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
   const homeAdSlot = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_HOME_SLOT_ID;
   const isMy = locale === "my";
 
-  const { data: allNews } = await listPublishedContent({
-    type: "news",
-    category: activeCategory,
-    limit: 60,
-  });
+  // One round trip, not two. These are independent queries and awaiting them
+  // in sequence put the second one's latency directly on the critical path
+  // before any HTML could be sent.
+  const [{ data: allNews }, { data: upcomingEvents }] = await Promise.all([
+    // Twenty-four, not sixty. Every row is real DOM the phone has to lay out
+    // and hydrate before it will respond to a tap, and nobody scrolls sixty
+    // headlines in a sitting — the extra thirty-six were costing responsiveness
+    // on exactly the low-end phones most readers use.
+    listPublishedContent({ type: "news", category: activeCategory, limit: 24 }),
+    listUpcomingEvents(3),
+  ]);
   const news = allNews ?? [];
   // Urgent items stay visible under every filter: an active safety warning is
   // not something to hide because the reader is browsing a different topic.
   const urgentItem = news.find((item) => item.priority === "urgent") ?? null;
   const feed = news.filter((item) => item.id !== urgentItem?.id);
 
-  const { data: upcomingEvents } = await listUpcomingEvents(3);
   const events = upcomingEvents ?? [];
 
   const categoryImages = getCategoryImages();
@@ -108,8 +115,18 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
       <div className="space-y-2 px-4 pt-1">
         <SearchBar locale={locale} />
         <ExpiryReminderBanner />
-        <SgConditionsBar />
-        <ExchangeRatePanel locale={locale} selectedCountry={selectedCountry} />
+        {/* Both of these wait on third-party APIs — NEA for weather and haze,
+            an exchange rate feed for the panel. Without a boundary here the
+            news feed, which is the reason the page exists and comes straight
+            from our own database, could not be sent until the slowest of
+            those replied. Now the shell and the feed paint first and these
+            fill in. */}
+        <Suspense fallback={<ConditionsSkeleton />}>
+          <SgConditionsBar />
+        </Suspense>
+        <Suspense fallback={<RatePanelSkeleton />}>
+          <ExchangeRatePanel locale={locale} selectedCountry={selectedCountry} />
+        </Suspense>
       </div>
 
       {/* One scrolling rail rather than a grid. A grid of twelve shortcuts cost
