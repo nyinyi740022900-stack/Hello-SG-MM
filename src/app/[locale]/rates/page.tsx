@@ -11,12 +11,13 @@ import { resolveSelectedCountry, getSelectedCountryCode } from "@/lib/country.se
 /**
  * Where to check a live rate.
  *
- * Deliberately one link. We used to also name KBZPay and Wave Money for
- * Myanmar readers, but their published rates are not what people actually
- * transact at, so sending someone there to "check the rate" pointed them at a
- * number they could not get. The MAS register is different in kind: it does
- * not quote a rate at all, it tells you whether a company is licensed, which
- * is the check that protects the money.
+ * Deliberately one link. No Myanmar bank or e-wallet publishes a daily,
+ * verifiable rate we can point someone to with confidence — every source we
+ * checked was either a static archive, an unexplained figure, or an internal
+ * API not meant for this kind of use. The MAS register is different in kind:
+ * it does not quote a rate at all, it tells you whether a company is
+ * licensed, which is the check that protects the money regardless of which
+ * currency you are sending.
  */
 const CHECK_LINKS = [
   {
