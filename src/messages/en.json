@@ -24,15 +24,15 @@
   "home": {
     "badge": "Free for all workers",
     "title": "Passport Renewal Helper",
-    "subtitle": "Simple steps for Myanmar workers in Singapore.",
+    "subtitle": "Everyday help for life and work in Singapore.",
     "ctaStart": "Start Wizard",
     "ctaChecklist": "Open Checklist",
     "quickChecklist": "Passport Checklist",
     "quickEmergency": "Emergency Contacts",
-    "quickGuide": "Myanmar Guide",
+    "quickGuide": "Passport Guide",
     "quickAccountsGuide": "Essential Accounts",
     "sponsorLabel": "Our Sponsors",
-    "sponsorHeadline": "Supporting Myanmar Workers Abroad",
+    "sponsorHeadline": "Supporting Migrant Workers in Singapore",
     "sponsorDescription": "This app is free thanks to our community sponsors. Check out services that help migrant workers thrive.",
     "sponsorCta": "View Sponsors",
     "toolsSectionTitle": "Financial & Evidence Tools",
@@ -44,7 +44,7 @@
     "toolRestDay": "Rest Day Rights",
     "toolRestDayHint": "Know your weekly rest day entitlement",
     "toolOffDayGuide": "Off-Day Guide",
-    "toolOffDayGuideHint": "Where Myanmar workers gather in Singapore",
+    "toolOffDayGuideHint": "Community places to go on a rest day",
     "urgentLabel": "Important",
     "topNewsTitle": "Latest updates",
     "seeAllNews": "See all news",
@@ -66,8 +66,8 @@
     "sourceLink": "Read source",
     "disclaimer": "Updates are researched daily and reviewed by an admin before publishing, but always confirm important decisions (visa, legal, large payments) with the official source directly.",
     "category": {
-      "mom_policy": "MOM Policy",
-      "embassy": "Embassy",
+      "mom_policy": "Work & Pass",
+      "embassy": "Consular",
       "safety_scam": "Scam Alert",
       "finance": "Money",
       "legal": "Rights",
@@ -75,7 +75,9 @@
       "community": "Community",
       "education": "Training",
       "transport": "Transport",
-      "jobs": "Jobs"
+      "jobs": "Jobs",
+      "housing": "Housing",
+      "cost_of_living": "Cost of Living"
     },
     "allCategories": "All",
     "readMore": "Read more",
@@ -155,7 +157,7 @@
   },
   "guide": {
     "badge": "Free",
-    "title": "Myanmar Step-by-Step Guide",
+    "title": "Passport Renewal — Myanmar",
     "subtitle": "Follow these steps before you submit your passport renewal.",
     "steps": {
       "checkExpiry": "Check your passport's remaining validity first.",
@@ -165,7 +167,7 @@
       "reviewBeforeSubmit": "Review all details once more before you submit."
     },
     "sponsorLabel": "Community Partner",
-    "sponsorHeadline": "Need Help with Documents?",
+    "sponsorHeadline": "Supporting Migrant Workers in Singapore",
     "sponsorDescription": "Our partners offer assistance with passport applications and document preparation for Myanmar workers.",
     "sponsorCta": "Get Help"
   },
@@ -282,7 +284,7 @@
   "offDayGuide": {
     "badge": "Free",
     "title": "Off-Day Guide",
-    "subtitle": "Real places in Singapore where the Myanmar community gathers, shops, and connects on rest days.",
+    "subtitle": "Real places in Singapore where migrant communities gather, shop and connect on rest days.",
     "locations": {
       "peninsulaPlaza": {
         "name": "Peninsula Plaza (\"Little Myanmar\")",
@@ -295,10 +297,27 @@
       "farrerPark": {
         "name": "Farrer Park / Stamford Road area",
         "description": "An informal Sunday gathering spot near Little India where many Myanmar workers meet friends on their day off."
+      },
+      "tekkaCentre": {
+        "name": "Tekka Centre, Little India",
+        "description": "A wet market and hawker centre at the exit of Little India MRT, and the centre of Sunday life for South Asian workers — cheap food, money transfer shops, phone top-ups and the crowds along Serangoon Road. Open daily 6.30am–9pm."
+      },
+      "bangladeshSquare": {
+        "name": "\"Bangladesh Square\", Desker Road",
+        "description": "The junction of Desker Road and Lembu Road, long known as the main Sunday meeting point for Bangladeshi workers. Busiest on Sunday evenings, with food stalls and Bengali groceries in the surrounding streets."
+      },
+      "mustafa": {
+        "name": "Mustafa Centre",
+        "description": "A 24-hour department store near Farrer Park MRT, used for everything from groceries and phone cards to gold and remittance. Open at any hour, which matters if your rest day starts late."
+      },
+      "peoplesPark": {
+        "name": "People's Park Complex, Chinatown",
+        "description": "A mall beside Chinatown MRT that is the main gathering point for workers from mainland China — regional Chinese food, money changers, remittance counters and travel agencies under one roof."
       }
     },
     "openInMaps": "Open in Google Maps",
-    "sourceDisclaimer": "Locations are widely documented community gathering spots, not official recommendations. Please travel safely and let someone know your plans on your day off."
+    "sourceDisclaimer": "Locations are widely documented community gathering spots, not official recommendations. Please travel safely and let someone know your plans on your day off.",
+    "noPlacesYet": "We don't have {country} community places listed yet. Many Malaysians here live across the island rather than gathering in one area, so there is no single hub to point to — if you know one worth adding, tell us."
   },
   "legal": {
     "privacyPolicy": "Privacy Policy",
@@ -370,7 +389,7 @@
     "maidButton": "Domestic Worker (Maid) Form"
   },
   "rates": {
-    "title": "SGD → MMK",
+    "title": "SGD → {currency}",
     "indicative": "Indicative only",
     "observedAt": "Checked {time}",
     "noData": "No rate recorded yet.",
@@ -384,7 +403,7 @@
       "other": "Other"
     },
     "pageBadge": "Money",
-    "pageTitle": "SGD to MMK exchange rates",
+    "pageTitle": "SGD to {currency} exchange rates",
     "pageSubtitle": "Indicative rates we have recorded, and where to check the real rate before you send money.",
     "latestTitle": "Latest recorded",
     "checkTitle": "Check the live rate yourself",
@@ -392,19 +411,20 @@
     "providersNote": "We are not affiliated with any provider and receive nothing if you use them.",
     "compareTitle": "Before you send",
     "compareFee": "Compare the total cost, not just the rate — a good rate with a high fee can be worse overall.",
-    "compareOfficial": "Myanmar requires a share of overseas wages to be remitted through official channels. Keep your transfer receipts.",
     "compareLicence": "Use a provider licensed by MAS. Unlicensed transfer means no recourse if the money disappears.",
-    "officialLabel": "Official rate",
-    "officialValue": "1 SGD = {rate} MMK",
-    "officialWarnTitle": "This is not what you will receive",
-    "officialWarnBody": "Myanmar's official rate and the rate money changers and remittance services actually use are far apart — often close to double. Use this only as a reference point, never to work out what your family will get. Check the amount in your provider's own app before you send.",
-    "officialUpdated": "Feed updated {time}",
-    "heroTitle": "Exchange rate"
+    "heroTitle": "Exchange rate",
+    "panelTitle": "Exchange rates",
+    "pairLabel": "SGD → {currency}",
+    "noMarketRate": "No market rate recorded",
+    "panelDisclaimer": "Indicative only. Rates for India, China, Bangladesh and Malaysia are the international mid-market rate — your provider's rate after fees will be lower. Myanmar is shown only when we have a recorded money-changer rate, because the published official rate is far from what remittances actually convert at. Always confirm in your provider's own app before you send.",
+    "rateValue": "1 SGD = {rate} {currency}",
+    "feedUpdated": "Updated {time}",
+    "compareOfficial": "Myanmar requires a share of overseas wages to be remitted through official channels. Keep your transfer receipts."
   },
   "events": {
     "badge": "Community",
     "title": "Events & Gatherings",
-    "subtitle": "Myanmar community events, embassy notices and gatherings in Singapore. Confirm details with the organiser before you travel.",
+    "subtitle": "Community events, consular notices and gatherings in Singapore. Confirm details with the organiser before you go.",
     "empty": "No upcoming events listed right now. Check back soon.",
     "whenLabel": "When",
     "whereLabel": "Where",
@@ -523,5 +543,18 @@
     "reportSending": "Sending…",
     "reportThanks": "Thank you — we will look at this.",
     "reportError": "Could not send. Please try again later."
+  },
+  "country": {
+    "switcherLabel": "Home country",
+    "choosePrompt": "Country",
+    "menuHint": "Choose your home country",
+    "missionInSingapore": "Your country's mission in Singapore",
+    "addressLabel": "Address",
+    "phoneLabel": "Phone",
+    "consularServices": "Passport & consular services",
+    "officialSite": "Official website",
+    "verifyNote": "Fees, opening hours and required documents change without notice. Always confirm on the mission's own website before you travel there.",
+    "noGuideTitle": "No {country} passport guide yet",
+    "noGuideBody": "Our step-by-step checklist and forms were checked against the Myanmar embassy's own guidance, so we won't reuse them for another country and risk sending you with the wrong documents. Use the official links above instead — we're working on adding more countries."
   }
 }

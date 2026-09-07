@@ -4,13 +4,42 @@ import AdBanner from "@/components/AdBanner";
 import GoogleAdSlot from "@/components/GoogleAdSlot";
 import { PageHeader, Card } from "@/components/ui/Card";
 import PageCard from "@/components/ui/PageCard";
+import StatusMessage from "@/components/ui/StatusMessage";
+import CountryMissionCard from "@/components/CountryMissionCard";
+import { resolveSelectedCountry } from "@/lib/country.server";
 
 const STEP_KEYS = ["checkExpiry", "gatherDocuments", "checkAppointment", "fillSample", "reviewBeforeSubmit"] as const;
 
-export default async function MyanmarGuidePage() {
+export default async function PassportGuidePage() {
   const t = await getTranslations("guide");
+  const tCountry = await getTranslations("country");
+  const country = await resolveSelectedCountry();
   const adSenseClientId = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID;
   const guideAdSlot = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_GUIDE_SLOT_ID;
+
+  // These five steps were written from the Myanmar embassy's own guidance and
+  // reference its forms and its tax receipt. Another country's process differs
+  // at almost every step, so showing them under a Bangladeshi or Malaysian
+  // reader's flag would be inventing a procedure we have never checked — the
+  // same reason /passport/checklist and /passport/wizard are gated.
+  if (!country.hasLocalPassportGuide) {
+    return (
+      <PageCard>
+        <section className="space-y-5">
+          <PageHeader eyebrow={t("badge")} title={t("title")} />
+          <CountryMissionCard country={country} />
+          <StatusMessage variant="info">
+            <span className="block space-y-1">
+              <span className="block font-medium">
+                {tCountry("noGuideTitle", { country: country.englishName })}
+              </span>
+              <span className="block">{tCountry("noGuideBody")}</span>
+            </span>
+          </StatusMessage>
+        </section>
+      </PageCard>
+    );
+  }
 
   return (
     <PageCard>

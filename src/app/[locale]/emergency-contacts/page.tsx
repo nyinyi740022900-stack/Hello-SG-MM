@@ -5,6 +5,7 @@ import { routing } from "@/i18n/routing";
 import { PageHeader } from "@/components/ui/Card";
 import { PhoneAlertIcon } from "@/components/icons";
 import PageCard from "@/components/ui/PageCard";
+import { resolveSelectedCountry } from "@/lib/country.server";
 
 const GROUPS = [
   {
@@ -22,11 +23,6 @@ const GROUPS = [
     urgent: false,
     contacts: [{ id: "mom", phone: "+6564385122", display: "+65 6438 5122" }],
   },
-  {
-    key: "embassy",
-    urgent: false,
-    contacts: [{ id: "embassy", phone: "+6567350209", display: "+65 6735 0209" }],
-  },
 ] as const;
 
 type EmergencyContactsPageProps = {
@@ -39,6 +35,8 @@ export default async function EmergencyContactsPage({ params }: EmergencyContact
     notFound();
   }
   const t = await getTranslations("emergency");
+  const tCountry = await getTranslations("country");
+  const country = await resolveSelectedCountry();
 
   const urgentGroups = GROUPS.filter((group) => group.urgent);
   const otherGroups = GROUPS.filter((group) => !group.urgent);
@@ -96,6 +94,38 @@ export default async function EmergencyContactsPage({ params }: EmergencyContact
                 </span>
               </a>
             ))}
+
+            {/* The reader's own mission, not a fixed one. This page is reached
+                by someone in trouble, and sending a Bangladeshi worker to the
+                Myanmar embassy's switchboard is the kind of mistake that costs
+                them the evening. Countries whose mission publishes no number
+                get a link to the mission instead of a dead tel: link. */}
+            <a
+              href={country.mission.phone
+                ? `tel:${country.mission.phone.replace(/\s/g, "")}`
+                : country.mission.url}
+              target={country.mission.phone ? undefined : "_blank"}
+              rel={country.mission.phone ? undefined : "noopener noreferrer"}
+              className="flex items-center justify-between gap-4 rounded-2xl border border-border bg-surface p-4 transition hover:border-brand-soft-border hover:bg-brand-soft"
+            >
+              <div className="flex items-center gap-3">
+                <span
+                  aria-hidden="true"
+                  className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-soft text-lg"
+                >
+                  {country.flag}
+                </span>
+                <div className="min-w-0">
+                  <p className="font-semibold text-ink">{country.mission.name}</p>
+                  <p className="text-xs text-ink-subtle">
+                    {tCountry("missionInSingapore")}
+                  </p>
+                </div>
+              </div>
+              <span className="shrink-0 font-bold tabular-nums text-brand-strong">
+                {country.mission.phone ?? tCountry("officialSite")}
+              </span>
+            </a>
           </div>
         </div>
       </section>

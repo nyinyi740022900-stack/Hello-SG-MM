@@ -5,7 +5,8 @@ import { Link } from "@/i18n/navigation";
 import AdBanner from "@/components/AdBanner";
 import GoogleAdSlot from "@/components/GoogleAdSlot";
 import ExpiryReminderBanner from "@/components/ExpiryReminderBanner";
-import ExchangeRateBar from "@/components/ExchangeRateBar";
+import ExchangeRatePanel from "@/components/ExchangeRatePanel";
+import { getSelectedCountryCode } from "@/lib/country.server";
 import SgConditionsBar from "@/components/SgConditionsBar";
 import SearchBar from "@/components/SearchBar";
 import HeroBanners from "@/components/HeroBanners";
@@ -51,6 +52,7 @@ const ITEMS_BETWEEN_ADS = 10;
 
 export default async function HomePage({ params, searchParams }: HomePageProps) {
   const { locale } = (await params) as { locale: AppLocale };
+  const selectedCountry = await getSelectedCountryCode();
   const { category: rawCategory } = await searchParams;
   // An unknown value falls back to "all" rather than erroring — a stale or
   // hand-edited link should still show the feed.
@@ -109,7 +111,7 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
         <HeroBanners locale={locale} />
         <ExpiryReminderBanner />
         <SgConditionsBar />
-        <ExchangeRateBar locale={locale} />
+        <ExchangeRatePanel locale={locale} selectedCountry={selectedCountry} />
       </div>
 
       {/* One scrolling rail rather than a grid. A grid of twelve shortcuts cost

@@ -13,7 +13,9 @@ export type ContentCategory =
   | "community"
   | "education"
   | "transport"
-  | "jobs";
+  | "jobs"
+  | "housing"
+  | "cost_of_living";
 
 export const CONTENT_CATEGORIES: ContentCategory[] = [
   "mom_policy",
@@ -26,6 +28,8 @@ export const CONTENT_CATEGORIES: ContentCategory[] = [
   "education",
   "transport",
   "jobs",
+  "housing",
+  "cost_of_living",
 ];
 
 export type ContentItem = {

@@ -19,6 +19,8 @@ const CATEGORY_STYLE: Record<ContentCategory, string> = {
   community: "bg-accent-soft text-accent",
   transport: "bg-brand-soft text-brand-strong",
   jobs: "bg-warning-soft text-warning",
+  housing: "bg-accent-soft text-accent",
+  cost_of_living: "bg-warning-soft text-warning",
 };
 
 export default async function CategoryBadge({

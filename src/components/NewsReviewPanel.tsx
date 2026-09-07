@@ -23,8 +23,8 @@ import FormField, { INPUT_CLASS } from "@/components/ui/FormField";
 import StatusMessage from "@/components/ui/StatusMessage";
 
 const CATEGORY_LABELS: Record<ContentCategory, string> = {
-  mom_policy: "MOM Policy",
-  embassy: "Embassy",
+  mom_policy: "Work & Pass",
+  embassy: "Consular",
   safety_scam: "Safety / Scam Alert",
   finance: "Money",
   legal: "Rights",
@@ -33,6 +33,8 @@ const CATEGORY_LABELS: Record<ContentCategory, string> = {
   education: "Training",
   transport: "Transport",
   jobs: "Jobs",
+  housing: "Housing",
+  cost_of_living: "Cost of Living",
 };
 
 const PRIORITY_LABELS: Record<ContentPriority, string> = {
