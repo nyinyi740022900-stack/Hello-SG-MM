@@ -16,7 +16,7 @@ import { supabase } from "@/lib/supabase";
  * that turns out to be wrong.
  */
 
-export type RateProvider = "kbzpay" | "wavepay" | "bank" | "market" | "other";
+export type RateProvider = "bank" | "market" | "other";
 
 export type ExchangeRate = {
   id: string;

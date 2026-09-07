@@ -396,8 +396,6 @@
     "perSgd": "per 1 SGD",
     "disclaimer": "Indicative rates collected from public sources — not a quote. Always confirm the exact rate with your provider before sending money.",
     "provider": {
-      "kbzpay": "KBZPay",
-      "wavepay": "WavePay",
       "bank": "Bank",
       "market": "Market",
       "other": "Other"
@@ -406,8 +404,8 @@
     "pageTitle": "SGD to {currency} exchange rates",
     "pageSubtitle": "Indicative rates we have recorded, and where to check the real rate before you send money.",
     "latestTitle": "Latest recorded",
-    "checkTitle": "Check the live rate yourself",
-    "checkIntro": "Rates move during the day and each provider sets its own. Always confirm the rate in the provider's own app before you send.",
+    "checkTitle": "Check the company is licensed",
+    "checkIntro": "Rates move during the day and every provider sets its own, so confirm the exact rate in the provider's own app before you send. What you can check here is more important: whether the company is licensed by MAS at all. If it is not on this list and your money goes missing, there is no regulator to complain to.",
     "providersNote": "We are not affiliated with any provider and receive nothing if you use them.",
     "compareTitle": "Before you send",
     "compareFee": "Compare the total cost, not just the rate — a good rate with a high fee can be worse overall.",

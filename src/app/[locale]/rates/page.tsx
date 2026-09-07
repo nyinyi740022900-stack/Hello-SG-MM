@@ -11,24 +11,20 @@ import { resolveSelectedCountry, getSelectedCountryCode } from "@/lib/country.se
 /**
  * Where to check a live rate.
  *
- * The MAS licensed-remitter register is the one link that matters for every
- * reader regardless of where they send money, so it is always shown. Named
- * providers are listed only for the country they serve — offering KBZPay to
- * someone remitting to Dhaka is noise that makes the useful link harder to
- * find.
+ * Deliberately one link. We used to also name KBZPay and Wave Money for
+ * Myanmar readers, but their published rates are not what people actually
+ * transact at, so sending someone there to "check the rate" pointed them at a
+ * number they could not get. The MAS register is different in kind: it does
+ * not quote a rate at all, it tells you whether a company is licensed, which
+ * is the check that protects the money.
  */
-const MAS_REGISTER = {
-  key: "mas",
-  label: "MAS licensed remittance list",
-  href: "https://eservices.mas.gov.sg/fid",
-};
-
-const COUNTRY_PROVIDER_LINKS: Record<string, { key: string; label: string; href: string }[]> = {
-  mm: [
-    { key: "kbzpay", label: "KBZPay", href: "https://www.kbzbank.com/" },
-    { key: "wavemoney", label: "Wave Money", href: "https://www.wavemoney.com.mm/" },
-  ],
-};
+const CHECK_LINKS = [
+  {
+    key: "mas",
+    label: "MAS licensed remittance list",
+    href: "https://eservices.mas.gov.sg/fid",
+  },
+];
 
 
 export default async function RatesPage({
@@ -46,7 +42,6 @@ export default async function RatesPage({
   const selectedCountry = await getSelectedCountryCode();
   const { data: rates } = await listLatestRates(`SGD_${country.currency}`);
 
-  const checkLinks = [...(COUNTRY_PROVIDER_LINKS[country.code] ?? []), MAS_REGISTER];
 
   // The mandatory-remittance rule is Myanmar's, not a general one. Showing it
   // to an Indian or Malaysian reader would assert a legal obligation on them
@@ -103,7 +98,7 @@ export default async function RatesPage({
           <h3 className="font-semibold text-ink">{t("checkTitle")}</h3>
           <p className="text-sm text-ink-muted">{t("checkIntro")}</p>
           <ul className="space-y-2">
-            {checkLinks.map(({ key, label, href }) => (
+            {CHECK_LINKS.map(({ key, label, href }) => (
               <li key={key}>
                 <a
                   href={href}

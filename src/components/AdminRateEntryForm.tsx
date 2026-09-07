@@ -145,7 +145,7 @@ export default function AdminRateEntryForm({
             maxLength={120}
             value={sourceName}
             onChange={(event) => setSourceName(event.target.value)}
-            placeholder="e.g. KBZPay app, or a changer at Peninsula Plaza"
+            placeholder="e.g. a money changer at Peninsula Plaza"
             className={field}
           />
         </label>
