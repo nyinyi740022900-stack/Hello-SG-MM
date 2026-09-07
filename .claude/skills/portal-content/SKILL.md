@@ -122,6 +122,26 @@ missing or vague ("later this month"), skip it rather than guessing.
   never anything charging a fee to attend a job-related event.
 - Extra fields: `startsAt` (required), `endsAt`, `locationName` (required), `address`.
 
+### Known event sources
+
+Checked directly (fetched, not just searched) so this list says what actually works,
+not what sounds like it should. Verify a source is still current before trusting it —
+this was checked 2026-09-07.
+
+| Source | URL | Reliable for | Notes |
+|---|---|---|---|
+| CDAC (Chinese) | `cdac.org.sg/events` | — | **Checked in full, corrected after an earlier wrong note here**: this listing is a past-events archive sorted newest-first, not a forward calendar — every entry visible on 2026-09-07 was already in the past, back to 2024. Do not source `event` items from it. If CDAC ever adds a genuinely upcoming item, its date would sort above today's date at the top of the same list, so it is worth a quick glance, but do not assume anything shown there is upcoming without checking the date against today. |
+| NHB Heritage Institutions | `heritageinstitutions.nhb.gov.sg/programmes-events/` | Major cross-community festivals (Deepavali, Hari Raya, CNY light-ups) | Static (Isomer-built gov site). The listing page names events but rarely gives date/venue directly — you must open each event's own page for those. |
+| ItsRainingRaincoats | `itsrainingraincoats.com/irr-eventsandinitiatives/` | Migrant-worker programmes | Static HTML, but describes **ongoing** programmes (a free store, recurring excursions), not dated one-off events. Do not invent a date for these — they may belong in `directory`, not `event`, unless a specific dated session is announced elsewhere on their site. |
+| Migrant Workers' Centre | `mwc.org.sg` | — | **No public forward events calendar found.** Their site covers standing services (already in `directory`). Check again periodically in case one is added, but do not force an event out of this source. |
+| People's Association | `pa.gov.sg/our-programmes/community-sports/latest-happenings/` | — | This is a **recap/highlights page**, not a forward calendar — it looks back at events that already happened. Do not source `event` items from it. |
+| NLB "What's On" | `nlb.gov.sg/main/whats-on` | Unverified | Could not confirm whether this loads via JavaScript from where these tools sit. If a fetch returns no event content, it likely needs a browser to render — skip rather than guess at what it might show. |
+| Missions (India, China, Bangladesh, Malaysia) | see `src/lib/countries.ts` | Consular notices, occasional cultural events | Already covered under `embassy`/`community` research. A dated event on a mission's own site is exactly the kind of item this category wants — name the country. |
+
+None of these cover Bangladesh- or Malaysia-specific community events directly (as
+opposed to consular notices). If you find a working source for either, add a row
+here rather than letting the next run re-discover it from scratch.
+
 **`directory`** — where to go for help. Standing services, not news: migrant worker
 centres, NGO helplines, free or subsidised clinics, government service counters,
 consular counters, MAS-licensed remittance outlets, legal aid clinics.
