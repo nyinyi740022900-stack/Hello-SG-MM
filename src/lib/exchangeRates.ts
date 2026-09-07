@@ -78,6 +78,42 @@ export async function listLatestRates(
 }
 
 /**
+ * Latest visible reading per pair, for several pairs at once.
+ *
+ * The home page shows every country's rate, and calling `listLatestRates`
+ * per currency meant five database round trips before the page could render —
+ * six with the hero banner. One query returns the same data: volume here is a
+ * handful of readings per day across all pairs, so a single recent window is
+ * cheaper than five narrow ones.
+ */
+export async function listLatestRatesByPair(
+  pairs: string[],
+): Promise<Map<string, ExchangeRate>> {
+  const latest = new Map<string, ExchangeRate>();
+  if (!supabase || pairs.length === 0) return latest;
+
+  const cutoff = new Date(Date.now() - MAX_AGE_DAYS * 24 * 60 * 60 * 1000).toISOString();
+
+  const { data, error } = await supabase
+    .from("exchange_rates")
+    .select(RATE_COLUMNS)
+    .in("pair", pairs)
+    .eq("is_visible", true)
+    .gte("observed_at", cutoff)
+    .order("observed_at", { ascending: false })
+    .limit(200)
+    .returns<ExchangeRate[]>();
+
+  if (error) return latest;
+
+  // Newest-first, so the first row seen for a pair is its latest reading.
+  for (const row of data ?? []) {
+    if (!latest.has(row.pair)) latest.set(row.pair, row);
+  }
+  return latest;
+}
+
+/**
  * Format a rate for display, at a precision the currency actually needs.
  *
  * Decimals are chosen by magnitude rather than fixed, because the five

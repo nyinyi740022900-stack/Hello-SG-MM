@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { COUNTRIES, type CountryCode } from "@/lib/countries";
 import { getMarketRates } from "@/lib/fxRate";
-import { listLatestRates, formatRate, formatObservedAt } from "@/lib/exchangeRates";
+import { listLatestRatesByPair, formatRate, formatObservedAt } from "@/lib/exchangeRates";
 import type { AppLocale } from "@/i18n/routing";
 
 /**
@@ -32,14 +32,11 @@ export default async function ExchangeRatePanel({
   const feedByCurrency = new Map(feedRates.map((rate) => [rate.currency, rate]));
 
   // Observed money-changer readings, which is the only place a kyat rate can
-  // come from. Fetched per currency because each is its own pair.
-  const observed = await Promise.all(
-    COUNTRIES.map(async (country) => {
-      const { data } = await listLatestRates(`SGD_${country.currency}`);
-      return [country.currency, data?.[0] ?? null] as const;
-    }),
+  // come from. One query for every pair: this renders on the home page, and a
+  // query per currency meant five round trips before anything could paint.
+  const observedByPair = await listLatestRatesByPair(
+    COUNTRIES.map((country) => `SGD_${country.currency}`),
   );
-  const observedByCurrency = new Map(observed);
 
   const feedUpdatedAt = feedRates[0]?.updatedAt ?? null;
 
@@ -58,7 +55,7 @@ export default async function ExchangeRatePanel({
       <ul className="mt-3 divide-y divide-border">
         {COUNTRIES.map((country) => {
           const feed = feedByCurrency.get(country.currency);
-          const recorded = observedByCurrency.get(country.currency);
+          const recorded = observedByPair.get(`SGD_${country.currency}`);
           const isSelected = country.code === selectedCountry;
 
           // An observed money-changer reading beats the feed wherever we have

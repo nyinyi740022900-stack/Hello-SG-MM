@@ -419,7 +419,8 @@
     "panelDisclaimer": "Indicative only. Rates for India, China, Bangladesh and Malaysia are the international mid-market rate — your provider's rate after fees will be lower. Myanmar is shown only when we have a recorded money-changer rate, because the published official rate is far from what remittances actually convert at. Always confirm in your provider's own app before you send.",
     "rateValue": "1 SGD = {rate} {currency}",
     "feedUpdated": "Updated {time}",
-    "compareOfficial": "Myanmar requires a share of overseas wages to be remitted through official channels. Keep your transfer receipts."
+    "compareOfficial": "Myanmar requires a share of overseas wages to be remitted through official channels. Keep your transfer receipts.",
+    "heroChooseCountry": "See rates for India, China, Bangladesh and Malaysia"
   },
   "events": {
     "badge": "Community",

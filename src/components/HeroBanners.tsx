@@ -4,7 +4,8 @@ import { WalletIcon } from "@/components/icons";
 import { getMarketRate } from "@/lib/fxRate";
 import { listLatestRates, formatRate } from "@/lib/exchangeRates";
 import type { AppLocale } from "@/i18n/routing";
-import { resolveSelectedCountry } from "@/lib/country.server";
+import { getSelectedCountryCode } from "@/lib/country.server";
+import { getCountry, DEFAULT_COUNTRY } from "@/lib/countries";
 
 /**
  * The rate for the reader's own country, above the feed.
@@ -20,7 +21,8 @@ import { resolveSelectedCountry } from "@/lib/country.server";
  */
 export default async function HeroBanners({ locale }: { locale: AppLocale }) {
   const tRates = await getTranslations("rates");
-  const country = await resolveSelectedCountry();
+  const selected = await getSelectedCountryCode();
+  const country = getCountry(selected ?? DEFAULT_COUNTRY);
 
   const { data: recorded } = await listLatestRates(`SGD_${country.currency}`);
   const observed = recorded?.[0] ?? null;
@@ -51,8 +53,12 @@ export default async function HeroBanners({ locale }: { locale: AppLocale }) {
             </span>
           </>
         ) : (
+          // The default country is Myanmar and the kyat has no recorded rate,
+          // so a reader who has not chosen a country would otherwise meet the
+          // page's most prominent element saying "no rate" — a dead banner on
+          // first visit. Point them somewhere useful instead of stating a gap.
           <span className="block truncate text-xs text-ink-muted">
-            {tRates("noMarketRate")}
+            {selected ? tRates("noMarketRate") : tRates("heroChooseCountry")}
           </span>
         )}
       </span>

@@ -70,6 +70,7 @@ export default function CountrySwitcher({
         aria-expanded={isOpen}
         aria-haspopup="listbox"
         aria-label={t("switcherLabel")}
+        aria-busy={isPending}
         disabled={isPending}
         className={[
           "inline-flex items-center gap-1.5 rounded-full border bg-surface px-2 py-1.5 text-xs font-semibold text-ink transition hover:border-brand disabled:opacity-60 sm:px-2.5",
@@ -79,7 +80,17 @@ export default function CountrySwitcher({
           current ? "border-border" : "border-brand text-brand-strong",
         ].join(" ")}
       >
-        <span aria-hidden="true">{current ? current.flag : "🌐"}</span>
+        {/* The refresh is a server round trip and takes a few seconds on a
+            phone. Without a visible change the control looks broken and people
+            tap again, so the flag becomes a spinner while it is in flight. */}
+        {isPending ? (
+          <span
+            aria-hidden="true"
+            className="inline-block h-3 w-3 animate-spin rounded-full border-2 border-current border-t-transparent motion-reduce:animate-none"
+          />
+        ) : (
+          <span aria-hidden="true">{current ? current.flag : "🌐"}</span>
+        )}
         {/* The label earns its width on a wide screen; on a phone it pushes
             the product name out of the header, so only the flag survives. */}
         <span className="hidden max-w-[5rem] truncate sm:inline">
