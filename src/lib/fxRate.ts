@@ -64,19 +64,6 @@ async function fetchFeed(): Promise<FeedPayload | null> {
   }
 }
 
-/** One currency's international rate, or null when we should not show one. */
-export async function getMarketRate(currency: string): Promise<MarketRate | null> {
-  if (!isFeedCurrency(currency)) return null;
-
-  const payload = await fetchFeed();
-  const rate = payload?.rates?.[currency];
-  if (typeof rate !== "number" || !Number.isFinite(rate) || rate <= 0) {
-    return null;
-  }
-
-  return { currency, rate, updatedAt: payload?.time_last_update_utc ?? null };
-}
-
 /** Every currency we may show a feed rate for, in the countries' own order. */
 export async function getMarketRates(): Promise<MarketRate[]> {
   const payload = await fetchFeed();

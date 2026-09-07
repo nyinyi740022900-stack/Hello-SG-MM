@@ -412,15 +412,12 @@
     "compareTitle": "Before you send",
     "compareFee": "Compare the total cost, not just the rate — a good rate with a high fee can be worse overall.",
     "compareLicence": "Use a provider licensed by MAS. Unlicensed transfer means no recourse if the money disappears.",
-    "heroTitle": "Exchange rate",
     "panelTitle": "Exchange rates",
     "pairLabel": "SGD → {currency}",
     "noMarketRate": "No market rate recorded",
     "panelDisclaimer": "Indicative only. Rates for India, China, Bangladesh and Malaysia are the international mid-market rate — your provider's rate after fees will be lower. Myanmar is shown only when we have a recorded money-changer rate, because the published official rate is far from what remittances actually convert at. Always confirm in your provider's own app before you send.",
-    "rateValue": "1 SGD = {rate} {currency}",
     "feedUpdated": "Updated {time}",
-    "compareOfficial": "Myanmar requires a share of overseas wages to be remitted through official channels. Keep your transfer receipts.",
-    "heroChooseCountry": "See rates for India, China, Bangladesh and Malaysia"
+    "compareOfficial": "Myanmar requires a share of overseas wages to be remitted through official channels. Keep your transfer receipts."
   },
   "events": {
     "badge": "Community",

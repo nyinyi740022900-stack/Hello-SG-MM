@@ -42,11 +42,13 @@ export default async function ExchangeRatePanel({
 
   return (
     <section
-      aria-label={t("panelTitle")}
+      aria-labelledby="exchange-rates-heading"
       className="rounded-2xl border border-border bg-surface p-4"
     >
       <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-        <h2 className="font-semibold text-ink">{t("panelTitle")}</h2>
+        <h2 id="exchange-rates-heading" className="font-semibold text-ink">
+          {t("panelTitle")}
+        </h2>
         <span className="rounded-full bg-warning-soft px-2 py-0.5 text-xs font-semibold text-warning">
           {t("indicative")}
         </span>
