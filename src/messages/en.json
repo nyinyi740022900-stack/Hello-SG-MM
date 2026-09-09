@@ -139,21 +139,251 @@
   "checklist": {
     "badge": "Free",
     "title": "Passport Renewal Checklist",
-    "subtitle": "Gather these before your embassy appointment.",
-    "items": {
-      "applicationForm": "Duly filled application form (use the Form Wizard below to prepare this)",
-      "cvForm": "CV Form (collected at the embassy on the day)",
-      "taxReceipt": "Original and a copy of your latest income tax payment receipt from the Myanmar Embassy",
-      "originalPassport": "Original passport and a copy (photo page and validity page)",
-      "workPermit": "Original and a copy of your Work Permit / S Pass / EP / PR card",
-      "photo": "One recent passport photo (taken within 6 months, white background, ears visible, no glasses)",
-      "dependentDocs": "If applying as a dependent: original and copy of Marriage Certificate / Birth Certificate / Household List"
+    "subtitle": "Everything the Myanmar Embassy in Singapore asks for: how to get an appointment, what to bring, what it costs, and how the counter runs on the day.",
+    "scamWarningTitle": "Appointments are free. Nobody can sell you one.",
+    "scamWarningBody": "The embassy has said it authorised no company or agent to arrange passport renewals for a fee, and that it runs no Facebook, Instagram or TikTok account. Anyone charging you for an appointment, or claiming to be embassy staff on social media, is not the embassy.",
+    "scamReportLink": "Report a paid appointment seller on the embassy WhatsApp {number}",
+    "embassyContact": {
+      "title": "Embassy — where and who to call",
+      "subtitle": "Tap the address for a map, or a number to call. The consular line is for Myanmar citizens; the visa line is for visa questions only.",
+      "addressLabel": "Embassy address",
+      "mapsHint": "Tap to open the map — nearest MRT is Napier.",
+      "phones": {
+        "consular": {
+          "name": "Consular line (Myanmar citizens)",
+          "hours": "Working days, 1.00pm–3.00pm"
+        },
+        "visa": {
+          "name": "Visa line",
+          "hours": "Visa questions only — not for passport appointments"
+        }
+      }
     },
+    "appointment": {
+      "title": "Step 1 — Get an appointment on WhatsApp",
+      "subtitle": "The website booking system is suspended. Appointments are arranged only through the embassy's own WhatsApp numbers, split by which pass you hold.",
+      "whatsappHint": "Tap to open WhatsApp",
+      "channels": {
+        "longTermPasses": {
+          "passes": "PR, Employment Pass, S Pass, Dependent Pass, Long Term Pass"
+        },
+        "workPermit": {
+          "passes": "Work Permit and Student Pass"
+        }
+      },
+      "steps": {
+        "chooseNumber": "Message the number for your own pass type. Sending to the wrong one usually means no reply.",
+        "sendCopies": "Send photos of your documents for checking — the passport data page, and the front and back of your pass card.",
+        "onePerPhone": "One appointment per phone number. To book for family from the same number, attach proof you are the same family.",
+        "dontRepeat": "Do not send the same request twice. Extra messages can send you back to the end of the waiting list.",
+        "checkList": "Watch for the approved list published on the embassy website every Friday, and find your name on it. Your date is usually about two weeks after you message.",
+        "comeOnDate": "Your date and time are fixed. Come on that date only — turning up on another day will not get you served."
+      },
+      "listLink": "Check this week's appointment list"
+    },
+    "documentsTitle": "Step 2 — What every applicant brings",
+    "documentsSubtitle": "Two copies, not one. The embassy rejects an application outright when an original is missing, and the officer can ask for more documents than are listed here.",
+    "items": {
+      "form": "The application form for your own pass type, filled in and signed — 2 copies. There is a different form for PR, EP, S Pass, Student Pass, Dependent Pass / LTVP, Work Permit, domestic helper and seaman.",
+      "photo": "One passport photo taken within the last 6 months: white background, ears visible, no glasses. Bring your own — the embassy does not take photos, though it will take another one there for the machine-readable passport.",
+      "passport": "Your passport: the original, plus 2 copies of the data page and the observations / endorsement pages.",
+      "passCard": "Your Work Permit, S Pass, EP, Student Pass or Dependent Pass card: the original plus 2 copies. PR holders bring the card with the Re-Entry Permit (Form 7).",
+      "myanmarIc": "Your Myanmar NRC (pink card): 2 copies.",
+      "taxReceipt": "Your income tax receipt from the embassy — original and a copy, if you have one. Never paid before? Do the tax payment first (see below).",
+      "cash": "Enough cash. The embassy takes cash only — no cards, no PayNow, no mobile payment of any kind."
+    },
+    "situationsTitle": "Extra documents, depending on who you are",
+    "situations": {
+      "dependent": "Applying as a dependent: household list, birth certificate or marriage certificate (original + 2 copies), plus the passport and IC of the person you depend on (originals + copies).",
+      "student": "Student Pass holder: your student pass (original + copy) and a recommendation letter from your school.",
+      "seaman": "Seaman: your CDC (original + copy) and your Basic Safety Training certificate (the 4 tickets).",
+      "permanentResident": "PR: the Re-Entry Permit (Form 7), and be ready to show an IRAS or company letter if asked.",
+      "pjType": "Holding a PJ-type passport, or changing away from one: originals and copies of your Work Permit, S Pass, EP or PR card with Re-Entry Form 7.",
+      "airTicketDeposit": "Myanmar woman married to a foreign national and applying as a dependent: the receipt for the S$500 return air-ticket deposit."
+    },
+    "visitTitle": "Step 3 — On the day",
+    "visitSubtitle": "The counter opens in the morning for submissions and reopens in the afternoon for collection. Closed on weekends and public holidays.",
+    "visit": {
+      "gettingThere": "15 St Martin's Drive, Singapore 257996. Nearest MRT: Napier (Thomson–East Coast Line). Leave extra time — the embassy is a walk from the station.",
+      "submission": "Submit your application in the morning: Monday to Friday, 8.30am to 12.00 noon.",
+      "collection": "Collect your finished passport in the afternoon: 3.00pm to 4.00pm.",
+      "cashOnly": "Bring cash. Cards and e-payment are not accepted for any consular service, including tax payment.",
+      "noPhotoService": "There is no photo service at the embassy — have your photo taken before you go.",
+      "originals": "Bring every original. Without them your application is rejected, and the consular officer may ask for documents beyond this list.",
+      "enquiryCalls": "Consular enquiry line for Myanmar citizens: +65 6735 2035, answered between 1pm and 3pm on working days.",
+      "openMap": "Open map to the embassy"
+    },
+    "fees": {
+      "title": "What it costs",
+      "subtitle": "Published embassy fees in Singapore dollars. These are the totals to bring, including surcharges.",
+      "otherTitle": "Other consular fees",
+      "items": {
+        "renewal": "Normal passport renewal",
+        "earlyRenewal": "Renewing while more than 1 year of validity remains",
+        "expiredOrDamaged": "Expired or damaged passport",
+        "expiredOverTwoYears": "Expired more than 2 years ago",
+        "lost": "Replacing a lost passport",
+        "certificateOfIdentity": "Certificate of Identity (COI)",
+        "letters": "Lost-passport and other embassy letters",
+        "newbornRecommendation": "Newborn recommendation letter",
+        "renounceLetter": "Letter of renouncement of citizenship",
+        "legalisation": "Legalisation of one Singapore-issued document (7 working days)"
+      },
+      "note": "Cash only. Fees are set by the embassy and can change — check the consular page before you go, and never pay a fee to anyone other than the embassy counter."
+    },
+    "tax": {
+      "title": "If you have never paid income tax at the embassy",
+      "subtitle": "Renewal asks for a tax receipt, so the tax payment often has to be done first. It is a separate, cash-only application at the same counter.",
+      "formLink": "Download the official tax form",
+      "items": {
+        "taxForm": "The tax application form, downloaded from the embassy website and filled in.",
+        "passportCopy": "A copy of your passport data page (bring the original too).",
+        "singaporeIcCopy": "A copy of your Singapore pass card — Work Permit, S Pass, EP or PR card.",
+        "myanmarIcCopy": "A copy of your Myanmar NRC, plus any earlier tax receipts you have."
+      }
+    },
+    "lost": {
+      "title": "If your passport is lost",
+      "subtitle": "This is a different application, and it starts with a Singapore police report, not at the embassy.",
+      "policeLink": "Lodge a Singapore police report",
+      "formLink": "Download the lost-passport form",
+      "items": {
+        "policeReport": "Make a Singapore police report first — online, or in person at a Neighbourhood Police Centre with your work pass — and bring the report with you.",
+        "twoForms": "Two copies of the personal history form, and two recent white-background photos.",
+        "oldPassportCopies": "Two copies each of the data page and the last endorsement page of the lost passport, plus your pass card (original + 2 copies).",
+        "householdList": "Two copies of your Myanmar NRC and two copies of your household list, front and back.",
+        "taxReceipt": "Your tax receipt, original and copy, if you have one.",
+        "seaman": "Seaman: CDC (original + copy) and Basic Safety Training certificates (the 4 tickets).",
+        "airTicketDeposit": "Married to a foreign national: the S$500 return air-ticket deposit receipt.",
+        "certificateOfIdentity": "Flying home soon? A Certificate of Identity must be applied for at least one week before departure."
+      }
+    },
+    "otherServices": {
+      "title": "Other consular services",
+      "subtitle": "Not a standard renewal? Each service has its own form and document list on the embassy site — download the form, then confirm the current list there before you go.",
+      "downloadForm": "Download the official form",
+      "seeConsular": "See the embassy consular page",
+      "items": {
+        "newborn": {
+          "name": "Newborn baby passport",
+          "hint": "Forms for both parents and the baby, plus birth and marriage certificates (original + 2 sets). S Pass and EP holders also need a company sponsor letter. A second application uses a different form — get it from the consular page."
+        },
+        "seamanToShore": {
+          "name": "Seaman passport to shore-job passport",
+          "hint": "Job assignment letter, CDC and 4 tickets, passport, Singapore stay-pass card, and tax receipts if any — 2 sets of the form."
+        },
+        "coi": {
+          "name": "Certificate of Identity",
+          "hint": "For a newborn or a lost passport, when you need to fly soon. Apply at least one week before departure and bring the air ticket."
+        },
+        "dependentLetter": {
+          "name": "Recommendation letter for being a dependent",
+          "hint": "Request form, your IC and passport, household list or birth/marriage certificate, and the sponsor's tax receipt."
+        },
+        "airTicketDeposit": {
+          "name": "Return air-ticket deposit (S$500)",
+          "hint": "For a Myanmar woman married to a foreign national. Bring the request form, both passports and ICs."
+        },
+        "airTicketRefund": {
+          "name": "Withdraw the air-ticket deposit",
+          "hint": "Allowed after divorce, change of nationality, returning to Myanmar for good, the husband's death, or after 3 years. Submit 9.00am–12.00 noon."
+        },
+        "legalisation": {
+          "name": "Legalisation of Singapore documents",
+          "hint": "Notarise in Singapore, then certify at the Singapore Academy of Law, then the embassy (S$50 cash per document, 7 working days). Submit 9.30am–12.00 noon at the information counter."
+        }
+      }
+    },
+    "forms": {
+      "title": "Download the official forms",
+      "subtitle": "Print, fill in by hand, sign, and bring two copies. The embassy website is always the current source.",
+      "embassyHint": "Direct downloads from the embassy website — including services we do not host a copy of:",
+      "items": {
+        "general": "Passport renewal — PR, EP, S Pass, Student, Dependent, Work Permit, Seaman (V1)",
+        "maid": "Passport renewal — domestic worker (V2)",
+        "lost": "Lost passport",
+        "tax": "Income tax",
+        "newborn": "Newborn passport",
+        "seamanToShore": "Seaman to shore-job",
+        "coi": "Certificate of Identity",
+        "dependent": "Dependent recommendation letter",
+        "airTicketDeposit": "Return air-ticket deposit",
+        "airTicketRefund": "Return air-ticket refund"
+      }
+    },
+    "prepareTitle": "The night before — pack this pile",
+    "prepare": {
+      "formSigned": "Two signed copies of the form for your own pass type.",
+      "copies": "Two copies of the passport data page, observations pages, pass card (front and back) and Myanmar NRC.",
+      "photo": "One recent white-background photo. The embassy will not take one for you.",
+      "cash": "Enough cash for the fee. No cards, no PayNow.",
+      "originals": "The original passport, pass card and any tax receipt. Missing originals mean a rejected application.",
+      "appointmentName": "Check that your name is on this week's approved list, and that you are going on that date only."
+    },
+    "officialLinksTitle": "Check the embassy's own pages before you go",
+    "officialLinksSubtitle": "Requirements, forms for each pass type and the weekly appointment list all live on the embassy website, and it is the only source that is always current.",
+    "officialLinkConsular": "Consular services and forms",
+    "officialLinkAppointments": "Appointment list",
+    "officialLinkContact": "Embassy contact details",
     "ctaGuide": "Read the Guide",
     "ctaWizard": "Start Form Wizard",
-    "sourceDisclaimer": "Based on the Myanmar Embassy Singapore's published application guidelines. Requirements can change — please confirm current requirements with the embassy before your appointment.",
+    "sourceDisclaimer": "Checked against the Myanmar Embassy Singapore's own consular page and homepage in September 2026. Requirements, fees and appointment channels change without notice — confirm on the embassy website, or on the consular enquiry line, before your appointment.",
     "remittanceWarningTitle": "Remittance rule that can affect your passport renewal",
-    "remittanceWarningBody": "Since September 2023, Myanmar requires citizens working abroad to remit at least 25% of foreign wages home through an official bank or licensed remittance provider (not informal channels like hundi). Reports indicate non-compliance can affect passport renewal — keep proof of your official remittances. See Updates for details."
+    "remittanceWarningBody": "Since September 2023, Myanmar requires citizens working abroad to remit at least 25% of foreign wages home through an official bank or licensed remittance provider (not informal channels like hundi). Reports indicate non-compliance can affect passport renewal — keep proof of your official remittances.",
+    "remittanceNewsLink": "Read the latest updates",
+    "labourNoticeLink": "Labour ministry notice on the embassy site",
+    "otherCountries": {
+      "title": "Official {country} passport pages",
+      "subtitle": "We have not checked this country's document list ourselves, so we send you to the mission's own pages rather than guess. Start there, and confirm fees and hours on the day you book.",
+      "in": {
+        "steps": {
+          "start": "Indian passports in Singapore are handled by BLS International, not at the High Commission counter itself.",
+          "book": "Book an appointment on the BLS Singapore site, then complete the online form and upload documents before you go.",
+          "confirm": "Walk-ins are limited. Appointment holders are served first — confirm the current rule on the BLS page before you travel."
+        }
+      },
+      "cn": {
+        "steps": {
+          "start": "Chinese passports are handled by the consular section of the Chinese Embassy in Singapore.",
+          "book": "Read the consular-services page for the current appointment method, fees and document list.",
+          "confirm": "Hours and document lists change. Confirm on the embassy site the day before you go."
+        }
+      },
+      "bd": {
+        "steps": {
+          "start": "Apply online at epassport.gov.bd first, using your NID or English-format birth registration.",
+          "book": "Then book a visit on the High Commission's e-appointment portal for biometrics and payment (NETS at the counter).",
+          "confirm": "Standard renewal is often 4–6 weeks. Collect the passport yourself, weekday afternoons — confirm hours on the mission site."
+        }
+      },
+      "my": {
+        "steps": {
+          "start": "Malaysian passports are renewed through the High Commission of Malaysia in Singapore.",
+          "book": "Use the High Commission's passport-renewal page for the current appointment system and document list.",
+          "confirm": "Fees, hours and required papers change. Confirm on that page before you take leave to go."
+        }
+      },
+      "links": {
+        "in": {
+          "bls": "BLS Singapore — book an appointment",
+          "renewal": "Passport renewal requirements",
+          "mission": "High Commission of India"
+        },
+        "cn": {
+          "consular": "Chinese Embassy — consular services",
+          "mission": "Chinese Embassy homepage"
+        },
+        "bd": {
+          "appointment": "Book a High Commission appointment",
+          "epassport": "Apply online at epassport.gov.bd",
+          "rules": "e-Passport application rules"
+        },
+        "my": {
+          "renewal": "Passport renewal at the High Commission",
+          "mission": "High Commission of Malaysia"
+        }
+      }
+    }
   },
   "guide": {
     "badge": "Free",
