@@ -351,6 +351,12 @@
         "description": "The indoor waterfall — the Rain Vortex — is free to see, and free to sit and watch. In the evening it becomes a light and music show. You do not need a flight or a ticket to go in. The Canopy Park playgrounds and walkways upstairs are the part that charges.",
         "food": "A very large food court in the basement at normal Singapore prices, plus every fast food chain.",
         "gettingThere": "Changi Airport MRT (CG2), then follow signs — Jewel connects directly to Terminal 1. Rain Vortex runs 10am–10pm."
+      },
+      "sentosa": {
+        "name": "Sentosa Island",
+        "description": "A whole island that can cost you nothing, or a lot, depending entirely on how you go. Walking in across the Boardwalk from VivoCity is free — Sentosa's own site lists the admission charge for walking in as FREE. Once you are on the island, the Sentosa Express monorail, the island buses and the beach shuttle are all free to use, and the three beaches (Siloso, Palawan, Tanjong) cost nothing. So a full day of beach, sea and walking is genuinely free.\n\nThe paid part is the attractions. Universal Studios starts around $76, the Oceanarium around $43, Adventure Cove around $29, Wings of Time around $22. None of them is needed for a good day out.\n\nNote: there is no Disneyland in Singapore — the theme park here is Universal Studios, on this island.",
+        "food": "Expensive at the resort side. Cheaper: eat at VivoCity's basement food court before you cross, or bring your own — the beaches allow picnics.",
+        "gettingThere": "HarbourFront MRT (NE1 / CC29), then VivoCity Lobby F on Level 1, and walk across the Boardwalk. Free, about 15 minutes. Part of the Boardwalk is closed for construction until around 2030 and walkers are redirected through a covered linkway — the route is still open, just signposted differently. The Sentosa Express from VivoCity costs $4 one way if you prefer to ride in."
       }
     },
     "openInMaps": "Open in Google Maps",

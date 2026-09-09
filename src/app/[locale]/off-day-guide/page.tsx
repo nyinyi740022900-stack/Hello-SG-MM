@@ -88,20 +88,38 @@ export default async function OffDayGuidePage({
     : true;
 
   const renderPlace = (place: OffDayPlace) => {
-    const photo = photos[place.key];
+    // A photo is shown only when its attribution travels with it. Every image
+    // here is Creative Commons licensed and naming the author is a condition
+    // of that licence, so a file without a credit block is treated as one we
+    // have no right to display.
+    const photo = place.photoCredit ? photos[place.key] : undefined;
 
     return (
       <Card key={place.key} className="space-y-2 overflow-hidden">
-        {photo ? (
-          <div className="relative -mx-4 -mt-4 mb-1 h-40 bg-surface-muted">
-            <Image
-              src={photo}
-              alt=""
-              fill
-              sizes="(min-width: 640px) 640px, 100vw"
-              className="object-cover"
-            />
-          </div>
+        {photo && place.photoCredit ? (
+          <figure className="-mx-4 -mt-4 mb-1">
+            <div className="relative h-44 bg-surface-muted">
+              <Image
+                src={photo}
+                alt=""
+                fill
+                sizes="(min-width: 640px) 640px, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="px-4 pt-1 text-[10px] text-ink-subtle">
+              <a
+                href={place.photoCredit.source}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-dotted underline-offset-2"
+              >
+                {place.photoCredit.author}
+              </a>
+              {" · "}
+              {place.photoCredit.license}
+            </figcaption>
+          </figure>
         ) : null}
 
         <div className="flex flex-wrap items-center gap-2">
