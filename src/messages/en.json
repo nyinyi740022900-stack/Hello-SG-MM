@@ -174,23 +174,120 @@
   "emergency": {
     "badge": "Save these numbers",
     "title": "Emergency Contacts",
-    "subtitle": "Tap a card to call immediately.",
+    "subtitle": "Tap any number to call it. The red numbers are for danger right now; below them are the helplines for salary, health, abuse and scam problems.",
     "tapToCall": "Tap to call",
-    "otherContacts": "Other Contacts",
-    "police": {
-      "name": "Police"
+    "urgentTitle": "Life-threatening emergency",
+    "officialPage": "Official page",
+    "whatsappLabel": "WhatsApp {number}",
+    "missionTitle": "Your embassy or high commission",
+    "missionSubtitle": "For a lost passport, a death in the family, or when you need your own government's help.",
+    "sections": {
+      "work": {
+        "title": "Work, salary and employer problems",
+        "subtitle": "Unpaid salary, no rest day, confiscated passport, illegal deployment, threats of repatriation."
+      },
+      "health": {
+        "title": "Health and mental health",
+        "subtitle": "Not life-threatening, but you are unwell, injured, or struggling to cope."
+      },
+      "safety": {
+        "title": "Abuse, violence and scams",
+        "subtitle": "When someone is hurting you or trying to take your money."
+      }
     },
-    "ambulanceFire": {
-      "name": "Ambulance / Fire"
+    "contacts": {
+      "police": {
+        "name": "Police",
+        "hint": "A crime, violence, or someone is in immediate danger.",
+        "smsHint": "Not safe to speak? Text 70999 — say what is happening and exactly where you are."
+      },
+      "ambulanceFire": {
+        "name": "Ambulance / Fire",
+        "hint": "Life-threatening injury or illness, fire, or someone trapped.",
+        "smsHint": "Deaf, hard of hearing or unable to speak? SCDF's emergency SMS is 70995."
+      },
+      "momMdw": {
+        "name": "MOM Helpline for Domestic Workers",
+        "hint": "For domestic workers in distress — abuse, not enough food, unpaid salary, no rest day.",
+        "hours": "Mon–Fri, 8.30am–5.30pm. From overseas: +65 6339 5505. Your call is kept confidential."
+      },
+      "mom": {
+        "name": "MOM Contact Centre",
+        "hint": "Ministry of Manpower — work pass questions and reports about salary, housing or illegal deployment.",
+        "hours": "Mon–Fri, 8.30am–5.30pm, except public holidays. Outside these hours, use the online form."
+      },
+      "mwc": {
+        "name": "Migrant Workers' Centre (MWC)",
+        "hint": "Salary disputes, workplace injury, repatriation and recruitment debt. Free legal advice at their Law Centre.",
+        "hours": "24 hours, in about 10 migrant worker languages."
+      },
+      "cde": {
+        "name": "Centre for Domestic Employees (CDE)",
+        "hint": "Advice and mediation for domestic workers, and temporary shelter if you cannot stay in the house.",
+        "hours": "24 hours."
+      },
+      "twc2": {
+        "name": "Transient Workers Count Too (TWC2)",
+        "hint": "Help with salary claims and injury cases, plus free meals and help finding a place to stay.",
+        "hours": "Phone: Mon–Fri, 9am–9pm. WhatsApp any time."
+      },
+      "home": {
+        "name": "HOME — Migrant Workers",
+        "hint": "Employment advice and legal aid for non-domestic workers cheated or exploited by an employer or agent.",
+        "hours": "Call, SMS or WhatsApp the same number. Help desk: 720 Geylang Road, Mon–Fri, 10am–5pm."
+      },
+      "homeMdw": {
+        "name": "HOME — Domestic Workers",
+        "hint": "Shelter, food and legal help if you are abused or exploited. Burmese-speaking help desk at Peninsula Plaza on Sundays.",
+        "hours": "Call, SMS or WhatsApp the same number."
+      },
+      "healthserve": {
+        "name": "HealthServe Crisis Helpline",
+        "hint": "Free counselling and medical help for migrant workers, with staff who speak your language.",
+        "hours": "24 hours. Also runs a low-cost clinic and dental clinic in Geylang."
+      },
+      "sos": {
+        "name": "Samaritans of Singapore (SOS)",
+        "hint": "If you feel hopeless or are thinking of ending your life, talk to someone now. Free and confidential.",
+        "hours": "24 hours. If you cannot talk, message CareText on WhatsApp instead."
+      },
+      "nurseFirst": {
+        "name": "NurseFirst",
+        "hint": "Sick but not an emergency, and unsure where to go? A nurse tells you which clinic to use.",
+        "hours": "For non-emergency medical advice. Cheaper than going to a hospital A&E."
+      },
+      "nonEmergencyAmbulance": {
+        "name": "Non-Emergency Ambulance",
+        "hint": "Transport to hospital when the condition is not life-threatening. A fee applies.",
+        "hours": "SCDF will close this line on 1 January 2027. Never use it for a life-threatening case — call 995."
+      },
+      "navh": {
+        "name": "National Anti-Violence and Sexual Harassment Helpline",
+        "hint": "Family violence, sexual harassment or abuse — including by an employer or a member of the household.",
+        "hours": "24 hours. If the danger is happening now, call 999 first."
+      },
+      "scamShield": {
+        "name": "ScamShield Helpline",
+        "hint": "Unsure whether a job offer, loan, agent fee or money request is a scam? Check before you pay anything.",
+        "hours": "24 hours. From overseas: +65 6869 1799."
+      },
+      "policeHotline": {
+        "name": "Police Hotline (non-urgent)",
+        "hint": "Give information or follow up on a case when nobody is in immediate danger.",
+        "hours": "If you are in danger right now, call 999 instead."
+      }
     },
-    "mom": {
-      "name": "MOM Helpline",
-      "hint": "Ministry of Manpower — work issues"
+    "prepareTitle": "Before you call",
+    "prepare": {
+      "location": "Say where you are first — block and unit number, road name, or the nearest MRT station or landmark. Help can be sent while you explain the rest.",
+      "what": "Then say what happened and whether anyone is hurt or bleeding.",
+      "identity": "Have your name, work permit or FIN number, and your employer's or dormitory's name ready.",
+      "interpreter": "Ask for an interpreter if English is difficult. 999, 995 and the worker helplines can find someone who speaks your language.",
+      "stay": "Stay on the line until the operator tells you it is fine to hang up.",
+      "airtime": "1800 numbers are free from a landline, but your mobile plan may still charge airtime.",
+      "save": "Save these numbers in your phone today. In an emergency you may have no data left to open this page."
     },
-    "embassy": {
-      "name": "Myanmar Embassy (Singapore)",
-      "hint": "Passport & consular services"
-    }
+    "verifiedNote": "Numbers checked against each organisation's own website in September 2026. Opening hours and services change, so the official page linked on each card is always the final word."
   },
   "wizard": {
     "badge": "Free",
