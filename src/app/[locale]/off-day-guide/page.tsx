@@ -98,12 +98,18 @@ export default async function OffDayGuidePage({
       <Card key={place.key} className="space-y-2 overflow-hidden">
         {photo && place.photoCredit ? (
           <figure className="-mx-4 -mt-4 mb-1">
-            <div className="relative h-44 bg-surface-muted">
+            {/* A fixed pixel height here stretched every photo into a thin
+                panorama on wide screens — this card has no max-width of its
+                own and can run to 1000px+ on desktop, so h-44 (176px) gave a
+                ~6:1 crop that cut off most of what the photo actually showed.
+                An aspect ratio scales proportionally instead: the photo stays
+                a normal landscape shape at any card width. */}
+            <div className="relative aspect-[3/2] bg-surface-muted sm:aspect-video">
               <Image
                 src={photo}
                 alt=""
                 fill
-                sizes="(min-width: 640px) 640px, 100vw"
+                sizes="(min-width: 1024px) 700px, (min-width: 640px) 640px, 100vw"
                 className="object-cover"
               />
             </div>
