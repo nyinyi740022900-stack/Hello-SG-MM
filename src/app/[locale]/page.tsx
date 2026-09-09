@@ -14,6 +14,7 @@ import SearchBar from "@/components/SearchBar";
 import { CATEGORY_STYLE } from "@/components/CategoryBadge";
 import CategoryTabs from "@/components/CategoryTabs";
 import {
+  BuildingIcon,
   ChecklistIcon,
   DocumentIcon,
   PhoneAlertIcon,
@@ -113,7 +114,7 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
   const shortcuts = [
     { href: "/off-day-guide", icon: MapPinIcon, label: t("toolOffDayGuide") },
     { href: "/salary-log", icon: ReceiptIcon, label: t("toolSalaryLog") },
-    { href: "/directory", icon: MapPinIcon, label: tCommon("directory") },
+    { href: "/directory", icon: BuildingIcon, label: tCommon("directory") },
     { href: "/emergency-contacts", icon: PhoneAlertIcon, label: t("quickEmergency") },
     { href: "/passport/checklist", icon: ChecklistIcon, label: t("quickChecklist") },
     { href: "/rest-day-rights", icon: CalendarCheckIcon, label: t("toolRestDay") },

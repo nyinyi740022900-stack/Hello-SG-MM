@@ -135,6 +135,17 @@ export function MapPinIcon({ className = base }: IconProps) {
   );
 }
 
+/** An organisation's building — used for Directory, distinct from MapPinIcon's place-pin so the two never look the same in the same list. */
+export function BuildingIcon({ className = base }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className={className} aria-hidden="true">
+      <rect x="5" y="3.5" width="14" height="17" rx="1.2" />
+      <path d="M9 7.5h.01M13 7.5h.01M9 11h.01M13 11h.01M9 14.5h.01M13 14.5h.01" strokeLinecap="round" />
+      <path d="M10 20.5v-4h4v4" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function MegaphoneIcon({ className = base }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className={className} aria-hidden="true">
