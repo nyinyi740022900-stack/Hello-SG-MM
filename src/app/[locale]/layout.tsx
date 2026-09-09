@@ -37,6 +37,7 @@ const CLIENT_NAMESPACES = [
   "legal",
   "menu",
   "news",
+  "placeComments",
   "recruitmentFee",
   "salaryLog",
   "search",

@@ -288,36 +288,85 @@
     "locations": {
       "peninsulaPlaza": {
         "name": "Peninsula Plaza (\"Little Myanmar\")",
-        "description": "A shopping centre known as Singapore's Myanmar hub since the 1990s — Myanmar restaurants, grocery stores, travel agencies, and money changers, especially busy on Sundays."
+        "description": "A shopping centre known as Singapore's Myanmar hub since the 1990s — Myanmar restaurants, grocery stores, travel agencies, and money changers, especially busy on Sundays.",
+        "food": "Myanmar restaurants on the upper floors — mohinga, tea-leaf salad, curry and rice at prices close to home cooking.",
+        "gettingThere": "City Hall MRT (NS25 / EW13), take Exit B and walk about 5 minutes. Busiest on Sunday afternoons."
       },
       "burmeseTemple": {
         "name": "Burmese Buddhist Temple",
-        "description": "Singapore's only traditional Burmese-style Buddhist temple, founded in 1875 — a spiritual and cultural gathering point for the community."
+        "description": "Singapore's only traditional Burmese-style Buddhist temple, founded in 1875 — a spiritual and cultural gathering point for the community.",
+        "food": "No restaurant inside. Bring water; there are shops on Balestier Road, about 10 minutes' walk.",
+        "gettingThere": "Toa Payoh MRT (NS19), then bus, or Novena MRT (NS20) and about 15 minutes' walk."
       },
       "farrerPark": {
         "name": "Farrer Park / Stamford Road area",
-        "description": "An informal Sunday gathering spot near Little India where many Myanmar workers meet friends on their day off."
+        "description": "An informal Sunday gathering spot near Little India where many Myanmar workers meet friends on their day off.",
+        "food": "Every kind of South and Southeast Asian food in the surrounding streets, much of it under $6.",
+        "gettingThere": "Farrer Park MRT (NE8). The crowd builds through Sunday afternoon and into the evening."
       },
       "tekkaCentre": {
         "name": "Tekka Centre, Little India",
-        "description": "A wet market and hawker centre at the exit of Little India MRT, and the centre of Sunday life for South Asian workers — cheap food, money transfer shops, phone top-ups and the crowds along Serangoon Road. Open daily 6.30am–9pm."
+        "description": "A wet market and hawker centre at the exit of Little India MRT, and the centre of Sunday life for South Asian workers — cheap food, money transfer shops, phone top-ups and the crowds along Serangoon Road. Open daily 6.30am–9pm.",
+        "food": "Hawker centre downstairs — biryani, roti prata, fish head curry. Among the cheapest hot meals in the city.",
+        "gettingThere": "Little India MRT (NE7 / DT12), the exit opens almost onto it. Open daily 6.30am–9pm."
       },
       "bangladeshSquare": {
         "name": "\"Bangladesh Square\", Desker Road",
-        "description": "The junction of Desker Road and Lembu Road, long known as the main Sunday meeting point for Bangladeshi workers. Busiest on Sunday evenings, with food stalls and Bengali groceries in the surrounding streets."
+        "description": "The junction of Desker Road and Lembu Road, long known as the main Sunday meeting point for Bangladeshi workers. Busiest on Sunday evenings, with food stalls and Bengali groceries in the surrounding streets.",
+        "food": "Bengali restaurants and grocery shops through the surrounding streets, busiest on Sunday evening.",
+        "gettingThere": "Farrer Park MRT (NE8), then walk. Desker Road meets Lembu Road."
       },
       "mustafa": {
         "name": "Mustafa Centre",
-        "description": "A 24-hour department store near Farrer Park MRT, used for everything from groceries and phone cards to gold and remittance. Open at any hour, which matters if your rest day starts late."
+        "description": "A 24-hour department store near Farrer Park MRT, used for everything from groceries and phone cards to gold and remittance. Open at any hour, which matters if your rest day starts late.",
+        "food": "Food court inside, and the surrounding streets are full of cheap South Asian restaurants.",
+        "gettingThere": "Farrer Park MRT (NE8), about 3 minutes' walk. Open 24 hours."
       },
       "peoplesPark": {
         "name": "People's Park Complex, Chinatown",
-        "description": "A mall beside Chinatown MRT that is the main gathering point for workers from mainland China — regional Chinese food, money changers, remittance counters and travel agencies under one roof."
+        "description": "A mall beside Chinatown MRT that is the main gathering point for workers from mainland China — regional Chinese food, money changers, remittance counters and travel agencies under one roof.",
+        "food": "Regional Chinese food court — Sichuan, Northeastern, Hunan — plus a hawker centre next door.",
+        "gettingThere": "Chinatown MRT (NE4 / DT19), the mall is right beside the station exit."
+      },
+      "gardensByTheBay": {
+        "name": "Gardens by the Bay",
+        "description": "The Supertrees and the outdoor gardens are free to walk through, and the light show at the Supertree Grove runs free in the evening. The two glass domes (Flower Dome, Cloud Forest), the Skyway bridge and the Supertree Observatory all charge admission — you can have a full afternoon without paying for any of them.",
+        "food": "Hawker-priced food at Satay by the Bay, at the far end of the gardens. The cafes near the domes are tourist-priced.",
+        "gettingThere": "Bayfront MRT (CE1 / DT16), Exit B, then follow the underground link. About 10 minutes' walk to the Supertrees."
+      },
+      "botanicGardens": {
+        "name": "Singapore Botanic Gardens",
+        "description": "A UNESCO World Heritage site, free to enter every day for everyone. Lawns, lakes, a rainforest trail and shade — the easiest place in Singapore to spend a whole day without spending money. Only the National Orchid Garden inside charges admission.",
+        "food": "Food court near the Tanglin Gate at ordinary prices; the restaurants inside are expensive. Bringing your own food is allowed and common.",
+        "gettingThere": "Botanic Gardens MRT (CC19 / DT9) opens directly onto the Bukit Timah Gate."
+      },
+      "marinaBarrage": {
+        "name": "Marina Barrage",
+        "description": "A dam with a grass roof, open 24 hours and free. The roof is one of the best places in Singapore to sit with a view of the whole skyline — people fly kites, picnic and stay till late. Popular with worker groups on Sundays.",
+        "food": "Nothing much on site beyond a small shop. Most people bring food; there is a hawker centre at Marina South Pier or Satay by the Bay nearby.",
+        "gettingThere": "No station at the door. Bayfront MRT (CE1 / DT16) then about 20 minutes' walk through Gardens by the Bay, or bus 400."
+      },
+      "jewelChangi": {
+        "name": "Jewel Changi Airport",
+        "description": "The indoor waterfall — the Rain Vortex — is free to see, and free to sit and watch. In the evening it becomes a light and music show. You do not need a flight or a ticket to go in. The Canopy Park playgrounds and walkways upstairs are the part that charges.",
+        "food": "A very large food court in the basement at normal Singapore prices, plus every fast food chain.",
+        "gettingThere": "Changi Airport MRT (CG2), then follow signs — Jewel connects directly to Terminal 1. Rain Vortex runs 10am–10pm."
       }
     },
     "openInMaps": "Open in Google Maps",
     "sourceDisclaimer": "Locations are widely documented community gathering spots, not official recommendations. Please travel safely and let someone know your plans on your day off.",
-    "noPlacesYet": "We don't have {country} community places listed yet. Many Malaysians here live across the island rather than gathering in one area, so there is no single hub to point to — if you know one worth adding, tell us."
+    "noPlacesYet": "We don't have {country} community places listed yet. Many Malaysians here live across the island rather than gathering in one area, so there is no single hub to point to — if you know one worth adding, tell us.",
+    "sectionCommunity": "Your community",
+    "sectionVisit": "Worth seeing in Singapore",
+    "costFree": "Free",
+    "costMixed": "Free in part",
+    "costPaid": "Paid",
+    "foodLabel": "Food",
+    "gettingThereLabel": "Getting there",
+    "officialSite": "Official site — check hours",
+    "museumWarningTitle": "Museums are not free for work pass holders",
+    "museumWarningBody": "National Heritage Board museums — the National Museum, Asian Civilisations Museum and others — are free only for Singapore citizens and PRs. On a Work Permit, S Pass or Employment Pass you pay the full price (around $10 for an adult, $5 with a student or senior card). Worth knowing before you travel across the island expecting free entry.",
+    "libraryNote": "Public libraries are free to walk into, sit in air-conditioning and read all day — no membership needed for that. You only need a membership to borrow books home, and foreigners pay a yearly fee for it; check the current amount on NLB's site."
   },
   "legal": {
     "privacyPolicy": "Privacy Policy",
@@ -552,5 +601,17 @@
     "verifyNote": "Fees, opening hours and required documents change without notice. Always confirm on the mission's own website before you travel there.",
     "noGuideTitle": "No {country} passport guide yet",
     "noGuideBody": "Our step-by-step checklist and forms were checked against the Myanmar embassy's own guidance, so we won't reuse them for another country and risk sending you with the wrong documents. Use the official links above instead — we're working on adding more countries."
+  },
+  "placeComments": {
+    "toggleEmpty": "Add a comment",
+    "toggleWithCount": "{count} comments",
+    "empty": "No comments yet. Be the first to say something useful about this place.",
+    "placeholder": "What should someone know before they go?",
+    "post": "Post",
+    "sending": "Posting…",
+    "failed": "Could not post your comment. Try again.",
+    "someone": "Someone",
+    "signInToComment": "Sign in to leave a comment",
+    "safetyNote": "Comments are public. Do not post your phone number, address, dormitory, or where you will be and when."
   }
 }

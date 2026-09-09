@@ -1,74 +1,42 @@
 import { getTranslations } from "next-intl/server";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { PageHeader, Card } from "@/components/ui/Card";
+import StatusMessage from "@/components/ui/StatusMessage";
 import { routing } from "@/i18n/routing";
 import PageCard from "@/components/ui/PageCard";
-import { getCountry, type CountryCode } from "@/lib/countries";
+import { getCountry } from "@/lib/countries";
 import { getSelectedCountryCode } from "@/lib/country.server";
+import {
+  OFF_DAY_PLACES,
+  getPlacePhotos,
+  type OffDayPlace,
+  type PlaceCost,
+} from "@/lib/offDayPlaces";
+import { listPlaceComments, countCommentsByPlace } from "@/lib/placeComments";
+import PlaceComments from "@/components/PlaceComments";
 
 /**
  * Where people go on a rest day.
  *
- * Each place carries the community it belongs to, for two reasons. The reader
- * sees their own community's places first, which is the whole point of the
- * page for someone with one free day. And a place named for one community is
- * not implicitly offered to everyone — Peninsula Plaza is a Myanmar hub, and
- * saying so is more useful, and more honest, than listing it as a generic
- * "migrant" location.
+ * Split in two. Community hubs carry the flags of whoever gathers there — a
+ * place named for one community is not implicitly offered to everyone, and
+ * saying "Peninsula Plaza is a Myanmar hub" is both more useful and more
+ * honest than listing it as a generic "migrant" location. The reader's own
+ * community sorts first; nothing is hidden, because a rest day is exactly
+ * when someone might want to see somewhere new.
  *
- * `countries` is a list because Little India genuinely serves South Asian
- * communities together rather than being divided between them.
+ * Places worth visiting carry no flag, because a park belongs to whoever
+ * walks into it. What they carry instead is what a day there actually costs,
+ * which for this reader is the deciding fact and is very often misreported.
  */
-const LOCATIONS: {
-  key: string;
-  countries: CountryCode[];
-  address: string;
-  mapsQuery: string;
-}[] = [
-  {
-    key: "peninsulaPlaza",
-    countries: ["mm"],
-    address: "111 North Bridge Road, Singapore 179098",
-    mapsQuery: "Peninsula Plaza Singapore",
-  },
-  {
-    key: "burmeseTemple",
-    countries: ["mm"],
-    address: "14 Tai Gin Road, Singapore 327873",
-    mapsQuery: "Burmese Buddhist Temple Singapore",
-  },
-  {
-    key: "farrerPark",
-    countries: ["mm"],
-    address: "Stamford Road / Farrer Park / Little India area",
-    mapsQuery: "Farrer Park MRT Singapore",
-  },
-  {
-    key: "tekkaCentre",
-    countries: ["in", "bd"],
-    address: "665 Buffalo Road, Singapore 210665 — at Little India MRT (NE7 / DT12)",
-    mapsQuery: "Tekka Centre Singapore",
-  },
-  {
-    key: "bangladeshSquare",
-    countries: ["bd"],
-    address: "Desker Road at Lembu Road, Little India — nearest MRT Farrer Park (NE8)",
-    mapsQuery: "Desker Road Lembu Road Singapore",
-  },
-  {
-    key: "mustafa",
-    countries: ["in", "bd"],
-    address: "145 Syed Alwi Road, Singapore 207704 — nearest MRT Farrer Park (NE8)",
-    mapsQuery: "Mustafa Centre Singapore",
-  },
-  {
-    key: "peoplesPark",
-    countries: ["cn"],
-    address: "1 Park Road, Singapore 059108 — at Chinatown MRT (NE4 / DT19)",
-    mapsQuery: "People's Park Complex Singapore",
-  },
-];
+
+const COST_STYLE: Record<PlaceCost, string> = {
+  free: "bg-success-soft text-success",
+  mixed: "bg-warning-soft text-warning",
+  paid: "bg-surface-muted text-ink-muted",
+};
 
 export default async function OffDayGuidePage({
   params,
@@ -82,59 +50,164 @@ export default async function OffDayGuidePage({
 
   const t = await getTranslations("offDayGuide");
   const selected = await getSelectedCountryCode();
+  const photos = getPlacePhotos();
+
+  // Counts for every place in one query, then the comments themselves only
+  // for the places that actually have any — a page of fourteen cards should
+  // not mean fourteen empty comment queries.
+  const commentCounts = await countCommentsByPlace(OFF_DAY_PLACES.map((p) => p.key));
+  const withComments = OFF_DAY_PLACES.filter((p) => (commentCounts.get(p.key) ?? 0) > 0);
+  const commentsByPlace = new Map(
+    await Promise.all(
+      withComments.map(async (place) => {
+        const { data } = await listPlaceComments(place.key);
+        return [place.key, data] as const;
+      }),
+    ),
+  );
+
+  const costLabel: Record<PlaceCost, string> = {
+    free: t("costFree"),
+    mixed: t("costMixed"),
+    paid: t("costPaid"),
+  };
+
+  const community = OFF_DAY_PLACES.filter((p) => p.section === "community");
+  const toVisit = OFF_DAY_PLACES.filter((p) => p.section === "visit");
 
   // The reader's own community first, original order kept within each group.
-  // Nothing is hidden: someone may want to visit another community's places,
-  // and a rest day is exactly when people explore.
-  const ordered = selected
+  const orderedCommunity = selected
     ? [
-        ...LOCATIONS.filter((loc) => loc.countries.includes(selected)),
-        ...LOCATIONS.filter((loc) => !loc.countries.includes(selected)),
+        ...community.filter((p) => p.countries.includes(selected)),
+        ...community.filter((p) => !p.countries.includes(selected)),
       ]
-    : LOCATIONS;
+    : community;
 
   const hasOwnPlaces = selected
-    ? LOCATIONS.some((loc) => loc.countries.includes(selected))
+    ? community.some((p) => p.countries.includes(selected))
     : true;
+
+  const renderPlace = (place: OffDayPlace) => {
+    const photo = photos[place.key];
+
+    return (
+      <Card key={place.key} className="space-y-2 overflow-hidden">
+        {photo ? (
+          <div className="relative -mx-4 -mt-4 mb-1 h-40 bg-surface-muted">
+            <Image
+              src={photo}
+              alt=""
+              fill
+              sizes="(min-width: 640px) 640px, 100vw"
+              className="object-cover"
+            />
+          </div>
+        ) : null}
+
+        <div className="flex flex-wrap items-center gap-2">
+          <h3 className="font-semibold text-ink">{t(`locations.${place.key}.name`)}</h3>
+          {place.countries.length > 0 ? (
+            <span className="flex shrink-0 gap-1" aria-hidden="true">
+              {place.countries.map((code) => (
+                <span key={code}>{getCountry(code).flag}</span>
+              ))}
+            </span>
+          ) : null}
+          <span
+            className={`ml-auto shrink-0 rounded-full px-2 py-0.5 text-xs font-semibold ${COST_STYLE[place.cost]}`}
+          >
+            {costLabel[place.cost]}
+          </span>
+        </div>
+
+        <p className="text-sm text-ink-muted">{t(`locations.${place.key}.description`)}</p>
+
+        <dl className="space-y-1.5 text-sm">
+          <div>
+            <dt className="inline font-medium text-ink">{t("gettingThereLabel")}: </dt>
+            <dd className="inline text-ink-muted">
+              {t(`locations.${place.key}.gettingThere`)}
+            </dd>
+          </div>
+          <div>
+            <dt className="inline font-medium text-ink">{t("foodLabel")}: </dt>
+            <dd className="inline text-ink-muted">{t(`locations.${place.key}.food`)}</dd>
+          </div>
+        </dl>
+
+        <p className="text-xs text-ink-subtle">{place.address}</p>
+
+        <div className="flex flex-wrap gap-3 pt-1">
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.mapsQuery)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-medium text-brand-strong underline"
+          >
+            {t("openInMaps")}
+          </a>
+          {place.officialUrl ? (
+            <a
+              href={place.officialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-medium text-brand-strong underline"
+            >
+              {t("officialSite")}
+            </a>
+          ) : null}
+        </div>
+
+        <PlaceComments
+          placeKey={place.key}
+          comments={commentsByPlace.get(place.key) ?? []}
+          count={commentCounts.get(place.key) ?? 0}
+        />
+      </Card>
+    );
+  };
 
   return (
     <PageCard>
       <section className="space-y-5">
         <PageHeader eyebrow={t("badge")} title={t("title")} subtitle={t("subtitle")} />
 
-        {/* Malaysians are the one group with no distinct hub here: most are
-            PRs, pass holders or daily commuters who live across the island
-            rather than gathering in one place. Saying that is better than
-            inventing a location so every flag has a row. */}
-        {selected && !hasOwnPlaces ? (
-          <Card className="text-sm text-ink-muted">
-            {t("noPlacesYet", { country: getCountry(selected).englishName })}
-          </Card>
-        ) : null}
+        <div className="space-y-3">
+          <h2 className="text-sm font-bold uppercase tracking-wide text-ink-subtle">
+            {t("sectionCommunity")}
+          </h2>
+
+          {/* Malaysians are the one group with no distinct hub here: most are
+              PRs, pass holders or daily commuters who live across the island
+              rather than gathering in one place. Saying that is better than
+              inventing a location so every flag has a row. */}
+          {selected && !hasOwnPlaces ? (
+            <Card className="text-sm text-ink-muted">
+              {t("noPlacesYet", { country: getCountry(selected).englishName })}
+            </Card>
+          ) : null}
+
+          {orderedCommunity.map(renderPlace)}
+        </div>
 
         <div className="space-y-3">
-          {ordered.map((loc) => (
-            <Card key={loc.key} className="space-y-2">
-              <div className="flex flex-wrap items-center gap-2">
-                <h3 className="font-semibold text-ink">{t(`locations.${loc.key}.name`)}</h3>
-                <span className="flex shrink-0 gap-1" aria-hidden="true">
-                  {loc.countries.map((code) => (
-                    <span key={code}>{getCountry(code).flag}</span>
-                  ))}
-                </span>
-              </div>
-              <p className="text-sm text-ink-muted">{t(`locations.${loc.key}.description`)}</p>
-              <p className="text-xs text-ink-subtle">{loc.address}</p>
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.mapsQuery)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex text-xs font-medium text-brand-strong underline"
-              >
-                {t("openInMaps")}
-              </a>
-            </Card>
-          ))}
+          <h2 className="text-sm font-bold uppercase tracking-wide text-ink-subtle">
+            {t("sectionVisit")}
+          </h2>
+
+          {/* The single most useful thing on this page for someone deciding
+              how to spend a day's wages. Every "free museum" list in
+              Singapore quietly means free for citizens and PRs. */}
+          <StatusMessage variant="warning">
+            <span className="block space-y-1">
+              <span className="block font-medium">{t("museumWarningTitle")}</span>
+              <span className="block">{t("museumWarningBody")}</span>
+            </span>
+          </StatusMessage>
+
+          {toVisit.map(renderPlace)}
+
+          <Card className="text-sm text-ink-muted">{t("libraryNote")}</Card>
         </div>
 
         <p className="text-xs text-ink-subtle">{t("sourceDisclaimer")}</p>
