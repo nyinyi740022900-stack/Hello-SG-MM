@@ -1,5 +1,6 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { getSgConditions, uvBand, type PsiBand, type UvBand } from "@/lib/sgEnvironment";
+import { localizeForecast } from "@/lib/forecastLabels";
 
 /**
  * Live weather, haze and UV for Singapore.
@@ -29,6 +30,7 @@ const UV_STYLE: Record<UvBand, string> = {
 
 export default async function SgConditionsBar() {
   const t = await getTranslations("conditions");
+  const locale = await getLocale();
   const { weather, psi, uvIndex, hasAny } = await getSgConditions();
 
   // NEA was unreachable this render — show nothing rather than an empty shell.
@@ -48,7 +50,9 @@ export default async function SgConditionsBar() {
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
         {weather ? (
           <div className="flex items-baseline gap-2">
-            <span className="font-semibold text-ink">{weather.forecast}</span>
+            <span className="font-semibold text-ink">
+              {localizeForecast(weather.forecast, locale)}
+            </span>
             <span className="text-sm tabular-nums text-ink-muted">
               {t("tempRange", { low: weather.tempLow, high: weather.tempHigh })}
             </span>

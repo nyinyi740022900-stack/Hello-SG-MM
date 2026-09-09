@@ -15,7 +15,7 @@ import { CATEGORY_STYLE } from "@/components/CategoryBadge";
 import CategoryTabs from "@/components/CategoryTabs";
 import {
   ChecklistIcon,
-  GuideIcon,
+  DocumentIcon,
   PhoneAlertIcon,
   ReceiptIcon,
   CalculatorIcon,
@@ -23,9 +23,7 @@ import {
   MapPinIcon,
   MegaphoneIcon,
   BankIcon,
-  WizardIcon,
   TransferIcon,
-  WalletIcon,
 } from "@/components/icons";
 import type { AppLocale } from "@/i18n/routing";
 import {
@@ -60,7 +58,6 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
   const activeCategory = isContentCategory(rawCategory) ? rawCategory : undefined;
   const t = await getTranslations("home");
   const tNews = await getTranslations("news");
-  const tEvents = await getTranslations("events");
   const tCommon = await getTranslations("common");
   const adSenseClientId = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID;
   const homeAdSlot = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_HOME_SLOT_ID;
@@ -93,19 +90,36 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
       day: "numeric",
     });
 
+  // Ordered by how often a Myanmar worker actually opens each one in real
+  // life, not by feature area. Off-Day Guide and Salary Log are weekly
+  // habits; Recruitment Fee and Accounts Guide matter enormously but only
+  // once, when a worker first arrives, so they move to the end rather than
+  // disappearing — a newly-arrived reader still needs them.
+  //
+  // Passport used to be three separate tiles (wizard, checklist, guide) for
+  // one task. They still all exist and are reachable from the drawer nav and
+  // from links on the checklist page itself; the rail keeps only the one
+  // entry point, so a first-time reader is not asked to guess which of three
+  // icons starts the same job.
+  //
+  // Directory is added: it is a comparable real-life-urgency need to
+  // Emergency Contacts (where do I get help right now) and previously had no
+  // shortcut at all despite having live entries.
+  //
+  // Rates and Events are deliberately absent. Rates duplicates the exchange
+  // panel already on this page (see below); Events currently has zero
+  // published items, and a shortcut to a reliably empty page costs more
+  // trust than an occasional miss from the drawer.
   const shortcuts = [
-    { href: "/passport/wizard", icon: WizardIcon, label: t("ctaStart") },
-    { href: "/passport/checklist", icon: ChecklistIcon, label: t("quickChecklist") },
-    { href: "/emergency-contacts", icon: PhoneAlertIcon, label: t("quickEmergency") },
-    { href: "/guide", icon: GuideIcon, label: t("quickGuide") },
-    { href: "/salary-log", icon: ReceiptIcon, label: t("toolSalaryLog") },
-    { href: "/recruitment-fee", icon: CalculatorIcon, label: t("toolRecruitmentFee") },
-    { href: "/rest-day-rights", icon: CalendarCheckIcon, label: t("toolRestDay") },
     { href: "/off-day-guide", icon: MapPinIcon, label: t("toolOffDayGuide") },
-    { href: "/accounts-guide", icon: BankIcon, label: t("quickAccountsGuide") },
+    { href: "/salary-log", icon: ReceiptIcon, label: t("toolSalaryLog") },
+    { href: "/directory", icon: MapPinIcon, label: tCommon("directory") },
+    { href: "/emergency-contacts", icon: PhoneAlertIcon, label: t("quickEmergency") },
+    { href: "/passport/checklist", icon: ChecklistIcon, label: t("quickChecklist") },
+    { href: "/rest-day-rights", icon: CalendarCheckIcon, label: t("toolRestDay") },
     { href: "/transport", icon: TransferIcon, label: tCommon("transport") },
-    { href: "/rates", icon: WalletIcon, label: tCommon("rates") },
-    { href: "/events", icon: MegaphoneIcon, label: tEvents("badge") },
+    { href: "/recruitment-fee", icon: CalculatorIcon, label: t("toolRecruitmentFee") },
+    { href: "/accounts-guide", icon: BankIcon, label: t("quickAccountsGuide") },
   ];
 
   return (
@@ -115,6 +129,73 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
       <div className="space-y-2 px-4 pt-1">
         <SearchBar locale={locale} />
         <ExpiryReminderBanner />
+      </div>
+
+      {/* One scrolling rail rather than a grid. A grid of nine shortcuts cost
+          two rows of vertical space before any news appeared; a rail costs
+          one and still reaches everything.
+
+          Placed directly under the search bar, before weather and the rate
+          panel: those two wait on third-party APIs (streamed in below via
+          Suspense so they never block the page), but the shortcuts are pure
+          navigation with nothing to wait for, and they are the reason most
+          readers open the app in the first place. Putting them after a full
+          screen of weather and exchange rates meant scrolling past both on
+          every visit just to reach them. */}
+      <div className="relative mt-2 border-y border-border bg-surface py-3">
+        <div className="overflow-x-auto">
+          <div className="flex gap-1.5 px-3">
+            {shortcuts.map(({ href, icon: Icon, label }) => (
+              <Link
+                key={href}
+                href={href}
+                locale={locale}
+                className="flex w-20 shrink-0 flex-col items-center gap-1.5 rounded-lg px-1 py-1 text-center transition hover:bg-brand-soft"
+              >
+                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-brand-strong">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <span className="line-clamp-2 text-xs leading-tight text-ink-muted">
+                  {label}
+                </span>
+              </Link>
+            ))}
+            <a
+              href={PASSPORT_FORM_DOWNLOAD_PATHS.general}
+              download
+              className="flex w-20 shrink-0 flex-col items-center gap-1.5 rounded-lg px-1 py-1 text-center transition hover:bg-brand-soft"
+            >
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-brand-strong">
+                <DocumentIcon className="h-5 w-5" />
+              </span>
+              <span className="line-clamp-2 text-xs leading-tight text-ink-muted">
+                {t("formGeneralShort")}
+              </span>
+            </a>
+            <a
+              href={PASSPORT_FORM_DOWNLOAD_PATHS.maid}
+              download
+              className="flex w-20 shrink-0 flex-col items-center gap-1.5 rounded-lg px-1 py-1 text-center transition hover:bg-brand-soft"
+            >
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-brand-strong">
+                <DocumentIcon className="h-5 w-5" />
+              </span>
+              <span className="line-clamp-2 text-xs leading-tight text-ink-muted">
+                {t("formMaidShort")}
+              </span>
+            </a>
+          </div>
+        </div>
+        {/* A partially-cropped icon at the edge hints there is more, but not
+            reliably enough on its own — this fade makes the cut-off explicit
+            rather than reading as the rail simply ending. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-surface to-transparent"
+        />
+      </div>
+
+      <div className="space-y-2 px-4 pt-2">
         {/* Both of these wait on third-party APIs — NEA for weather and haze,
             an exchange rate feed for the panel. Without a boundary here the
             news feed, which is the reason the page exists and comes straight
@@ -127,55 +208,6 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
         <Suspense fallback={<RatePanelSkeleton />}>
           <ExchangeRatePanel locale={locale} selectedCountry={selectedCountry} />
         </Suspense>
-      </div>
-
-      {/* One scrolling rail rather than a grid. A grid of twelve shortcuts cost
-          three rows of vertical space before any news appeared; a rail costs
-          one and still reaches everything. */}
-      <div className="mt-3 border-y border-border bg-surface py-3">
-        <div className="overflow-x-auto">
-          <div className="flex gap-1 px-3">
-            {shortcuts.map(({ href, icon: Icon, label }) => (
-              <Link
-                key={href}
-                href={href}
-                locale={locale}
-                className="flex w-[4.5rem] shrink-0 flex-col items-center gap-1.5 rounded-lg px-1 py-1 text-center transition hover:bg-brand-soft"
-              >
-                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-brand-strong">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <span className="line-clamp-2 text-[10.5px] leading-tight text-ink-muted">
-                  {label}
-                </span>
-              </Link>
-            ))}
-            <a
-              href={PASSPORT_FORM_DOWNLOAD_PATHS.general}
-              download
-              className="flex w-[4.5rem] shrink-0 flex-col items-center gap-1.5 rounded-lg px-1 py-1 text-center transition hover:bg-brand-soft"
-            >
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-base">
-                📄
-              </span>
-              <span className="line-clamp-2 text-[10.5px] leading-tight text-ink-muted">
-                {t("formGeneralShort")}
-              </span>
-            </a>
-            <a
-              href={PASSPORT_FORM_DOWNLOAD_PATHS.maid}
-              download
-              className="flex w-[4.5rem] shrink-0 flex-col items-center gap-1.5 rounded-lg px-1 py-1 text-center transition hover:bg-brand-soft"
-            >
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-base">
-                📄
-              </span>
-              <span className="line-clamp-2 text-[10.5px] leading-tight text-ink-muted">
-                {t("formMaidShort")}
-              </span>
-            </a>
-          </div>
-        </div>
       </div>
 
       <CategoryTabs locale={locale} activeCategory={activeCategory} />

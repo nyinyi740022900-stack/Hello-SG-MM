@@ -88,8 +88,11 @@ export default async function ExchangeRatePanel({
                 <span aria-hidden="true" className="text-lg leading-none">
                   {country.flag}
                 </span>
-                <div className="min-w-0">
-                  <p className="truncate text-sm font-medium text-ink">
+                <div className="min-w-0 flex-1">
+                  {/* "SGD → XXX" is short and fixed-length — it should never
+                      need to truncate, and doing so hid the currency code
+                      itself on narrow phones with Burmese digits. */}
+                  <p className="text-sm font-medium text-ink">
                     {t("pairLabel", { currency: country.currency })}
                   </p>
                   <p className="truncate text-xs text-ink-subtle">

@@ -11,6 +11,16 @@ export function HomeIcon({ className = base }: IconProps) {
   );
 }
 
+export function DocumentIcon({ className = base }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className={className} aria-hidden="true">
+      <path d="M6 3.5h8l4 4V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z" strokeLinejoin="round" />
+      <path d="M14 3.5V8h4" strokeLinejoin="round" />
+      <path d="M8 12.5h8M8 15.5h8M8 18.5h5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export function ChecklistIcon({ className = base }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className={className} aria-hidden="true">
