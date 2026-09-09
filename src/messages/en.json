@@ -595,18 +595,82 @@
   "restDay": {
     "badge": "Free · Know your rights",
     "title": "Rest Day Rights",
-    "subtitle": "What Singapore law guarantees domestic and migrant workers about weekly rest days.",
-    "facts": {
-      "oneRestDay": "You are entitled to at least one rest day every week (about 4 per month), on a weekday agreed in advance with your employer — it does not have to be a Sunday.",
-      "mandatoryOneDay": "Since 1 January 2023, at least one rest day each month must be an actual day off — your employer cannot pay it away instead of giving you the day.",
-      "compensation": "For any other rest day you agree to work, your employer must either pay you at least one extra day's salary, or give you a full replacement day off within the same month.",
-      "penalty": "Employers who deny rest days can be fined up to S$5,000, and may lose their right to hire domestic workers — this is a serious offence, not a small matter."
+    "subtitle": "Domestic workers and Work Permit holders are covered by different laws. Pick the section that matches your pass, then confirm on MOM's own pages before you act.",
+    "jump": {
+      "mdw": "I am a domestic worker (maid)",
+      "mdwHint": "Weekly rest day under MOM's Work Permit conditions, including the 2023 mandatory day.",
+      "wp": "I hold a Work Permit or S Pass (not a maid)",
+      "wpHint": "Weekly rest day under the Employment Act — construction, factory, shipyard, services."
     },
-    "reportTitle": "If your rest days are being denied",
-    "reportSubtitle": "Call MOM's dedicated helpline for domestic workers. This call is confidential.",
-    "reportHelplineName": "MOM Domestic Worker Helpline",
-    "reportHours": "Monday–Friday, 8:30am–5:30pm. Overseas callers: +65 6339 5505.",
-    "sourceDisclaimer": "Based on MOM's published rest-day regulations for migrant domestic workers (in force since January 2023). Rules can be updated — confirm current details with MOM if in doubt."
+    "mdw": {
+      "title": "Domestic workers",
+      "subtitle": "Migrant domestic workers are not covered by the Employment Act. Rest days are a Work Permit condition under the Employment of Foreign Manpower Act.",
+      "facts": {
+        "weekly": "You are entitled to one rest day every week. You and your employer must agree which day it is — it does not have to be a Sunday.",
+        "agreeDay": "Your employer cannot make you work on a rest day unless you agree. Agreement should be mutual, not a threat of repatriation or withheld salary.",
+        "mandatoryOne": "Since 1 January 2023, at least one rest day each month must be a real day off. Neither you nor your employer can trade that one day for money.",
+        "compensation": "For the other weekly rest days, if you agree to work, your employer must pay at least one extra day's salary on top of your monthly pay — or give you a replacement rest day in the same month.",
+        "written": "Write the arrangement down (which day, which days you work instead, how much extra pay). MOM's rest-day guide includes a sample agreement.",
+        "enforcement": "Employers who refuse the mandatory rest day can be warned, barred from hiring domestic workers, and prosecuted under the Employment of Foreign Manpower Act (fine up to S$10,000, or jail, or both)."
+      },
+      "flexTitle": "How the rest day can be taken",
+      "flexSubtitle": "These flexibilities need both of you to agree. They do not cancel the mandatory day.",
+      "flex": {
+        "anyDay": "It can be any day of the week, not only Sunday.",
+        "halfDays": "It can be one full day, or two half-days.",
+        "stayHome": "You may spend it at home. Staying in the house does not mean you have to work — a rest day is a day off work.",
+        "defer": "If you cannot take it this month, it can be deferred by up to one calendar month. You must then take it by the end of the next month."
+      },
+      "payTitle": "How extra rest-day pay is calculated",
+      "paySubtitle": "MOM's formula: monthly salary divided by 26, no matter how many days are in that month. The extra is paid on top of your usual salary.",
+      "payFormula": "1 day's salary = your monthly salary ÷ 26.",
+      "payExample": "MOM's example: monthly salary S${salary} ÷ {divisor} = S${dayRate} per rest day worked. Two rest days worked = S${salary} + S$50.",
+      "payLink": "MOM: how to calculate pay in lieu of a rest day"
+    },
+    "wp": {
+      "title": "Work Permit and S Pass holders (not domestic workers)",
+      "subtitle": "If you are covered by Part 4 of the Employment Act (most workmen earning up to S$4,500 a month, and most other employees earning up to S$2,600), these rest-day rules apply.",
+      "facts": {
+        "weekly": "Your employer must give you one rest day every week. A rest day is unpaid — it is a day you do not work.",
+        "wholeDay": "A rest day is one whole day, midnight to midnight. For shift workers it can be a continuous 30 hours.",
+        "maxGap": "The longest gap allowed between two rest days is 12 days.",
+        "roster": "If your rest day is not a Sunday, your employer should give you a monthly roster before the month starts.",
+        "cannotCompel": "Your employer cannot force you to work on a rest day except in exceptional circumstances.",
+        "employerPay": "If your employer asks you to work that day: up to half your normal hours = 1 day's pay; more than half = 2 days' pay; beyond normal hours = 2 days' pay plus overtime.",
+        "noTimeOff": "If your employer asked you to work, they cannot give you a day off later instead of this extra pay."
+      },
+      "momLink": "MOM: hours of work, overtime and rest day"
+    },
+    "denied": {
+      "title": "If your rest days are being denied",
+      "subtitle": "The call is confidential. MOM will not tell your employer who reported them if you ask to stay anonymous to the other party.",
+      "steps": {
+        "call": "Call the helpline that matches your pass — MOM's domestic-worker line, or MWC / CDE if you are not sure.",
+        "report": "Or report the infringement online. You must give MOM your identity so they can follow up, but they can keep it from your employer.",
+        "centre": "You can also go in person to MOM Services Centre, Hall A, 1500 Bendemeer Road.",
+        "salary": "If the problem is unpaid rest-day compensation, TADM handles salary claims — raise it while you are still in Singapore.",
+        "danger": "If you are in danger right now, call 999. Do not wait for a helpline that is closed."
+      },
+      "reportLink": "Report an infringement to MOM (confidential)"
+    },
+    "helplines": {
+      "title": "Who to call",
+      "subtitle": "Same numbers as on Emergency Contacts. Tap to call."
+    },
+    "links": {
+      "title": "Official pages — always check before you act",
+      "subtitle": "Rules and fees change. MOM's own pages are the final word.",
+      "wellbeing": "MOM rest days and well-being (domestic workers)",
+      "pressRelease": "MOM: mandatory rest day from 1 January 2023",
+      "restDayGuide": "MOM rest-day arrangements guide (PDF)",
+      "handyBurmese": "MOM handy guide for domestic workers (English + Myanmar)",
+      "employmentAct": "Employment Act rest day (Work Permit / S Pass)",
+      "infringement": "Report an infringement",
+      "tadm": "TADM — salary claims"
+    },
+    "ctaOffDay": "Places to go on your rest day",
+    "ctaEmergency": "All emergency numbers",
+    "sourceDisclaimer": "Checked against MOM's rest-day pages, the January 2023 mandatory-rest-day rule, the pay-in-lieu FAQ (updated March 2026), and the Employment Act hours-of-work page, in September 2026. Confirm on MOM's site before you act."
   },
   "offDayGuide": {
     "badge": "Free",

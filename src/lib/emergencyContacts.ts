@@ -193,3 +193,17 @@ export const PREPARE_KEYS = [
 export function whatsappUrl(number: string): string {
   return `https://wa.me/${number}`;
 }
+
+const ALL_CONTACTS: EmergencyContact[] = [
+  ...URGENT_CONTACTS,
+  ...EMERGENCY_SECTIONS.flatMap((section) => section.contacts),
+];
+
+/** Look up a helpline already listed on the Emergency Contacts page. */
+export function getEmergencyContact(id: string): EmergencyContact {
+  const found = ALL_CONTACTS.find((contact) => contact.id === id);
+  if (!found) {
+    throw new Error(`[getEmergencyContact] unknown id: ${id}`);
+  }
+  return found;
+}
