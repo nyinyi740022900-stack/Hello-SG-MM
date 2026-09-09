@@ -5,26 +5,16 @@ import { PageHeader, Card } from "@/components/ui/Card";
 import { routing } from "@/i18n/routing";
 import PageCard from "@/components/ui/PageCard";
 import StatusMessage from "@/components/ui/StatusMessage";
-
-const TRANSFER_KEYS = ["transferTime", "transferSameBus", "transferStations"] as const;
-const MISTAKE_KEYS = ["mistake1", "mistake2", "mistake3", "mistake4"] as const;
-
-const MAP_LINKS = [
-  {
-    key: "mapsPlanner",
-    href: "https://www.lta.gov.sg/content/ltagov/en/map/journey-planner.html",
-  },
-  {
-    key: "mapsFare",
-    href: "https://www.lta.gov.sg/content/ltagov/en/map/fare-calculator.html",
-  },
-  {
-    key: "mapsNetwork",
-    href: "https://www.lta.gov.sg/content/ltagov/en/getting_around/public_transport/rail_network.html",
-  },
-  { key: "mapsSimplyGo", href: "https://simplygo.com.sg/" },
-  { key: "mapsGoogle", href: "https://www.google.com/maps" },
-] as const;
+import {
+  HUB_MAPS,
+  MAP_LINKS,
+  MISTAKE_KEYS,
+  NIGHT_KEYS,
+  PAY_KEYS,
+  QUICK_START_KEYS,
+  TAP_KEYS,
+  TRANSFER_KEYS,
+} from "@/lib/transportGuide";
 
 function StepNumber({ index }: { index: number }) {
   return (
@@ -45,37 +35,38 @@ export default async function TransportPage({
   }
 
   const t = await getTranslations("transport");
+  const orderedList = (keys: readonly string[], prefix: string) => (
+    <ul className="space-y-3">
+      {keys.map((key, index) => (
+        <li key={key} className="flex items-start gap-3">
+          <StepNumber index={index} />
+          <span className="text-ink">{t(`${prefix}.${key}`)}</span>
+        </li>
+      ))}
+    </ul>
+  );
 
   return (
     <PageCard>
-      <section className="space-y-5">
+      <section className="space-y-8">
         <PageHeader eyebrow={t("badge")} title={t("title")} subtitle={t("subtitle")} />
+
+        <Card className="space-y-3">
+          <h3 className="font-semibold text-ink">{t("quickStartTitle")}</h3>
+          {orderedList(QUICK_START_KEYS, "quickStart")}
+        </Card>
 
         <Card className="space-y-3">
           <h3 className="font-semibold text-ink">{t("payTitle")}</h3>
           <p className="text-sm text-ink-muted">{t("payIntro")}</p>
-          <ul className="space-y-3">
-            {(["payCard", "payBank", "payBalance"] as const).map((key, index) => (
-              <li key={key} className="flex items-start gap-3">
-                <StepNumber index={index} />
-                <span className="text-ink">{t(key)}</span>
-              </li>
-            ))}
-          </ul>
+          {orderedList(PAY_KEYS, "pay")}
           <StatusMessage variant="info">{t("payNoDisplay")}</StatusMessage>
           <StatusMessage variant="warning">{t("payAxs")}</StatusMessage>
         </Card>
 
         <Card className="space-y-3">
           <h3 className="font-semibold text-ink">{t("tapTitle")}</h3>
-          <ul className="space-y-3">
-            {(["tapIn", "tapOut"] as const).map((key, index) => (
-              <li key={key} className="flex items-start gap-3">
-                <StepNumber index={index} />
-                <span className="text-ink">{t(key)}</span>
-              </li>
-            ))}
-          </ul>
+          {orderedList(TAP_KEYS, "tap")}
           <StatusMessage variant="error">{t("tapWarning")}</StatusMessage>
         </Card>
 
@@ -90,28 +81,27 @@ export default async function TransportPage({
         <Card className="space-y-3">
           <h3 className="font-semibold text-ink">{t("transferTitle")}</h3>
           <p className="text-sm text-ink-muted">{t("transferIntro")}</p>
-          <ul className="space-y-3">
-            {TRANSFER_KEYS.map((key, index) => (
-              <li key={key} className="flex items-start gap-3">
-                <StepNumber index={index} />
-                <span className="text-ink">{t(key)}</span>
-              </li>
-            ))}
-          </ul>
+          {orderedList(TRANSFER_KEYS, "transfer")}
+        </Card>
+
+        <Card className="space-y-3">
+          <h3 className="font-semibold text-ink">{t("nightTitle")}</h3>
+          <p className="text-sm text-ink-muted">{t("nightIntro")}</p>
+          {orderedList(NIGHT_KEYS, "night")}
         </Card>
 
         <Card className="space-y-3">
           <h3 className="font-semibold text-ink">{t("mapsTitle")}</h3>
           <ul className="space-y-2">
-            {MAP_LINKS.map(({ key, href }) => (
-              <li key={key}>
+            {MAP_LINKS.map(({ id, href }) => (
+              <li key={id}>
                 <a
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between rounded-xl border border-border bg-surface-muted p-3 text-ink hover:bg-brand-soft"
                 >
-                  <span>{t(key)}</span>
+                  <span>{t(`maps.${id}`)}</span>
                   <span aria-hidden="true" className="text-ink-subtle">
                     &rarr;
                   </span>
@@ -122,6 +112,28 @@ export default async function TransportPage({
           <p className="text-xs text-ink-subtle">{t("mapsTip")}</p>
         </Card>
 
+        <Card className="space-y-3">
+          <h3 className="font-semibold text-ink">{t("hubsTitle")}</h3>
+          <p className="text-sm text-ink-muted">{t("hubsSubtitle")}</p>
+          <ul className="space-y-2">
+            {HUB_MAPS.map(({ id, href }) => (
+              <li key={id}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between rounded-xl border border-border bg-surface-muted p-3 text-ink hover:bg-brand-soft"
+                >
+                  <span>{t(`hubs.${id}`)}</span>
+                  <span aria-hidden="true" className="text-ink-subtle">
+                    &rarr;
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Card>
+
         <div className="space-y-3 rounded-2xl border border-border bg-warning-soft p-4 sm:p-5">
           <h3 className="font-semibold text-warning">{t("mistakesTitle")}</h3>
           <ul className="space-y-2">
@@ -130,7 +142,7 @@ export default async function TransportPage({
                 <span aria-hidden="true" className="mt-0.5 shrink-0 font-bold text-warning">
                   &#9888;
                 </span>
-                <span>{t(key)}</span>
+                <span>{t(`mistakes.${key}`)}</span>
               </li>
             ))}
           </ul>

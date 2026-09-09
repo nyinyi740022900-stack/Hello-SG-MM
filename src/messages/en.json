@@ -935,38 +935,77 @@
   "transport": {
     "badge": "Getting around",
     "title": "Bus & MRT — how to travel in Singapore",
-    "subtitle": "How to pay, how fares are worked out, and the transfer rules that decide whether one trip counts as one journey or two.",
+    "subtitle": "Map links, route planning tools, and the fare rules that decide whether your trip is charged once or multiple times.",
+    "quickStartTitle": "Start here in 2 minutes",
+    "quickStart": {
+      "openPlanner": "Open the LTA journey planner (or MyTransport app), enter where you are and where you are going, then follow one route all the way the first few times.",
+      "checkLastTrain": "If you travel at night, check the last train for your exact station and direction before you leave. There is no single network-wide last-train time.",
+      "choosePayment": "Choose one payment method and stick to it for that trip. Do not switch cards halfway.",
+      "saveStops": "For buses, save your boarding stop and your alighting stop in the app so you do not miss your stop.",
+      "leaveBuffer": "Leave 10-15 extra minutes when going to appointments (MOM, hospital, embassy)."
+    },
     "payTitle": "1. How to pay",
-    "payIntro": "You do not buy a ticket for each ride. You tap a card or phone at the reader.",
-    "payCard": "SimplyGo EZ-Link card — buy and top up at MRT station machines and convenience stores.",
-    "payBank": "A contactless bank card or phone wallet — tap it directly, no separate transit card needed.",
-    "payBalance": "Keep at least $5 on a SimplyGo EZ-Link card. Below that, the reader can reject it and you will not be able to board.",
+    "payIntro": "No paper ticket needed. Tap a card or phone on entry and on exit.",
+    "pay": {
+      "payCard": "SimplyGo EZ-Link card — buy and top up at MRT station ticketing machines and convenience stores.",
+      "payBank": "A contactless bank card or mobile wallet (Visa, Mastercard, AMEX, NETS Tap) — tap directly, no separate transit card needed.",
+      "payBalance": "Keep enough value in your transit card. If balance is too low, the reader can reject it and you may be denied boarding."
+    },
     "payNoDisplay": "SimplyGo cards do not show your fare or remaining balance at the gate. Check both in the SimplyGo app.",
     "payAxs": "From 29 August 2026 you can no longer top up EZ-Link or SimplyGo cards at AXS machines. Use station machines, the app, or a convenience store.",
     "tapTitle": "2. Tap in and tap out — both times",
-    "tapIn": "Tap when you board the bus or enter the MRT gate.",
-    "tapOut": "Tap again when you get off the bus or leave the MRT gate.",
+    "tap": {
+      "tapIn": "Tap when you board the bus or enter the MRT gate.",
+      "tapOut": "Tap again when you get off the bus or leave the MRT gate.",
+      "busDoor": "On buses, board from the front door and exit from the rear door unless the bus signs say otherwise."
+    },
     "tapWarning": "If you forget to tap out, you are charged the maximum fare for that line. This is the most common and most expensive mistake.",
     "fareTitle": "3. How the fare is calculated",
     "fareDistance": "Fares are based on the total distance of your whole journey, not the number of vehicles you take.",
     "fareTransfer": "Changing between bus and train inside one journey does not start a new fare. You are charged once for the distance.",
     "transferTitle": "4. Transfer rules",
     "transferIntro": "Several trips count as one journey only if all of these are true:",
-    "transferTime": "No more than 2 hours between your first boarding and your last boarding in the journey.",
-    "transferSameBus": "You do not board the same bus service number twice in a row.",
-    "transferStations": "At Bukit Panjang, Newton and Tampines you must tap out of the first line and tap in again at the next. Do this within 15 minutes or it becomes a new journey with a new fare.",
+    "transfer": {
+      "transferTime": "No more than 2 hours between your first boarding and your last boarding in the journey.",
+      "transferSameBus": "You do not board the same bus service number twice in a row.",
+      "transferStations": "At Bukit Panjang, Newton and Tampines you must tap out of one line and tap in to the next. Do this within 15 minutes or it becomes a new journey with a new fare."
+    },
+    "nightTitle": "5. If you travel late",
+    "nightIntro": "Trains generally run from around 5.30am to around midnight, but station-by-station times differ.",
+    "night": {
+      "night1": "Check first and last train timings on SMRT or SBS Transit pages for your station and direction.",
+      "night2": "If you miss the last train, use bus directions in MyTransport/Google Maps before booking an expensive ride.",
+      "night3": "When phone battery is low at night, screenshot your route before leaving."
+    },
     "mapsTitle": "5. Maps and planning your trip",
-    "mapsPlanner": "LTA journey planner — official route and fare planner",
-    "mapsFare": "LTA fare calculator — check the cost before you travel",
-    "mapsNetwork": "LTA MRT and LRT system map",
-    "mapsSimplyGo": "SimplyGo — check your fares, balance and travel history",
-    "mapsGoogle": "Google Maps — live bus and train directions",
+    "maps": {
+      "planner": "LTA plan your journey",
+      "fare": "LTA fare calculator",
+      "network": "Official MRT/LRT system map",
+      "myTransportAndroid": "MyTransport.SG app (Android)",
+      "myTransportIos": "MyTransport.SG app (iPhone)",
+      "simplyGo": "SimplyGo app and account",
+      "smrt": "SMRT train service updates and timings",
+      "sbst": "SBS Transit train service updates and timings"
+    },
     "mapsTip": "For a bus, the planner tells you the stop name and how many stops to stay on. Bus stops show the service numbers that stop there and a stop ID you can check in the app.",
+    "hubsTitle": "Quick map links for common worker destinations",
+    "hubsSubtitle": "Open directly in Google Maps.",
+    "hubs": {
+      "peninsula": "Peninsula Plaza (Little Myanmar)",
+      "mustafa": "Mustafa Centre",
+      "tekka": "Tekka Centre",
+      "mom": "MOM Services Centre (Bendemeer)",
+      "airport": "Changi Airport MRT"
+    },
     "mistakesTitle": "Mistakes that cost money",
-    "mistake1": "Forgetting to tap out — you pay the maximum fare.",
-    "mistake2": "Letting the balance fall below $5 — the reader rejects the card.",
-    "mistake3": "Taking a long break mid-journey — after 2 hours it becomes a new journey and you pay again.",
-    "mistake4": "Boarding the same bus number twice in a row — the second ride is charged as a new journey.",
+    "mistakes": {
+      "mistake1": "Forgetting to tap out — you pay the maximum fare.",
+      "mistake2": "Using one card to enter and a different card to exit — charged as separate trips.",
+      "mistake3": "Taking a long break mid-journey — after 2 hours it becomes a new journey and you pay again.",
+      "mistake4": "Boarding the same bus number twice in a row — the second ride is charged as a new journey.",
+      "mistake5": "Using outdated blog screenshots for routes — always check live planner links before leaving."
+    },
     "disclaimer": "Fares and rules are set by LTA and can change. Check the official links above before relying on anything here for a trip that matters.",
     "heroTitle": "Bus & MRT guide"
   },
