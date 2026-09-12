@@ -164,6 +164,76 @@ Do not launch paid featured listings until the app has agency/listing pages, ver
 
 ## 5. Optional affiliate referrals — မိတ်ဖက်ညွှန်းဆိုခ
 
+### List 1 for income — ကိုယ်တိုင် register → link ယူ → Admin Referrals
+
+> **Canonical name:** `List 1 for income`  
+> Last updated: 2026-09-11  
+> App slots (Admin → Referrals): `bank` · `paynow` · `singpass` · `grabpay` · `page` · `remittance` · `travel`  
+> Use `link_type = affiliate` for income; `invitation` for sponsor/invite-only.
+
+#### A) Accounts Guide (`/accounts-guide`)
+
+| Topic | Self-serve income? | Where to put link |
+|--------|-------------------|-------------------|
+| **OCBC FRANK** | ✓ In-bank referral / MGM (open FRANK → generate referral link) | `bank` |
+| **DBS / POSB / UOB** | △ Usually no public CPA affiliate; invite-friend only | `bank` only if personal invite link exists |
+| **PayNow** | ✗ No affiliate | — |
+| **Singpass** | ✗ Government | — |
+| **GrabPay / Grab** | △ Rare public affiliate; Partner deal / invitation more realistic | `grabpay` |
+| **Revolut (SG)** | ✓ [Affiliate via Impact](https://www.revolut.com/en-SG/become-a-revolut-affiliate/) | `bank` or `page` |
+| **YouTrip** | ✓ [Creators / referral](https://www.you.co/sg/youtrip-creators/) | `page` or `bank` |
+| **WorldFirst** | ✓ [Affiliate](https://www.worldfirst.com/sg/affiliate-program/) | `page` |
+
+#### B) Exchange (`/rates`) — remittance
+
+| Provider | Self-serve? | Notes / signup |
+|----------|-------------|----------------|
+| **Remitly** | ✓ | Best first pick for SG→MM — [partner program](https://www.remitly.com/sg/en/landing/partner-program) → `remittance` |
+| **WorldRemit** | ✓ | [Affiliates](https://www.worldremit.com/en/partners-and-affiliates) → `remittance` |
+| **Wise** | ✓ | [Partnership](https://wise.com/help/articles/2978038/whats-the-wise-partnership-program) — MM payout often limited/unavailable |
+| **Instarem (Nium)** | ✓ | [Partner programme](https://www.instarem.com/partner-programme/) — verify MM support first → `remittance` |
+| Local shops (Peninsula / Little India) | ✗ Not affiliate | Invitation / sponsor deal only |
+
+#### C) Travel (`/travel`) — placement `travel`
+
+| Partner | Self-serve? | Notes |
+|---------|-------------|-------|
+| **Airalo** | ✓ Impact affiliate | eSIM — priority on Travel hub + destination pages |
+| **YouTrip** | ✓ Creators / referral | Multi-currency card for trips |
+| **Agoda** | ✓ Affiliate / invitation | Hotels — Admin `travel` placement; city links already on each destination |
+| **Trip.com** | ✓ Affiliate / invitation | Hotels & flights — Admin `travel` placement |
+| **Circles.Life** | ✓ Involve Asia | Optional SIM — use `travel` or `page` |
+| Flight OTAs | △ Via affiliate networks | Only after real tracking links exist |
+
+#### D) Related content (use `page` until a dedicated placement exists)
+
+| App / topic | Income path |
+|-------------|-------------|
+| Passport / misc | Airalo · YouTrip · flight OTAs only via real affiliate networks |
+| Transport (`/transport`) | SimplyGo / LTA / MyTransport — **no affiliate** |
+| Driving (`/driving-license`) | SPF / LTA / BBDC·CDC·SSDC — **no official affiliate**; helpers stay free/community |
+| Lottery | Singapore Pools — **no affiliate** (do not monetise gambling) |
+| News / Events / Directory | Google Ads + Contact sponsored ads + `page` footer referrals |
+| Recruitment fee / Rest day / MOM / Emergency | Gov / NGO — **do not affiliate** |
+
+#### E) Priority order (execute now — no week schedule)
+
+1. Remitly → apply → paste tracking URL → `remittance` + Affiliate  
+2. Agoda → apply → `travel` + Affiliate  
+3. Airalo → apply → `travel` + Affiliate  
+4. YouTrip → apply → `travel` + Affiliate  
+5. WorldRemit / Trip.com → same  
+6. OCBC FRANK / Revolut → `bank`  
+
+Starter rows are seeded in Admin → Referrals (invitation + official URL). Partner cards already show on Exchange / Travel / Accounts. Replace URL + set Affiliate when approved.
+
+Owner checklist page: `/owner/income`  
+Admin quick-fill: Admin → Referrals → List 1 buttons.
+
+#### F) Do not monetise
+
+Singpass · PayNow official · MOM · LTA · lottery · driving-school official pages · unlicensed remittance agents.
+
 ### Practical offer
 
 Start only after user trust and traffic are stable. Prefer a fixed referral fee over commission linked to how much a worker spends.
@@ -171,6 +241,7 @@ Start only after user trust and traffic are stable. Prefer a fixed referral fee 
 - Test one low-risk category, such as a training course or transparent SIM plan.
 - Negotiate **S$5–S$20 per verified referral** or a clearly documented flat campaign fee.
 - Never make an affiliate the only path to essential help.
+- Prefer partners from **List 1 for income** above when adding Admin referral rows.
 
 ### Setup in the current codebase
 

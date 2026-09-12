@@ -1,0 +1,62 @@
+{
+  "jb.jpg": {
+    "author": "aamanatullah",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Johor_Bahru_Skyline_%2817300534739%29.jpg",
+    "bytes": 197035
+  },
+  "jb-city.jpg": {
+    "author": "Zahirulnukman",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Wikimania_2023_-_Johor_Bahru_Photo_Walk_-_JB_City_Square.jpg",
+    "bytes": 386222
+  },
+  "melaka.jpg": {
+    "author": "Quahla",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Christ_Church_Melaka_1753.jpg",
+    "bytes": 275227
+  },
+  "melaka-jonker.jpg": {
+    "author": "CEphoto, Uwe Aranas",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Melaka_Malaysia_Geographer-Cafe-at-Jonker-Walk-01.jpg",
+    "bytes": 326985
+  },
+  "batam.jpg": {
+    "author": "Annayu Maharani",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Jembatan_Barelang.jpg",
+    "bytes": 203681
+  },
+  "bintan.jpg": {
+    "author": "Abhishek Kumar",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Bintan_Agro_Beach_Resort2.jpg",
+    "bytes": 212946
+  },
+  "bangkok.jpg": {
+    "author": "Diego Delso",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Templo_Wat_Arun%2C_Bangkok%2C_Tailandia%2C_2013-08-22%2C_DD_30.jpg",
+    "bytes": 420469
+  },
+  "bangkok-palace.jpg": {
+    "author": "Bjørn Erik Pedersen",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:A_roof_of_a_building_at_the_Grand_Palace%2C_Bangkok%2C_sunrise%2C_2017.jpg",
+    "bytes": 139520
+  },
+  "phuket.jpg": {
+    "author": "Arnaud-Victor Monteux",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Patong_Beach_Phuket_November_2012.jpg",
+    "bytes": 322650
+  },
+  "phuket-oldtown.jpg": {
+    "author": "Mussi Katz from Israel",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Phuket_old_town_%2852549766215%29.jpg",
+    "bytes": 202390
+  }
+}

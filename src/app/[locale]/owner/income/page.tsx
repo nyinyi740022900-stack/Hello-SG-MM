@@ -1,137 +1,114 @@
 import SponsorInquiryForm from "@/components/SponsorInquiryForm";
-import { PageHeader } from "@/components/ui/Card";
+import { PageHeader, Card } from "@/components/ui/Card";
 import PageCard from "@/components/ui/PageCard";
+import { INCOME_PARTNER_TEMPLATES } from "@/lib/incomePartnerTemplates";
+import { REFERRAL_PLACEMENT_LABELS } from "@/lib/accountsGuide";
 
 /**
- * Owner Income Dashboard Page
- *
- * This page explains how the app generates income and provides
- * a way for potential sponsors to get in touch.
- *
- * Monetization channels explained:
- * 1. Sponsored Ads - Banner ads from relevant businesses
- * 2. Premium Features - Future paid features for agencies
- * 3. Sponsorships - Direct partnerships with organizations
+ * Owner-facing income plan: List 1 partners + Travel/Exchange placements.
+ * Government services are intentionally excluded from monetisation.
  */
 export default function OwnerIncomePage() {
+  const byPlacement = {
+    remittance: INCOME_PARTNER_TEMPLATES.filter((t) => t.placement === "remittance"),
+    travel: INCOME_PARTNER_TEMPLATES.filter((t) => t.placement === "travel"),
+    bank: INCOME_PARTNER_TEMPLATES.filter((t) => t.placement === "bank"),
+  };
+
   return (
     <PageCard>
       <section className="space-y-8">
-        {/* Page Header */}
         <PageHeader
-          title="App Monetization & Sponsorship"
-          subtitle="Learn how this free app sustains itself and how you can partner with us."
+          title="Income plan (List 1 + Travel)"
+          subtitle="Non-government partners only. App stays free for workers. Replace starter URLs with your tracked affiliate links under Admin → Referrals."
         />
 
-        {/* Income Channels Section */}
-        <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-ink-muted">
-            How We Generate Income
-          </h2>
+        <Card className="space-y-3">
+          <h2 className="text-lg font-semibold text-ink">Do this now</h2>
+          <ol className="list-decimal space-y-2 pl-5 text-sm text-ink">
+            <li>
+              Open each partner program link below and apply (Remitly, Agoda, Airalo first).
+            </li>
+            <li>
+              When approved, go to <strong>Admin → Referrals</strong>, filter by Exchange /
+              Travel / Accounts, click <strong>Paste tracking URL</strong>, save as{" "}
+              <strong>Affiliate</strong>.
+            </li>
+            <li>
+              Confirm cards appear on <strong>Exchange</strong> (`remittance`) and{" "}
+              <strong>Travel</strong> (`travel`).
+            </li>
+            <li>Optional: OCBC FRANK / Revolut for Accounts Guide (`bank`).</li>
+            <li>Sponsored ads / Contact form stay available for direct B2B deals.</li>
+          </ol>
+        </Card>
 
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {/* Sponsored Ads Card */}
-            <div className="rounded-lg border border-border bg-surface p-5 shadow-sm">
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-warning-soft">
-                <span className="text-xl">📢</span>
-              </div>
-              <h3 className="mb-2 font-semibold text-ink">Sponsored Ads</h3>
-              <p className="text-sm text-ink-muted">
-                Relevant businesses (remittance services, employment agencies, etc.) can
-                display non-intrusive banner ads to reach our audience.
-              </p>
-              <ul className="mt-3 space-y-1 text-xs text-ink-subtle">
-                <li>• Impression & click tracking</li>
-                <li>• Targeted placements</li>
-                <li>• Performance reports</li>
-              </ul>
-            </div>
+        {(
+          [
+            ["remittance", "Exchange — remittance"],
+            ["travel", "Travel — hotels / eSIM / card"],
+            ["bank", "Accounts — bank / wallet"],
+          ] as const
+        ).map(([key, label]) => (
+          <Card key={key} className="space-y-3">
+            <h2 className="text-lg font-semibold text-ink">{label}</h2>
+            <p className="text-xs text-ink-subtle">
+              Admin placement: {REFERRAL_PLACEMENT_LABELS[key]}
+            </p>
+            <ul className="space-y-3">
+              {byPlacement[key].map((partner) => (
+                <li
+                  key={partner.id}
+                  className="rounded-xl border border-border bg-surface-muted p-3"
+                >
+                  <p className="font-medium text-ink">{partner.partnerName}</p>
+                  <p className="mt-1 text-sm text-ink-muted">{partner.description}</p>
+                  <div className="mt-2 flex flex-wrap gap-3 text-sm">
+                    <a
+                      href={partner.applyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-brand-strong underline"
+                    >
+                      Apply / program →
+                    </a>
+                    <a
+                      href={partner.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-ink-muted underline"
+                    >
+                      Product page
+                    </a>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </Card>
+        ))}
 
-            {/* Premium Features Card */}
-            <div className="rounded-lg border border-border bg-surface p-5 shadow-sm">
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-brand-soft">
-                <span className="text-xl">⭐</span>
-              </div>
-              <h3 className="mb-2 font-semibold text-ink">Premium Features</h3>
-              <p className="text-sm text-ink-muted">
-                Future paid features for agencies and employers who want enhanced visibility
-                and tools.
-              </p>
-              <ul className="mt-3 space-y-1 text-xs text-ink-subtle">
-                <li>• Featured job listings</li>
-                <li>• Priority support</li>
-                <li>• Analytics dashboard</li>
-              </ul>
-            </div>
-
-            {/* Sponsorships Card */}
-            <div className="rounded-lg border border-border bg-surface p-5 shadow-sm">
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-success-soft">
-                <span className="text-xl">🤝</span>
-              </div>
-              <h3 className="mb-2 font-semibold text-ink">Sponsorships</h3>
-              <p className="text-sm text-ink-muted">
-                Organizations supporting migrant workers can sponsor specific features or
-                content sections.
-              </p>
-              <ul className="mt-3 space-y-1 text-xs text-ink-subtle">
-                <li>• Brand visibility</li>
-                <li>• Community goodwill</li>
-                <li>• Custom partnerships</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Our Promise Section */}
-        <div className="rounded-lg border-l-4 border-brand bg-brand-soft p-4">
-          <h3 className="font-semibold text-brand-strong">Our Promise</h3>
+        <div className="rounded-lg border border-border bg-brand-soft p-4">
+          <h3 className="font-semibold text-brand-strong">Promise to workers</h3>
           <p className="mt-1 text-sm text-brand-strong">
-            This app will always remain free for migrant workers. Any monetization is
-            designed to sustain the platform while keeping the user experience clean and
-            helpful. We do not sell user data.
+            Essential guides stay free. Partner links are labelled. We do not sell user
+            data. Government pages are never monetised.
           </p>
         </div>
 
-        {/* Ad Metrics Info (for transparency) */}
-        <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-ink-muted">
-            Ad Performance Tracking
-          </h2>
-          <p className="text-sm text-ink-muted">
-            We track anonymous metrics to measure ad effectiveness and provide value to our
-            sponsors:
-          </p>
-          <div className="grid gap-3 sm:grid-cols-2">
-            <div className="flex items-start gap-3 rounded border border-border bg-surface-muted p-3">
-              <span className="text-lg">👁️</span>
-              <div>
-                <h4 className="font-medium text-ink-muted">Impressions</h4>
-                <p className="text-xs text-ink-subtle">
-                  How many times an ad is displayed to users.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 rounded border border-border bg-surface-muted p-3">
-              <span className="text-lg">👆</span>
-              <div>
-                <h4 className="font-medium text-ink-muted">Clicks</h4>
-                <p className="text-xs text-ink-subtle">
-                  How many users clicked through to learn more.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Card className="space-y-3">
+          <h2 className="text-lg font-semibold text-ink">Other income (not List 1)</h2>
+          <ul className="space-y-2 text-sm text-ink-muted">
+            <li>Sponsored ads — Admin → Ads</li>
+            <li>Direct sponsor inquiry — form below</li>
+            <li>Passport PDF export (paid convenience) — when enabled</li>
+          </ul>
+        </Card>
 
-        {/* Sponsor Inquiry Form Section */}
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-ink-muted">
-            Interested in Sponsoring?
-          </h2>
+          <h2 className="text-xl font-semibold text-ink">Interested in sponsoring?</h2>
           <p className="text-sm text-ink-muted">
-            If your organization serves migrant workers and you&apos;d like to reach our
-            community, we&apos;d love to hear from you.
+            For businesses that serve migrant workers (remittance, travel, SIM, training —
+            not government services).
           </p>
           <SponsorInquiryForm />
         </div>

@@ -2,11 +2,12 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHeader, Card } from "@/components/ui/Card";
 import { Link } from "@/i18n/navigation";
 import CategoryBadge from "@/components/CategoryBadge";
 import { routing, type AppLocale } from "@/i18n/routing";
-import { getContentBySlug } from "@/lib/content";
+import { contentImageUrl, getContentBySlug } from "@/lib/content";
 import PageCard from "@/components/ui/PageCard";
 import TranslationNotice from "@/components/TranslationNotice";
 import { resolveTranslation, isTranslatableCategory } from "@/lib/translation";
@@ -80,6 +81,8 @@ export default async function NewsDetailPage({
       ? "notTranslated"
       : null;
 
+  const coverUrl = contentImageUrl(item.image_path);
+
   let sourceHost: string | null = null;
   if (item.source_url) {
     try {
@@ -111,6 +114,19 @@ export default async function NewsDetailPage({
           </div>
 
           <h1 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">{title}</h1>
+
+          {coverUrl ? (
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border bg-surface-muted">
+              <Image
+                src={coverUrl}
+                alt=""
+                fill
+                sizes="(max-width: 768px) 100vw, 640px"
+                className="object-cover"
+                priority
+              />
+            </div>
+          ) : null}
 
           {summary ? <p className="text-lg text-ink-muted">{summary}</p> : null}
 

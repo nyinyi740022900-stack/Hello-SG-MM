@@ -1,18 +1,16 @@
-# Category thumbnails
+# Category images
 
-Drop one square image per category here, named exactly:
+Optional cover images for news category cards live here as:
 
-  mom_policy · embassy · safety_scam · finance · legal
-  health · community · education · transport · jobs
+`{category}.{jpg|jpeg|png|webp}`
 
-with a `.webp` (preferred) or `.png` extension — for example `finance.webp`.
+Allowed categories (after 2026-09-12 simplify):
 
-Rules:
-- Illustrations only. Never a photorealistic image of an event, place or person:
-  next to a headline, a realistic image reads as documentary evidence of
-  something that did not happen that way.
-- No text, logos or brand marks in the image.
-- Keep each file small (aim under 40KB). These load on mobile data.
+- `work`
+- `money`
+- `safety`
+- `health`
+- `housing`
+- `community`
 
-The feed falls back to a plain coloured category badge for any file that is
-missing, so partial coverage is fine.
+If a file is missing, the UI uses colour badges only (preferred for copyright safety).

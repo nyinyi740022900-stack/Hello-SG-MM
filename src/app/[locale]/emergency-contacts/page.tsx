@@ -13,6 +13,7 @@ import {
   whatsappUrl,
   type EmergencyContact,
 } from "@/lib/emergencyContacts";
+import PageDiscussionSection from "@/components/PageDiscussionSection";
 
 type EmergencyContactsPageProps = {
   params: Promise<{ locale: string }>;
@@ -222,6 +223,7 @@ export default async function EmergencyContactsPage({ params }: EmergencyContact
         </Card>
 
         <p className="text-xs text-ink-subtle">{t("verifiedNote")}</p>
+        <PageDiscussionSection pageKey="emergency-contacts" />
       </section>
     </PageCard>
   );

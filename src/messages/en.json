@@ -19,7 +19,12 @@
     "events": "Events",
     "directory": "Services",
     "transport": "Transport",
-    "rates": "Exchange rates"
+    "drivingLicense": "Driving licence",
+    "lottery": "Lottery",
+    "rates": "Exchange",
+    "travel": "Travel",
+    "housing": "Housing",
+    "jobs": "Jobs"
   },
   "home": {
     "badge": "Free for all workers",
@@ -31,15 +36,15 @@
     "quickEmergency": "Emergency Contacts",
     "quickGuide": "Passport Guide",
     "quickAccountsGuide": "Essential Accounts",
-    "sponsorLabel": "Our Sponsors",
-    "sponsorHeadline": "Supporting Migrant Workers in Singapore",
-    "sponsorDescription": "This app is free thanks to our community sponsors. Check out services that help migrant workers thrive.",
-    "sponsorCta": "View Sponsors",
     "toolsSectionTitle": "Financial & Evidence Tools",
     "toolSalaryLog": "Salary Log",
     "toolSalaryLogHint": "Track expected vs. received pay",
     "toolRecruitmentFee": "Recruitment Fee Tracker",
     "toolRecruitmentFeeHint": "See when your agency debt is paid off",
+    "toolLottery": "Lottery",
+    "toolDrivingLicense": "Driving licence",
+    "toolTravel": "Travel",
+    "toolHousing": "Housing",
     "rightsSectionTitle": "Rights & Community",
     "toolRestDay": "Rest Day Rights",
     "toolRestDayHint": "Know your weekly rest day entitlement",
@@ -56,7 +61,8 @@
     "feedEmpty": "No updates published yet. New items appear here once reviewed.",
     "viewMore": "More",
     "formGeneralShort": "General form",
-    "formMaidShort": "Maid form"
+    "formMaidShort": "Maid form",
+    "toolJobs": "Jobs"
   },
   "news": {
     "badge": "Daily updates",
@@ -66,18 +72,12 @@
     "sourceLink": "Read source",
     "disclaimer": "Updates are researched daily and reviewed by an admin before publishing, but always confirm important decisions (visa, legal, large payments) with the official source directly.",
     "category": {
-      "mom_policy": "Work & Pass",
-      "embassy": "Consular",
-      "safety_scam": "Scam Alert",
-      "finance": "Money",
-      "legal": "Rights",
+      "work": "Work",
+      "money": "Money",
+      "safety": "Safety",
       "health": "Health",
-      "community": "Community",
-      "education": "Training",
-      "transport": "Transport",
-      "jobs": "Jobs",
       "housing": "Housing",
-      "cost_of_living": "Cost of Living"
+      "community": "Community"
     },
     "allCategories": "All",
     "readMore": "Read more",
@@ -120,7 +120,7 @@
   "recruitmentFee": {
     "badge": "Free",
     "title": "Recruitment Fee Tracker",
-    "subtitle": "Many workers have 6-9 months of salary deducted to repay agency/recruitment fees. See exactly when yours will be paid off.",
+    "subtitle": "Track your deductions month by month, plus official links and map directions for where to get help if fees are abusive.",
     "fieldTotalFee": "Total recruitment fee",
     "fieldTotalFeeHint": "The full amount your agency charged you",
     "fieldMonthlyDeduction": "Monthly deduction from your salary",
@@ -134,7 +134,53 @@
     "resultPaidOffNote": "Based on your numbers, this fee should be fully paid off.",
     "disclaimer": "This is an estimate based on the numbers you entered — it is not verified by your agency or employer.",
     "printButton": "Print / Save as PDF",
-    "emptyState": "Enter your fee amount and monthly deduction above to see your payoff estimate."
+    "emptyState": "Enter your fee amount and monthly deduction above to see your payoff estimate.",
+    "warningTitle": "Important safety rule",
+    "warningBody": "Never pay money in Singapore to get or keep a job without verifying the agency and person first. Keep every receipt and message.",
+    "beforePayTitle": "Before you agree to any fee",
+    "beforePaySubtitle": "Use this checklist first.",
+    "beforePay": {
+      "licensed": "Check if the agency is licensed in MOM's EA Directory. Avoid agencies marked under revocation, suspension or surveillance.",
+      "personnel": "Check the individual agent too. Their card name and registration number should match MOM's EA Directory.",
+      "receipts": "Do not hand over cash without a written receipt showing amount, date, purpose and company name.",
+      "contract": "Read what the deduction is for and for how many months. Keep a copy of any agreement you sign.",
+      "transfer": "If someone pressures you to transfer money quickly, pause and verify through official MOM channels."
+    },
+    "evidenceTitle": "What evidence to keep every month",
+    "evidenceSubtitle": "These documents help if you need to report or file a claim.",
+    "evidence": {
+      "payslips": "Payslips showing each monthly deduction.",
+      "bank": "Bank statements or transfer records proving what was paid.",
+      "messages": "WhatsApp/SMS/chat messages with the agency or employer.",
+      "photos": "Photos of receipts, contracts and any handwritten fee notes.",
+      "timeline": "A simple timeline: when deduction started, how much each month, and when problems began."
+    },
+    "actionTitle": "If deductions look wrong or abusive",
+    "actionSubtitle": "You can ask for help without waiting for the debt to grow.",
+    "action": {
+      "speak": "Ask the agency/employer for a written breakdown of every deduction already taken.",
+      "report": "Report suspected agency or work-pass infringements to MOM confidentially.",
+      "claim": "If this links to salary disputes, file a salary-related claim through TADM eServices within deadline.",
+      "helplines": "If you are scared or threatened, call MWC/HOME or MOM immediately and keep your evidence safe."
+    },
+    "linksTitle": "Official links",
+    "links": {
+      "eaDirectory": "MOM EA Directory (check agency licence)",
+      "eaLicensedFaq": "MOM: why you should use licensed agencies",
+      "reportInfringement": "MOM: report an infringement",
+      "momContact": "MOM contact phone numbers",
+      "tadmClaim": "TADM: file a salary-related claim",
+      "tadmFees": "TADM: filing fees and payment methods",
+      "tadmLocations": "TADM locations and operating hours"
+    },
+    "mapsTitle": "Map directions for in-person help",
+    "mapsSubtitle": "Tap to open in Google Maps.",
+    "maps": {
+      "mom": "MOM Services Centre (1500 Bendemeer Road)",
+      "tadm": "TADM at MOM Services Centre (Hall A, Level 3)",
+      "mwc": "Migrant Workers' Centre",
+      "home": "HOME help desk (720 Geylang Road)"
+    }
   },
   "checklist": {
     "badge": "Free",
@@ -395,11 +441,7 @@
       "checkAppointment": "Check whether you need an embassy appointment.",
       "fillSample": "Compare the form with a sample before filling it in.",
       "reviewBeforeSubmit": "Review all details once more before you submit."
-    },
-    "sponsorLabel": "Community Partner",
-    "sponsorHeadline": "Supporting Migrant Workers in Singapore",
-    "sponsorDescription": "Our partners offer assistance with passport applications and document preparation for Myanmar workers.",
-    "sponsorCta": "Get Help"
+    }
   },
   "emergency": {
     "badge": "Save these numbers",
@@ -563,32 +605,94 @@
   "accountsGuide": {
     "badge": "Getting started in Singapore",
     "title": "Essential Accounts Guide",
-    "subtitle": "Accounts that genuinely help you manage your money and access services safely in Singapore.",
-    "whyLabel": "Why",
-    "howLabel": "How",
+    "subtitle": "How to open the accounts that keep your salary safe, let you send money, and unlock government services — with official links and maps.",
+    "whyLabel": "Why you need it",
+    "howLabel": "How to set it up",
+    "linksLabel": "Official links",
     "officialLink": "Official website",
-    "bnplNote": "This guide does not cover \"Buy Now Pay Later\" apps (e.g. Atome, Grab PayLater). They involve no credit check and real late fees that can snowball into debt — we recommend avoiding them, especially if you're already repaying recruitment fees.",
-    "disclaimer": "General information only — always confirm current steps on the official website, and ask your employer or the bank directly if unsure.",
+    "bnplNote": "This guide does not cover \"Buy Now Pay Later\" apps (e.g. Atome, Grab PayLater). They involve no credit check and real late fees that can snowball into debt — avoid them, especially if you are still repaying recruitment fees.",
+    "safetyNote": "Never share your bank PIN, OTP, Singpass password or PayNow QR with an agent, employer or stranger. No real bank or government officer will ask you to transfer money to \"unlock\" your account.",
+    "disclaimer": "General information only — always confirm current steps on the official website, and ask your employer or the bank directly if unsure. Partner links below may earn this app a small referral fee; the worker-facing tools stay free.",
+    "partnerLinksTitle": "Partner options (optional)",
+    "pagePartnersTitle": "Partner signup & invitations",
+    "pagePartnersSubtitle": "Optional links from partners who help keep this guide free. Only open ones you trust.",
+    "affiliateBadge": "Partner",
+    "invitationBadge": "Invite",
+    "sponsoredNote": "Sponsored — helps keep this free app running for workers.",
+    "mapsTitle": "Maps — find a bank branch or MOM",
+    "mapsSubtitle": "Tap to open Google Maps near you.",
+    "maps": {
+      "posbBranch": "Nearest POSB branch",
+      "dbsBranch": "Nearest DBS branch",
+      "ocbcBranch": "Nearest OCBC branch",
+      "uobBranch": "Nearest UOB branch",
+      "mom": "MOM Services Centre (Bendemeer)"
+    },
     "accounts": {
       "bank": {
         "name": "Bank Account",
-        "why": "MOM requires your salary to be paid directly into your own bank account, not to your employer or an agent. A bank account also lets you save money and remit through official channels (required for Myanmar's 25% remittance rule).",
-        "how": "Bring your passport and Work Permit/S Pass card to a bank (e.g. POSB, DBS, OCBC, UOB). Some employers can help Work Permit holders open a POSB account via MOM's WP Online system — ask your employer first."
+        "tagline": "Where your salary should land",
+        "why": "If you live in a dormitory, MOM requires your salary to be paid electronically into your own bank account — not cash to your employer or agent. A bank account also lets you save and remit through licensed channels (needed for Myanmar's remittance rule).",
+        "how": "Bring your passport and Work Permit/S Pass card to a bank. Some employers help Work Permit holders open a POSB account — ask first.",
+        "steps": {
+          "docs": "Bring passport + Work Permit / S Pass / EP card (originals). Some banks also ask for your employer's letter or address proof.",
+          "employer": "Ask your employer whether they already open POSB/DBS accounts for Work Permit staff through MOM WP Online. That can be faster than walking in alone.",
+          "branch": "Or walk into POSB, DBS, OCBC or UOB. Ask for a basic savings account for a work-pass holder. Keep your own ATM card and PIN — do not hand them over.",
+          "keepBook": "If your employer keeps the bank book, you still have the right to check it regularly and confirm salary hits every month."
+        },
+        "links": {
+          "momSalary": "MOM: paying Work Permit salaries",
+          "momSPassSalary": "MOM: paying S Pass salaries (electronic)",
+          "posb": "POSB — open or manage an account",
+          "dbs": "DBS — personal banking",
+          "ocbc": "OCBC — personal banking",
+          "uob": "UOB — personal banking"
+        }
       },
       "paynow": {
         "name": "PayNow",
-        "why": "PayNow lets you send and receive money instantly between banks for free using just a mobile number — used almost everywhere in Singapore, from splitting bills to paying small shops.",
-        "how": "Open your bank's mobile app, find \"PayNow\" in the settings, and link it to your Singapore mobile number and bank account."
+        "tagline": "Instant transfers with your mobile number",
+        "why": "PayNow lets you send and receive money instantly between Singapore banks for free using a mobile number — used for splitting bills, paying small shops, and topping up e-wallets.",
+        "how": "Set it up inside your bank app after the account is open.",
+        "steps": {
+          "openApp": "Open your bank's mobile app (POSB digibank, DBS, OCBC, UOB, etc.).",
+          "linkNumber": "Find PayNow / Proxy settings and link your Singapore mobile number (and optionally NRIC/FIN) to your bank account.",
+          "testSend": "Send yourself S$0.01 (or a tiny amount) from another account, or ask a friend, to confirm the link works before you rely on it."
+        },
+        "links": {
+          "absPayNow": "ABS: what PayNow is and how it works"
+        }
       },
       "singpass": {
         "name": "Singpass",
-        "why": "Singpass is Singapore's official digital identity, used to access government e-services online (e.g. checking your Work Permit status, MOM services).",
-        "how": "Work Permit holders can register at portal.singpass.gov.sg using your FIN, about 1-3 working days after your Work Permit is issued. You'll verify your identity with a live selfie (face verification)."
+        "tagline": "Singapore's official digital ID",
+        "why": "Singpass is how you log into government e-services — Work Permit status, MOM forms, and other official portals. Work-pass holders with a FIN can register.",
+        "how": "Register online about 1–3 working days after your pass is issued, using face verification.",
+        "steps": {
+          "waitPass": "Wait until your Work Permit / S Pass / EP is issued and you have a FIN printed on the card.",
+          "register": "Go to the Singpass website or app and choose Register. Enter your FIN and details exactly as on the card.",
+          "faceVerify": "Complete face verification with a live selfie. Use a Singapore mobile number for OTP where asked.",
+          "app": "Install the Singpass app, set a passcode, and turn on biometric login if your phone supports it."
+        },
+        "links": {
+          "singpassHome": "Singpass official website",
+          "singpassPortal": "Singpass portal — register / sign in"
+        }
       },
       "grabpay": {
         "name": "GrabPay Wallet (top-up only)",
-        "why": "A prepaid e-wallet for paying transport and food conveniently. Important: this is different from \"GrabPay PayLater\", which is a credit product — only use the top-up wallet, not PayLater.",
-        "how": "Download the Grab app, register with your mobile number, and top up the wallet using PayNow, bank transfer, or cash — never borrow through PayLater."
+        "tagline": "Prepaid wallet — not a loan",
+        "why": "A prepaid e-wallet for transport and food. This is different from GrabPay PayLater (credit). Only use the top-up wallet.",
+        "how": "Download Grab, register, and top up with PayNow or bank transfer — never borrow through PayLater.",
+        "steps": {
+          "download": "Install Grab from the App Store or Google Play and register with your Singapore mobile number.",
+          "topUp": "Open GrabPay Wallet and top up using PayNow, bank transfer, or cash options shown in the app.",
+          "avoidPayLater": "Ignore GrabPay PayLater / PayLater offers. They are credit products with late fees — not needed for a prepaid wallet."
+        },
+        "links": {
+          "grabPay": "GrabPay — official page",
+          "masProviders": "MAS payment service providers list (check licences)"
+        }
       }
     }
   },
@@ -776,6 +880,87 @@
     "cookieNoticeLearnMore": "Learn more",
     "cookieNoticeAccept": "OK"
   },
+  "account": {
+    "title": "Profile",
+    "hint": "Your name and photo appear beside comments you write.",
+    "loading": "Loading profile...",
+    "loginRequired": "Please login to view your profile.",
+    "loadingRole": "Loading role...",
+    "roleLabel": "Role: {role}",
+    "displayName": "Display name",
+    "displayNamePlaceholder": "Name shown on comments",
+    "email": "Email",
+    "saveName": "Save name",
+    "saving": "Saving…",
+    "savedName": "Name saved. It will show on your comments.",
+    "changePhoto": "Change photo",
+    "removePhoto": "Remove photo",
+    "uploadingPhoto": "Uploading…",
+    "photoHint": "JPG, PNG, WebP or GIF — up to 2 MB.",
+    "savedPhoto": "Photo saved. It will show on your comments.",
+    "removedPhoto": "Photo removed.",
+    "photoFailed": "Could not upload photo. Please try again.",
+    "draftTitle": "Passport form draft",
+    "draftHint": "Answers you saved in the Form Wizard. Open the wizard to edit. Download is the blank official embassy PDF to print and fill by hand.",
+    "draftLoading": "Loading draft…",
+    "draftError": "Could not load your draft. Try again later.",
+    "draftEmpty": "No saved passport draft yet.",
+    "draftStart": "Start Form Wizard",
+    "draftContinue": "Continue Form Wizard",
+    "draftEdit": "Edit draft",
+    "draftDelete": "Delete draft",
+    "draftDeleting": "Deleting…",
+    "draftDeleteConfirm": "Delete this passport form draft? This cannot be undone.",
+    "draftDeleted": "Draft deleted.",
+    "draftDownload": "Download blank form PDF",
+    "draftChecklist": "Open Checklist",
+    "draftDownloadNote": "The PDF is blank (official form). Copy your answers from this page into the printed form, then sign it.",
+    "draftWorkerType": "Form type",
+    "draftWorkerMaid": "Domestic worker (V2)",
+    "draftWorkerGeneral": "General worker (V1)",
+    "draftField": {
+      "fullName": "Full name",
+      "finNumber": "FIN",
+      "currentPassportNumber": "Passport number",
+      "currentPassportIssuedDate": "Passport issued date",
+      "phoneSingapore": "Phone (Singapore)",
+      "emailSingapore": "Email",
+      "nrcNumber": "NRC",
+      "employerCompany": "Employer / company"
+    },
+    "deleteAccountTitle": "Delete account",
+    "deleteAccountHint": "Permanently deletes your login, profile, passport drafts, and comments you wrote. This cannot be undone.",
+    "deleteAccountTypeLabel": "Type DELETE to confirm",
+    "deleteAccountConfirmHint": "Type the word DELETE in capital letters.",
+    "deleteAccountConfirm": "Really delete your account forever?",
+    "deleteAccountButton": "Delete my account",
+    "deleteAccountDeleting": "Deleting…",
+    "deleteAccountFailed": "Could not delete account. Please try again or contact support.",
+    "pageTitle": "My Account",
+    "pageSubtitle": "Your applications, room posts, profile, and settings.",
+    "myAppsTitle": "My job applications",
+    "myAppsHint": "Jobs you applied to. Open messages to talk with the agency.",
+    "myAppsEmpty": "You have not applied to any jobs yet.",
+    "browseJobs": "Browse jobs",
+    "unknownJob": "Job",
+    "appStatusPending": "Pending",
+    "appStatusReviewed": "Reviewed",
+    "appStatusClosed": "Closed",
+    "openMessages": "Messages",
+    "hideMessages": "Hide messages",
+    "myRoomsTitle": "My room listings",
+    "myRoomsHint": "Rooms you posted. Pending means waiting for admin review.",
+    "myRoomsEmpty": "You have not posted a room yet.",
+    "postRoom": "Post a room",
+    "browseHousing": "Housing board",
+    "roomStatusPending": "Pending review",
+    "roomStatusPublished": "Published",
+    "roomStatusRejected": "Rejected",
+    "roomStatusExpired": "Expired / hidden",
+    "roomRejectNote": "Admin note",
+    "roomPendingNote": "Visible on the board after an admin approves it.",
+    "expiresOn": "Expires {date}"
+  },
   "auth": {
     "loginTitle": "Login",
     "loginSubtitle": "Sign in to save your records and export PDFs.",
@@ -846,9 +1031,9 @@
       "market": "Market",
       "other": "Other"
     },
-    "pageBadge": "Money",
-    "pageTitle": "SGD to {currency} exchange rates",
-    "pageSubtitle": "Indicative rates we have recorded, and where to check the real rate before you send money.",
+    "pageBadge": "Exchange",
+    "pageTitle": "Exchange & send money (SGD → {currency})",
+    "pageSubtitle": "Live indicative rates, how to remit safely to Myanmar and elsewhere, maps, official links, and licensed providers.",
     "latestTitle": "Latest recorded",
     "checkTitle": "Check the company is licensed",
     "checkIntro": "Rates move during the day and every provider sets its own, so confirm the exact rate in the provider's own app before you send. What you can check here is more important: whether the company is licensed by MAS at all. If it is not on this list and your money goes missing, there is no regulator to complain to.",
@@ -861,7 +1046,50 @@
     "noMarketRate": "No market rate recorded",
     "panelDisclaimer": "Indicative only. Rates for India, China, Bangladesh and Malaysia are the international mid-market rate — your provider's rate after fees will be lower. Myanmar's is from an independent rate-tracking site rather than a bank, since no bank or e-wallet here publishes a comparable daily figure — treat it as a rough indication only. Always confirm the exact rate in your provider's own app before you send.",
     "feedUpdated": "Updated {time}",
-    "compareOfficial": "Myanmar requires a share of overseas wages to be remitted through official channels. Keep your transfer receipts."
+    "compareOfficial": "Myanmar requires a share of overseas wages to be remitted through official channels. Keep your transfer receipts.",
+    "topWarning": "Rates change during the day. Always confirm the final rate and fees in the provider’s own app or shop before you send money.",
+    "myanmarOfficialAlert": "Myanmar rules may require a share of overseas wages to be remitted through official channels. Keep every receipt. Unofficial agents who promise “better rates” can take your money with no MAS protection.",
+    "safeSendTitle": "Send money safely — steps",
+    "safeSendIntro": "Use this checklist every time you remit, especially to Myanmar.",
+    "safeSend": {
+      "compareTotal": "Compare total cost (rate + fee + receiving fee), not the headline rate alone.",
+      "checkLicence": "Confirm the company appears on the MAS financial institutions / payment service providers lists linked below.",
+      "confirmRate": "Check today’s rate in the provider’s app or at the counter — our panel is indicative only.",
+      "keepReceipt": "Save the transfer receipt and reference number until the money arrives.",
+      "avoidAgent": "Do not hand cash to a stranger or “agent” who is not a licensed shop or app — if it disappears, you may have no recourse."
+    },
+    "channelsTitle": "Ways people send money",
+    "channelsIntro": "Pick a channel that fits your amount, speed and risk tolerance. Licensed channels first.",
+    "channels": {
+      "bank": "Bank transfer / telegraphic transfer — slower, often safer; ask your bank about fees to Myanmar or your home country.",
+      "licensed": "MAS-licensed remittance companies and e-wallets — common for workers; always verify the licence list.",
+      "shop": "Money changers / remittance counters in places like Peninsula Plaza or Little India — check the rate board and ask for a receipt.",
+      "app": "Licensed remittance apps — convenient, but confirm fees and receiving bank/e-wallet support in Myanmar before you lock the rate."
+    },
+    "hubsTitle": "Maps — remittance & money-changer areas",
+    "hubsSubtitle": "Open in Google Maps. Shops change — verify licence and rate on site.",
+    "hubs": {
+      "peninsula": "Peninsula Plaza (Little Myanmar) — money changers / remittance",
+      "littleIndia": "Little India — remittance shops",
+      "mustafa": "Mustafa Centre",
+      "chinatown": "Chinatown — money changers"
+    },
+    "official": {
+      "masFid": "MAS — financial institutions directory (FID)",
+      "masProviders": "MAS — payment service providers list",
+      "momSalary": "MOM — salary payment rules (work pass)"
+    },
+    "partnersTitle": "Send with a trusted partner",
+    "partnersSubtitle": "Open Remitly or WorldRemit from here to compare fees and keep this free app running. Always prefer MAS-licensed services and check the final amount before you pay.",
+    "mistakesTitle": "Mistakes that cost money",
+    "mistakes": {
+      "mistakeUnlicensed": "Sending through an unlicensed person — no MAS complaint path if funds vanish.",
+      "mistakeCashStranger": "Giving cash to a friend-of-a-friend “agent” with only a WhatsApp promise.",
+      "mistakeIgnoreFee": "Chasing the best rate while ignoring a large fixed fee.",
+      "mistakeNoReceipt": "Leaving without a receipt or screenshot of the transaction reference.",
+      "mistakeFakeRate": "Trusting a screenshot from a chat group instead of the provider’s live quote."
+    },
+    "guideDisclaimer": "This page is general guidance, not financial advice. MAS, MOM and Myanmar rules can change. Confirm every step with the official links and your provider before you send."
   },
   "events": {
     "badge": "Community",
@@ -1009,6 +1237,161 @@
     "disclaimer": "Fares and rules are set by LTA and can change. Check the official links above before relying on anything here for a trip that matters.",
     "heroTitle": "Bus & MRT guide"
   },
+  "drivingLicense": {
+    "badge": "Driving in Singapore",
+    "title": "Driving licence guide",
+    "subtitle": "Convert a foreign licence, prepare for BTT/FTT, train at authorised centres, find maps and official documents — plus free Myanmar community helpers.",
+    "topWarning": "Rules and fees change. Always confirm on the Traffic Police and LTA pages linked below before you pay or book.",
+    "overviewTitle": "1. Can you drive on a foreign licence?",
+    "overview": {
+      "shortStay": "If you stay under about 12 months, you may drive on a valid foreign licence (plus an International Driving Permit or official English translation if the licence is not in English).",
+      "longStay": "If your pass is for 12 months or more (most Work Permits, S Pass, EP), Traffic Police expect you to convert to a Singapore licence — do not keep driving on the foreign one past the allowed period.",
+      "asean": "ASEAN-issued licences often do not need an IDP for short stays, but conversion still applies for long-term pass holders. Check the official Traffic Police page for your case.",
+      "eligibility": "Conversion usually requires age 18+, a valid unexpired foreign licence, and passing the Basic Theory Test (BTT) in Singapore."
+    },
+    "convertTitle": "2. Convert a foreign licence (most pass holders)",
+    "convertIntro": "Typical path after you already hold a licence from your home country:",
+    "convertSteps": {
+      "passBtt": "Enrol at one of the three authorised driving centres and pass the Basic Theory Test (BTT).",
+      "gatherDocs": "Prepare passport, work/long-term pass, foreign licence, photo, and any translation or residency proof Traffic Police asks for.",
+      "preAssessment": "Complete the Foreign Licence Pre-assessment on the Traffic Police e-service. Eligible applicants receive a link to book.",
+      "appointment": "Book and attend your appointment at Traffic Police Headquarters (10 Ubi Avenue 3). Bring originals — incomplete files are rejected.",
+      "payCollect": "Pay the conversion fee (about S$50; confirm current amount on the official page). Keep the receipt; your Singapore licence is usually posted after approval."
+    },
+    "convertWpNote": "Work Permit and S Pass holders who convert often receive a Class 3C licence for standard cars. Exact class depends on Traffic Police rules and your foreign licence — confirm at submission.",
+    "docsTitle": "3. Documents to prepare",
+    "docsIntro": "Traffic Police may ask for more. Bring originals and photocopies where possible.",
+    "docs": {
+      "passportPass": "Passport and current work / long-term pass (and FIN card if you have one).",
+      "foreignLicence": "Valid foreign driving licence (not expired, suspended, or cancelled).",
+      "translation": "If the licence is not in English: International Driving Permit or official English translation from an authorised translator / embassy.",
+      "photo": "Recent passport-size photo (matte/semi-matte, white background, usually within 3 months).",
+      "residencyProof": "If you got the foreign licence after your first Singapore pass or PR: proof of about 6 months’ stay in the country that issued the licence.",
+      "wpHistory": "Work Permit holders may need MOM employment history printouts — follow the Traffic Police checklist."
+    },
+    "learnerTitle": "7. No foreign licence? Learner path",
+    "learnerIntro": "If you never held a licence, you train at an authorised centre. Exact packages differ by centre.",
+    "learner": {
+      "enrolCentre": "Enrol at BBDC, CDC, or SSDC and pass eyesight / medical checks as required.",
+      "bttPdl": "Pass BTT, then apply for a Provisional Driving Licence (PDL) via Traffic Police before on-road lessons.",
+      "lessonsFtt": "Complete practical lessons and pass the Final Theory Test (FTT) when required for your class.",
+      "practical": "Pass the practical driving test for your class (e.g. Class 3 / 3A car, or Class 2B motorcycle).",
+      "qdl": "Apply for your Qualified Driving Licence (QDL) after you pass — fees and postal delivery follow Traffic Police instructions."
+    },
+    "centresTitle": "11. Driving centres & Traffic Police — maps",
+    "centresSubtitle": "Open in Google Maps. Book tests on each centre’s website, not only by walking in.",
+    "centres": {
+      "bbdc": "Bukit Batok Driving Centre (BBDC)",
+      "cdc": "ComfortDelGro Driving Centre (CDC), Ubi",
+      "ssdc": "Singapore Safety Driving Centre (SSDC), Ang Mo Kio",
+      "tpHq": "Traffic Police HQ — 10 Ubi Avenue 3 (conversion appointments)"
+    },
+    "vocationalTitle": "12. Vocational licences (Grab / taxi / bus)",
+    "vocationalIntro": "A normal Class 3 licence is not enough to drive for hire. Vocational licences are separate and have strict eligibility.",
+    "vocationalAlert": "New Private Hire (PDVL) and Taxi (TDVL) licences are for Singapore citizens only (age and experience rules also apply). Most Work Permit / S Pass / EP holders cannot apply for a new PDVL to drive Grab or similar.",
+    "vocational": {
+      "pdvlCitizenOnly": "PDVL (private hire / chauffeured car): Singapore citizen, typically age 30+, valid Class 3/3A for more than 1 year — confirm on LTA OneMotoring / GoBusiness.",
+      "tdvlCitizenOnly": "TDVL (taxi): also restricted to Singapore citizens with LTA training and checks.",
+      "odvlBus": "Some bus vocational paths (e.g. omnibus) may allow Work Permit holders whose vocation is bus driver — only if your employer and LTA allow it. Never assume; check OneMotoring.",
+      "checkOfficial": "Before paying any “agent” who promises a Grab licence for foreigners, read the official LTA / GoBusiness pages linked below."
+    },
+    "linksTitle": "13. Official documents, tests & training links",
+    "linksSubtitle": "Bookings, PDF checklists, centre foreign-conversion pages, and LTA vocational info.",
+    "links": {
+      "tpConvert": "Traffic Police — book foreign licence conversion appointment",
+      "tpDocChecklist": "Traffic Police — document checklist PDF (conversion)",
+      "oneMotoringDriving": "LTA OneMotoring — driving overview",
+      "oneMotoringVl": "LTA OneMotoring — vocational licence application",
+      "gobusinessPdvl": "GoBusiness — PDVL licence directory",
+      "bbdc": "BBDC — enrol / book tests",
+      "bbdcForeign": "BBDC — foreign licence conversion course",
+      "cdc": "CDC — enrol / book tests",
+      "cdcForeign": "CDC — foreign licence conversion",
+      "ssdc": "SSDC — enrol / book tests",
+      "tpBttHandbook": "Traffic Police — Basic Theory handbook (includes DIPS)",
+      "tpCheckDips": "Traffic Police — check your demerit points (Singpass)"
+    },
+    "mistakesTitle": "Common expensive mistakes",
+    "mistakes": {
+      "mistakeDriveExpired": "Driving on a foreign licence after you should have converted — fines and insurance problems.",
+      "mistakeSkipBtt": "Going to Traffic Police without a passed BTT — you will be turned away.",
+      "mistakeNoTranslation": "Bringing a non-English licence without IDP or certified translation.",
+      "mistakePdvlHope": "Paying someone who claims Work Permit holders can get a new Grab/PDVL licence — that is usually false.",
+      "mistakeOutdatedBlog": "Following old blog fees or steps — always re-check official pages on the day you apply.",
+      "mistakePayAgent": "Paying a middleman who promises to “skip” BTT or TP appointment — you still must follow official steps.",
+      "mistakeDemerit": "Ignoring demerit letters or driving without a P-plate in probation — easy way to lose a new licence."
+    },
+    "disclaimer": "This page is general guidance only. Traffic Police and LTA set the real rules, fees, and eligibility. Confirm every step on their websites before you spend money or take leave from work.",
+    "testsTitle": "4. Theory & practical tests",
+    "testsIntro": "These are the main Traffic Police tests you will hear about. Exact fees change — check your centre and the official pages.",
+    "tests": {
+      "btt": "Basic Theory Test (BTT) — traffic rules and signs. Required for foreign-licence conversion and before a Provisional Driving Licence (PDL).",
+      "ftt": "Final Theory Test (FTT) — deeper rules for learners before the practical test (class-dependent).",
+      "rtt": "Riding Theory Test (RTT) — for motorcycle classes (e.g. Class 2B) instead of / in addition to car theory paths.",
+      "practical": "Practical driving / riding test — on-road assessment after lessons and theory. Pass before you get a Qualified Driving Licence (QDL).",
+      "booking": "Book tests through your driving centre’s website or counter. Bring FIN/pass and follow their photo / eye-check rules."
+    },
+    "classesTitle": "6. Common licence classes (cars & bikes)",
+    "classesIntro": "Class names appear on your Singapore licence. Confirm what your foreign licence maps to at conversion.",
+    "classes": {
+      "class3": "Class 3 — manual cars (and usually autos) under the older full Class 3 rules for eligible pass types.",
+      "class3a": "Class 3A — automatic cars only (common for many EP/DP conversions when the foreign licence was automatic).",
+      "class3c": "Class 3C — often issued to Work Permit / S Pass holders on conversion for standard motorcars; confirm with Traffic Police.",
+      "class2b": "Class 2B — motorcycles up to 200cc (separate enrolment, RTT and practical bike test)."
+    },
+    "trainingTitle": "8. Training tips (before you pay a big package)",
+    "trainingIntro": "Authorised centres sell theory + practical packages. Compare carefully.",
+    "training": {
+      "chooseCentre": "Compare BBDC, CDC and SSDC for location, language support, and package price — not only the cheapest online ad.",
+      "theoryPractice": "Use centre e-trial / practice papers for BTT (and FTT/RTT if needed). Passing BTT does not by itself finish conversion.",
+      "practicalHours": "Ask how many practical hours are included, cancellation fees, and whether an instructor who speaks your language is available.",
+      "feesVary": "Expect separate line items: enrolment, theory tests, PDL, practical lessons, practical test, QDL fee. Totals differ by centre and class.",
+      "keepReceipts": "Keep every receipt and login to your centre account. You may need proof if a booking is disputed."
+    },
+    "helpersTitle": "Free Myanmar helpers (community)",
+    "helpersSubtitle": "People or groups who volunteer Myanmar-language tips for driving licence steps. Not government staff.",
+    "helpersDisclaimer": "These helpers are not Traffic Police or LTA. Never pay large fees to “guarantee” a licence. If someone asks for money, walk away and use the official links below.",
+    "helpersFreeBadge": "Free help",
+    "helpersLinkFacebook": "Facebook",
+    "helpersLinkTelegram": "Telegram",
+    "helpersLinkWhatsapp": "WhatsApp",
+    "helpersLinkGroup": "Group",
+    "helpersLinkWebsite": "Website",
+    "passMarksTitle": "5. Pass marks & scoring",
+    "passMarksIntro": "Know the score you need before you book a test. Centres follow Traffic Police standards.",
+    "passMarks": {
+      "theoryScore": "BTT and FTT: pass mark is usually 90% — at least 45 correct out of 50 questions.",
+      "theoryFormat": "Typical theory format: 50 multiple-choice questions in about 45 minutes (confirm on your booking slip).",
+      "practicalDemerit": "Practical driving test: examiners award demerit points for mistakes. Too many demerit points = fail (centres often cite a fail around 20 demerit points — confirm with your instructor).",
+      "fttWindow": "After you pass FTT, you usually must pass the practical car test within 2 years, or you retake FTT.",
+      "rttWindow": "After you pass RTT (motorcycle), you usually must pass the practical riding test within 1 year, or you retake RTT."
+    },
+    "passMarksNote": "Conversion applicants who only need BTT still follow the same BTT pass mark. Always re-check your centre’s current rules on test day.",
+    "demeritTitle": "9. Demerit points (DIPS) & new-driver probation",
+    "demeritIntro": "Singapore uses the Driver Improvement Points System (DIPS). Points add up for traffic offences and can suspend or revoke your licence.",
+    "demerit": {
+      "whatIsDips": "Each scheduled offence adds demerit points. Stay offence-free long enough and points can be cleared under Traffic Police rules.",
+      "probationYear": "New Class 2B / 3 / 3A / 3C / 3CA drivers are usually on probation for 1 year from the date the licence is granted.",
+      "pPlate": "During probation you must display the Probation (P) plate front and rear. Missing plates can mean a fine; repeat offences in probation can revoke the licence.",
+      "probationLimit": "Probation drivers (current rule): about 13 or more demerit points in the 1-year probation → licence can be revoked. You may need to wait 1 year before retaking all tests.",
+      "fullLicenceLimit": "Non-probation drivers with no prior suspension (current rule): about 24 or more demerit points within 24 months → liable for suspension (first suspension often about 12 weeks).",
+      "change2027": "From 1 Jan 2027, Traffic Police plans stricter thresholds (reports: ~18 points in 24 months for non-probation; ~12 for probation). Confirm nearer the date on official pages.",
+      "afterRevoke": "Check your points anytime via SPF “Check Driver Improvement Points” (Singpass). After revocation you must retake required theory and practical tests."
+    },
+    "demeritWarning": "Demerit thresholds and suspension lengths change. Treat numbers here as a study guide — verify on SPF / BTT handbook before you drive.",
+    "finesTitle": "10. Common fines & demerit examples (light vehicles)",
+    "finesIntro": "Examples of demerit points and typical composition fines for light vehicles. Heavy vehicles often cost more. Court cases can be higher.",
+    "fines": {
+      "seatbelt": "Not wearing a seatbelt — often about 3–4 demerit points and around S$150 composition fine (confirm current schedule).",
+      "speedLow": "Speeding about 1–20 km/h over limit — often about 4 demerit points and around S$150.",
+      "speedMid": "Speeding about 21–30 km/h over — often about 6 demerit points and a higher fine (commonly cited around S$200+).",
+      "redLight": "Beating a red light — often about 12 demerit points and a substantial fine (commonly cited around S$200–S$400+). Alone this can revoke a probation licence.",
+      "phone": "Using a handheld phone while driving — often about 12 demerit points plus fine. Hands-free rules still apply — check the current law.",
+      "signal": "Failing to signal / some signalling offences — lower demerit or fine-only in some schedules; still ticketed.",
+      "noteAmounts": "Exact demerit + fine pairs are in the official DIPS schedule inside the Basic Theory handbook. Do not rely on WhatsApp screenshots."
+    },
+    "finesDisclaimer": "Fines and points are set by Traffic Police and can change. This list is for awareness only — not legal advice and not a full offence schedule."
+  },
   "translation": {
     "machineLabel": "Machine translated",
     "machineNote": "This text was translated automatically and has not been checked by a speaker of your language. For anything involving money, your pass or a deadline, read the original.",
@@ -1049,5 +1432,832 @@
     "someone": "Someone",
     "signInToComment": "Sign in to leave a comment",
     "safetyNote": "Comments are public. Do not post your phone number, address, dormitory, or where you will be and when."
+  },
+  "pageDiscussion": {
+    "title": "Questions & help",
+    "subtitle": "Ask what you do not know. Reply to help others. Hate speech and inappropriate posts can be reported.",
+    "empty": "No questions yet. Be the first to ask.",
+    "placeholder": "Write your question or tip…",
+    "replyPlaceholder": "Write a reply…",
+    "post": "Post",
+    "postReply": "Post reply",
+    "reply": "Reply",
+    "report": "Report",
+    "cancel": "Cancel",
+    "sending": "Posting…",
+    "failed": "Could not post. Try again.",
+    "someone": "Someone",
+    "signInToComment": "Sign in to ask or reply",
+    "safetyNote": "Public comments. Do not post phone numbers, address, dormitory, or where you will be and when.",
+    "reportTitle": "Report this comment",
+    "reportDetailsPlaceholder": "Optional: more detail",
+    "reportSubmit": "Submit report",
+    "reportThanks": "Thanks — admins will review.",
+    "reportFailed": "Could not send report.",
+    "reasonHate": "Hate speech",
+    "reasonInappropriate": "Inappropriate",
+    "reasonSpam": "Spam",
+    "reasonOther": "Other"
+  },
+  "lottery": {
+    "badge": "Singapore Pools",
+    "title": "Lottery — 4D & TOTO",
+    "subtitle": "Pick 4D or TOTO, check your numbers, see results, or generate picks. Real bets only through Singapore Pools.",
+    "legalNotice": "Singapore Pools is the only legal lottery operator in Singapore. This app does not sell tickets or take bets.",
+    "illegalAppsNotice": "Buying through any other app, Telegram bot, Facebook page, or unlicensed agent is illegal. Even if your number “wins”, you may get nothing — and if found out, you can face enforcement action.",
+    "ageNotice": "You must be 18 or older to buy lottery tickets in Singapore.",
+    "legalTitle": "Legal vs illegal betting",
+    "legalPointOfficial": "Legal: Singapore Pools official website / official Singapore Pools Account app, or an authorised Singapore Pools outlet.",
+    "legalPointOtherApps": "Illegal: any other app or middleman that claims to sell 4D/TOTO for you.",
+    "legalPointNoPayout": "Illegal tickets are not protected — a “win” often means no payout.",
+    "legalPointPenalty": "Illegal remote gambling can lead to investigation, fines, or other action under Singapore law.",
+    "playTitle": "How to play for real (legal only)",
+    "playBody": "Buy 4D or TOTO at an authorised outlet, or online with the official Singapore Pools Account.",
+    "linkPlayOnline": "Open Singapore Pools lottery",
+    "linkOfficialApp": "Official Singapore Pools Account / app",
+    "linkAccount": "Create / open Singapore Pools Account",
+    "linkOutlets": "Betting at outlets (FAQ)",
+    "toolsTitle": "Check · Generate · Results",
+    "toolsIntro": "Choose 4D or TOTO first. Then open only the section you need.",
+    "pickGameHint": "Which game?",
+    "gameFourD": "4D",
+    "gameToto": "TOTO",
+    "sectionCheck": "Check ticket",
+    "sectionGenerate": "Generate numbers",
+    "sectionResults": "Latest results",
+    "sectionAnalysis": "Period analysis",
+    "checkDrawLabel": "Draw date",
+    "checkFourDHint": "Pick the draw on your ticket. Enter up to 5 boards (4D numbers). Choose Ordinary or iBet, Big or Small, and stake — like Singapore Pools Calculate Prize.",
+    "checkFourDBoardsLabel": "4D numbers (up to 5 boards)",
+    "checkFourDBoard": "Board {n}",
+    "checkFourDMiss": "{number} did not win on {date} for this bet type.",
+    "checkEntryLabel": "Entry type",
+    "checkSizeLabel": "Big / Small",
+    "checkStakeLabel": "Stake per board (SGD)",
+    "checkStakeHint": "Same stake is applied to each board you entered.",
+    "checkPattern": "Digit pattern: {pattern}",
+    "checkIbetBlocked": "iBet is not available for numbers like 0000 or 1111 (only one permutation).",
+    "checkWinTitle": "{number} won on {date}",
+    "checkTotal": "Estimated total: {amount}",
+    "checkGrandTotal": "All boards estimated total: {amount}",
+    "checkNoValidBoards": "Enter at least one complete 4-digit number.",
+    "entryOrdinary": "Ordinary",
+    "entryIbet": "iBet",
+    "sizeBig": "Big",
+    "sizeSmall": "Small",
+    "sizeHintBig": "Big covers 1st–3rd, Starter and Consolation.",
+    "sizeHintSmall": "Small covers 1st–3rd only (higher top prizes).",
+    "patternFourDifferent": "4 different digits (24 ways)",
+    "patternOnePair": "1 pair (12 ways)",
+    "patternTwoPairs": "2 pairs (6 ways)",
+    "patternThreeSame": "3 same digits (4 ways)",
+    "patternFourSame": "4 same digits",
+    "checkTotoHint": "Pick the draw date and TOTO type, select your numbers, then check if you won.",
+    "checkTotoAgainst": "Checked against draw #{draw} · {date}",
+    "checkTotoPicked": "Selected: {count} / {need}",
+    "checkTotoMatched": "Winning numbers matched: {count} ({numbers})",
+    "checkTotoAdditionalYes": "Additional number matched: {number}",
+    "checkTotoAdditionalNo": "Additional number not matched.",
+    "checkTotoGroup": "You won · Group {group}",
+    "checkTotoNoPrize": "No prize for this entry on that draw.",
+    "checkTotoFixedPrize": "Fixed prize total (Groups 5–7 boards): {amount}",
+    "checkTotoPoolPrize": "Groups 1–4 share the prize pool — exact SGD is only on the official Singapore Pools results.",
+    "checkSubmit": "Check / Calculate",
+    "checkClear": "Clear",
+    "checkDisclaimer": "Prize groups follow Singapore Pools TOTO rules. Confirm on the official site before claiming. Groups 1–4 amounts are pool-based.",
+    "linkFourDRules": "Official 4D Game Rules (PDF)",
+    "prizeFirst": "1st Prize",
+    "prizeSecond": "2nd Prize",
+    "prizeThird": "3rd Prize",
+    "prizeStarter": "Starter",
+    "prizeConsolation": "Consolation",
+    "periodTitle": "Analysis period",
+    "periodHint": "Week / month use draws in that window. Year uses up to the latest 48 draws in the past year so the page stays fast.",
+    "periodWeek": "Week",
+    "periodMonth": "Month",
+    "periodYear": "Year",
+    "modeTitle": "Random based on",
+    "modeRandom": "Pure random",
+    "modeHot": "Hot (period)",
+    "modeCold": "Cold (period)",
+    "modeHintRandom": "Every number has equal chance — ignores the period sample.",
+    "modeHintHot": "Weights favour numbers/digits that appeared more often in the selected period.",
+    "modeHintCold": "Weights favour numbers/digits that appeared less often in the selected period.",
+    "genOne": "Generate 1",
+    "genFive": "Generate 5",
+    "genToto": "TOTO Quick pick",
+    "copy": "Copy numbers",
+    "copied": "Copied",
+    "genPlayHint": "Ready to buy?",
+    "openSingaporePools": "Open Singapore Pools",
+    "officialResults": "Official results page",
+    "noResults": "No results loaded right now. Try again later, or open the official page.",
+    "analysisDisclaimer": "Past draws do not predict the next draw. Use this only as a curiosity — never as a guarantee.",
+    "analysisSampleFourD": "{period}: {count} 4D draws in this sample.",
+    "analysisSampleToto": "{period}: {count} TOTO draws in this sample.",
+    "analysisLoading": "Loading draws for this period…",
+    "analysisLoadFailed": "Could not load period analysis. Try again.",
+    "analysisCapped": "Year view is capped at the latest 48 draws so loading stays reliable.",
+    "hotFourD": "4D numbers seen most",
+    "coldFourD": "4D numbers seen least (among those that appeared)",
+    "hotToto": "TOTO numbers seen most",
+    "coldToto": "TOTO numbers seen least",
+    "responsibleTitle": "Play responsibly",
+    "responsibleBody": "Set a budget. Never borrow to gamble. If gambling is causing harm, get free help.",
+    "linkNcpg": "National Council on Problem Gambling (NCPG)",
+    "checkSelectedResults": "Results for this draw",
+    "checkYourNumbers": "Enter your numbers to check",
+    "checkTotoWon": "You won · Group {group}",
+    "totoEntryLabel": "TOTO type",
+    "totoEntryOrdinary": "Ordinary",
+    "totoEntrySystemN": "System {n}",
+    "totoEntrySystemRoll": "System Roll",
+    "totoBoardsUnit": "boards",
+    "totoInfoBoards": "Pick {picks} numbers · covers {boards} Ordinary board(s).",
+    "totoCheckedBoards": "{count} Ordinary boards checked",
+    "checkTotoGroupBoards": "Group {group}: {count} board(s)",
+    "totoInfo": {
+      "ordinary": "Ordinary: choose exactly 6 numbers. One board. Classic TOTO ticket.",
+      "system7": "System 7: choose 7 numbers. Covers every Ordinary 6-number combination from those 7 (7 boards).",
+      "system8": "System 8: choose 8 numbers. Covers all Ordinary combinations (28 boards).",
+      "system9": "System 9: choose 9 numbers. Covers all Ordinary combinations (84 boards).",
+      "system10": "System 10: choose 10 numbers. Covers all Ordinary combinations (210 boards).",
+      "system11": "System 11: choose 11 numbers. Covers all Ordinary combinations (462 boards).",
+      "system12": "System 12: choose 12 numbers. Covers all Ordinary combinations (924 boards).",
+      "systemRoll": "System Roll: choose 5 numbers. The 6th number rolls through every other number 1–49 (44 boards)."
+    }
+  },
+  "travel": {
+    "badge": "Travel",
+    "title": "Short trips from Singapore",
+    "subtitle": "Rest-day and short-leave guides for nearby places — what you need, how to go, food, sights, and rough SGD budgets. Partner links may earn this free app a referral fee.",
+    "topWarning": "Leaving Singapore needs your employer's approval and valid documents. Immigration rules change — confirm visa and entry requirements for your passport before you buy tickets.",
+    "incomeNote": "Hotel, eSIM and travel-card buttons below open the same apps workers already use — tapping our partner link helps keep Hello SG free.",
+    "prepTitle": "Before you leave Singapore",
+    "prepIntro": "Use this checklist for every trip, even a day trip to Johor.",
+    "prep": {
+      "leaveOk": "Get clear leave approval from your employer (written if possible).",
+      "passportValid": "Passport usually needs at least 6 months validity for many destinations.",
+      "workPass": "Carry your work pass / FIN card and a phone photo of both sides.",
+      "money": "Plan SGD + local cash or a travel card; avoid handing cash to unknown “agents”.",
+      "sim": "Decide how you will use data abroad — local SIM or a travel eSIM.",
+      "returnPlan": "Know your return ferry/bus/flight time so you are not stranded overnight without leave.",
+      "powerBank": "Bring a power bank — maps and ferry tickets drain the phone.",
+      "emergencyContact": "Save employer and one trusted contact offline (screenshot).",
+      "hotelOrReturn": "For overnight trips, book a hotel in Agoda/Trip.com before you leave; for day trips, lock your return time."
+    },
+    "toolsTitle": "Official links (start here)",
+    "toolsIntro": "Government pages for entry and work-pass rules. Hotels, eSIM and cards appear in Recommended when partner links are set.",
+    "tools": {
+      "ica": "ICA Singapore — entry / exit information",
+      "momLeave": "MOM — work pass sector rules (check leave with employer)",
+      "airaloHome": "Airalo — travel eSIM (check coverage for your destination)",
+      "youtripHome": "YouTrip — multi-currency card (Singapore)"
+    },
+    "partnersTitle": "Recommended for your trip",
+    "partnersSubtitle": "Book hotels, get a travel eSIM, or open a multi-currency card from here. Same trusted apps — our link helps keep this free for workers.",
+    "bookingFallbackLabel": "Also available (official site)",
+    "destinationsTitle": "Nearby destinations",
+    "destinationsIntro": "Pick a place for a day trip or short leave. Each page has maps, food, budget and common mistakes.",
+    "destinations": {
+      "jb": {
+        "name": "Johor Bahru",
+        "tagline": "Closest city across the Causeway",
+        "duration": "Day trip",
+        "country": "Malaysia"
+      },
+      "melaka": {
+        "name": "Melaka",
+        "tagline": "Heritage streets and river night views",
+        "duration": "1–2 nights",
+        "country": "Malaysia"
+      },
+      "batam": {
+        "name": "Batam",
+        "tagline": "Ferry day trip for food and shopping",
+        "duration": "Day / overnight",
+        "country": "Indonesia"
+      },
+      "bintan": {
+        "name": "Bintan",
+        "tagline": "Beaches and resort area",
+        "duration": "1–2 nights",
+        "country": "Indonesia"
+      },
+      "bangkok": {
+        "name": "Bangkok",
+        "tagline": "Food, temples and markets by short flight",
+        "duration": "3–4 days",
+        "country": "Thailand"
+      },
+      "phuket": {
+        "name": "Phuket",
+        "tagline": "Beaches and island day trips",
+        "duration": "3–4 days",
+        "country": "Thailand"
+      }
+    },
+    "mistakesTitle": "Trip mistakes that cost money or your job",
+    "prepMistakes": {
+      "noLeave": "Leaving without employer approval — can put your work pass at risk.",
+      "passportShort": "Flying or ferrying with a passport that is almost expired.",
+      "cashOnly": "Carrying only cash and losing it with no card or e-wallet backup.",
+      "noReturnTicket": "No return plan — expensive last-minute ferry or bus.",
+      "fakeAgent": "Paying a stranger who promises “visa + ticket package” with no receipt.",
+      "noHotelApp": "Arriving at night with no hotel booking and no data to search."
+    },
+    "backToHub": "← All travel destinations",
+    "sectionOverview": "Overview",
+    "sectionNeed": "What you need",
+    "sectionHow": "How to get there",
+    "sectionMaps": "Maps",
+    "sectionPlaces": "Places & beauty spots",
+    "sectionFood": "Food to try",
+    "sectionBudget": "Rough cost (SGD)",
+    "sectionOfficial": "Official / operator links",
+    "sectionTips": "Tips",
+    "sectionMistakes": "Common mistakes",
+    "budgetIntro": "Indicative only — prices change. Budget = careful spending; mid = a bit more comfort.",
+    "budgetNote": "These are planning ranges for one person, not quotes. Check ferry/flight sites the week you travel.",
+    "disclaimer": "General travel tips only — not immigration, legal or financial advice. Visa rules for Myanmar passports differ by country and change often. Confirm with embassies, ICA and your employer before you go.",
+    "guide": {
+      "jb": {
+        "visaNote": "Malaysia entry rules depend on your passport. Many workers enter with a passport for a short visit — always check current Malaysia entry requirements for Myanmar passports before you go.",
+        "overview": "Johor Bahru is the closest “abroad” trip from Singapore — shopping, food and a change of scene on a rest day if queues and leave allow.",
+        "need": {
+          "passport": "Valid passport (immigration will check at the checkpoint).",
+          "passCard": "Work pass / FIN — keep it with you; some checks ask for it.",
+          "leave": "Employer leave approval if this is not your scheduled rest day arrangement.",
+          "cashSgdMyr": "Some SGD and MYR (or a card that works in Malaysia).",
+          "returnSameDay": "A plan to return the same day before your last practical bus/MRT connection.",
+          "phoneData": "Phone with enough battery and a way to use maps (SG SIM or Wi‑Fi).",
+          "powerBank": "Power bank for long immigration queues.",
+          "emergencyContact": "Employer contact saved offline."
+        },
+        "how": {
+          "causeway": "Woodlands Checkpoint → Causeway to JB (often congested on weekends).",
+          "tuas": "Tuas Second Link — sometimes smoother; check which bus or ride you booked.",
+          "busQueen": "Cross-border buses (e.g. Causeway Link style services) — confirm boarding point and last return.",
+          "grabTaxi": "Ride-hailing on each side after immigration — do not assume one app works for the whole journey."
+        },
+        "places": {
+          "jbCity": "JB City / downtown streets near CIQ for a short walk and photos.",
+          "legacy": "Legacy / large malls for shopping and air-con breaks.",
+          "ksl": "KSL City Mall — popular for food and shopping.",
+          "bukitChagar": "Bukit Chagar / RTS area — useful landmark near the border (check current access)."
+        },
+        "food": {
+          "seafood": "Johor seafood restaurants (agree price if it is not fixed on a menu).",
+          "hawker": "Local hawker / coffee shop meals — cheaper than tourist spots.",
+          "coffee": "Teh tarik and local breakfast before you queue back to Singapore."
+        },
+        "budgetLabels": {
+          "transport": "Transport (return)",
+          "food": "Food",
+          "shopping": "Light shopping buffer",
+          "dayTotal": "Day total (budget)"
+        },
+        "budget": {
+          "transport": "S$8–25",
+          "food": "S$15–35",
+          "shopping": "S$20–50+",
+          "dayTotal": "~S$40–100"
+        },
+        "maps": {
+          "woodlands": "Woodlands Checkpoint",
+          "larkin": "Larkin Sentral (JB)",
+          "ksl": "KSL City Mall"
+        },
+        "official": {
+          "malaysiaEntry": "Malaysia government portal",
+          "causewayLink": "Causeway Link (bus operator info)"
+        },
+        "tips": {
+          "peakQueue": "Weekend evenings: long immigration queues — leave earlier than you think.",
+          "keepSgd": "Keep some SGD for the Singapore side after you return.",
+          "exchangeBoard": "Compare money-changer boards; count notes before you leave the counter.",
+          "bookHotelApp": "If you might stay overnight, book on Agoda/Trip.com before the Causeway — do not rely on finding a room after immigration closes late."
+        },
+        "mistakes": {
+          "noPassport": "Trying to cross with only a phone photo of your passport.",
+          "missLastBus": "Missing the last practical return and paying a costly last-minute option.",
+          "overspend": "Shopping first, then discovering you cannot afford the return trip."
+        }
+      },
+      "melaka": {
+        "visaNote": "Same Malaysia entry rules as JB — confirm Myanmar passport requirements and passport validity before booking an overnight trip.",
+        "overview": "Melaka suits a 1–2 night leave: Jonker Street, river views and Nyonya food. Usually reached by bus via JB or a direct coach.",
+        "need": {
+          "passport": "Valid passport for Malaysia immigration.",
+          "passCard": "Work pass / FIN with you.",
+          "leave": "Written or clear leave covering nights away.",
+          "overnightBag": "Hotel or hostel booked before you leave Singapore.",
+          "cash": "MYR for food and small shops; card as backup.",
+          "bookingApp": "Hotel booked on Agoda/Trip.com (or similar) with confirmation screenshot.",
+          "powerBank": "Power bank for the bus and evening walk.",
+          "medicine": "Basic medicine (pain relief, stomach) if you need it.",
+          "emergencyContact": "Employer + one friend contact offline."
+        },
+        "how": {
+          "viaJb": "Singapore → JB → coach to Melaka Sentral (common route).",
+          "directBus": "Some coaches sell Singapore–Melaka tickets — confirm boarding point and luggage rules.",
+          "hotelWalk": "From Melaka Sentral use Grab/taxi to Chinatown / Jonker area hotels."
+        },
+        "places": {
+          "jonker": "Jonker Street — evening lights, souvenirs and street snacks.",
+          "river": "Melaka River cruise / riverside walk for photos.",
+          "dutchSquare": "Dutch Square / Red Square heritage area.",
+          "nightMarket": "Weekend night market energy (check which night you arrive)."
+        },
+        "food": {
+          "nyonya": "Nyonya / Peranakan dishes.",
+          "chickenRiceBall": "Chicken rice balls — Melaka classic.",
+          "satay": "Satay Celup and riverside satay stalls."
+        },
+        "budgetLabels": {
+          "bus": "Bus return",
+          "hotel": "Hotel / night",
+          "food": "Food / day",
+          "weekendTotal": "1 night trip (budget)"
+        },
+        "budget": {
+          "bus": "S$25–50",
+          "hotel": "S$35–80",
+          "food": "S$20–40",
+          "weekendTotal": "~S$90–180"
+        },
+        "maps": {
+          "jonker": "Jonker Street",
+          "dutchSquare": "Dutch Square"
+        },
+        "official": {
+          "tourismMelaka": "Malaysia Tourism"
+        },
+        "tips": {
+          "bookBus": "Book return seats before weekends fill up.",
+          "heat": "Midday heat is strong — plan indoor breaks.",
+          "walkShoes": "Comfortable shoes for Jonker cobblestones.",
+          "bookHotelApp": "Book Melaka hotels on Agoda/Trip.com for weekends; walk-in rates are often worse."
+        },
+        "mistakes": {
+          "noHotel": "Arriving Friday night with no room booked.",
+          "cashShort": "Under-budgeting for two days of food and Grab.",
+          "lateReturn": "Return coach that arrives after your leave ends."
+        }
+      },
+      "batam": {
+        "visaNote": "Indonesia often requires a visa or specific entry permission for Myanmar passports — do not assume visa-free. Check Indonesian immigration and your embassy before buying a ferry ticket.",
+        "overview": "Batam is a popular ferry destination for seafood and shopping. Only go if your documents and leave are clear — ferry schedules are strict.",
+        "need": {
+          "passport": "Valid passport with enough blank pages / validity.",
+          "visaCheck": "Confirmed Indonesia entry eligibility for your nationality.",
+          "leave": "Employer leave covering the ferry day (and overnight if needed).",
+          "ferryTicket": "Named ferry tickets outbound and return.",
+          "idrCash": "Some IDR cash after arrival; cards may not work everywhere.",
+          "bookingApp": "If overnight: hotel confirmation in Agoda/Trip.com.",
+          "powerBank": "Power bank — terminals and taxis need the phone.",
+          "printedOrQr": "Ferry ticket QR/PDF saved offline.",
+          "emergencyContact": "Employer contact offline."
+        },
+        "how": {
+          "harbourFront": "Ferry from HarbourFront Centre (check operator boards).",
+          "tanahMerah": "Some routes use Tanah Merah Ferry Terminal.",
+          "ferryOperator": "Book with a known operator; keep booking email/QR.",
+          "taxiBatam": "Official taxi / Grab-style options at Batam Centre — agree or use meter/app."
+        },
+        "places": {
+          "nagoya": "Nagoya area — shopping and evening food.",
+          "beach": "Nearby beach spots if time allows (ask hotel/taxi time).",
+          "outlet": "Outlet / mall shopping — compare prices with Singapore first."
+        },
+        "food": {
+          "seafood": "Fresh seafood restaurants (confirm price before ordering).",
+          "indoPadang": "Padang / Indonesian rice stalls for cheaper meals.",
+          "coffee": "Local coffee before the return ferry."
+        },
+        "budgetLabels": {
+          "ferry": "Ferry return",
+          "food": "Food",
+          "taxi": "Local transport",
+          "dayTotal": "Day total (budget)"
+        },
+        "budget": {
+          "ferry": "S$50–90",
+          "food": "S$20–45",
+          "taxi": "S$15–35",
+          "dayTotal": "~S$90–170"
+        },
+        "maps": {
+          "harbourFront": "HarbourFront ferry",
+          "batamCentre": "Batam Centre terminal",
+          "nagoya": "Nagoya, Batam"
+        },
+        "official": {
+          "immigrationId": "Indonesian Immigration",
+          "batamFast": "BatamFast ferry info"
+        },
+        "tips": {
+          "visaFirst": "Visa/entry check before payment — non-refundable tickets hurt.",
+          "ferryTime": "Arrive early; cut-off times are real.",
+          "keepTicket": "Screenshot tickets and passport bio page offline.",
+          "bookHotelApp": "Overnight? Confirm hotel on Agoda/Trip.com near Nagoya or your ferry terminal."
+        },
+        "mistakes": {
+          "noVisa": "Buying ferry first, then learning you cannot enter.",
+          "missFerry": "Shopping too long and missing the last return ferry.",
+          "agentScam": "Paying a harbour “helper” who disappears with your cash."
+        }
+      },
+      "bintan": {
+        "visaNote": "Same Indonesia entry caution as Batam — Myanmar passport holders must verify visa/entry rules before ferry booking.",
+        "overview": "Bintan is more beach/resort oriented than Batam. Better for 1–2 nights if leave and budget allow.",
+        "need": {
+          "passport": "Valid passport.",
+          "visaCheck": "Confirmed Indonesia entry rules for your passport.",
+          "leave": "Leave covering nights away.",
+          "ferryResort": "Ferry ticket plus transfer plan to Lagoi / hotel.",
+          "budgetHotel": "Hotel booked in advance (weekend prices jump).",
+          "bookingApp": "Resort/hotel booked before ferry day (Agoda/Trip.com or resort site).",
+          "sunCare": "Sun cream, hat, refillable water bottle.",
+          "powerBank": "Power bank.",
+          "emergencyContact": "Employer contact offline."
+        },
+        "how": {
+          "tanahMerah": "Common ferry from Tanah Merah Ferry Terminal.",
+          "bandarBentan": "Arrive Bandar Bentan Telani (check your ticket).",
+          "resortTransfer": "Hotel shuttle or booked transfer — clarify price in SGD/IDR."
+        },
+        "places": {
+          "lagoi": "Lagoi Bay area — resorts and promenade.",
+          "beach": "Beach time and sunset photos.",
+          "mangrove": "Mangrove / nature trips if offered by hotel."
+        },
+        "food": {
+          "seafood": "Seafood dinners near the shore.",
+          "resortBuffet": "Resort meals (convenient but pricier).",
+          "localWarung": "Local warung outside resort gates if accessible."
+        },
+        "budgetLabels": {
+          "ferry": "Ferry return",
+          "stay": "Hotel / night",
+          "food": "Food / day",
+          "weekendTotal": "1–2 night trip"
+        },
+        "budget": {
+          "ferry": "S$60–110",
+          "stay": "S$60–150+",
+          "food": "S$30–70",
+          "weekendTotal": "~S$180–400"
+        },
+        "maps": {
+          "tanahMerah": "Tanah Merah Ferry Terminal",
+          "lagoi": "Lagoi Bay"
+        },
+        "official": {
+          "immigrationId": "Indonesian Immigration",
+          "bintanResorts": "Bintan Resorts info"
+        },
+        "tips": {
+          "weekendPrice": "Friday–Sunday rates are higher — midweek is cheaper if leave allows.",
+          "sunCream": "Sun protection — beach days burn quickly.",
+          "returnFerry": "Book return ferry with buffer before work the next day.",
+          "bookHotelApp": "Resort packages on Agoda/Trip.com sometimes include transfer — read the inclusions."
+        },
+        "mistakes": {
+          "noVisa": "Assuming Batam/Bintan is visa-free for every passport.",
+          "underBudget": "Only budgeting the ferry and forgetting transfers + meals.",
+          "missLastFerry": "Missing the last ferry with no affordable overnight plan."
+        }
+      },
+      "bangkok": {
+        "visaNote": "Thailand visa rules for Myanmar passports change — check Thai Immigration / embassy requirements and passport validity before buying flights.",
+        "overview": "Bangkok works for a short leave (often 3–4 days): street food, temples and markets. Flights are the main cost; plan data and a card/cash mix.",
+        "need": {
+          "passport": "Passport with enough validity (often 6+ months expected).",
+          "visaCheck": "Confirmed Thai visa / exemption status for your nationality.",
+          "leaveDays": "Enough approved leave days including travel days.",
+          "flight": "Booked flights with buffer for delays.",
+          "thbOrCard": "THB cash and/or travel card; notify your bank if needed.",
+          "bookingApp": "Hotel booked with address you can show taxi/Grab drivers.",
+          "esimPlan": "Travel eSIM or roaming plan ready before take-off.",
+          "powerBank": "Power bank for airport and BTS days.",
+          "hotelConfirm": "Booking confirmation email/app screenshot offline.",
+          "emergencyContact": "Employer + embassy/helpline numbers saved."
+        },
+        "how": {
+          "budgetFlight": "Compare LCC flights from Singapore — check baggage fees.",
+          "airportTrain": "Airport rail link / bus into the city — often cheaper than taxi.",
+          "btsMrt": "BTS/MRT for city travel once you have a ticket/card.",
+          "grab": "Grab for late nights or heavy bags."
+        },
+        "places": {
+          "grandPalace": "Grand Palace / Wat Pho area (dress modestly).",
+          "chatuchak": "Chatuchak Weekend Market (weekends).",
+          "chaoPhraya": "Chao Phraya river boats for views.",
+          "iconSiam": "Iconsiam / malls for air-con and food courts."
+        },
+        "food": {
+          "streetFood": "Street food — choose busy stalls.",
+          "boatNoodle": "Boat noodles and boat-noodle alleys.",
+          "mangoSticky": "Mango sticky rice as a treat."
+        },
+        "budgetLabels": {
+          "flight": "Flights return",
+          "hotel": "Hotel / night",
+          "food": "Food / day",
+          "threeDay": "3-day trip (budget)"
+        },
+        "budget": {
+          "flight": "S$120–280",
+          "hotel": "S$35–90",
+          "food": "S$20–45",
+          "threeDay": "~S$250–500"
+        },
+        "maps": {
+          "suvarnabhumi": "Suvarnabhumi Airport",
+          "grandPalace": "Grand Palace",
+          "chatuchak": "Chatuchak Market"
+        },
+        "official": {
+          "thaiImmigration": "Thai Immigration",
+          "tat": "Tourism Authority of Thailand"
+        },
+        "tips": {
+          "visaStamp": "Know where you get the entry stamp / QR and keep the departure card if issued.",
+          "esim": "Install travel eSIM before take-off if your SG SIM has high roaming fees.",
+          "watchBag": "Use hotel safe or split cash; watch bags in markets.",
+          "bookHotelApp": "Book near BTS/MRT on Agoda/Trip.com to save Grab costs."
+        },
+        "mistakes": {
+          "noVisa": "Buying a non-refundable flight before visa confirmation.",
+          "taxiScam": "Airport taxi without a meter or fixed official counter.",
+          "passportCopy": "Leaving passport in the hotel when some attractions ask for ID — carry a copy plus know hotel policy."
+        }
+      },
+      "phuket": {
+        "visaNote": "Same Thailand entry caution as Bangkok — verify Myanmar passport visa rules before flights.",
+        "overview": "Phuket is a beach-focused short trip. Costs add up with transfers and island tours — budget more than Bangkok street-food days.",
+        "need": {
+          "passport": "Valid passport.",
+          "visaCheck": "Confirmed Thailand entry eligibility.",
+          "leaveDays": "Leave covering flights and beach days.",
+          "flight": "Flights to Phuket (direct or via Bangkok).",
+          "beachBudget": "Extra buffer for tours, sun cream and transport.",
+          "bookingApp": "Hotel booked (beach areas fill on weekends).",
+          "sunCare": "Sun cream, hat, after-sun if you burn easily.",
+          "esimPlan": "Travel eSIM or roaming for maps and Grab.",
+          "powerBank": "Power bank.",
+          "emergencyContact": "Employer contact offline."
+        },
+        "how": {
+          "directFlight": "Direct or connecting flight from Singapore.",
+          "airportTaxi": "Airport taxi / Grab to hotel — agree zone price if no meter.",
+          "songthaew": "Local songthaew trucks for some routes — ask hotel about fares."
+        },
+        "places": {
+          "patong": "Patong Beach — busy, nightlife nearby.",
+          "oldTown": "Phuket Old Town cafes and colourful streets.",
+          "promthep": "Promthep Cape sunset viewpoint.",
+          "islandTrip": "Island day trip (book with a known operator; read reviews)."
+        },
+        "food": {
+          "seafood": "Fresh seafood — confirm price by weight.",
+          "padThai": "Pad Thai and Thai cafes in Old Town.",
+          "cafe": "Coffee / dessert breaks out of the sun."
+        },
+        "budgetLabels": {
+          "flight": "Flights return",
+          "hotel": "Hotel / night",
+          "food": "Food / day",
+          "threeDay": "3-day trip (budget)"
+        },
+        "budget": {
+          "flight": "S$140–320",
+          "hotel": "S$45–120",
+          "food": "S$25–55",
+          "threeDay": "~S$300–600"
+        },
+        "maps": {
+          "phuketAirport": "Phuket Airport",
+          "oldTown": "Phuket Old Town",
+          "patong": "Patong Beach"
+        },
+        "official": {
+          "thaiImmigration": "Thai Immigration",
+          "tat": "Tourism Authority of Thailand"
+        },
+        "tips": {
+          "sun": "Strong sun — hat, water, breaks indoors.",
+          "bargain": "Tour prices vary widely; get the inclusions in writing.",
+          "esim": "eSIM helps for maps and Grab without roaming shock.",
+          "bookHotelApp": "Compare Patong vs quieter areas on Agoda/Trip.com before you pay."
+        },
+        "mistakes": {
+          "noVisa": "Assuming tourist exemption applies to every passport.",
+          "jetSkiScam": "Jet-ski damage deposit scams — avoid or use reputable shops only.",
+          "cashOnBeach": "Leaving bags unattended on the beach."
+        }
+      }
+    },
+    "bookingTitle": "Hotels & booking apps",
+    "bookingIntro": "Compare rooms on Agoda or Trip.com before you travel. Install the app if you prefer.",
+    "bookingApps": {
+      "agoda": "Agoda — hotels & stays (website)",
+      "trip": "Trip.com — hotels & flights (website)",
+      "agodaApp": "Agoda app download",
+      "tripApp": "Trip.com app download"
+    },
+    "bookingAffiliateNote": "Partner buttons above use our referral links when available. Official site links only appear if a partner is not set yet.",
+    "bookingCity": {
+      "agoda": "Agoda hotels in {place}",
+      "trip": "Trip.com hotels in {place}"
+    },
+    "sectionPhotos": "Photos of the place",
+    "sectionBooking": "Book a stay & travel tools",
+    "sectionBookingIntro": "Open Agoda or Trip.com from the buttons below to compare hotels for this place. Prefer a booking you can show at check-in.",
+    "photoCredit": "Photo",
+    "photos": {
+      "jbSkyline": "Johor Bahru skyline",
+      "jbSquare": "JB City Square area",
+      "melakaChurch": "Christ Church, Melaka",
+      "melakaJonker": "Jonker Walk, Melaka",
+      "batamBridge": "Barelang Bridge, Batam",
+      "bintanBeach": "Beach on Bintan",
+      "bangkokWatArun": "Wat Arun, Bangkok",
+      "bangkokPalace": "Grand Palace roofs, Bangkok",
+      "phuketPatong": "Patong Beach, Phuket",
+      "phuketOldTown": "Phuket Old Town"
+    }
+  },
+  "referralPartners": {
+    "recommended": "Recommended",
+    "openCta": "Open safely",
+    "placeHotelTitle": "{partner} — hotels in {place}",
+    "placeHotelHint": "Compare prices for {place}, then book a room you can show at check-in.",
+    "benefits": {
+      "agoda": "Compare hotel prices before you travel — book a stay you can show at check-in.",
+      "trip": "Hotels and flights in one place — handy for short leave trips.",
+      "airalo": "Buy a travel eSIM so maps and chat work abroad without expensive roaming.",
+      "youtrip": "Multi-currency card for spending abroad — load SGD before you leave.",
+      "circles": "Optional Singapore SIM plan if you need a local number.",
+      "remitly": "Send money home with clear fees — check the final amount before you pay.",
+      "worldremit": "International transfer option — compare fees and speed with other licensed apps.",
+      "revolut": "Digital account / wallet signup — useful if you already trust Revolut.",
+      "ocbc-frank": "OCBC FRANK account option for everyday banking in Singapore."
+    }
+  },
+  "housing": {
+    "badge": "Rooms & dorms",
+    "title": "Housing board",
+    "subtitle": "User-posted rooms near Singapore workplaces. Hello SG does not verify landlords — meet safely and never send deposits to strangers.",
+    "disclaimer": "User-posted · not verified by Hello SG. Never share passport, FIN or OTP. Prefer viewing the room in person before paying.",
+    "postCta": "Post a room",
+    "empty": "No published rooms yet.",
+    "beFirst": "Be the first to post",
+    "area": "Area",
+    "perMonth": "month",
+    "userPosted": "User-posted",
+    "backToList": "Back to housing",
+    "postTitle": "Post a room",
+    "postSubtitle": "Your listing waits for admin review before it appears publicly.",
+    "fieldTitle": "Title",
+    "fieldArea": "Area / neighbourhood",
+    "areaPlaceholder": "e.g. Jurong, Little India, Bedok",
+    "fieldPrice": "Monthly rent (SGD)",
+    "fieldContact": "Contact (phone / WhatsApp / Telegram)",
+    "contactPlaceholder": "WhatsApp +65… or Telegram @…",
+    "fieldDescription": "Description",
+    "fieldPhotos": "Photos (optional)",
+    "photoHint": "Up to {count} photos · JPG/PNG/WebP · max 3 MB each",
+    "maxPhotos": "Maximum {count} photos.",
+    "uploading": "Uploading…",
+    "removePhoto": "Remove photo",
+    "uploadFailed": "Could not upload photo.",
+    "postFailed": "Could not submit listing.",
+    "invalidPrice": "Enter a valid monthly rent in SGD.",
+    "networkError": "Network error. Try again.",
+    "postSuccess": "Submitted for review. It will appear after an admin approves it.",
+    "submitting": "Submitting…",
+    "submit": "Submit for review",
+    "safetyNote": "Do not write passport, FIN or NRIC numbers. Do not ask for deposits before viewing.",
+    "notFoundTitle": "Listing not found",
+    "notFoundBody": "This room may have expired, been removed, or is still under review.",
+    "aboutRoom": "About this room",
+    "contactLabel": "Contact the poster",
+    "contactHint": "Message carefully. Hello SG is not a party to any rental agreement.",
+    "reportTitle": "Report this listing",
+    "reportIntro": "Report scams, fake photos, or unsafe requests. Enough reports hide the listing automatically.",
+    "report": "Report listing",
+    "signInToReport": "Sign in to report",
+    "reportReason": "Reason",
+    "reasonScam": "Scam / deposit trick",
+    "reasonInappropriate": "Inappropriate",
+    "reasonSpam": "Spam",
+    "reasonOther": "Other",
+    "submitReport": "Submit report",
+    "cancel": "Cancel",
+    "reportSuccess": "Thanks — we received your report.",
+    "reportFailed": "Could not send report.",
+    "quotaNote": "Limits: {daily}/day · {monthly}/month · max {active} active (pending or live). Approved listings stay public for {days} days, then expire.",
+    "expires": "Expires"
+  },
+  "jobs": {
+    "badge": "Agency jobs",
+    "title": "Jobs board",
+    "subtitle": "Agency-posted openings for workers in Singapore. Always verify the MOM licence. Hello SG does not hire anyone.",
+    "disclaimer": "Agency listing · not a Hello SG job. Never pay an application or processing fee. Confirm the agency on MOM’s EA Directory before you share documents.",
+    "postCta": "Post a job",
+    "mineCta": "My jobs & applicants",
+    "empty": "No published jobs yet.",
+    "sector": "Sector",
+    "agencyListing": "Agency listing",
+    "featured": "Featured",
+    "backToList": "Back to jobs",
+    "postTitle": "Post a job",
+    "postSubtitle": "Agency and admin accounts only. Listings wait for admin review.",
+    "agencyOnlyNote": "Only accounts with agency or admin role can publish. Contact Hello SG if you need an agency account.",
+    "fieldTitle": "Job title",
+    "fieldSector": "Sector",
+    "fieldLocation": "Area / workplace",
+    "locationPlaceholder": "e.g. Jurong, Tuas, Woodlands",
+    "fieldSalary": "Salary (optional)",
+    "salaryPlaceholder": "e.g. S$1,800 / month",
+    "fieldMomLicence": "MOM EA licence number",
+    "momLicencePlaceholder": "As shown on MOM EA Directory",
+    "fieldContact": "Contact (phone / WhatsApp / email)",
+    "contactPlaceholder": "WhatsApp +65… or email",
+    "fieldDescription": "Job description",
+    "fieldPhotos": "Photos (optional)",
+    "photoHint": "Up to {count} photos · JPG/PNG/WebP · max 3 MB each",
+    "maxPhotos": "Maximum {count} photos.",
+    "uploading": "Uploading…",
+    "removePhoto": "Remove photo",
+    "uploadFailed": "Could not upload photo.",
+    "postFailed": "Could not submit job.",
+    "networkError": "Network error. Try again.",
+    "postSuccess": "Submitted for review. It appears after an admin approves it.",
+    "submitting": "Submitting…",
+    "submit": "Submit for review",
+    "safetyNote": "Do not ask for application fees. Do not request passport, FIN or NRIC numbers in the listing.",
+    "notFoundTitle": "Job not found",
+    "notFoundBody": "This job may have expired, been removed, or is still under review.",
+    "aboutJob": "About this job",
+    "momLicenceLabel": "MOM licence",
+    "contactLabel": "Agency contact",
+    "contactHint": "Prefer in-app apply + messages. Verify the agency before sharing sensitive documents.",
+    "applyTitle": "Apply",
+    "applyIntro": "Send a short note. You can attach a CV (PDF or Word). The agency can reply in Messages.",
+    "signInToApply": "Sign in to apply",
+    "fieldCoverNote": "Cover note",
+    "coverNotePlaceholder": "Introduce yourself and your experience…",
+    "fieldCv": "CV (optional)",
+    "cvHint": "PDF or Word · max 2 MB · private to you and the agency",
+    "cvUploadFailed": "Could not upload CV.",
+    "applyFailed": "Could not submit application.",
+    "applySuccess": "Application sent. Check My jobs if you are the agency; workers will hear back via messages when the agency replies.",
+    "applySubmit": "Send application",
+    "reportTitle": "Report this job",
+    "reportIntro": "Report fee-upfront scams, fake licences, or spam. Enough reports hide the listing.",
+    "report": "Report job",
+    "signInToReport": "Sign in to report",
+    "reportReason": "Reason",
+    "reasonScam": "Scam",
+    "reasonFeeUpfront": "Asks for fee upfront",
+    "reasonInappropriate": "Inappropriate",
+    "reasonSpam": "Spam",
+    "reasonOther": "Other",
+    "submitReport": "Submit report",
+    "cancel": "Cancel",
+    "reportSuccess": "Thanks — we received your report.",
+    "reportFailed": "Could not send report.",
+    "mineTitle": "My jobs & applicants",
+    "mineSubtitle": "Manage your listings, Featured boost, and applicant messages.",
+    "myListings": "My listings",
+    "noMyListings": "You have not posted any jobs yet.",
+    "viewPublic": "View public page",
+    "applicationsInbox": "Applications inbox",
+    "noApplications": "No applications yet.",
+    "featuredIntro": "Featured boost: S${price} for {days} days (KBZPay / WavePay). Admin approves the receipt, then your job stays near the top.",
+    "fieldPayMethod": "Payment method",
+    "fieldTxnRef": "Transaction reference",
+    "fieldReceipt": "Payment screenshot / receipt",
+    "receiptReady": "Receipt uploaded.",
+    "receiptRequired": "Upload a receipt first.",
+    "receiptUploadFailed": "Could not upload receipt.",
+    "featuredPayFailed": "Could not submit Featured payment.",
+    "featuredPaySuccess": "Payment submitted. Featured activates after admin approval.",
+    "featuredSubmit": "Submit Featured payment",
+    "openCv": "Open CV",
+    "refreshMessages": "Refresh messages",
+    "loadingMessages": "Loading messages…",
+    "noMessages": "No messages yet. Send the first reply.",
+    "fieldMessage": "Message",
+    "sendMessage": "Send",
+    "sending": "Sending…",
+    "messagesLoadFailed": "Could not load messages.",
+    "messageSendFailed": "Could not send message.",
+    "cvOpenFailed": "Could not open CV.",
+    "quotaNote": "Limits: {daily}/day · {monthly}/month · max {active} active jobs. Published jobs stay public for {days} days, then expire.",
+    "expires": "Expires"
   }
 }

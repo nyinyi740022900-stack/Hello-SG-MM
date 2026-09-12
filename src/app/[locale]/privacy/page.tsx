@@ -23,24 +23,21 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
   return (
     <PageCard>
       <section className="mx-auto w-full max-w-2xl space-y-8 py-4">
-        {/* ── Title ── */}
         <PageHeader
           title={isMy ? "ကိုယ်ရေးအချက်အလက် မူဝါဒ" : "Privacy Policy"}
           subtitle={
             isMy
-              ? "နောက်ဆုံးပြင်ဆင်သည့်ရက် — ၂၀၂၆ ခုနှစ်၊ စက်တင်ဘာ"
-              : "Last updated — September 2026"
+              ? "နောက်ဆုံးပြင်ဆင်သည့်ရက် — ၂၀၂၆ ခုနှစ်၊ စက်တင်ဘာ ၁၀"
+              : "Last updated — 10 September 2026"
           }
         />
 
-        {/* ── Intro ── */}
         <p className="text-ink-muted">
           {isMy
-            ? "Hello SG (\"ကျွန်ုပ်တို့\") သည် Singapore တွင် နေထိုင်သူများအတွက် English နှင့် မြန်မာဘာသာဖြင့် သတင်းနှင့် အထောက်အကူများပေးသည့် ဝန်ဆောင်မှုတစ်ခုဖြစ်ပြီး သင်၏ကိုယ်ရေးအချက်အလက်ကို အလေးထားသည်။ ဤမူဝါဒသည် ကျွန်ုပ်တို့ ဘာသိမ်းဆည်းသည်၊ ဘာကြောင့် သိမ်းဆည်းသည်နှင့် သင်မည်သို့ ထိန်းချုပ်နိုင်ကြောင်း ရှင်းပြသည်။"
-            : 'Hello SG ("we", "our") serves anyone living in Singapore, with information in English and Myanmar. This policy explains what data we collect, why we collect it, and how you control it.'}
+            ? "Hello SG (\"ကျွန်ုပ်တို့\") သည် စင်္ကာပူတွင် နေထိုင်သူများအတွက် သတင်း၊ လမ်းညွှန်နှင့် ကိရိယာများ ပေးသည့် ဝန်ဆောင်မှုဖြစ်သည်။ ဤမူဝါဒသည် ကျွန်ုပ်တို့ ဘာသိမ်းဆည်းသည်၊ ဘာကြောင့် သိမ်းဆည်းသည်နှင့် သင်မည်သို့ ထိန်းချုပ်နိုင်ကြောင်း ရှင်းပြသည်။"
+            : 'Hello SG ("we", "our") provides news, guides and tools for people living in Singapore. This policy explains what data we collect, why we collect it, and how you control it.'}
         </p>
 
-        {/* ── 1. Data Collected ── */}
         <div className="space-y-3">
           <h3 className="text-lg font-semibold">
             {isMy ? "၁. သိမ်းဆည်းသောအချက်အလက်များ" : "1. Data We Collect"}
@@ -50,34 +47,68 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
               <strong>{isMy ? "အကောင့်" : "Account"}</strong>
               {" — "}
               {isMy
-                ? "ကျွန်ုပ်တို့ Supabase Auth မှတဆင့် email လိပ်စာနှင့် hashed password တို့ကိုသာ သိမ်းဆည်းသည်။"
-                : "Email address and hashed password stored via Supabase Auth. We never see your plain-text password."}
+                ? "Supabase Auth မှတဆင့် email နှင့် hashed password။ plain-text password ကို မသိမ်းပါ။"
+                : "Email and hashed password via Supabase Auth. We never store your plain-text password."}
+            </li>
+            <li>
+              <strong>{isMy ? "ပရိုဖိုင် ဦးစားပေးများ" : "Profile preferences"}</strong>
+              {" — "}
+              {isMy
+                ? "ဘာသာစကား၊ ရွေးချယ်ထားသော နိုင်ငံ/အသိုင်းအဝိုင်း၊ theme စသည့် ဦးစားပေးများ (ရှိပါက)။"
+                : "Language, selected country/community preference, and theme settings when you set them."}
             </li>
             <li>
               <strong>{isMy ? "ဖောင် draft များ" : "Form drafts"}</strong>
               {" — "}
               {isMy
-                ? "သင် wizard ဖောင်တွင် ဖြည့်သွင်းသောအချက်အလက်များ (နာမည်၊ ပတ်စပို့ နံပါတ်) ကို သင့်အကောင့်နှင့် ချိတ်ဆက်ပြီး database တွင် သိမ်းဆည်းသည်။"
-                : "Form field values you enter in the passport wizard (name, passport number, etc.) are saved to your account so you can return later."}
+                ? "Passport wizard တွင် ဖြည့်သော အချက်အလက်များ (နာမည်၊ ပတ်စပို့ နံပါတ် စသည်) ကို အကောင့်နှင့် ချိတ်ဆက် သိမ်းနိုင်သည်။"
+                : "Passport wizard field values (name, passport number, etc.) saved to your account so you can return later."}
+            </li>
+            <li>
+              <strong>{isMy ? "လစာ / အေဂျင့်ကြေး မှတ်တမ်း" : "Salary & fee logs"}</strong>
+              {" — "}
+              {isMy
+                ? "သင် ထည့်သွင်းသော လစာ သို့မဟုတ် အေဂျင့်ကြေး မှတ်တမ်းများနှင့် PDF export အတွက် လိုအပ်သော အချက်အလက်။"
+                : "Salary or recruitment-fee entries you create, and data needed to export a PDF report."}
+            </li>
+            <li>
+              <strong>{isMy ? "မှတ်ချက်နှင့် report" : "Comments & reports"}</strong>
+              {" — "}
+              {isMy
+                ? "လမ်းညွှန်စာမျက်နှာများနှင့် place comments တွင် သင်ရေးသော စာသား၊ reply များ၊ နှင့် မသင့်လျော်သော အကြောင်းအရာ report များ (login လိုအပ်)။"
+                : "Text you post on guide/tool pages or place comments, replies, and reports of inappropriate content (login required)."}
             </li>
             <li>
               <strong>{isMy ? "ငွေပေးချေမှု" : "Payments"}</strong>
               {" — "}
               {isMy
-                ? "ငွေပေးချေမှု မှတ်တမ်း (ပမာဏ၊ အခြေအနေ) နှင့် သင် upload လုပ်သော ငွေပေးချေမှု voucher ဓာတ်ပုံများ။ လက်ရှိတွင် manual payment (KBZPay/WavePay) ကိုသာ အသုံးပြုထားသည်။"
-                : "Payment records (amount, status) and any receipt image you upload for manual payment. The current flow supports manual payment proof (KBZPay/WavePay)."}
+                ? "ငွေပေးချေမှု မှတ်တမ်း (ပမာဏ၊ အခြေအနေ) နှင့် manual payment (KPay/WavePay) အတွက် upload လုပ်သော ပြေစာပုံများ။"
+                : "Payment records (amount, status) and receipt images you upload for manual payment (e.g. KPay/WavePay)."}
+            </li>
+            <li>
+              <strong>{isMy ? "ကြော်ငြာ တိုင်းတာမှု" : "Ad measurement"}</strong>
+              {" — "}
+              {isMy
+                ? "Sponsored banner များအတွက် impression / click event များ (user id ရှိပါက ချိတ်ဆက်နိုင်)။ Google AdSense က သီးခြား cookie / identifier သုံးနိုင်သည်။"
+                : "Impression and click events for sponsored banners (may be linked to your user id if logged in). Google AdSense may use its own cookies or identifiers."}
             </li>
             <li>
               <strong>{isMy ? "Analytics" : "Analytics"}</strong>
               {" — "}
               {isMy
-                ? "မည်သည့် feature ကို အသုံးပြုသည်ကို ခြေရာခံသော anonymous event log များ (e.g. \'wizard_opened\')။ ကိုယ်ရေးအချက်အလက် မပါဝင်ပါ။"
-                : "Anonymous usage events (e.g. 'wizard_opened', 'payment_initiated') to help us improve the app. No personally identifiable data in analytics rows."}
+                ? "Feature အသုံးပြုမှုကို ခြေရာခံသော anonymous (သို့) အကောင့်နှင့် ချိတ်ဆက်ထားသော event log များ — app တိုးတက်အောင် ကူညီရန်။"
+                : "Usage events to improve the product (some anonymous; some tied to your account when logged in)."}
+            </li>
+            <li>
+              <strong>{isMy ? "Contact / sponsorship" : "Contact / sponsorship"}</strong>
+              {" — "}
+              {isMy
+                ? "Contact ဖောင်မှ ပို့သော စာသားနှင့် ဆက်သွယ်ရန် အချက်အလက်။"
+                : "Messages and contact details you submit through the Contact / sponsorship form."}
             </li>
           </ul>
         </div>
 
-        {/* ── 2. How We Use Data ── */}
         <div className="space-y-3">
           <h3 className="text-lg font-semibold">
             {isMy
@@ -87,28 +118,37 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
           <ul className="list-disc space-y-1 pl-5 text-ink-muted">
             <li>
               {isMy
-                ? "ပတ်စပို့ ဖောင် အချက်အလက်များကို သိမ်းဆည်းပြီး သက်တမ်းကုန်ခါနီး သတိပေးရန်"
-                : "Save your passport form details and remind you before your passport expires."}
+                ? "လမ်းညွှန်များ၊ ကိရိယာများ၊ ဖောင် draft နှင့် သတိပေးချက်များ ပေးရန်"
+                : "Provide guides, tools, saved drafts and reminders."}
             </li>
             <li>
               {isMy
-                ? "App ကို ပိုကောင်းအောင် ပြုပြင်ရန် anonymous usage data ကို ခွဲခြမ်းစိတ်ဖြာရန်"
-                : "Analyse anonymous usage patterns to improve the app."}
+                ? "Community comments ကို ပြသရန်နှင့် မသင့်လျော်သော အကြောင်းအရာကို စိစစ်ရန်"
+                : "Show community comments and moderate reported content."}
             </li>
             <li>
               {isMy
-                ? "သင်ဆက်သွယ်ပါက technical support ပေးရန်"
-                : "Respond to support requests when you contact us."}
+                ? "App ကို အခမဲ့ ထားနိုင်ရန် sponsored ads / AdSense ကို ပြသပြီး တိုင်းတာရန်"
+                : "Show and measure sponsored ads / AdSense so the app can stay free."}
+            </li>
+            <li>
+              {isMy
+                ? "Support၊ sponsorship inquiry နှင့် account ဖျက်ရန် တောင်းဆိုမှုများကို ဖြေကြားရန်"
+                : "Respond to support, sponsorship inquiries and deletion requests."}
+            </li>
+            <li>
+              {isMy
+                ? "App အရည်အသွေး တိုးတက်အောင် usage ပုံစံများကို ခွဲခြမ်းစိတ်ဖြာရန်"
+                : "Analyse usage patterns to improve the product."}
             </li>
           </ul>
           <p className="text-sm text-ink-muted">
             {isMy
-              ? "ကျွန်ုပ်တို့သည် သင်၏ဒေတာကို မည်သည့် third-party ကိုမျှ မရောင်းချပါ။"
-              : "We do not sell your data to any third party."}
+              ? "ကျွန်ုပ်တို့သည် သင်၏ဒေတာကို ကြော်ငြာသူများထံ မရောင်းချပါ။ Sponsored helper / partner လင့်ခ်များကို နှိပ်ပါက သက်ဆိုင်ရာ site သို့ သွားမည်။"
+              : "We do not sell your personal data. If you open a sponsored or community-helper link, you leave our site for that third party."}
           </p>
         </div>
 
-        {/* ── 3. Storage & Security ── */}
         <div className="space-y-3">
           <h3 className="text-lg font-semibold">
             {isMy ? "၃. သိမ်းဆည်းခြင်းနှင့် လုံခြုံရေး" : "3. Storage & Security"}
@@ -116,72 +156,97 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
           <ul className="list-disc space-y-1 pl-5 text-ink-muted">
             <li>
               {isMy
-                ? "ဒေတာများကို Supabase (PostgreSQL) တွင် သိမ်းဆည်းသည် — AWS ap-southeast-1 (Singapore) server များပေါ်တွင် host လုပ်သည်။"
+                ? "ဒေတာများကို Supabase (PostgreSQL) တွင် သိမ်းသည် — AWS ap-southeast-1 (Singapore) တွင် host လုပ်သည်။"
                 : "Data is stored in Supabase (PostgreSQL) hosted on AWS ap-southeast-1 (Singapore)."}
             </li>
             <li>
               {isMy
-                ? "ငွေပေးချေမှု voucher ဓာတ်ပုံများသည် private Supabase Storage bucket တွင် ရှိပြီး admin သာ ကြည့်ရှုနိုင်သည်။"
-                : "Payment receipt images are in a private Supabase Storage bucket — accessible only to app admins."}
+                ? "ငွေပေးချေမှု ပြေစာပုံများသည် private storage တွင် ရှိပြီး admin သာ ကြည့်နိုင်သည်။"
+                : "Payment receipt images are in a private storage bucket — accessible only to admins."}
             </li>
             <li>
               {isMy
-                ? "အကောင့်ဝင်ရောက်မှုကို HTTPS နှင့် Supabase RLS (Row-Level Security) ဖြင့် ကာကွယ်သည်။"
-                : "All data is transferred over HTTPS. Supabase Row-Level Security ensures you can only access your own records."}
+                ? "Sponsored ad ပုံများနှင့် driving helper ပုံများသည် public storage တွင် ရှိနိုင်သည် (admin က တင်သော ပုံများ)။"
+                : "Sponsored-ad images and driving-helper photos may be stored in public buckets (uploaded by admins)."}
             </li>
             <li>
               {isMy
-                ? "လက်ရှိထုတ်ပြန်မှုတွင် ကတ်ငွေပေးချေမှုကို မထည့်သွင်းရသေးပါ။"
-                : "Card payments are not enabled in the current release."}
+                ? "HTTPS နှင့် Supabase Row-Level Security ဖြင့် ကာကွယ်သည် — သင့်ကိုယ်ပိုင် မှတ်တမ်းများကိုသာ သင် ကြည့်/ပြင်နိုင်သည် (admin ကွဲပြား)။"
+                : "Traffic uses HTTPS. Supabase Row-Level Security limits access to your own records (admins have separate access for moderation)."}
             </li>
           </ul>
         </div>
 
-        {/* ── 4. Your Rights ── */}
         <div className="space-y-3">
           <h3 className="text-lg font-semibold">
-            {isMy ? "၄. သင်၏အခွင့်အရေးများ" : "4. Your Rights"}
+            {isMy ? "၄. Third-party ဝန်ဆောင်မှုများ" : "4. Third-Party Services"}
+          </h3>
+          <ul className="list-disc space-y-1 pl-5 text-ink-muted">
+            <li>
+              {isMy
+                ? "Supabase — auth၊ database၊ storage"
+                : "Supabase — authentication, database and storage."}
+            </li>
+            <li>
+              {isMy
+                ? "Google AdSense (ဖွင့်ထားပါက) — ကြော်ငြာ ပြသခြင်းနှင့် တိုင်းတာမှု"
+                : "Google AdSense (when enabled) — ad delivery and measurement."}
+            </li>
+            <li>
+              {isMy
+                ? "Vercel — ဝက်ဘ် app host လုပ်ခြင်း"
+                : "Vercel — hosting the web app."}
+            </li>
+          </ul>
+        </div>
+
+        <div className="space-y-3">
+          <h3 className="text-lg font-semibold">
+            {isMy ? "၅. သင်၏အခွင့်အရေးများ" : "5. Your Rights"}
           </h3>
           <ul className="list-disc space-y-1 pl-5 text-ink-muted">
             <li>
               <strong>{isMy ? "ကြည့်ရှုခြင်း" : "Access"}</strong>
               {" — "}
               {isMy
-                ? "သင်သိမ်းဆည်းထားသော form draft ကို Account page မှ ကြည့်ရှုနိုင်သည်။"
-                : "View your saved drafts from the Account page."}
+                ? "သိမ်းထားသော draft / မှတ်တမ်းများကို Account နှင့် သက်ဆိုင်ရာ ကိရိယာများမှ ကြည့်နိုင်သည်။"
+                : "View saved drafts and tool data from Account and the relevant tools."}
             </li>
             <li>
               <strong>{isMy ? "ဖျက်သိမ်းခြင်း" : "Deletion"}</strong>
               {" — "}
               {isMy
-                ? "Account နှင့် ၎င်းနှင့်ဆက်နွှယ်သောဒေတာများ ဖျက်ရန် ကျွန်ုပ်တို့ကို ဆက်သွယ်ပါ (အောက်ပါ email)။"
-                : "To delete your account and all associated data, contact us at the email below."}
+              ? "အကောင့်နှင့် ဆက်နွှယ်ဒေတာ ဖျက်ရန် Account စာမျက်နှာရှိ Delete account ကို သုံးပါ သို့မဟုတ် အောက်ပါ email သို့ ဆက်သွယ်ပါ။"
+              : "To delete your account and associated data, use Delete account on the Account page, or email us below."}
             </li>
             <li>
               <strong>{isMy ? "ထုတ်ယူခြင်း" : "Export"}</strong>
               {" — "}
               {isMy
-                ? "သင်၏ လစာမှတ်တမ်းကို PDF အဖြစ် အချိန်မရွေး ထုတ်ယူနိုင်သည်။"
-                : "Export your salary record as a PDF at any time."}
+                ? "လစာမှတ်တမ်းကို PDF အဖြစ် ထုတ်ယူနိုင်သည်။"
+                : "Export your salary record as a PDF where that feature is available."}
+            </li>
+            <li>
+              <strong>{isMy ? "မှတ်ချက်" : "Comments"}</strong>
+              {" — "}
+              {isMy
+                ? "သင်ရေးသော မှတ်ချက်များကို admin က စိစစ်/ဖျက်နိုင်သည်။ မသင့်လျော်သော အကြောင်းအရာကို report လုပ်နိုင်သည်။"
+                : "Admins may hide or remove comments. You can report inappropriate content."}
             </li>
           </ul>
         </div>
 
-        {/* ── 5. Contact ── */}
         <div className="space-y-2 rounded-2xl border border-border bg-surface-muted p-4">
           <h3 className="font-semibold">
             {isMy ? "ဆက်သွယ်ရန်" : "Contact Us"}
           </h3>
           <p className="text-sm text-ink-muted">
             {isMy
-              ? "ကိုယ်ရေးအချက်အလက်ဆိုင်ရာ မေးခွန်းများ သို့မဟုတ် account ဖျက်ရန် တောင်းဆိုမှုများအတွက် —"
-              : "For privacy questions or account deletion requests —"}
+              ? "ကိုယ်ရေးအချက်အလက်ဆိုင်ရာ မေးခွန်းများ သို့မဟုတ် account ဖျက်ရန် —"
+              : "For privacy questions or account deletion —"}
           </p>
           <p className="text-sm font-medium text-ink">
-            support@sgmigrantworkerapp.com{" "}
-            <span className="font-normal text-ink-subtle">
-              {isMy ? "(support mailbox)" : "(support mailbox)"}
-            </span>
+            support@sgmigrantworkerapp.com
           </p>
         </div>
       </section>

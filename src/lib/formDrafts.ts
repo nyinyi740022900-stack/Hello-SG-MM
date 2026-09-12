@@ -127,3 +127,18 @@ export async function savePassportDraft(userId: string, draftData: PassportDraft
 
   return { error: error?.message ?? null };
 }
+
+/** Delete the passport renewal draft for this user (Account → Delete draft). */
+export async function deletePassportDraft(userId: string) {
+  if (!supabase) {
+    return { error: "Supabase is not configured." };
+  }
+
+  const { error } = await supabase
+    .from("form_drafts")
+    .delete()
+    .eq("user_id", userId)
+    .eq("form_type", PASSPORT_FORM_TYPE);
+
+  return { error: error?.message ?? null };
+}

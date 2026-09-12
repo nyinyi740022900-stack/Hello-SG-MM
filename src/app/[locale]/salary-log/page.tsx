@@ -6,6 +6,7 @@ import SalaryLogPanel from "@/components/SalaryLogPanel";
 import { PageHeader } from "@/components/ui/Card";
 import { routing, type AppLocale } from "@/i18n/routing";
 import PageCard from "@/components/ui/PageCard";
+import PageDiscussionSection from "@/components/PageDiscussionSection";
 
 type SalaryLogPageProps = {
   params: Promise<{ locale: string }>;
@@ -26,6 +27,7 @@ export default async function SalaryLogPage({ params }: SalaryLogPageProps) {
         <AuthGate locale={locale as AppLocale}>
           <SalaryLogPanel />
         </AuthGate>
+        <PageDiscussionSection pageKey="salary-log" />
       </section>
     </PageCard>
   );

@@ -19,7 +19,12 @@
     "events": "အစီအစဉ်များ",
     "directory": "ဝန်ဆောင်မှုများ",
     "transport": "သွားလာရေး",
-    "rates": "ငွေလဲနှုန်း"
+    "drivingLicense": "ယာဉ်မောင်းလိုင်စင်",
+    "lottery": "ထီ",
+    "rates": "ငွေလဲ / ငွေလွှဲ",
+    "travel": "ခရီးသွား",
+    "housing": "အိမ်ရာ",
+    "jobs": "အလုပ်များ"
   },
   "home": {
     "badge": "အလုပ်သမားအားလုံးအတွက် အခမဲ့",
@@ -31,15 +36,15 @@
     "quickEmergency": "အရေးပေါ် ဆက်သွယ်ရန်",
     "quickGuide": "ပတ်စ်ပို့ လမ်းညွှန်",
     "quickAccountsGuide": "လိုအပ်သော ဘဏ်အကောင့်များ",
-    "sponsorLabel": "ကျွန်ုပ်တို့၏ Sponsor များ",
-    "sponsorHeadline": "စင်္ကာပူရှိ ရွှေ့ပြောင်း အလုပ်သမားများကို ပံ့ပိုးခြင်း",
-    "sponsorDescription": "ဒီ app ကို community sponsor များ၏ အကူအညီဖြင့် အခမဲ့ဖြစ်ပါသည်။ အလုပ်သမားများကို ကူညီပေးသော ဝန်ဆောင်မှုများကို ကြည့်ရှုပါ။",
-    "sponsorCta": "Sponsor များကို ကြည့်ရန်",
     "toolsSectionTitle": "ငွေကြေး နှင့် အထောက်အထား ကိရိယာများ",
     "toolSalaryLog": "လစာမှတ်တမ်း",
     "toolSalaryLogHint": "ကတိထားသလား ရသလား — မှတ်တမ်းတင်ပါ",
     "toolRecruitmentFee": "အေဂျင့်ကြေး ရှင်းလင်းရေး",
     "toolRecruitmentFeeHint": "အေဂျင့်ကြေး ဘယ်အချိန် ပြီးဆုံးမလဲ ကြည့်ပါ",
+    "toolLottery": "ထီ",
+    "toolDrivingLicense": "ယာဉ်မောင်းလိုင်စင်",
+    "toolTravel": "ခရီးသွား",
+    "toolHousing": "အိမ်ရာ",
     "rightsSectionTitle": "အခွင့်အရေးနှင့် Community",
     "toolRestDay": "နားရက် အခွင့်အရေး",
     "toolRestDayHint": "တစ်ပတ်လျှင် နားရက်ရဖို့ အခွင့်အရေးကို သိထားပါ",
@@ -56,7 +61,8 @@
     "feedEmpty": "သတင်း မတင်ရသေးပါ။ စိစစ်ပြီးသည်နှင့် ဒီနေရာတွင် ပေါ်လာပါမည်။",
     "viewMore": "ပိုမို",
     "formGeneralShort": "အထွေထွေ ဖောင်",
-    "formMaidShort": "အိမ်အကူ ဖောင်"
+    "formMaidShort": "အိမ်အကူ ဖောင်",
+    "toolJobs": "အလုပ်များ"
   },
   "news": {
     "badge": "နေ့စဉ် Update",
@@ -66,18 +72,12 @@
     "sourceLink": "Source ကို ဖတ်ရန်",
     "disclaimer": "Update များကို နေ့စဉ် research လုပ်ပြီး admin က publish မလုပ်ခင် စစ်ဆေးပါသည်၊ ဒါပေမယ့် အရေးကြီးဆုံးဖြတ်ချက်များ (visa၊ ဥပဒေ၊ ငွေကြီး) အတွက်တော့ official source ကို တိုက်ရိုက် ထပ်မံစစ်ဆေးပါ။",
     "category": {
-      "mom_policy": "အလုပ်နှင့် ပါမစ်",
-      "embassy": "သံရုံးဝန်ဆောင်မှု",
-      "safety_scam": "လိမ်လည်မှု သတိပေးချက်",
-      "finance": "ငွေကြေး",
-      "legal": "အခွင့်အရေး",
+      "work": "အလုပ်",
+      "money": "ငွေကြေး",
+      "safety": "လုံခြုံရေး",
       "health": "ကျန်းမာရေး",
-      "community": "ရပ်ရွာ",
-      "education": "သင်တန်း",
-      "transport": "သယ်ယူပို့ဆောင်ရေး",
-      "jobs": "အလုပ်အကိုင်",
       "housing": "အိမ်ရာ",
-      "cost_of_living": "ကုန်ဈေးနှုန်း"
+      "community": "ရပ်ရွာ"
     },
     "allCategories": "အားလုံး",
     "readMore": "အပြည့်အစုံ ဖတ်ရန်",
@@ -120,7 +120,7 @@
   "recruitmentFee": {
     "badge": "အခမဲ့",
     "title": "အေဂျင့်ကြေး ရှင်းလင်းရေး Tracker",
-    "subtitle": "အလုပ်သမားအများစုမှာ အေဂျင့်/recruitment ကြေးပြန်ဆပ်ဖို့ လစာ ၆-၉ လ ဖြတ်တောက်ခံရလေ့ရှိပါတယ်။ သင့်ကြေးက ဘယ်အချိန် ပြီးဆုံးမလဲ တွက်ကြည့်ပါ။",
+    "subtitle": "လစဉ် ဖြတ်တောက်ငွေကို တိတိကျကျတွက်နိုင်ပြီး, အလွန်အကျွံကြေးတောင်းခံမှု ရှိလာလျှင် သွားရမည့်နေရာ map နှင့် official link များပါရှိသည်။",
     "fieldTotalFee": "အေဂျင့်ကြေး စုစုပေါင်း",
     "fieldTotalFeeHint": "အေဂျင့်က တောင်းခံခဲ့သော ပမာဏအပြည့်",
     "fieldMonthlyDeduction": "လစဉ် လစာမှ ဖြတ်တောက်ခံရသောပမာဏ",
@@ -134,7 +134,53 @@
     "resultPaidOffNote": "သင့်ကိန်းဂဏန်းများအရ ဒီအေဂျင့်ကြေး အပြည့်ပြီးဆုံးသွားပါပြီ။",
     "disclaimer": "ဒါဟာ သင်ထည့်သွင်းထားသော ကိန်းဂဏန်းများအပေါ် ခန့်မှန်းချက်သာဖြစ်ပြီး အေဂျင့်/အလုပ်ရှင်၏ အတည်ပြုချက် မဟုတ်ပါ။",
     "printButton": "Print / PDF အဖြစ် သိမ်းရန်",
-    "emptyState": "ခန့်မှန်းချက် ကြည့်ရန် အထက်တွင် ကြေးပမာဏနှင့် လစဉ်ဖြတ်တောက်မှုကို ထည့်ပါ။"
+    "emptyState": "ခန့်မှန်းချက် ကြည့်ရန် အထက်တွင် ကြေးပမာဏနှင့် လစဉ်ဖြတ်တောက်မှုကို ထည့်ပါ။",
+    "warningTitle": "အရေးကြီး သတိပေးချက်",
+    "warningBody": "စင်္ကာပူအတွင်း အလုပ်ရရန်/အလုပ်မလွတ်ရန် အကြောင်းပြ၍ ပိုက်ဆံတောင်းပါက agency နဲ့ agent ကို အရင်စစ်ပါ။ receipt နဲ့ message အားလုံး သိမ်းထားပါ။",
+    "beforePayTitle": "ကြေးပေးမီ အရင်စစ်ရမည့် အချက်များ",
+    "beforePaySubtitle": "ဒီ checklist ကို အရင်လိုက်ပါ။",
+    "beforePay": {
+      "licensed": "MOM EA Directory မှာ agency license ရှိ/မရှိ စစ်ပါ။ revocation/suspension/surveillance စာရင်းဝင် EA များကို ရှောင်ပါ။",
+      "personnel": "Agent တစ်ယောက်ချင်းစီကိုလည်း စစ်ပါ။ သူ့ card ပေါ်က name နဲ့ registration number က MOM EA Directory နဲ့ တူရပါမယ်။",
+      "receipts": "Cash ပေးမယ်ဆို written receipt မရှိဘဲ မပေးပါနှင့် (amount, date, purpose, company name ပါရမယ်)။",
+      "contract": "ဖြတ်တောက်ငွေ ဘာအတွက်လဲ၊ ဘယ်နှလလဲ ကို စာချုပ်ထဲဖတ်ပါ။ လက်မှတ်ထိုးခဲ့တဲ့ စာရွက် copy သိမ်းပါ။",
+      "transfer": "မြန်မြန်လွှဲခိုင်းပြီး ဖိအားပေးပါက ချက်ချင်းမလွှဲဘဲ MOM official channel နဲ့ အတည်ပြုပါ။"
+    },
+    "evidenceTitle": "လစဉ် သိမ်းထားရမည့် အထောက်အထား",
+    "evidenceSubtitle": "တိုင်ကြားရန် သို့မဟုတ် claim တင်ရန် လိုလာပါက ဒီ evidence တွေက အသုံးဝင်ပါတယ်။",
+    "evidence": {
+      "payslips": "လစဉ် ဖြတ်တောက်ထားတာ ပြတဲ့ payslip များ။",
+      "bank": "ဘဏ် statement သို့ transfer record များ (တကယ်ပေးပြီးကြောင်း သက်သေ)။",
+      "messages": "Agency/အလုပ်ရှင်နဲ့ WhatsApp/SMS/chat စာသားများ။",
+      "photos": "Receipt, contract, handwritten note တို့ရဲ့ ဓာတ်ပုံများ။",
+      "timeline": "Timeline အတို — ဘယ်နေ့ကစဖြတ်တောက်လဲ, လတိုင်း ဘယ်လောက်လဲ, ပြဿနာ ဘယ်နေ့ကစလဲ။"
+    },
+    "actionTitle": "ဖြတ်တောက်မှု မမှန်/အလွန်အကျွံထင်ရင်",
+    "actionSubtitle": "ကြေးတိုးပြီးမသွားခင် အကူအညီတောင်းနိုင်ပါတယ်။",
+    "action": {
+      "speak": "ဖြတ်တောက်ပြီးသား တစ်ကြိမ်ချင်းစီကို agency/အလုပ်ရှင်ထံ written breakdown တောင်းပါ။",
+      "report": "Agency သို့ work-pass စည်းကမ်းချိုးဖောက်မှု သံသယရှိရင် MOM ကို လျှို့ဝှက်တိုင်ကြားပါ။",
+      "claim": "လစာအငြင်းပွားမှုနဲ့ ဆက်စပ်ရင် TADM eServices မှ salary-related claim ကို deadline အတွင်း တင်ပါ။",
+      "helplines": "ခြိမ်းခြောက်ခံနေရင် MWC/HOME သို့မဟုတ် MOM ကို ချက်ချင်း ဆက်သွယ်ပြီး evidence လုံခြုံအောင် သိမ်းထားပါ။"
+    },
+    "linksTitle": "တရားဝင် လင့်ခ်များ",
+    "links": {
+      "eaDirectory": "MOM EA Directory (agency license စစ်ရန်)",
+      "eaLicensedFaq": "MOM: licensed agency သုံးသင့်သည့် အကြောင်း",
+      "reportInfringement": "MOM: စည်းကမ်းချိုးဖောက်မှု တိုင်ကြားရန်",
+      "momContact": "MOM ဆက်သွယ်ရန် ဖုန်းနံပါတ်များ",
+      "tadmClaim": "TADM: salary-related claim တင်ရန်",
+      "tadmFees": "TADM: filing fee နှင့် payment method",
+      "tadmLocations": "TADM တည်နေရာ နှင့် ဖွင့်ချိန်"
+    },
+    "mapsTitle": "ကိုယ်တိုင်သွားရမည့် နေရာ map links",
+    "mapsSubtitle": "Google Maps တွင် ဖွင့်ရန် နှိပ်ပါ။",
+    "maps": {
+      "mom": "MOM Services Centre (1500 Bendemeer Road)",
+      "tadm": "TADM (MOM Services Centre, Hall A Level 3)",
+      "mwc": "Migrant Workers' Centre",
+      "home": "HOME help desk (720 Geylang Road)"
+    }
   },
   "checklist": {
     "badge": "အခမဲ့",
@@ -395,11 +441,7 @@
       "checkAppointment": "သံရုံးချိန်းလိုအပ်/မလိုအပ် စစ်ဆေးပါ။",
       "fillSample": "ဖောင်ကို နမူနာနှင့်နှိုင်းယှဉ်ပြီး ဖြည့်ပါ။",
       "reviewBeforeSubmit": "မတင်ခင် အချက်အလက်များကို နောက်တစ်ကြိမ် ပြန်စစ်ပါ။"
-    },
-    "sponsorLabel": "Community Partner",
-    "sponsorHeadline": "စာရွက်စာတမ်းများ အကူအညီလိုပါသလား?",
-    "sponsorDescription": "ကျွန်ုပ်တို့၏ partner များက မြန်မာအလုပ်သမားများအတွက် ပတ်စပို့လျှောက်လွှာနှင့် စာရွက်စာတမ်းပြင်ဆင်ရေးတွင် အကူအညီပေးပါသည်။",
-    "sponsorCta": "အကူအညီရယူရန်"
+    }
   },
   "emergency": {
     "badge": "ဒီနံပါတ်တွေကို သိမ်းထားပါ",
@@ -563,32 +605,94 @@
   "accountsGuide": {
     "badge": "Singapore တွင် စတင်ခြင်း",
     "title": "လိုအပ်သော Account များ လမ်းညွှန်",
-    "subtitle": "Singapore တွင် သင့်ငွေကြေးကို စီမံခန့်ခွဲရန်နှင့် ဝန်ဆောင်မှုများကို ဘေးကင်းစွာ အသုံးပြုနိုင်ရန် တကယ်အထောက်အကူပြုသော account များ။",
-    "whyLabel": "ဘာကြောင့်",
-    "howLabel": "ဘယ်လို",
-    "officialLink": "Official website",
-    "bnplNote": "ဒီလမ်းညွှန်ထဲမှာ \"Buy Now Pay Later\" app များ (ဥပမာ Atome, Grab PayLater) ကို မထည့်ထားပါ။ ၎င်းတို့မှာ credit check လုံးဝမလုပ်ဘဲ၊ late fee များက debt ကို snowball ဖြစ်စေနိုင်ပါတယ် — အထူးသဖြင့် အေဂျင့်ကြေး ဆက်ဆပ်နေရဆဲဆိုရင် ရှောင်ကြဉ်ဖို့ အကြံပြုပါတယ်။",
-    "disclaimer": "ယေဘုယျ အချက်အလက်သာ ဖြစ်ပါသည် — official website တွင် လက်ရှိအဆင့်များကို အမြဲ ထပ်မံစစ်ဆေးပြီး၊ မသေချာပါက အလုပ်ရှင် သို့မဟုတ် ဘဏ်ကို တိုက်ရိုက်မေးမြန်းပါ။",
+    "subtitle": "လစာ လုံခြုံအောင် ထားရန်၊ ငွေလွှဲရန်နှင့် အစိုးရ ဝန်ဆောင်မှုများ ဝင်သုံးရန် လိုအပ်သော account များ — တရားဝင် link နှင့် map များပါ။",
+    "whyLabel": "ဘာကြောင့် လိုအပ်သလဲ",
+    "howLabel": "ဘယ်လို ဖွင့်/ချိတ်ဆက်မလဲ",
+    "linksLabel": "တရားဝင် လင့်ခ်များ",
+    "officialLink": "တရားဝင် ဝဘ်ဆိုက်",
+    "bnplNote": "ဒီလမ်းညွှန်တွင် \"Buy Now Pay Later\" app များ (ဥပမာ Atome, Grab PayLater) မပါပါ။ Credit check မလုပ်ဘဲ late fee များကြောင့် အကြွေးတိုးနိုင်သည် — အထူးသဖြင့် အေဂျင့်ကြေး ဆက်ဆပ်နေဆဲဆိုရင် ရှောင်ပါ။",
+    "safetyNote": "ဘဏ် PIN၊ OTP၊ Singpass စကားဝှက် (သို့) PayNow QR ကို အေဂျင့်၊ အလုပ်ရှင် (သို့) မသိသူအား မပေးပါနှင့်။ တကယ့်ဘဏ်/အစိုးရ ဝန်ထမ်းက \"account ဖွင့်ရန်\" ပိုက်ဆံ လွှဲခိုင်းမည် မဟုတ်ပါ။",
+    "disclaimer": "ယေဘုယျ အချက်အလက်သာ — official website တွင် လက်ရှိအဆင့်များကို အမြဲ ထပ်စစ်ပြီး မသေချာပါက အလုပ်ရှင် (သို့) ဘဏ်ကို တိုက်ရိုက်မေးပါ။ အောက်ပါ partner link များက ဒီ app အတွက် referral အနည်းငယ် ရရှိနိုင်သော်လည်း အလုပ်သမားသုံး ကိရိယာများက အခမဲ့ ဆက်ရှိပါသည်။",
+    "partnerLinksTitle": "Partner ရွေးချယ်စရာများ (မဖြစ်မနေ မဟုတ်)",
+    "pagePartnersTitle": "Partner signup နှင့် invitation",
+    "pagePartnersSubtitle": "ဒီလမ်းညွှန်ကို အခမဲ့ ထားနိုင်အောင် ကူညီသော partner link များ။ ယုံကြည်မှသာ ဖွင့်ပါ။",
+    "affiliateBadge": "Partner",
+    "invitationBadge": "Invite",
+    "sponsoredNote": "Sponsored — worker များအတွက် ဤအခမဲ့ app ဆက်လည်ပတ်ရန် ကူညီသည်။",
+    "mapsTitle": "မြေပုံ — ဘဏ်ခွဲ (သို့) MOM ရှာရန်",
+    "mapsSubtitle": "Google Maps ဖွင့်ရန် နှိပ်ပါ။",
+    "maps": {
+      "posbBranch": "အနီးဆုံး POSB ဘဏ်ခွဲ",
+      "dbsBranch": "အနီးဆုံး DBS ဘဏ်ခွဲ",
+      "ocbcBranch": "အနီးဆုံး OCBC ဘဏ်ခွဲ",
+      "uobBranch": "အနီးဆုံး UOB ဘဏ်ခွဲ",
+      "mom": "MOM Services Centre (Bendemeer)"
+    },
     "accounts": {
       "bank": {
         "name": "ဘဏ်အကောင့်",
-        "why": "MOM က သင့်လစာကို အလုပ်ရှင် (သို့) အေဂျင့်ဆီ မဟုတ်ဘဲ သင့်ကိုယ်ပိုင် ဘဏ်အကောင့်ထဲကို တိုက်ရိုက်ထည့်ပေးရမည်ဟု သတ်မှတ်ထားသည်။ ဘဏ်အကောင့်ရှိရင် ငွေစုနိုင်ပြီး official channel ဖြင့် ငွေလွှဲနိုင်သည် (မြန်မာ၏ ၂၅% ငွေလွှဲစည်းမျဉ်းအတွက်လည်း လိုအပ်သည်)။",
-        "how": "Passport နှင့် Work Permit/S Pass ကတ်ကို ဘဏ် (ဥပမာ POSB, DBS, OCBC, UOB) သို့ ယူဆောင်သွားပါ။ အလုပ်ရှင်အချို့က MOM ၏ WP Online စနစ်မှတစ်ဆင့် Work Permit holder အတွက် POSB အကောင့် ဖွင့်ပေးနိုင်သည် — အလုပ်ရှင်ကို အရင်မေးပါ။"
+        "tagline": "လစာ ရသင့်သောနေရာ",
+        "why": "အဆောင် (dorm) တွင် နေပါက MOM က လစာကို သင့်ကိုယ်ပိုင် ဘဏ်အကောင့်ထဲသို့ အီလက်ထရောနစ်ဖြင့် ပေးရန် သတ်မှတ်ထားသည် — အလုပ်ရှင်/အေဂျင့်ထံ cash မဟုတ်။ ဘဏ်အကောင့်ရှိရင် ငွေစုနိုင်ပြီး licensed channel ဖြင့် ငွေလွှဲနိုင်သည် (မြန်မာ ငွေလွှဲစည်းမျဉ်းအတွက်လည်း အထောက်အကူဖြစ်သည်)။",
+        "how": "Passport နှင့် Work Permit/S Pass ကတ်ကို ဘဏ်သို့ ယူသွားပါ။ အလုပ်ရှင်အချို့က POSB အကောင့် ဖွင့်ပေးနိုင်သည် — အရင်မေးပါ။",
+        "steps": {
+          "docs": "Passport + Work Permit / S Pass / EP ကတ် (မူရင်း) ယူပါ။ ဘဏ်အချို့က အလုပ်ရှင်စာ (သို့) လိပ်စာ သက်သေ တောင်းနိုင်သည်။",
+          "employer": "Work Permit ဝန်ထမ်းများအတွက် အလုပ်ရှင်က MOM WP Online မှ POSB/DBS အကောင့် ဖွင့်ပေးပြီးသားလား မေးပါ — ကိုယ်တိုင်သွားခြင်းထက် မြန်နိုင်သည်။",
+          "branch": "သို့မဟုတ် POSB, DBS, OCBC, UOB သို့ သွားပါ။ Work-pass holder အတွက် basic savings account တောင်းပါ။ ATM ကတ်နှင့် PIN ကို ကိုယ်တိုင် ထိန်းသိမ်းပါ — မပေးအပ်ပါနှင့်။",
+          "keepBook": "အလုပ်ရှင်က bank book သိမ်းထားလျှင်လည်း လစဉ် လစာ ဝင်မဝင် စစ်ခွင့်ရှိသည် — ပုံမှန် စစ်ပါ။"
+        },
+        "links": {
+          "momSalary": "MOM: Work Permit လစာ ပေးချေခြင်း",
+          "momSPassSalary": "MOM: S Pass လစာ (အီလက်ထရောနစ်)",
+          "posb": "POSB — အကောင့် ဖွင့်/စီမံရန်",
+          "dbs": "DBS — personal banking",
+          "ocbc": "OCBC — personal banking",
+          "uob": "UOB — personal banking"
+        }
       },
       "paynow": {
         "name": "PayNow",
-        "why": "PayNow ဟာ mobile number တစ်ခုတည်းသုံးပြီး ဘဏ်ချင်း ငွေလွှဲခြင်းကို အခမဲ့၊ ချက်ချင်း လုပ်ဆောင်ပေးသည် — bill ခွဲဆောင်ရန်၊ ဆိုင်ငယ်များတွင် ငွေပေးချေရန် Singapore တွင် နေရာအနှံ့ အသုံးပြုကြသည်။",
-        "how": "သင့်ဘဏ်၏ mobile app ကိုဖွင့်ပြီး \"PayNow\" ကိုရှာပါ၊ သင့် Singapore mobile number နှင့် ဘဏ်အကောင့်ကို ချိတ်ဆက်ပါ။"
+        "tagline": "မိုဘိုင်းနံပါတ်ဖြင့် ချက်ချင်း ငွေလွှဲ",
+        "why": "PayNow က စင်္ကာပူဘဏ်ချင်း ငွေလွှဲခြင်းကို မိုဘိုင်းနံပါတ်ဖြင့် အခမဲ့၊ ချက်ချင်း လုပ်ပေးသည် — bill ခွဲရန်၊ ဆိုင်ငယ်ပေးချေရန်၊ e-wallet top-up အတွက် အသုံးများသည်။",
+        "how": "ဘဏ်အကောင့် ဖွင့်ပြီးနောက် ဘဏ် app ထဲတွင် ချိတ်ဆက်ပါ။",
+        "steps": {
+          "openApp": "ဘဏ်၏ mobile app ကို ဖွင့်ပါ (POSB digibank, DBS, OCBC, UOB စသည်)။",
+          "linkNumber": "PayNow / Proxy ဆက်တင်တွင် သင့် Singapore မိုဘိုင်းနံပါတ်ကို (လိုအပ်ပါက NRIC/FIN) ဘဏ်အကောင့်နှင့် ချိတ်ပါ။",
+          "testSend": "မမှီခိုမီ အခြားအကောင့်မှ S$0.01 (သို့) အနည်းငယ် လွှဲစမ်းပါ (သို့) သူငယ်ချင်းကို တောင်းစမ်းပါ။"
+        },
+        "links": {
+          "absPayNow": "ABS: PayNow ဆိုသည်မှာ ဘာလဲ"
+        }
       },
       "singpass": {
         "name": "Singpass",
-        "why": "Singpass ဟာ Singapore ၏ တရားဝင် digital identity ဖြစ်ပြီး၊ government e-service များ (ဥပမာ Work Permit status စစ်ဆေးခြင်း၊ MOM ဝန်ဆောင်မှုများ) ကို online မှ ဝင်ရောက်သုံးစွဲရန် အသုံးပြုသည်။",
-        "how": "Work Permit holder များသည် Work Permit ထုတ်ပေးပြီး ၁-၃ ရုံးဖွင့်ရက်အကြာတွင် portal.singpass.gov.sg တွင် FIN နံပါတ်ဖြင့် register လုပ်နိုင်သည်။ Live selfie (face verification) ဖြင့် အထောက်အထားစစ်ဆေးမည်။"
+        "tagline": "စင်္ကာပူ တရားဝင် digital ID",
+        "why": "Singpass ဖြင့် အစိုးရ e-service များ — Work Permit status, MOM ဖောင်များ — ကို ဝင်သုံးသည်။ FIN ရှိသော work-pass ကိုင်ဆောင်သူများ register လုပ်နိုင်သည်။",
+        "how": "Pass ထုတ်ပြီး ၁–၃ ရုံးဖွင့်ရက်အကြာတွင် online register လုပ်ပြီး face verification ဖြင့် အတည်ပြုပါ။",
+        "steps": {
+          "waitPass": "Work Permit / S Pass / EP ထုတ်ပြီး ကတ်ပေါ်တွင် FIN ရမှ စတင်ပါ။",
+          "register": "Singpass website (သို့) app တွင် Register ကိုရွေးပြီး ကတ်ပေါ်အတိုင်း FIN နှင့် အချက်အလက် ထည့်ပါ။",
+          "faceVerify": "Live selfie ဖြင့် face verification လုပ်ပါ။ OTP အတွက် Singapore မိုဘိုင်းနံပါတ် သုံးပါ။",
+          "app": "Singpass app ထည့်သွင်းပြီး passcode သတ်မှတ်ပါ။ ဖုန်းက biometric ကို ထောက်ပံ့ပါက ဖွင့်ပါ။"
+        },
+        "links": {
+          "singpassHome": "Singpass တရားဝင် ဝဘ်ဆိုက်",
+          "singpassPortal": "Singpass portal — register / ဝင်ရန်"
+        }
       },
       "grabpay": {
         "name": "GrabPay Wallet (top-up ပုံစံသာ)",
-        "why": "သယ်ယူပို့ဆောင်ရေးနှင့် အစားအစာအတွက် ပေးချေရန် prepaid e-wallet တစ်ခုဖြစ်သည်။ အရေးကြီးချက်: ဒါက \"GrabPay PayLater\" (credit product) နှင့် မတူပါ — top-up wallet ကိုသာ သုံးပါ၊ PayLater ကို မသုံးပါနှင့်။",
-        "how": "Grab app ကို download လုပ်ပြီး mobile number ဖြင့် register လုပ်ပါ၊ PayNow၊ ဘဏ်လွှဲ (သို့) cash ဖြင့် wallet ထဲကို top-up လုပ်ပါ — PayLater ဖြင့် ချေးငွေ မယူပါနှင့်။"
+        "tagline": "Prepaid wallet — ချေးငွေ မဟုတ်",
+        "why": "သယ်ယူပို့ဆောင်ရေးနှင့် အစားအစာအတွက် prepaid e-wallet။ GrabPay PayLater (credit) နှင့် မတူပါ — top-up wallet ကိုသာ သုံးပါ။",
+        "how": "Grab ထည့်သွင်း၊ register လုပ်ပြီး PayNow (သို့) ဘဏ်လွှဲဖြင့် top-up လုပ်ပါ — PayLater ဖြင့် မချေးပါနှင့်။",
+        "steps": {
+          "download": "App Store (သို့) Google Play မှ Grab ထည့်ပြီး Singapore မိုဘိုင်းနံပါတ်ဖြင့် register လုပ်ပါ။",
+          "topUp": "GrabPay Wallet ကို ဖွင့်ပြီး PayNow၊ ဘဏ်လွှဲ (သို့) app ထဲပြသော cash option ဖြင့် top-up လုပ်ပါ။",
+          "avoidPayLater": "GrabPay PayLater / PayLater ကမ်းလှမ်းချက်များကို လျစ်လျူရှုပါ။ Late fee ပါသော credit ဖြစ်သည် — prepaid wallet အတွက် မလိုပါ။"
+        },
+        "links": {
+          "grabPay": "GrabPay — တရားဝင် စာမျက်နှာ",
+          "masProviders": "MAS payment service providers စာရင်း (လိုင်စင် စစ်ရန်)"
+        }
       }
     }
   },
@@ -776,6 +880,87 @@
     "cookieNoticeLearnMore": "ပိုမိုသိရှိရန်",
     "cookieNoticeAccept": "နားလည်ပါပြီ"
   },
+  "account": {
+    "title": "ပရိုဖိုင်",
+    "hint": "သင့်နာမည်နှင့် ဓာတ်ပုံကို comment ရေးသည့်အခါ ပြသပါမည်။",
+    "loading": "ပရိုဖိုင် တင်နေသည်...",
+    "loginRequired": "ပရိုဖိုင်ကြည့်ရန် အကောင့်ဝင်ပါ။",
+    "loadingRole": "Role တင်နေသည်...",
+    "roleLabel": "Role: {role}",
+    "displayName": "ပြသမည့် နာမည်",
+    "displayNamePlaceholder": "Comment မှာ ပြမည့် နာမည်",
+    "email": "အီးမေးလ်",
+    "saveName": "နာမည် သိမ်းမည်",
+    "saving": "သိမ်းနေသည်…",
+    "savedName": "နာမည် သိမ်းပြီးပါပြီ။ Comment မှာ ပေါ်ပါမည်။",
+    "changePhoto": "ဓာတ်ပုံ ပြောင်းမည်",
+    "removePhoto": "ဓာတ်ပုံ ဖယ်မည်",
+    "uploadingPhoto": "တင်နေသည်…",
+    "photoHint": "JPG, PNG, WebP သို့မဟုတ် GIF — အများဆုံး ၂ MB။",
+    "savedPhoto": "ဓာတ်ပုံ သိမ်းပြီးပါပြီ။ Comment မှာ ပေါ်ပါမည်။",
+    "removedPhoto": "ဓာတ်ပုံ ဖယ်ပြီးပါပြီ။",
+    "photoFailed": "ဓာတ်ပုံ တင်မရပါ။ ထပ်ကြိုးစားပါ။",
+    "draftTitle": "ပတ်စပို့ ဖောင် draft",
+    "draftHint": "Form Wizard တွင် သိမ်းထားသော အဖြေများ။ ပြင်ရန် Wizard ကို ဖွင့်ပါ။ Download သည် လက်ဖြည့်/ပုံနှိပ်ရန် ဗလာ တရားဝင် သံရုံးဖောင် PDF ဖြစ်သည်။",
+    "draftLoading": "Draft တင်နေသည်…",
+    "draftError": "Draft တင်မရပါ။ ခဏနေမှ ထပ်ကြိုးစားပါ။",
+    "draftEmpty": "သိမ်းထားသော ပတ်စပို့ draft မရှိသေးပါ။",
+    "draftStart": "ဖောင်ဖြည့် Wizard စတင်ရန်",
+    "draftContinue": "Wizard ဆက်လုပ်ရန်",
+    "draftEdit": "Draft ပြင်ရန်",
+    "draftDelete": "Draft ဖျက်ရန်",
+    "draftDeleting": "ဖျက်နေသည်…",
+    "draftDeleteConfirm": "ဤပတ်စပို့ ဖောင် draft ကို ဖျက်မလား? ပြန်မရနိုင်ပါ။",
+    "draftDeleted": "Draft ဖျက်ပြီးပါပြီ။",
+    "draftDownload": "ဗလာ ဖောင် PDF ဆွဲရန်",
+    "draftChecklist": "Checklist ဖွင့်ရန်",
+    "draftDownloadNote": "PDF သည် ဗလာ (တရားဝင် ဖောင်) ဖြစ်သည်။ ဤစာမျက်နှာမှ အဖြေများကို ပုံနှိပ်ဖောင်သို့ ကူးရေးပြီး လက်မှတ်ထိုးပါ။",
+    "draftWorkerType": "ဖောင် အမျိုးအစား",
+    "draftWorkerMaid": "အိမ်အကူ (V2)",
+    "draftWorkerGeneral": "အထွေထွေ အလုပ်သမား (V1)",
+    "draftField": {
+      "fullName": "အမည် အပြည့်အစုံ",
+      "finNumber": "FIN",
+      "currentPassportNumber": "ပတ်စပို့ နံပါတ်",
+      "currentPassportIssuedDate": "ပတ်စပို့ ထုတ်သည့်ရက်",
+      "phoneSingapore": "ဖုန်း (စင်္ကာပူ)",
+      "emailSingapore": "အီးမေးလ်",
+      "nrcNumber": "မှတ်ပုံတင်",
+      "employerCompany": "အလုပ်ရှင် / ကုမ္ပဏီ"
+    },
+    "deleteAccountTitle": "အကောင့် ဖျက်ရန်",
+    "deleteAccountHint": "Login၊ ပရိုဖိုင်၊ ပတ်စပို့ draft များနှင့် သင်ရေးသော မှတ်ချက်များကို အပြီးဖျက်ပါမည်။ ပြန်မရနိုင်ပါ။",
+    "deleteAccountTypeLabel": "အတည်ပြုရန် DELETE ရိုက်ပါ",
+    "deleteAccountConfirmHint": "DELETE ကို စာလုံးအကြီးဖြင့် ရိုက်ပါ။",
+    "deleteAccountConfirm": "အကောင့်ကို အပြီးဖျက်မှာ သေချာပါသလား?",
+    "deleteAccountButton": "အကောင့် ဖျက်မည်",
+    "deleteAccountDeleting": "ဖျက်နေသည်…",
+    "deleteAccountFailed": "အကောင့် ဖျက်မရပါ။ ထပ်ကြိုးစားပါ သို့မဟုတ် support ဆက်သွယ်ပါ။",
+    "pageTitle": "ကျွန်ုပ်၏အကောင့်",
+    "pageSubtitle": "အလုပ်လျှောက်ထားမှုများ၊ အခန်းတင်မှုများ၊ ပရိုဖိုင်နှင့် ဆက်တင်များ။",
+    "myAppsTitle": "ကျွန်ုပ်၏အလုပ်လျှောက်ထားမှုများ",
+    "myAppsHint": "လျှောက်ထားထားသော အလုပ်များ။ အေဂျင်စီနှင့် စကားပြောရန် Messages ဖွင့်ပါ။",
+    "myAppsEmpty": "အလုပ် မလျှောက်ရသေးပါ။",
+    "browseJobs": "အလုပ်များကြည့်ရန်",
+    "unknownJob": "Job",
+    "appStatusPending": "စောင့်ဆိုင်းနေ",
+    "appStatusReviewed": "ကြည့်ပြီး",
+    "appStatusClosed": "ပိတ်ပြီး",
+    "openMessages": "မက်ဆေ့ချ်များ",
+    "hideMessages": "မက်ဆေ့ချ် ပိတ်ရန်",
+    "myRoomsTitle": "ကျွန်ုပ်၏အခန်းစာရင်းများ",
+    "myRoomsHint": "တင်ထားသော အခန်းများ။ Pending ဆိုသည်မှာ admin စစ်ဆေးနေသည်။",
+    "myRoomsEmpty": "အခန်း မတင်ရသေးပါ။",
+    "postRoom": "အခန်းတင်မည်",
+    "browseHousing": "အိမ်ရာဘုတ်",
+    "roomStatusPending": "စစ်ဆေးနေ",
+    "roomStatusPublished": "ထုတ်ပြန်ပြီး",
+    "roomStatusRejected": "ငြင်းပယ်ပြီး",
+    "roomStatusExpired": "သက်တမ်းကုန် / ဖျောက်ပြီး",
+    "roomRejectNote": "Admin မှတ်ချက်",
+    "roomPendingNote": "Admin အတည်ပြုပြီးမှ ဘုတ်ပေါ်တွင် ပေါ်မည်။",
+    "expiresOn": "သက်တမ်းကုန် {date}"
+  },
   "auth": {
     "loginTitle": "အကောင့်ဝင်ရန်",
     "loginSubtitle": "သင့်မှတ်တမ်းများကို သိမ်းဆည်းပြီး PDF ထုတ်ယူရန် အကောင့်ဝင်ပါ။",
@@ -846,9 +1031,9 @@
       "market": "ဈေးကွက်",
       "other": "အခြား"
     },
-    "pageBadge": "ငွေကြေး",
-    "pageTitle": "SGD မှ {currency} ငွေလဲနှုန်း",
-    "pageSubtitle": "ကျွန်ုပ်တို့ မှတ်တမ်းတင်ထားသော ခန့်မှန်းနှုန်းများနှင့် ငွေမလွှဲမီ အမှန်တကယ့်နှုန်းကို ဘယ်မှာ စစ်ရမည်ဆိုသည်။",
+    "pageBadge": "ငွေလဲ / ငွေလွှဲ",
+    "pageTitle": "ငွေလဲနှုန်းနှင့် ငွေလွှဲ (SGD → {currency})",
+    "pageSubtitle": "ခန့်မှန်း ငွေလဲနှုန်း၊ မြန်မာနှင့် အခြားနိုင်ငံသို့ လုံခြုံစွာ လွှဲနည်း၊ မြေပုံ၊ တရားဝင် လင့်ခ်နှင့် လိုင်စင်ရှိ ဝန်ဆောင်မှုများ။",
     "latestTitle": "နောက်ဆုံး မှတ်တမ်း",
     "checkTitle": "ကုမ္ပဏီတွင် လိုင်စင် ရှိမရှိ စစ်ပါ",
     "checkIntro": "နှုန်းထားများသည် တစ်နေ့တာအတွင်း ပြောင်းလဲပြီး ဝန်ဆောင်မှုပေးသူတိုင်း ကိုယ်ပိုင်နှုန်း သတ်မှတ်သဖြင့် မပို့မီ သူတို့၏ app တွင် အတိအကျ အတည်ပြုပါ။ ဤနေရာတွင် စစ်နိုင်သည်မှာ ပိုအရေးကြီးပါသည် — ထိုကုမ္ပဏီတွင် MAS လိုင်စင် ရှိမရှိ ဖြစ်သည်။ စာရင်းတွင် မပါဘဲ ငွေပျောက်ဆုံးပါက တိုင်ကြားရန် ကြီးကြပ်ရေးအဖွဲ့ မရှိပါ။",
@@ -861,7 +1046,50 @@
     "noMarketRate": "ပေါက်စျေး မှတ်တမ်း မရှိသေးပါ",
     "panelDisclaimer": "ခန့်မှန်းနှုန်းများသာ ဖြစ်ပါသည်။ အိန္ဒိယ၊ တရုတ်၊ ဘင်္ဂလားဒေ့ရှ်နှင့် မလေးရှားအတွက် နှုန်းများမှာ နိုင်ငံတကာ စျေးကွက်နှုန်း ဖြစ်ပြီး ဝန်ဆောင်ခ နုတ်ပြီးနောက် သင်ရမည့်နှုန်းမှာ အနည်းငယ် လျော့နည်းပါမည်။ မြန်မာ့နှုန်းမှာ ဘဏ်တစ်ခုမှ မဟုတ်ဘဲ သီးခြား ငွေလဲနှုန်း မှတ်တမ်းတင် site တစ်ခုမှ ရယူထားပါသည် — ဒီနေရာရှိ ဘဏ် သို့မဟုတ် e-wallet မည်သည်မျှ ယင်းနှင့် နှိုင်းယှဉ်နိုင်သော နေ့စဉ်နှုန်း မထုတ်ပြန်သောကြောင့် ဖြစ်ပါသည် — ခန့်မှန်းချက်အနေဖြင့်သာ သတ်မှတ်ပါ။ ငွေမပို့မီ သင့်ဝန်ဆောင်မှုပေးသူ၏ app တွင် တကယ့်နှုန်းကို အမြဲ အတည်ပြုပါ။",
     "feedUpdated": "{time} တွင် update လုပ်ထား",
-    "compareOfficial": "မြန်မာနိုင်ငံသည် နိုင်ငံခြားရှိ ဝင်ငွေ၏ အချို့ကို တရားဝင် လမ်းကြောင်းမှ ပြန်လွှဲရန် သတ်မှတ်ထားပါသည်။ ငွေလွှဲ ပြေစာများကို သိမ်းထားပါ။"
+    "compareOfficial": "မြန်မာနိုင်ငံသည် နိုင်ငံခြားရှိ ဝင်ငွေ၏ အချို့ကို တရားဝင် လမ်းကြောင်းမှ ပြန်လွှဲရန် သတ်မှတ်ထားပါသည်။ ငွေလွှဲ ပြေစာများကို သိမ်းထားပါ။",
+    "topWarning": "နှုန်းများ တစ်နေ့တာအတွင်း ပြောင်းနိုင်သည်။ ငွေမလွှဲမီ provider app သို့မဟုတ် ဆိုင်တွင် အတိအကျ နှုန်းနှင့် ကြေး အတည်ပြုပါ။",
+    "myanmarOfficialAlert": "မြန်မာစည်းမျဉ်းအရ နိုင်ငံခြားဝင်ငွေ အချို့ကို တရားဝင် လမ်းကြောင်းမှ ပြန်လွှဲရန် လိုနိုင်သည်။ ပြေစာတိုင်း သိမ်းပါ။ “နှုန်းပိုကောင်း” ဟုဆိုသော လိုင်စင်မရှိ agent ထံ ငွေပေးခြင်း — ပျောက်ရင် MAS ကာကွယ်မှု မရနိုင်ပါ။",
+    "safeSendTitle": "ငွေလွှဲ လုံခြုံစွာ — အဆင့်များ",
+    "safeSendIntro": "မြန်မာသို့ လွှဲသည့်အခါ အထူးသဖြင့် ဤစာရင်းကို အမြဲ သုံးပါ။",
+    "safeSend": {
+      "compareTotal": "နှုန်းတစ်ခုတည်း မကြည့်ဘဲ စုစုပေါင်း ကုန်ကျ (နှုန်း + ကြေး + လက်ခံဘက် ကြေး) နှိုင်းယှဉ်ပါ။",
+      "checkLicence": "အောက်ပါ MAS စာရင်းတွင် ကုမ္ပဏီ ပါမပါ စစ်ပါ။",
+      "confirmRate": "ယနေ့နှုန်းကို provider app သို့မဟုတ် ကောင်တာတွင် စစ်ပါ — ဤစာမျက်နှာသည် ခန့်မှန်းသာ ဖြစ်သည်။",
+      "keepReceipt": "ငွေရောက်သည်အထိ ပြေစာနှင့် reference နံပါတ် သိမ်းပါ။",
+      "avoidAgent": "လိုင်စင်မရှိသူ / အစိမ်းလူထံ ငွေသား မပေးပါနှင့် — ပျောက်ရင် တောင်းဆိုစရာ မရှိနိုင်ပါ။"
+    },
+    "channelsTitle": "ငွေလွှဲနည်း လမ်းကြောင်းများ",
+    "channelsIntro": "ပမာဏ၊ မြန်နှုန်းနှင့် အန္တရာယ်အလိုက် ရွေးပါ။ လိုင်စင်ရှိ လမ်းကြောင်းကို အရင်ဦးစားပေးပါ။",
+    "channels": {
+      "bank": "ဘဏ် transfer — ပိုနှေးတတ်သော်လည်း ပိုလုံခြုံတတ်သည်။ မြန်မာသို့ ကြေးကို ဘဏ်တွင် မေးပါ။",
+      "licensed": "MAS လိုင်စင်ရှိ remittance / e-wallet — အလုပ်သမားများ အသုံးများသည်။ လိုင်စင်စာရင်း အမြဲ စစ်ပါ။",
+      "shop": "Peninsula Plaza / Little India စသည့် money changer / remittance ဆိုင် — နှုန်းဘုတ်ကြည့်ပြီး ပြေစာ တောင်းပါ။",
+      "app": "လိုင်စင်ရှိ remittance app — အဆင်ပြေသော်လည်း မြန်မာဘက် လက်ခံနိုင်မည်ကို အရင် အတည်ပြုပါ။"
+    },
+    "hubsTitle": "မြေပုံ — ငွေလွှဲ / money changer နေရာများ",
+    "hubsSubtitle": "Google Maps တွင် ဖွင့်ပါ။ ဆိုင်များ ပြောင်းနိုင်သည် — နေရာတွင် လိုင်စင်နှင့် နှုန်း စစ်ပါ။",
+    "hubs": {
+      "peninsula": "Peninsula Plaza (Little Myanmar) — money changer / remittance",
+      "littleIndia": "Little India — remittance ဆိုင်များ",
+      "mustafa": "Mustafa Centre",
+      "chinatown": "Chinatown — money changer"
+    },
+    "official": {
+      "masFid": "MAS — financial institutions directory (FID)",
+      "masProviders": "MAS — payment service providers စာရင်း",
+      "momSalary": "MOM — လစာပေးချေမှု စည်းမျဉ်း"
+    },
+    "partnersTitle": "ယုံကြည်ရသော partner ဖြင့် ပို့ပါ",
+    "partnersSubtitle": "Remitly သို့မဟုတ် WorldRemit ကို ဒီကနေ ဖွင့်ပြီး fee နှိုင်းယှဉ်ပါ — အခမဲ့ app ဆက်လည်ပတ်နိုင်ရန် ကူညီသည်။ MAS လိုင်စင်ရှိ ဝန်ဆောင်မှုကို ဦးစားပေးပြီး မပေးမီ ငွေပမာဏကို စစ်ပါ။",
+    "mistakesTitle": "ငွေကုန်ပြီး အဖြစ်များသော အမှားများ",
+    "mistakes": {
+      "mistakeUnlicensed": "လိုင်စင်မရှိသူမှတဆင့် လွှဲခြင်း — ငွေပျောက်ရင် MAS တိုင်စရာ မရှိ။",
+      "mistakeCashStranger": "WhatsApp ကတိသာရှိသော “agent” ထံ ငွေသားပေးခြင်း။",
+      "mistakeIgnoreFee": "နှုန်းကောင်းအောင် လိုက်ပြီး ကြေးကြီးကို မကြည့်ခြင်း။",
+      "mistakeNoReceipt": "ပြေစာ / transaction reference မယူဘဲ ထွက်ခြင်း။",
+      "mistakeFakeRate": "Chat group screenshot ကို provider live နှုန်းထက် ယုံခြင်း။"
+    },
+    "guideDisclaimer": "ဤစာမျက်နှာသည် အထွေထွေ လမ်းညွှန်သာ ဖြစ်သည် — ငွေကြေးအကြံ မဟုတ်။ MAS၊ MOMနှင့် မြန်မာစည်းမျဉ်း ပြောင်းနိုင်သည်။ ငွေမလွှဲမီ တရားဝင် လင့်ခ်နှင့် provider တွင် အတည်ပြုပါ။"
   },
   "events": {
     "badge": "ရပ်ရွာ",
@@ -1009,6 +1237,161 @@
     "disclaimer": "ခရီးစရိတ်နှင့် စည်းမျဉ်းများကို LTA မှ သတ်မှတ်ပြီး ပြောင်းလဲနိုင်ပါသည်။ အရေးကြီးသော ခရီးအတွက် အထက်ပါ တရားဝင် link များတွင် အရင် စစ်ဆေးပါ။",
     "heroTitle": "ဘတ်စ် နှင့် MRT လမ်းညွှန်"
   },
+  "drivingLicense": {
+    "badge": "စင်္ကာပူတွင် ကားမောင်းခြင်း",
+    "title": "ယာဉ်မောင်းလိုင်စင် လမ်းညွှန်",
+    "subtitle": "နိုင်ငံခြားလိုင်စင် ပြောင်းခြင်း၊ BTT/FTT ပြင်ဆင်ခြင်း၊ အသိအမှတ်ပြု centre တွင် သင်ယူခြင်း၊ မြေပုံနှင့် တရားဝင် စာရွက်များ — အခမဲ့ မြန်မာ community helper များပါ။",
+    "topWarning": "စည်းမျဉ်းနှင့် ကြေးငွေများ ပြောင်းနိုင်ပါသည်။ ငွေပေး/ချိန်းမယူမီ အောက်ပါ Traffic Police နှင့် LTA စာမျက်နှာများတွင် အမြဲ အတည်ပြုပါ။",
+    "overviewTitle": "၁။ နိုင်ငံခြားလိုင်စင်နဲ့ မောင်းလို့ရလား?",
+    "overview": {
+      "shortStay": "အကြမ်းအားဖြင့် ၁၂ လအောက် နေမည်ဆိုရင် သက်တမ်းရှိ နိုင်ငံခြားလိုင်စင်ဖြင့် မောင်းနိုင်သည် (လိုင်စင် အင်္ဂလိပ် မဟုတ်ရင် IDP သို့မဟုတ် တရားဝင် အင်္ဂလိပ် ဘာသာပြန် လိုနိုင်)။",
+      "longStay": "Pass က ၁၂ လနှင့်အထက် (Work Permit၊ S Pass၊ EP အများစု) ဖြစ်ရင် Traffic Police က စင်္ကာပူလိုင်စင်သို့ ပြောင်းရန် မျှော်လင့်သည် — ခွင့်ပြုကာလကျော်ပြီး နိုင်ငံခြားလိုင်စင်နဲ့ ဆက်မမောင်းပါနှင့်။",
+      "asean": "ASEAN လိုင်စင်များသည် တိုတောင်းသော နေထိုင်မှုအတွက် IDP မလိုအပ်တတ်သော်လည်း ကာလရှည် pass ရှိသူများအတွက် conversion က သက်ဆိုင်ဆဲ ဖြစ်သည်။ ကိုယ့်အခြေအနေကို တရားဝင် TP စာမျက်နှာတွင် စစ်ပါ။",
+      "eligibility": "Conversion အတွက် အသက် ၁၈+၊ သက်တမ်းမကုန်သေးသော လိုင်စင်၊ နှင့် စင်္ကာပူတွင် Basic Theory Test (BTT) အောင်မြင်ရန် လိုအပ်လေ့ရှိသည်။"
+    },
+    "convertTitle": "၂။ နိုင်ငံခြားလိုင်စင် ပြောင်းခြင်း (pass ကိုင်ဆောင်သူ အများစု)",
+    "convertIntro": "မိခင်နိုင်ငံလိုင်စင် ရှိပြီးသားသူများအတွက် ပုံမှန် လမ်းကြောင်း —",
+    "convertSteps": {
+      "passBtt": "ခွင့်ပြုထားသော driving centre သုံးခုအနက် တစ်ခုတွင် စာရင်းသွင်းပြီး Basic Theory Test (BTT) အောင်ပါ။",
+      "gatherDocs": "ပတ်စပို့၊ work/long-term pass၊ နိုင်ငံခြားလိုင်စင်၊ ဓာတ်ပုံ၊ နှင့် Traffic Police တောင်းသော ဘာသာပြန်/နေထိုင်မှု အထောက်အထား ပြင်ဆင်ပါ။",
+      "preAssessment": "Traffic Police e-service တွင် Foreign Licence Pre-assessment ဖြည့်ပါ။ အရည်အချင်းရှိသူကို ချိန်းဘွတ်ခ် လင့်ခ် ပို့ပေးသည်။",
+      "appointment": "Traffic Police Headquarters (10 Ubi Avenue 3) တွင် ချိန်းယူပြီး မူရင်းစာရွက်များ ယူသွားပါ — မပြည့်စုံရင် ပယ်ချခံရနိုင်သည်။",
+      "payCollect": "Conversion ကြေးပေးပါ (အကြမ်းအားဖြင့် S$50 — တရားဝင်စာမျက်နှာတွင် လက်ရှိနှုန်း စစ်ပါ)။ ပြေစာ သိမ်းထားပါ။ အတည်ပြုပြီးနောက် လိုင်စင်ကို စာတိုက်ဖြင့် ပို့လေ့ရှိသည်။"
+    },
+    "convertWpNote": "Work Permit နှင့် S Pass ကိုင်ဆောင်သူများ ပြောင်းလျှင် ပုံမှန် ကားများအတွက် Class 3C ရတတ်သည်။ အတိအကျ class က TP စည်းမျဉ်းနှင့် နိုင်ငံခြားလိုင်စင်ပေါ် မူတည်သည် — တင်သွင်းချိန်တွင် အတည်ပြုပါ။",
+    "docsTitle": "၃။ ပြင်ဆင်ရမည့် စာရွက်စာတမ်းများ",
+    "docsIntro": "Traffic Police က ထပ်တောင်းနိုင်သည်။ မူရင်းနှင့် မိတ္တူ ယူသွားပါ။",
+    "docs": {
+      "passportPass": "ပတ်စပို့နှင့် လက်ရှိ work / long-term pass (FIN card ရှိရင် ထည့်ပါ)။",
+      "foreignLicence": "သက်တမ်းရှိ နိုင်ငံခြား ယာဉ်မောင်းလိုင်စင် (ဆိုင်းငံ့/ပယ်ဖျက် မခံရသေး)။",
+      "translation": "လိုင်စင် အင်္ဂလိပ် မဟုတ်ရင် — IDP သို့မဟုတ် တရားဝင် အင်္ဂလိပ် ဘာသာပြန် (အသိအမှတ်ပြု ဘာသာပြန်သူ / သံရုံး)။",
+      "photo": "လတ်တလော ပတ်စပို့အရွယ် ဓာတ်ပုံ (matte/semi-matte၊ နောက်ခံဖြူ၊ ပုံမှန်အားဖြင့် ၃ လအတွင်း)။",
+      "residencyProof": "စင်္ကာပူ pass/PR ရပြီးမှ နိုင်ငံခြားလိုင်စင် ရထားရင် — ထုတ်ပေးသောနိုင်ငံတွင် အကြမ်းအားဖြင့် ၆ လ နေထိုင်ကြောင်း အထောက်အထား။",
+      "wpHistory": "Work Permit ကိုင်ဆောင်သူများ MOM employment history လိုနိုင်သည် — TP checklist လိုက်နာပါ။"
+    },
+    "learnerTitle": "၇။ လိုင်စင်မရှိသူ — သင်ယူလမ်းကြောင်း",
+    "learnerIntro": "လိုင်စင် တစ်ခါမှ မရှိဖူးရင် အသိအမှတ်ပြု centre တွင် သင်ရသည်။ package က centre အလိုက် ကွာသည်။",
+    "learner": {
+      "enrolCentre": "BBDC၊ CDC သို့မဟုတ် SSDC တွင် စာရင်းသွင်းပြီး မျက်စိ/ဆေးစစ်မှုများ ပြီးအောင်လုပ်ပါ။",
+      "bttPdl": "BTT အောင်ပြီး လမ်းပေါ်သင်ခန်းစာမတိုင်မီ Traffic Police မှ Provisional Driving Licence (PDL) လျှောက်ပါ။",
+      "lessonsFtt": "လက်တွေ့ သင်ခန်းစာများ ပြီးပြီး လိုအပ်သည့် Final Theory Test (FTT) အောင်ပါ။",
+      "practical": "သင့် class အတွက် လက်တွေ့ စာမေးပွဲ အောင်ပါ (ဥပမာ Class 3/3A ကား၊ သို့မဟုတ် Class 2B ဆိုင်ကယ်)။",
+      "qdl": "အောင်ပြီးနောက် Qualified Driving Licence (QDL) လျှောက်ပါ — ကြေးနှင့် စာတိုက်ပို့မှုကို TP ညွှန်ကြားချက်အတိုင်း လုပ်ပါ။"
+    },
+    "centresTitle": "၁၁။ Driving centre နှင့် Traffic Police — မြေပုံများ",
+    "centresSubtitle": "Google Maps တွင် ဖွင့်ပါ။ Test ဘွတ်ခ်ကို centre website မှ လုပ်ပါ — လမ်းလျှောက်ဝင်ရုံနှင့် မရတတ်ပါ။",
+    "centres": {
+      "bbdc": "Bukit Batok Driving Centre (BBDC)",
+      "cdc": "ComfortDelGro Driving Centre (CDC), Ubi",
+      "ssdc": "Singapore Safety Driving Centre (SSDC), Ang Mo Kio",
+      "tpHq": "Traffic Police HQ — 10 Ubi Avenue 3 (conversion ချိန်း)"
+    },
+    "vocationalTitle": "၁၂။ Vocational လိုင်စင်များ (Grab / တက္ကစီ / ဘတ်စ်)",
+    "vocationalIntro": "ပုံမှန် Class 3 လိုင်စင်ဖြင့် ငှားရမ်းမောင်းရန် မလုံလောက်ပါ။ Vocational လိုင်စင်များ သီးခြားဖြစ်ပြီး အရည်အချင်း တင်းကျပ်သည်။",
+    "vocationalAlert": "PDVL (private hire) နှင့် TDVL (တက္ကစီ) လိုင်စင်အသစ်များသည် စင်္ကာပူ နိုင်ငံသားများအတွက်သာ (အသက်နှင့် အတွေ့အကြုံ စည်းမျဉ်းများလည်း သက်ဆိုင်)။ Work Permit / S Pass / EP ကိုင်ဆောင်သူ အများစုသည် Grab မောင်းရန် PDVL အသစ် လျှောက်၍ မရပါ။",
+    "vocational": {
+      "pdvlCitizenOnly": "PDVL (private hire) — စင်္ကာပူ နိုင်ငံသား၊ ပုံမှန်အားဖြင့် အသက် ၃၀+၊ Class 3/3A တစ်နှစ်ကျော် — LTA OneMotoring / GoBusiness တွင် အတည်ပြုပါ။",
+      "tdvlCitizenOnly": "TDVL (တက္ကစီ) — စင်္ကာပူ နိုင်ငံသားများအတွက်သာ၊ LTA သင်တန်းနှင့် စစ်ဆေးမှုများ လိုသည်။",
+      "odvlBus": "ဘတ်စ် vocational လမ်းကြောင်းအချို့ (omnibus စသည်) သည် vocation က ဘတ်စ်မောင်းသူ ဖြစ်သော Work Permit ကိုင်ဆောင်သူကို ခွင့်ပြုနိုင်သည် — အလုပ်ရှင်နှင့် LTA ခွင့်ပြုမှသာ။ ယူဆမထားပါနှင့်။ OneMotoring စစ်ပါ။",
+      "checkOfficial": "နိုင်ငံခြားသားကို Grab လိုင်စင် ရမည်ဟု ကတိပေးသော “agent” ကို ငွေမပေးမီ အောက်ပါ LTA / GoBusiness စာမျက်နှာများကို ဖတ်ပါ။"
+    },
+    "linksTitle": "၁၃။ တရားဝင် စာရွက်၊ စာမေးနှင့် သင်တန်း လင့်ခ်များ",
+    "linksSubtitle": "ဘွတ်ခ်၊ PDF checklist၊ centre foreign-conversion စာမျက်နှာများ၊ LTA vocational အချက်အလက်။",
+    "links": {
+      "tpConvert": "Traffic Police — နိုင်ငံခြားလိုင်စင် ပြောင်း ချိန်းဘွတ်ခ်",
+      "tpDocChecklist": "Traffic Police — စာရွက်စာတမ်း checklist PDF",
+      "oneMotoringDriving": "LTA OneMotoring — ကားမောင်းခြင်း အကျဉ်း",
+      "oneMotoringVl": "LTA OneMotoring — vocational လိုင်စင် လျှောက်ခြင်း",
+      "gobusinessPdvl": "GoBusiness — PDVL လိုင်စင် အချက်အလက်",
+      "bbdc": "BBDC — စာရင်းသွင်း / စာမေးဘွတ်ခ်",
+      "bbdcForeign": "BBDC — နိုင်ငံခြားလိုင်စင် ပြောင်း course",
+      "cdc": "CDC — စာရင်းသွင်း / စာမေးဘွတ်ခ်",
+      "cdcForeign": "CDC — နိုင်ငံခြားလိုင်စင် ပြောင်းခြင်း",
+      "ssdc": "SSDC — စာရင်းသွင်း / စာမေးဘွတ်ခ်",
+      "tpBttHandbook": "Traffic Police — Basic Theory handbook (DIPS ပါ)",
+      "tpCheckDips": "Traffic Police — ကိုယ့် demerit အမှတ် စစ်ရန် (Singpass)"
+    },
+    "mistakesTitle": "ငွေကုန်ပြီး အဖြစ်များသော အမှားများ",
+    "mistakes": {
+      "mistakeDriveExpired": "ပြောင်းရမည့်ကာလကျော်ပြီး နိုင်ငံခြားလိုင်စင်နဲ့ မောင်းခြင်း — ဒဏ်ကြေးနှင့် အာမခံ ပြဿနာ။",
+      "mistakeSkipBtt": "BTT မအောင်ဘဲ Traffic Police သို့ သွားခြင်း — ပြန်လှည့်ခံရမည်။",
+      "mistakeNoTranslation": "အင်္ဂလိပ် မဟုတ်သော လိုင်စင်ကို IDP/တရားဝင် ဘာသာပြန် မပါဘဲ ယူသွားခြင်း။",
+      "mistakePdvlHope": "Work Permit ဖြင့် Grab/PDVL အသစ် ရမည်ဟု ဆိုသူကို ငွေပေးခြင်း — အများအားဖြင့် မမှန်ပါ။",
+      "mistakeOutdatedBlog": "ဟောင်းနေသော blog ကြေး/အဆင့်များကို လိုက်နာခြင်း — လျှောက်သည့်နေ့တွင် တရားဝင်စာမျက်နှာ ပြန်စစ်ပါ။",
+      "mistakePayAgent": "BTT သို့မဟုတ် TP ချိန်းကို “ကျော်” ပေးမည်ဟု ဆိုသော ကြားခံကို ငွေပေးခြင်း — တရားဝင် အဆင့်များကို မလွဲမသွေ လုပ်ရမည်။",
+      "mistakeDemerit": "Demerit စာကို လျစ်လျူရှုခြင်း သို့မဟုတ် probation တွင် P-plate မတပ်ခြင်း — လိုင်စင်အသစ် ဆုံးရှုံးရလွယ်သည်။"
+    },
+    "disclaimer": "ဤစာမျက်နှာသည် အထွေထွေ လမ်းညွှန်သာ ဖြစ်သည်။ တကယ့် စည်းမျဉ်း၊ ကြေး၊ အရည်အချင်းကို Traffic Police နှင့် LTA က သတ်မှတ်သည်။ ငွေကုန်မီ သို့မဟုတ် အလုပ်နားရက် ယူမီ သူတို့ ဝက်ဘ်ဆိုက်တွင် အဆင့်တိုင်း အတည်ပြုပါ။",
+    "testsTitle": "၄။ Theory နှင့် လက်တွေ့ စာမေးပွဲများ",
+    "testsIntro": "Traffic Police စာမေးပွဲ အဓိက အမျိုးအစားများ။ ကြေးငွေ ပြောင်းနိုင်သည် — centre နှင့် တရားဝင်စာမျက်နှာတွင် စစ်ပါ။",
+    "tests": {
+      "btt": "Basic Theory Test (BTT) — လမ်းစည်းကမ်းနှင့် ဆိုင်းဘုတ်။ နိုင်ငံခြားလိုင်စင် ပြောင်းခြင်းနှင့် PDL မယူမီ လိုအပ်သည်။",
+      "ftt": "Final Theory Test (FTT) — လက်တွေ့စာမေးမီ သင်ယူသူများအတွက် ပိုနက်သော စည်းမျဉ်း (class ပေါ်မူတည်)။",
+      "rtt": "Riding Theory Test (RTT) — ဆိုင်ကယ် class (ဥပမာ 2B) အတွက်။",
+      "practical": "လက်တွေ့ မောင်း/စီး စာမေးပွဲ — သင်ခန်းစာနှင့် theory ပြီးမှ။ QDL မရမီ အောင်ရသည်။",
+      "booking": "စာမေးပွဲကို driving centre ဝက်ဘ်ဆိုက် သို့မဟုတ် ကောင်တာမှ ဘွတ်ခ်လုပ်ပါ။ FIN/pass ယူသွားပါ။"
+    },
+    "classesTitle": "၆။ အသုံးများသော လိုင်စင် class များ",
+    "classesIntro": "စင်္ကာပူလိုင်စင်ပေါ်တွင် class အမည် ပေါ်သည်။ Conversion တွင် နိုင်ငံခြားလိုင်စင်နှင့် မည်သို့ ကိုက်ညီမည်ကို အတည်ပြုပါ။",
+    "classes": {
+      "class3": "Class 3 — manual ကားများ (နှင့် အလိုအလျောက်) အတွက် အဟောင်း Class 3 စည်းမျဉ်း။",
+      "class3a": "Class 3A — အလိုအလျောက် ကားသာ (နိုင်ငံခြားလိုင်စင်က auto ဖြစ်လျှင် EP/DP conversion တွင် အဖြစ်များ)။",
+      "class3c": "Class 3C — Work Permit / S Pass ပြောင်းသူများအတွက် ပုံမှန်ကား — Traffic Police နှင့် အတည်ပြုပါ။",
+      "class2b": "Class 2B — 200cc အောက် ဆိုင်ကယ် (သီးခြား စာရင်းသွင်း၊ RTT နှင့် လက်တွေ့)။"
+    },
+    "trainingTitle": "၈။ သင်တန်း အကြံပြုချက်များ (package မဝယ်မီ)",
+    "trainingIntro": "အသိအမှတ်ပြု centre များက theory + practical package ရောင်းသည်။ ဂရုတစိုက် နှိုင်းယှဉ်ပါ။",
+    "training": {
+      "chooseCentre": "BBDC၊ CDC၊ SSDC ကို တည်နေရာ၊ ဘာသာစကား အကူအညီ၊ ဈေးနှုန်း နှိုင်းယှဉ်ပါ — အွန်လိုင်းကြော်ငြာ အစျေးအပေါဆုံးကိုသာ မယုံပါနှင့်။",
+      "theoryPractice": "BTT (နှင့် လိုအပ်ရင် FTT/RTT) အတွက် centre e-trial / လေ့ကျင့်စာမေး သုံးပါ။ BTT အောင်ရုံဖြင့် conversion မပြီးသေးပါ။",
+      "practicalHours": "လက်တွေ့ နာရီ မည်မျှ ပါသလဲ၊ ပယ်ဖျက်ကြေး၊ မြန်မာ/အင်္ဂလိပ် ပြောသော ဆရာ ရှိမရှိ မေးပါ။",
+      "feesVary": "စာရင်းသွင်း၊ theory၊ PDL၊ လက်တွေ့သင်ခန်းစာ၊ လက်တွေ့စာမေး၊ QDL ကြေး — စုစုပေါင်း centre/class အလိုက် ကွာသည်။",
+      "keepReceipts": "ပြေစာတိုင်းနှင့် centre account login သိမ်းထားပါ။ အငြင်းပွားမှုတွင် လိုနိုင်သည်။"
+    },
+    "helpersTitle": "အခမဲ့ မြန်မာ helper များ (community)",
+    "helpersSubtitle": "ယာဉ်မောင်းလိုင်စင် အဆင့်များအတွက် မြန်မာလို အခမဲ့ အကြံပေးသူ/အဖွဲ့များ။ အစိုးရ ဝန်ထမ်း မဟုတ်ပါ။",
+    "helpersDisclaimer": "ဤ helper များသည် Traffic Police သို့မဟုတ် LTA မဟုတ်ပါ။ လိုင်စင် “အာမခံ” ပေးမည်ဟု ဆိုကာ ငွေအများကြီး မပေးပါနှင့်။ ငွေတောင်းရင် ထွက်ပြီး အောက်ပါ တရားဝင် လင့်ခ်များကို သုံးပါ။",
+    "helpersFreeBadge": "အခမဲ့ အကူအညီ",
+    "helpersLinkFacebook": "Facebook",
+    "helpersLinkTelegram": "Telegram",
+    "helpersLinkWhatsapp": "WhatsApp",
+    "helpersLinkGroup": "Group",
+    "helpersLinkWebsite": "Website",
+    "passMarksTitle": "၅။ အောင်မှတ်နှင့် အမှတ်ပေး စည်းမျဉ်း",
+    "passMarksIntro": "စာမေးမဘွတ်ခ်မီ လိုအပ်သော အမှတ်ကို သိထားပါ။ Centre များသည် Traffic Police စံနှုန်းကို လိုက်နာသည်။",
+    "passMarks": {
+      "theoryScore": "BTT နှင့် FTT — အောင်မှတ် ပုံမှန်အားဖြင့် ၉၀% (မေးခွန်း ၅၀ တွင် အနည်းဆုံး ၄၅ ခု မှန်ရမည်)။",
+      "theoryFormat": "Theory ပုံစံ — မေးခွန်း ၅၀၊ အချိန် အကြမ်းအားဖြင့် ၄၅ မိနစ် (ဘွတ်ခ်စလစ်တွင် အတည်ပြုပါ)။",
+      "practicalDemerit": "လက်တွေ့စာမေး — စာမေးသူက အမှားအတွက် demerit အမှတ်ပေးသည်။ အမှတ်များလွန်းရင် အရှုံး (centre အများစုက အကြမ်းအားဖြင့် ၂၀ demerit ဝန်းကျင်တွင် အရှုံးဟု ဆိုတတ် — ဆရာနှင့် အတည်ပြုပါ)။",
+      "fttWindow": "FTT အောင်ပြီးနောက် ကား လက်တွေ့စာမေးကို ပုံမှန်အားဖြင့် ၂ နှစ်အတွင်း အောင်ရမည် — မဟုတ်ရင် FTT ပြန်ဖြေရသည်။",
+      "rttWindow": "RTT (ဆိုင်ကယ်) အောင်ပြီးနောက် လက်တွေ့ စီးစာမေးကို ပုံမှန်အားဖြင့် ၁ နှစ်အတွင်း အောင်ရမည် — မဟုတ်ရင် RTT ပြန်ဖြေရသည်။"
+    },
+    "passMarksNote": "Conversion အတွက် BTT သာလိုသူများလည်း BTT အောင်မှတ် တူညီသည်။ စာမေးနေ့တွင် centre စည်းမျဉ်း ပြန်စစ်ပါ။",
+    "demeritTitle": "၉။ Demerit အမှတ် (DIPS) နှင့် အသစ်မောင်းသူ probation",
+    "demeritIntro": "စင်္ကာပူတွင် Driver Improvement Points System (DIPS) သုံးသည်။ လမ်းချိုးဖောက်မှုများအတွက် အမှတ်စုပြီး လိုင်စင် ဆိုင်းငံ့/ပယ်ဖျက် ခံရနိုင်သည်။",
+    "demerit": {
+      "whatIsDips": "သတ်မှတ်ထားသော အမှုတိုင်း demerit အမှတ် ပေါင်းထည့်သည်။ ကာလအတိုင်းအတာ တစ်ခုအတွင်း အမှုမရှိရင် အမှတ်များ ရှင်းပစ်နိုင်သည် (TP စည်းမျဉ်းအတိုင်း)။",
+      "probationYear": "Class 2B / 3 / 3A / 3C / 3CA လိုင်စင်အသစ် ရပြီးနောက် ပုံမှန်အားဖြင့် ၁ နှစ် probation ရှိသည်။",
+      "pPlate": "Probation ကာလတွင် ကားရှေ့/နောက် Probation (P) plate တပ်ရမည်။ မတပ်ရင် ဒဏ်ကြေး၊ probation အတွင်း ထပ်ခါချိုးဖောက်ရင် လိုင်စင် ပယ်ဖျက်ခံရနိုင်သည်။",
+      "probationLimit": "Probation မောင်းသူ (လက်ရှိစည်းမျဉ်း) — ၁ နှစ်အတွင်း demerit အမှတ် အကြမ်းအားဖြင့် ၁၃ နှင့်အထက် → လိုင်စင် ပယ်ဖျက်ခံရနိုင်။ စာမေးအားလုံး ပြန်ဖြေရန် ၁ နှစ် စောင့်ရနိုင်သည်။",
+      "fullLicenceLimit": "Probation မဟုတ်၊ ဆိုင်းငံ့မှတ်တမ်း မရှိသူ (လက်ရှိ) — ၂၄ လအတွင်း demerit အကြမ်းအားဖြင့် ၂၄ နှင့်အထက် → ဆိုင်းငံ့ခံရနိုင် (ပထမဆိုင်းငံ့ အကြမ်းအားဖြင့် ၁၂ ပတ်)။",
+      "change2027": "၂၀၂၇ ဇန်နဝါရီ ၁ မှ စ၍ threshold ပိုတင်းကျပ်မည်ဟု ကြေညာထား (ဥပမာ non-probation ~၁၈၊ probation ~၁၂)။ ရက်နီးမှ တရားဝင်စာမျက်နှာတွင် အတည်ပြုပါ။",
+      "afterRevoke": "ကိုယ့် demerit အမှတ်ကို SPF “Check Driver Improvement Points” (Singpass) ဖြင့် စစ်နိုင်သည်။ ပယ်ဖျက်ခံရပြီးနောက် လိုအပ်သော theory/လက်တွေ့ ပြန်ဖြေရသည်။"
+    },
+    "demeritWarning": "Demerit threshold နှင့် ဆိုင်းငံ့ကာလ ပြောင်းနိုင်သည်။ ဤကိန်းဂဏန်းများသည် လေ့လာရန်သာ — မောင်းမီ SPF / BTT handbook တွင် အတည်ပြုပါ။",
+    "finesTitle": "၁၀။ အဖြစ်များသော ဒဏ်ကြေးနှင့် demerit ဥပမာများ (ပေါ့ကား)",
+    "finesIntro": "ပေါ့ကား (light vehicle) အတွက် demerit နှင့် composition fine ဥပမာများ။ လေးကားများ ပိုများတတ်သည်။ တရားရုံးမှု ပိုမြင့်နိုင်သည်။",
+    "fines": {
+      "seatbelt": "ခါးပတ်မပတ် — demerit အကြမ်းအားဖြင့် ၃–၄ မှတ် + ဒဏ်ကြေး အကြမ်းအားဖြင့် S$150 (လက်ရှိဇယား အတည်ပြုပါ)။",
+      "speedLow": "အမြန်နှုန်း ကန့်သတ်ထက် အကြမ်းအားဖြင့် ၁–၂၀ km/h ကျော် — demerit ~၄ မှတ် + ဒဏ် ~S$150။",
+      "speedMid": "၂၁–၃၀ km/h ကျော် — demerit ~၆ မှတ် + ဒဏ် ပိုများ (အများအားဖြင့် S$200+)။",
+      "redLight": "မီးနီကျော် — demerit ~၁၂ မှတ် + ဒဏ် မြင့် (အများအားဖြင့် S$200–S$400+)။ Probation လိုင်စင် တစ်ကြိမ်တည်းနှင့် ပယ်ဖျက်နိုင်သည်။",
+      "phone": "မောင်းရင်း လက်ဖုန်းကိုင်သုံး — demerit ~၁၂ မှတ် + ဒဏ်။ Hands-free စည်းမျဉ်းကို လက်ရှိဥပဒေတွင် စစ်ပါ။",
+      "signal": "ဆိုင်းနယ် မပေး / အချို့ signalling အမှု — demerit နည်း သို့မဟုတ် ဒဏ်သာ ရှိနိုင်သော်လည်း ticket ရနိုင်သည်။",
+      "noteAmounts": "Demerit + ဒဏ် အတိအကျကို Basic Theory handbook ထဲ DIPS ဇယားတွင် ကြည့်ပါ။ WhatsApp screenshot မယုံပါနှင့်။"
+    },
+    "finesDisclaimer": "ဒဏ်ကြေးနှင့် အမှတ်များကို Traffic Police က သတ်မှတ်ပြီး ပြောင်းနိုင်သည်။ ဤစာရင်းသည် သတိပေးရန်သာ — ဥပဒေအကြံ မဟုတ်၊ အမှုဇယား အပြည့်အစုံ မဟုတ်ပါ။"
+  },
   "translation": {
     "machineLabel": "စက်ဖြင့် ဘာသာပြန်ထား",
     "machineNote": "ဤစာသားကို အလိုအလျောက် ဘာသာပြန်ထားပြီး သင့်ဘာသာစကား ပြောသူတစ်ဦးက စစ်ဆေးထားခြင်း မရှိသေးပါ။ ငွေကြေး၊ pass (သို့) သတ်မှတ်ရက်နှင့် သက်ဆိုင်သည့် အရာများအတွက် မူရင်းကို ဖတ်ပါ။",
@@ -1049,5 +1432,832 @@
     "someone": "တစ်ဦးတစ်ယောက်",
     "signInToComment": "မှတ်ချက်ရေးရန် အကောင့်ဝင်ပါ",
     "safetyNote": "မှတ်ချက်များကို လူတိုင်း မြင်နိုင်ပါသည်။ ဖုန်းနံပါတ်၊ လိပ်စာ၊ အဆောင် သို့မဟုတ် သင် ဘယ်အချိန် ဘယ်နေရာ ရောက်နေမည်ဆိုသည်ကို မရေးပါနှင့်။"
+  },
+  "pageDiscussion": {
+    "title": "မေးခွန်းနှင့် အကူအညီ",
+    "subtitle": "မသိတာ မေးပါ။ သိရင် ပြန်ဖြေပေးပါ။ အမုန်းစကား / မသင့်တော်သော မှတ်ချက်ကို Report လုပ်နိုင်ပါသည်။",
+    "empty": "မေးခွန်း မရှိသေးပါ။ ပထမဆုံး မေးပေးပါ။",
+    "placeholder": "မေးခွန်း သို့မဟုတ် အကြံ ရေးပါ…",
+    "replyPlaceholder": "ပြန်စာ ရေးပါ…",
+    "post": "တင်မည်",
+    "postReply": "ပြန်စာ တင်မည်",
+    "reply": "ပြန်စာ",
+    "report": "Report",
+    "cancel": "ပယ်ဖျက်",
+    "sending": "တင်နေသည်…",
+    "failed": "မတင်နိုင်ပါ။ ထပ်ကြိုးစားပါ။",
+    "someone": "တစ်ဦးတစ်ယောက်",
+    "signInToComment": "မေးရန် / ပြန်ဖြေရန် အကောင့်ဝင်ပါ",
+    "safetyNote": "မှတ်ချက်များကို လူတိုင်း မြင်နိုင်ပါသည်။ ဖုန်းနံပါတ်၊ လိပ်စာ၊ အဆောင် သို့မဟုတ် သင် ဘယ်အချိန် ဘယ်နေရာ ရောက်မည်ကို မရေးပါနှင့်။",
+    "reportTitle": "ဤမှတ်ချက်ကို Report လုပ်မည်",
+    "reportDetailsPlaceholder": "အသေးစိတ် (မဖြစ်မနေ မဟုတ်)",
+    "reportSubmit": "Report ပို့မည်",
+    "reportThanks": "ကျေးဇူးတင်ပါသည် — admin က စစ်ဆေးပါမည်။",
+    "reportFailed": "Report မပို့နိုင်ပါ။",
+    "reasonHate": "အမုန်းစကား",
+    "reasonInappropriate": "မသင့်တော်",
+    "reasonSpam": "Spam",
+    "reasonOther": "အခြား"
+  },
+  "lottery": {
+    "badge": "Singapore Pools",
+    "title": "ထီ — 4D နှင့် TOTO",
+    "subtitle": "4D သို့မဟုတ် TOTO ရွေးပြီး နံပါတ်စစ်၊ ပေါက်စဉ်ကြည့်၊ နံပါတ်ထုတ်။ တကယ်ထိုးရန် Singapore Pools မှသာ။",
+    "legalNotice": "စင်္ကာပူတွင် တရားဝင် ထီလုပ်ငန်းသည် Singapore Pools တစ်ခုတည်းသာ ဖြစ်သည်။ ဤ app သည် လက်မှတ် မရောင်းပါ၊ bet မလက်ခံပါ။",
+    "illegalAppsNotice": "Singapore Pools official app / တရားဝင်ဆိုင်မှ လွဲ၍ အခြား app၊ Telegram၊ Facebook သို့မဟုတ် တရားမဝင် agent မှ ထိုးခြင်းသည် တရားမဝင်ပါ။ ပေါက်သည်ဟု ဆိုလျှင်ပင် ငွေမရနိုင်သလို သိရှိပါက အရေးယူခံရနိုင်ပါသည်။",
+    "ageNotice": "စင်္ကာပူတွင် ထီဝယ်ရန် အသက် ၁၈ နှစ်နှင့်အထက် ဖြစ်ရပါမည်။",
+    "legalTitle": "တရားဝင် နှင့် တရားမဝင်",
+    "legalPointOfficial": "တရားဝင်: Singapore Pools တရားဝင် ဝဘ်ဆိုက် / official Singapore Pools Account app၊ သို့မဟုတ် တရားဝင် outlet။",
+    "legalPointOtherApps": "တရားမဝင်: သင့်အတွက် 4D/TOTO ရောင်းပေးသည်ဟု ဆိုသော အခြား app သို့မဟုတ် ကြားခံ။",
+    "legalPointNoPayout": "တရားမဝင် လက်မှတ်များကို ကာကွယ်မှု မရှိ — “ပေါက်သည်” ဆိုလျှင်ပင် ငွေမရတတ်ပါ။",
+    "legalPointPenalty": "တရားမဝင် အဝေးမှ ထီထိုးခြင်းသည် စုံစမ်းစစ်ဆေးမှု၊ ဒဏ်ငွေ သို့မဟုတ် အခြား အရေးယူမှု ခံရနိုင်ပါသည်။",
+    "playTitle": "တကယ်ထိုးချင်ရင် (တရားဝင်သာ)",
+    "playBody": "4D သို့မဟုတ် TOTO ကို တရားဝင် outlet တွင် ဝယ်ပါ၊ သို့မဟုတ် official Singapore Pools Account ဖြင့် online ထိုးပါ။",
+    "linkPlayOnline": "Singapore Pools ထီ စာမျက်နှာ ဖွင့်ရန်",
+    "linkOfficialApp": "တရားဝင် Singapore Pools Account / app",
+    "linkAccount": "Singapore Pools Account ဖွင့် / ဝင်ရန်",
+    "linkOutlets": "Outlet တွင် ထိုးနည်း (FAQ)",
+    "toolsTitle": "နံပါတ်စစ် · နံပါတ်ထုတ် · ပေါက်စဉ်",
+    "toolsIntro": "အရင် 4D သို့မဟုတ် TOTO ရွေးပါ။ လိုချင်သော အပိုင်းကိုသာ နှိပ်ဖွင့်ပါ။",
+    "pickGameHint": "ဘယ် game ဖွင့်မလဲ?",
+    "gameFourD": "4D",
+    "gameToto": "TOTO",
+    "sectionCheck": "နံပါတ်စစ် (ထီတိုက်)",
+    "sectionGenerate": "နံပါတ် ထုတ်မည်",
+    "sectionResults": "နောက်ဆုံး ပေါက်စဉ်",
+    "sectionAnalysis": "ကာလ analysis",
+    "checkDrawLabel": "Draw ရက်စွဲ",
+    "checkFourDHint": "လက်မှတ်ပေါ်က draw ရွေးပါ။ 4D board အများဆုံး ၅ ခု ရိုက်နိုင်သည်။ Ordinary သို့မဟုတ် iBet၊ Big သို့မဟုတ် Small၊ stake ရွေးပါ — Singapore Pools Calculate Prize နှင့် နီးစပ်သည်။",
+    "checkFourDBoardsLabel": "4D နံပါတ်များ (board ၅ ခုအထိ)",
+    "checkFourDBoard": "Board {n}",
+    "checkFourDMiss": "{number} သည် {date} တွင် ဤ bet အမျိုးအစားအတွက် ဆု မပေါက်ပါ။",
+    "checkEntryLabel": "Entry အမျိုးအစား",
+    "checkSizeLabel": "Big / Small",
+    "checkStakeLabel": "Board တစ်ခုလျှင် stake (SGD)",
+    "checkStakeHint": "ရိုက်ထားသော board တိုင်းကို တူညီသော stake ဖြင့် တွက်သည်။",
+    "checkPattern": "Digit ပုံစံ: {pattern}",
+    "checkIbetBlocked": "0000 / 1111 ကဲ့သို့ permutation တစ်ခုသာ ရှိသော နံပါတ်များအတွက် iBet မရပါ။",
+    "checkWinTitle": "{number} — {date} တွင် ပေါက်",
+    "checkTotal": "ခန့်မှန်း စုစုပေါင်း: {amount}",
+    "checkGrandTotal": "Board အားလုံး ခန့်မှန်းစုစုပေါင်း: {amount}",
+    "checkNoValidBoards": "၄ လုံး ပြည့်သော နံပါတ် အနည်းဆုံး ၁ ခု ရိုက်ပါ။",
+    "entryOrdinary": "Ordinary",
+    "entryIbet": "iBet",
+    "sizeBig": "Big",
+    "sizeSmall": "Small",
+    "sizeHintBig": "Big သည် 1st–3rd, Starter, Consolation အားလုံး ပါဝင်သည်။",
+    "sizeHintSmall": "Small သည် 1st–3rd သာ (ထိပ်ဆု ပိုများ)။",
+    "patternFourDifferent": "ဂဏန်း ၄ လုံး မတူ (၂၄ နည်း)",
+    "patternOnePair": "အတွဲ ၁ ခု (၁၂ နည်း)",
+    "patternTwoPairs": "အတွဲ ၂ ခု (၆ နည်း)",
+    "patternThreeSame": "ဂဏန်း ၃ လုံးတူ (၄ နည်း)",
+    "patternFourSame": "ဂဏန်း ၄ လုံးတူ",
+    "checkTotoHint": "Draw ရက်နှင့် TOTO အမျိုးအစား ရွေးပါ၊ နံပါတ်များ နှိပ်ပြီး ပေါက်/မပေါက် စစ်ပါ။",
+    "checkTotoAgainst": "Draw #{draw} · {date} နှင့် စစ်ပြီး",
+    "checkTotoPicked": "ရွေးပြီး: {count} / {need}",
+    "checkTotoMatched": "Winning နံပါတ် ကိုက်: {count} ({numbers})",
+    "checkTotoAdditionalYes": "Additional နံပါတ် ကိုက်: {number}",
+    "checkTotoAdditionalNo": "Additional နံပါတ် မကိုက်ပါ။",
+    "checkTotoGroup": "ပေါက်တယ် · Group {group}",
+    "checkTotoNoPrize": "ဤ draw တွင် ဆု မပေါက်ပါ။",
+    "checkTotoFixedPrize": "သတ်မှတ်ဆုစုစုပေါင်း (Group 5–7 ဘုတ်များ): {amount}",
+    "checkTotoPoolPrize": "Group 1–4 သည် prize pool ခွဲဝေ — SGD အတိအကျ Singapore Pools official ရလဒ်တွင်သာ။",
+    "checkSubmit": "စစ်မည် / တွက်မည်",
+    "checkClear": "ရှင်းမည်",
+    "checkDisclaimer": "ဆုအုပ်စုများသည် Singapore Pools TOTO စည်းမျဉ်းအတိုင်း။ တောင်းခံမီ official site တွင် အတည်ပြုပါ။ Group 1–4 သည် pool ဖြစ်သည်။",
+    "linkFourDRules": "တရားဝင် 4D Game Rules (PDF)",
+    "prizeFirst": "1st Prize",
+    "prizeSecond": "2nd Prize",
+    "prizeThird": "3rd Prize",
+    "prizeStarter": "Starter",
+    "prizeConsolation": "Consolation",
+    "periodTitle": "Analysis ကာလ",
+    "periodHint": "Week / month သည် ထိုကာလတွင်း draws အားလုံး။ Year သည် မြန်ဆန်စေရန် လွန်ခဲ့သော တစ်နှစ်အတွင်း နောက်ဆုံး ၄၈ ကြိမ်အထိ။",
+    "periodWeek": "Week",
+    "periodMonth": "Month",
+    "periodYear": "Year",
+    "modeTitle": "Random အခြေခံ",
+    "modeRandom": "Pure random",
+    "modeHot": "Hot (ကာလ)",
+    "modeCold": "Cold (ကာလ)",
+    "modeHintRandom": "နံပါတ်တိုင်း တူညီသော အခွင့်အရေး — ကာလနမူနာကို မသုံးပါ။",
+    "modeHintHot": "ရွေးထားသော ကာလတွင် ပိုပေါ်သော နံပါတ်/ဂဏန်းများကို ပိုအလေးပေးသည်။",
+    "modeHintCold": "ရွေးထားသော ကာလတွင် နည်းသော နံပါတ်/ဂဏန်းများကို ပိုအလေးပေးသည်။",
+    "genOne": "၁ ခု ထုတ်မည်",
+    "genFive": "၅ ခု ထုတ်မည်",
+    "genToto": "TOTO Quick pick",
+    "copy": "နံပါတ် ကူးမည်",
+    "copied": "ကူးပြီးပါပြီ",
+    "genPlayHint": "ဝယ်ရန် အဆင်သင့်လား?",
+    "openSingaporePools": "Singapore Pools ဖွင့်မည်",
+    "officialResults": "တရားဝင် ရလဒ် စာမျက်နှာ",
+    "noResults": "ရလဒ် မရသေးပါ။ ခဏနေမှ ထပ်ကြိုးစားပါ သို့မဟုတ် တရားဝင် စာမျက်နှာ ဖွင့်ပါ။",
+    "analysisDisclaimer": "အရင်ပေါက်စဉ်က နောက်တစ်ကြိမ် ပေါက်မည်ဟု မဆိုနိုင်ပါ။ စိတ်ဝင်စားစရာအဖြစ်သာ သုံးပါ — အာမခံ မဟုတ်ပါ။",
+    "analysisSampleFourD": "{period}: 4D {count} ကြိမ်။",
+    "analysisSampleToto": "{period}: TOTO {count} ကြိမ်။",
+    "analysisLoading": "ဤကာလအတွက် draws တင်နေသည်…",
+    "analysisLoadFailed": "ကာလ analysis မရပါ။ ထပ်ကြိုးစားပါ။",
+    "analysisCapped": "Year view သည် နောက်ဆုံး ၄၈ ကြိမ်အထိ ကန့်သတ်ထားသည်။",
+    "hotFourD": "အများဆုံး မြင်ရသော 4D",
+    "coldFourD": "အနည်းဆုံး မြင်ရသော 4D (ပေါ်ခဲ့သော နံပါတ်များထဲမှ)",
+    "hotToto": "အများဆုံး မြင်ရသော TOTO",
+    "coldToto": "အနည်းဆုံး မြင်ရသော TOTO",
+    "responsibleTitle": "တာဝန်ရှိစွာ ကစားပါ",
+    "responsibleBody": "ဘတ်ဂျက် သတ်မှတ်ပါ။ ထီအတွက် ငွေချေး၍ မထိုးပါနှင့်။ ပြဿနာရှိရင် အခမဲ့ အကူအညီ ယူပါ။",
+    "linkNcpg": "National Council on Problem Gambling (NCPG)",
+    "checkSelectedResults": "ဤနေ့၏ ရလဒ်များ",
+    "checkYourNumbers": "ကိုယ်ထိုးထားသော နံပါတ်များ ရိုက်ထည့်ပါ",
+    "checkTotoWon": "ပေါက်တယ် · Group {group}",
+    "totoEntryLabel": "TOTO အမျိုးအစား",
+    "totoEntryOrdinary": "Ordinary",
+    "totoEntrySystemN": "System {n}",
+    "totoEntrySystemRoll": "System Roll",
+    "totoBoardsUnit": "ဘုတ်",
+    "totoInfoBoards": "နံပါတ် {picks} လုံး ရွေးပါ · Ordinary ဘုတ် {boards} ခု ပါဝင်သည်။",
+    "totoCheckedBoards": "Ordinary ဘုတ် {count} ခု စစ်ပြီး",
+    "checkTotoGroupBoards": "Group {group}: ဘုတ် {count} ခု",
+    "totoInfo": {
+      "ordinary": "Ordinary: နံပါတ် ၆ လုံး တိတိ ရွေးသည်။ ဘုတ် ၁ ခု။ ပုံမှန် TOTO လက်မှတ်။",
+      "system7": "System 7: နံပါတ် ၇ လုံး ရွေးသည်။ ထို ၇ လုံးမှ Ordinary ၆ လုံးပေါင်းစုံ (ဘုတ် ၇ ခု) ပါဝင်သည်။",
+      "system8": "System 8: နံပါတ် ၈ လုံး · Ordinary ပေါင်းစုံ ၂၈ ဘုတ်။",
+      "system9": "System 9: နံပါတ် ၉ လုံး · Ordinary ပေါင်းစုံ ၈၄ ဘုတ်။",
+      "system10": "System 10: နံပါတ် ၁၀ လုံး · Ordinary ပေါင်းစုံ ၂၁၀ ဘုတ်။",
+      "system11": "System 11: နံပါတ် ၁၁ လုံး · Ordinary ပေါင်းစုံ ၄၆၂ ဘုတ်။",
+      "system12": "System 12: နံပါတ် ၁၂ လုံး · Ordinary ပေါင်းစုံ ၉၂၄ ဘုတ်။",
+      "systemRoll": "System Roll: နံပါတ် ၅ လုံး ရွေးသည်။ ၆ လုံးမြောက်ကို ကျန် ၁–၄၉ အားလုံးဖြင့် roll (ဘုတ် ၄၄ ခု)။"
+    }
+  },
+  "travel": {
+    "badge": "ခရီးသွား",
+    "title": "စင်္ကာပူမှ အနီးခရီးများ",
+    "subtitle": "Rest day / ခွင့်တိုဖြင့် သွားနိုင်သော အနီးနေရာများ — လိုအပ်သည်များ၊ သွားနည်း၊ အစားအစာ၊ နေရာလှများနှင့် SGD ခန့်မှန်းစရိတ်။ Partner လင့်ခ်များက ဤအခမဲ့ app အတွက် referral ရနိုင်သည်။",
+    "topWarning": "စင်္ကာပူမှ ထွက်ရန် အလုပ်ရှင် ခွင့်ပြုချက်နှင့် စာရွက်စာတမ်း မှန်ကန်ရမည်။ လူဝင်မှု စည်းမျဉ်း ပြောင်းနိုင်သည် — လက်မှတ်မဝယ်မီ သင့်ပတ်စ်ပို့အတွက် visa/ဝင်ခွင့် စစ်ပါ။",
+    "incomeNote": "ဟိုတယ်၊ eSIM၊ travel card ခလုတ်များသည် worker များသုံးနေကျ app များသို့ ဖွင့်သည် — ကျွန်ုပ်တို့ partner လင့်ခ်ကို နှိပ်ခြင်းက Hello SG အခမဲ့ ဆက်ထားရန် ကူညီသည်။",
+    "prepTitle": "စင်္ကာပူမှ မထွက်မီ",
+    "prepIntro": "JB တစ်ရက်ခရီးအပါအဝင် ခရီးတိုင်း ဤစာရင်းကို သုံးပါ။",
+    "prep": {
+      "leaveOk": "အလုပ်ရှင်ထံမှ ခွင့်ကို ရှင်းလင်းစွာ ရယူပါ (ရေးသားထားလျှင် ပိုကောင်း).",
+      "passportValid": "နေရာများစွာတွင် ပတ်စ်ပို့ သက်တမ်း အနည်းဆုံး ၆ လ လိုတတ်သည်။",
+      "workPass": "Work pass / FIN ကတ်နှင့် နှစ်ဖက်ဓာတ်ပုံကို ဖုန်းထဲ သိမ်းပါ။",
+      "money": "SGD + ဒေသငွေ (သို့) travel card စီမံပါ — အစိမ်း “agent” ထံ ငွေမပေးပါနှင့်။",
+      "sim": "နိုင်ငံခြား data အတွက် local SIM သို့မဟုတ် travel eSIM စီစဉ်ပါ။",
+      "returnPlan": "ပြန်မည့် ferry/ဘတ်စ်/လေယာဉ်အချိန် သိထားပါ — ညအိပ်ခွင့်မရှိဘဲ မပိတ်မိစေရန်။",
+      "powerBank": "Power bank ယူပါ — မြေပုံနှင့် ferry လက်မှတ်ကြောင့် ဖုန်းကုန်မြန်သည်။",
+      "emergencyContact": "အလုပ်ရှင်နှင့် ယုံကြည်ရသူ တစ်ဦးကို offline သိမ်းပါ (screenshot).",
+      "hotelOrReturn": "ညအိပ်ခရီးဆို Agoda/Trip.com တွင် ဟိုတယ်ကြိုတင်ဘိုကင်; တစ်ရက်ခရီးဆို ပြန်ချိန် အတည်ပြုပါ။"
+    },
+    "toolsTitle": "တရားဝင်လင့်ခ်များ (အရင်ဖွင့်ပါ)",
+    "toolsIntro": "ဝင်/ထွက်နှင့် work-pass စည်းမျဉ်းအတွက် အစိုးရစာမျက်နှာများ။ ဟိုတယ်၊ eSIM၊ ကတ်များသည် Recommended အပိုင်းတွင် partner လင့်ခ်ရှိမှ ပေါ်သည်။",
+    "tools": {
+      "ica": "ICA စင်္ကာပူ — ဝင်/ထွက် အချက်အလက်",
+      "momLeave": "MOM — work pass စည်းမျဉ်း (ခွင့်ကို အလုပ်ရှင်နှင့် အတည်ပြု)",
+      "airaloHome": "Airalo — travel eSIM (သွားမည့်နိုင်ငံ coverage စစ်ပါ)",
+      "youtripHome": "YouTrip — multi-currency ကတ် (စင်္ကာပူ)"
+    },
+    "partnersTitle": "ခရီးအတွက် အကြံပြုချက်များ",
+    "partnersSubtitle": "ဟိုတယ်ဘိုကင်၊ travel eSIM၊ multi-currency ကတ်ကို ဒီကနေ ဖွင့်ပါ။ တူညီသော app များ — ကျွန်ုပ်တို့ လင့်ခ်က အခမဲ့ app ဆက်ထားရန် ကူညီသည်။",
+    "bookingFallbackLabel": "အခြား (တရားဝင်ဆိုက်)",
+    "destinationsTitle": "အနီးနေရာများ",
+    "destinationsIntro": "တစ်ရက်ခရီး သို့မဟုတ် ခွင့်တိုအတွက် ရွေးပါ။ စာမျက်နှာတိုင်းတွင် မြေပုံ၊ အစား၊ ဘတ်ဂျက်နှင့် အမှားများ ပါသည်။",
+    "destinations": {
+      "jb": {
+        "name": "Johor Bahru",
+        "tagline": "Causeway ဖြတ်လျှင် အနီးဆုံးမြို့",
+        "duration": "တစ်ရက်ခရီး",
+        "country": "မလေးရှား"
+      },
+      "melaka": {
+        "name": "Melaka",
+        "tagline": "အမွေအနှစ်လမ်းများနှင့် မြစ်ညပိုင်းမြင်ကွင်း",
+        "duration": "၁–၂ ည",
+        "country": "မလေးရှား"
+      },
+      "batam": {
+        "name": "Batam",
+        "tagline": "Ferry ဖြင့် အစားနှင့် ဈေးဝယ်",
+        "duration": "တစ်ရက် / ညအိပ်",
+        "country": "အင်ဒိုနီးရှား"
+      },
+      "bintan": {
+        "name": "Bintan",
+        "tagline": "ကမ်းခြေနှင့် resort ဧရိယာ",
+        "duration": "၁–၂ ည",
+        "country": "အင်ဒိုနီးရှား"
+      },
+      "bangkok": {
+        "name": "Bangkok",
+        "tagline": "အစား၊ ဘုရားနှင့် ဈေး — လေယာဉ်တို",
+        "duration": "၃–၄ ရက်",
+        "country": "ထိုင်း"
+      },
+      "phuket": {
+        "name": "Phuket",
+        "tagline": "ကမ်းခြေနှင့် ကျွန်းခရီးတို",
+        "duration": "၃–၄ ရက်",
+        "country": "ထိုင်း"
+      }
+    },
+    "mistakesTitle": "ငွေကုန် / အလုပ်ထိခိုက်နိုင်သော အမှားများ",
+    "prepMistakes": {
+      "noLeave": "အလုပ်ရှင်ခွင့်မရဘဲ ထွက်ခြင်း — work pass အန္တရာယ်ရှိနိုင်။",
+      "passportShort": "ပတ်စ်ပို့ သက်တမ်းကုန်ခါနီးဖြင့် ferry/လေယာဉ်တက်ခြင်း။",
+      "cashOnly": "ငွေသားသာ ယူပြီး ပျောက်ဆုံးခြင်း။",
+      "noReturnTicket": "ပြန်မည့်အစီအစဉ်မရှိ — နောက်ဆုံးမိနစ်ကြေးကြီး။",
+      "fakeAgent": "ပြေစာမရှိ “visa + ticket” agent ထံ ငွေပေးခြင်း။",
+      "noHotelApp": "ညရောက်မှ ဟိုတယ်မဘိုကင်၊ data မရှိဘဲ ရှာခြင်း။"
+    },
+    "backToHub": "← ခရီးသွားနေရာအားလုံး",
+    "sectionOverview": "အကျဉ်းချုပ်",
+    "sectionNeed": "လိုအပ်သည်များ",
+    "sectionHow": "သွားနည်း",
+    "sectionMaps": "မြေပုံများ",
+    "sectionPlaces": "နေရာနှင့် လှပမှုများ",
+    "sectionFood": "စားသင့်သော အစားများ",
+    "sectionBudget": "ခန့်မှန်းစရိတ် (SGD)",
+    "sectionOfficial": "တရားဝင် / operator လင့်ခ်များ",
+    "sectionTips": "အကြံပြုချက်များ",
+    "sectionMistakes": "အဖြစ်များသော အမှားများ",
+    "budgetIntro": "ခန့်မှန်းသာ — စျေးနှုန်း ပြောင်းနိုင်သည်။ Budget = ချွေတာ; mid = အနည်းငယ် ပိုအဆင်ပြေ။",
+    "budgetNote": "တစ်ဦးစာ စီမံချက် အပိုင်းအခြားသာ — quote မဟုတ်။ သွားမည့်အပတ်တွင် ferry/လေယာဉ်ဆိုက် စစ်ပါ။",
+    "disclaimer": "အထွေထွေ ခရီးသွားလမ်းညွှန်သာ — လူဝင်မှု/ဥပဒေ/ငွေကြေးအကြံ မဟုတ်။ မြန်မာပတ်စ်ပို့အတွက် visa စည်းမျဉ်း နိုင်ငံအလိုက် ပြောင်းနိုင်သည်။ မသွားမီ သံရုံး၊ ICAနှင့် အလုပ်ရှင်တွင် အတည်ပြုပါ။",
+    "guide": {
+      "jb": {
+        "visaNote": "မလေးရှားဝင်ခွင့်သည် ပတ်စ်ပို့အမျိုးအစားပေါ် မူတည်သည်။ မြန်မာပတ်စ်ပို့အတွက် လက်ရှိစည်းမျဉ်းကို မသွားမီ စစ်ပါ။",
+        "overview": "Johor Bahru သည် စင်္ကာပူမှ အနီးဆုံး “နိုင်ငံခြား” ခရီး — rest day တွင် ခွင့်နှင့် တန်းစီချိန် အဆင်ပြေလျှင် ဈေးဝယ်/အစားအတွက် သင့်တော်သည်။",
+        "need": {
+          "passport": "ပတ်စ်ပို့ မူရင်း (checkpoint တွင် စစ်မည်).",
+          "passCard": "Work pass / FIN ယူပါ။",
+          "leave": "Rest day အစီအစဉ် မဟုတ်ပါက အလုပ်ရှင်ခွင့် လိုသည်။",
+          "cashSgdMyr": "SGD အချို့နှင့် MYR (သို့) မလေးရှားတွင် သုံးနိုင်သော ကတ်။",
+          "returnSameDay": "ထိုနေ့ပြန်ရန် နောက်ဆုံးဘတ်စ်/MRT မီအောင် အစီအစဉ်။",
+          "phoneData": "မြေပုံသုံးနိုင်သော ဖုန်း (ဘက်ထရီလုံ / Wi‑Fi).",
+          "powerBank": "Immigration တန်းရှည်အတွက် power bank.",
+          "emergencyContact": "အလုပ်ရှင် ဆက်သွယ်ရန် offline."
+        },
+        "how": {
+          "causeway": "Woodlands Checkpoint → Causeway (စနေ/တနင်္ဂနွေ ပိတ်တတ်).",
+          "tuas": "Tuas Second Link — တစ်ခါတစ်ရံ ပိုလွယ်; ဘတ်စ်/ကား ရွေးချယ်မှု စစ်ပါ။",
+          "busQueen": "နယ်စပ်ဖြတ်ဘတ်စ်များ — တက်ရာနေရာနှင့် နောက်ဆုံးပြန်ချိန် အတည်ပြုပါ။",
+          "grabTaxi": "Immigration ပြီးတိုင်း ဘက်ခြမ်းအလိုက် ride-hailing — တစ်ခုတည်းဖြင့် အားလုံး မရနိုင်။"
+        },
+        "places": {
+          "jbCity": "JB မြို့တွင်း / CIQ အနီးလမ်းလျှောက်။",
+          "legacy": "Legacy စသည့် ဈေးဝယ်စင်တာများ။",
+          "ksl": "KSL City Mall — အစားနှင့် ဈေးဝယ်။",
+          "bukitChagar": "Bukit Chagar / RTS အနီး — နယ်စပ်အမှတ်အသား (လက်ရှိ ဝင်ခွင့် စစ်ပါ)."
+        },
+        "food": {
+          "seafood": "Johor ပင်လယ်စာ (မီနူးမရှိလျှင် စျေးအရင်မေး).",
+          "hawker": "ဒေသခံ hawker / ကော်ဖီဆိုင် — ပိုသက်သာ။",
+          "coffee": "ပြန်တန်းမစီမီ teh tarik / နံနက်စာ။"
+        },
+        "budgetLabels": {
+          "transport": "သွားလာရေး (အသွားအပြန်)",
+          "food": "အစားအသောက်",
+          "shopping": "ဈေးဝယ်အရန်",
+          "dayTotal": "တစ်ရက်စုစုပေါင်း (budget)"
+        },
+        "budget": {
+          "transport": "S$8–25",
+          "food": "S$15–35",
+          "shopping": "S$20–50+",
+          "dayTotal": "~S$40–100"
+        },
+        "maps": {
+          "woodlands": "Woodlands Checkpoint",
+          "larkin": "Larkin Sentral (JB)",
+          "ksl": "KSL City Mall"
+        },
+        "official": {
+          "malaysiaEntry": "မလေးရှား အစိုးရပေါ်တယ်",
+          "causewayLink": "Causeway Link (ဘတ်စ်)"
+        },
+        "tips": {
+          "peakQueue": "စနေညနေ immigration တန်းရှည် — ထင်တာထက် စောထွက်ပါ။",
+          "keepSgd": "ပြန်ရောက်လျှင် စင်္ကာပူဘက်အတွက် SGD အနည်းငယ် ထားပါ။",
+          "exchangeBoard": "Money changer ဘုတ်နှိုင်းယှဉ်; ကောင်တာမထွက်မီ ငွေရေပါ။",
+          "bookHotelApp": "ညအိပ်နိုင်လျှင် Causeway မတိုင်မီ Agoda/Trip.com ဘိုကင် — နောက်ကျမှ ရှာခြင်း မလုပ်ပါနှင့်။"
+        },
+        "mistakes": {
+          "noPassport": "ပတ်စ်ပို့ဓာတ်ပုံသာယူ၍ ဖြတ်ရန်ကြိုးစားခြင်း။",
+          "missLastBus": "နောက်ဆုံးပြန်လွဲပြီး ကြေးကြီးပေးရခြင်း။",
+          "overspend": "ဈေးအရင်ဝယ်ပြီး ပြန်ခ မကျန်ခြင်း။"
+        }
+      },
+      "melaka": {
+        "visaNote": "JB ကဲ့သို့ မလေးရှားဝင်ခွင့် — ညအိပ်ခရီးမတင်မီ မြန်မာပတ်စ်ပို့ စည်းမျဉ်း စစ်ပါ။",
+        "overview": "Melaka သည် ၁–၂ ညခွင့်နှင့် သင့်တော် — Jonker၊ မြစ်မြင်ကွင်း၊ Nyonya အစား။ JB မှတဆင့် သို့မဟုတ် တိုက်ရိုက်ဘတ်စ်။",
+        "need": {
+          "passport": "မလေးရှားအတွက် ပတ်စ်ပို့ မူရင်း။",
+          "passCard": "Work pass / FIN။",
+          "leave": "ညအိပ်ကာလ ဖုံးသော ခွင့်။",
+          "overnightBag": "မထွက်မီ ဟိုတယ်/hostel ဘိုကင်။",
+          "cash": "MYR + ကတ်အရန်။",
+          "bookingApp": "Agoda/Trip.com တွင် ဟိုတယ်ဘိုကင် + confirmation screenshot.",
+          "powerBank": "ဘတ်စ်နှင့် ညလမ်းလျှောက်အတွက် power bank.",
+          "medicine": "အခြေခံဆေး (နာကျင်/ဗိုက်) လိုလျှင်.",
+          "emergencyContact": "အလုပ်ရှင် + မိတ်ဆွေ offline."
+        },
+        "how": {
+          "viaJb": "စင်္ကာပူ → JB → Melaka Sentral ဘတ်စ်။",
+          "directBus": "စင်္ကာပူ–Melaka ဘတ်စ်အချို့ — တက်ရာနှင့် ခရီးဆောင်အိတ် စစ်ပါ။",
+          "hotelWalk": "Melaka Sentral မှ Jonker အနီးသို့ Grab/taxi။"
+        },
+        "places": {
+          "jonker": "Jonker Street — ညအလင်းနှင့် လမ်းစာ။",
+          "river": "Melaka မြစ် cruise / ကမ်းနားလမ်း။",
+          "dutchSquare": "Dutch Square / Red Square။",
+          "nightMarket": "စနေ/တနင်္ဂနွေ ညဈေး (ရောက်မည့်ည စစ်ပါ)."
+        },
+        "food": {
+          "nyonya": "Nyonya / Peranakan ဟင်းလျာ။",
+          "chickenRiceBall": "Chicken rice balls။",
+          "satay": "Satay Celupနှင့် မြစ်ကမ်း satay။"
+        },
+        "budgetLabels": {
+          "bus": "ဘတ်စ်အသွားအပြန်",
+          "hotel": "ဟိုတယ် / ည",
+          "food": "အစား / ရက်",
+          "weekendTotal": "၁ ညခရီး (budget)"
+        },
+        "budget": {
+          "bus": "S$25–50",
+          "hotel": "S$35–80",
+          "food": "S$20–40",
+          "weekendTotal": "~S$90–180"
+        },
+        "maps": {
+          "jonker": "Jonker Street",
+          "dutchSquare": "Dutch Square"
+        },
+        "official": {
+          "tourismMelaka": "မလေးရှား ခရီးသွား"
+        },
+        "tips": {
+          "bookBus": "စနေမတိုင်မီ ပြန်လက်မှတ် ဘိုကင်ပါ။",
+          "heat": "နေ့လည် ပူသည် — အေးသောနေရာ ချိန်ပါ။",
+          "walkShoes": "Jonker လမ်းအတွက် ဖိနပ်သက်တောင့်သက်သာ။",
+          "bookHotelApp": "စနေတက် Melaka ဟိုတယ်ကို Agoda/Trip.com တွင် ကြိုတင်ပါ။"
+        },
+        "mistakes": {
+          "noHotel": "သောကြာည အခန်းမဘိုကင်ဘဲ ရောက်ခြင်း။",
+          "cashShort": "၂ ရက်စာ အစား/Grab ဘတ်ဂျက် မလုံလောက်။",
+          "lateReturn": "ခွင့်ကုန်ပြီးမှ ရောက်သော ပြန်ဘတ်စ်။"
+        }
+      },
+      "batam": {
+        "visaNote": "အင်ဒိုနီးရှားသည် မြန်မာပတ်စ်ပို့အတွက် visa/ဝင်ခွင့် လိုတတ်သည် — visa-free မယူဆပါနှင့်။ Ferry မဝယ်မီ immigration / သံရုံး စစ်ပါ။",
+        "overview": "Batam သည် ပင်လယ်စာနှင့် ဈေးဝယ်အတွက် ferry ခရီးလူကြိုက်များသည်။ စာရွက်နှင့် ခွင့်ရှင်းမှသာ သွားပါ။",
+        "need": {
+          "passport": "သက်တမ်းလုံသော ပတ်စ်ပို့။",
+          "visaCheck": "သင့်နိုင်ငံသားအတွက် အင်ဒိုနီးရှားဝင်ခွင့် အတည်ပြုပြီး။",
+          "leave": "Ferryနေ့ (နှင့် ညအိပ်လျှင်) ဖုံးသော ခွင့်။",
+          "ferryTicket": "အမည်ပါ အသွားအပြန် ferry လက်မှတ်။",
+          "idrCash": "IDR ငွေသားအချို့; ကတ်မရသောနေရာရှိနိုင်။",
+          "bookingApp": "ညအိပ်လျှင် Agoda/Trip.com ဟိုတယ်အတည်ပြုချက်.",
+          "powerBank": "Power bank — terminal/တက္ကစီတွင် ဖုန်းလိုသည်.",
+          "printedOrQr": "Ferry လက်မှတ် QR/PDF offline သိမ်းပါ.",
+          "emergencyContact": "အလုပ်ရှင် offline."
+        },
+        "how": {
+          "harbourFront": "HarbourFront Centre မှ ferry။",
+          "tanahMerah": "လမ်းကြောင်းအချို့ Tanah Merah သုံးသည်။",
+          "ferryOperator": "သိသော operator ဖြင့် ဘိုကင်; QR/အီးမေးလ် သိမ်းပါ။",
+          "taxiBatam": "Batam Centre တွင် တက္ကစီ/Grab — စျေးအရင်ရှင်းပါ။"
+        },
+        "places": {
+          "nagoya": "Nagoya — ဈေးဝယ်နှင့် ညစာ။",
+          "beach": "အချိန်ရလျှင် ကမ်းခြေတို။",
+          "outlet": "Outlet/mall — စင်္ကာပူစျေးနှင့် နှိုင်းယှဉ်ပါ။"
+        },
+        "food": {
+          "seafood": "ပင်လယ်စာ (မမှာမီ စျေးအတည်ပြု).",
+          "indoPadang": "Padang / ထမင်းဆိုင် — ပိုသက်သာ။",
+          "coffee": "ပြန်ferry မတိုင်မီ ကော်ဖီ။"
+        },
+        "budgetLabels": {
+          "ferry": "Ferry အသွားအပြန်",
+          "food": "အစား",
+          "taxi": "ဒေသခံ သွားလာရေး",
+          "dayTotal": "တစ်ရက်စုစုပေါင်း"
+        },
+        "budget": {
+          "ferry": "S$50–90",
+          "food": "S$20–45",
+          "taxi": "S$15–35",
+          "dayTotal": "~S$90–170"
+        },
+        "maps": {
+          "harbourFront": "HarbourFront ferry",
+          "batamCentre": "Batam Centre",
+          "nagoya": "Nagoya, Batam"
+        },
+        "official": {
+          "immigrationId": "အင်ဒိုနီးရှား Immigration",
+          "batamFast": "BatamFast ferry"
+        },
+        "tips": {
+          "visaFirst": "ပေးချေမှုမလုပ်မီ visa/ဝင်ခွင့် — လက်မှတ်ပြန်မရတတ်။",
+          "ferryTime": "စောရောက်ပါ; cut-off တိကျသည်။",
+          "keepTicket": "လက်မှတ်နှင့် ပတ်စ်ပို့စာမျက်နှာ offline သိမ်းပါ။",
+          "bookHotelApp": "ညအိပ်လျှင် Nagoya/ferry အနီး Agoda/Trip.com တွင် အတည်ပြုပါ။"
+        },
+        "mistakes": {
+          "noVisa": "Ferryအရင်ဝယ်ပြီး ဝင်ခွင့်မရခြင်း။",
+          "missFerry": "ဈေးဝယ်ကြာ၍ နောက်ဆုံးပြန်လွဲခြင်း။",
+          "agentScam": "ဆိပ်ကမ်း “helper” ထံ ငွေပေးပျောက်ခြင်း။"
+        }
+      },
+      "bintan": {
+        "visaNote": "Batam ကဲ့သို့ အင်ဒိုနီးရှားဝင်ခွင့် — မြန်မာပတ်စ်ပို့အတွက် visa စစ်ပြီးမှ ဘိုကင်ပါ။",
+        "overview": "Bintan သည် ကမ်းခြေ/resort ပိုများသည်။ ခွင့်နှင့် ဘတ်ဂျက်ရှိလျှင် ၁–၂ ည သင့်တော်။",
+        "need": {
+          "passport": "ပတ်စ်ပို့ မူရင်း။",
+          "visaCheck": "အင်ဒိုနီးရှားဝင်ခွင့် အတည်ပြုပြီး။",
+          "leave": "ညအိပ်ကာလ ဖုံးသော ခွင့်။",
+          "ferryResort": "Ferry + Lagoi/ဟိုတယ် သို့ transfer အစီအစဉ်။",
+          "budgetHotel": "ဟိုတယ်ကြိုတင်ဘိုကင် (စနေတက်).",
+          "bookingApp": "Ferry မတိုင်မီ resort/ဟိုတယ် ဘိုကင် (Agoda/Trip.com သို့မဟုတ် resort).",
+          "sunCare": "နေကာခရင်မ်၊ ဦးထုပ်၊ ရေဘူး.",
+          "powerBank": "Power bank.",
+          "emergencyContact": "အလုပ်ရှင် offline."
+        },
+        "how": {
+          "tanahMerah": "Tanah Merah Ferry Terminal မှ အများအားဖြင့်။",
+          "bandarBentan": "Bandar Bentan Telani — လက်မှတ်စစ်ပါ။",
+          "resortTransfer": "ဟိုတယ် shuttle / transfer — SGD/IDR စျေးရှင်းပါ။"
+        },
+        "places": {
+          "lagoi": "Lagoi Bay — resortနှင့် လမ်းလျှောက်။",
+          "beach": "ကမ်းခြေနှင့် နေဝင်ချိန်။",
+          "mangrove": "Mangrove / သဘာဝခရီး (ဟိုတယ်မှ စီစဉ်နိုင်)."
+        },
+        "food": {
+          "seafood": "ကမ်းနား ပင်လယ်စာ။",
+          "resortBuffet": "Resort ထမင်း — အဆင်ပြေသော်လည်း ပိုကြေးများ။",
+          "localWarung": "Resort ပြင်ပ warung (သွားနိုင်လျှင်)."
+        },
+        "budgetLabels": {
+          "ferry": "Ferry အသွားအပြန်",
+          "stay": "ဟိုတယ် / ည",
+          "food": "အစား / ရက်",
+          "weekendTotal": "၁–၂ ညခရီး"
+        },
+        "budget": {
+          "ferry": "S$60–110",
+          "stay": "S$60–150+",
+          "food": "S$30–70",
+          "weekendTotal": "~S$180–400"
+        },
+        "maps": {
+          "tanahMerah": "Tanah Merah Ferry",
+          "lagoi": "Lagoi Bay"
+        },
+        "official": {
+          "immigrationId": "အင်ဒိုနီးရှား Immigration",
+          "bintanResorts": "Bintan Resorts"
+        },
+        "tips": {
+          "weekendPrice": "သောကြာ–တနင်္ဂနွေ ပိုကြေးများ — အလယ်ရက်သက်သာ။",
+          "sunCream": "နေကာခရင်မ် / ဦးထုပ်။",
+          "returnFerry": "အလုပ်မတိုင်မီ buffer ဖြင့် ပြန်ferry ဘိုကင်။",
+          "bookHotelApp": "Agoda/Trip.com package တွင် transfer ပါမပါ ဖတ်ပါ။"
+        },
+        "mistakes": {
+          "noVisa": "နိုင်ငံတိုင်း visa-freeဟု ယူဆခြင်း။",
+          "underBudget": "Ferryသာတွက်ပြီး transfer+အစား မေ့ခြင်း။",
+          "missLastFerry": "နောက်ဆုံးferry လွဲပြီး ညအိပ်စရိတ် မစီမံခြင်း။"
+        }
+      },
+      "bangkok": {
+        "visaNote": "ထိုင်း visa စည်းမျဉ်း မြန်မာပတ်စ်ပို့အတွက် ပြောင်းနိုင်သည် — လေယာဉ်မဝယ်မီ သံရုံး/Immigration စစ်ပါ။",
+        "overview": "Bangkok သည် ခွင့်တို (၃–၄ ရက်) အတွက် သင့်တော် — လမ်းစာ၊ ဘုရား၊ ဈေး။ လေယာဉ်က အဓိကကုန်ကျ; dataနှင့် ငွေပေးချေမှု စီမံပါ။",
+        "need": {
+          "passport": "သက်တမ်းလုံသော ပတ်စ်ပို့ (မကြာခဏ ၆ လ+).",
+          "visaCheck": "သင့်နိုင်ငံသားအတွက် ထိုင်း visa/ကင်းလွတ် အတည်ပြု။",
+          "leaveDays": "ခရီးရက်အပါအဝင် ခွင့်လုံလောက်။",
+          "flight": "နှောင့်နှေးနိုင်သည်ကို ထည့်တွက်ထားသော လက်မှတ်။",
+          "thbOrCard": "THBနှင့်/သို့မဟုတ် travel card။",
+          "bookingApp": "ဟိုတယ်ဘိုကင် — Grab/တက္ကစီပြနိုင်သော လိပ်စာ.",
+          "esimPlan": "မထွက်မီ travel eSIM သို့မဟုတ် roaming.",
+          "powerBank": "လေဆိပ်နှင့် BTS အတွက် power bank.",
+          "hotelConfirm": "ဘိုကင် confirmation offline screenshot.",
+          "emergencyContact": "အလုပ်ရှင် + သံရုံး/အကူအညီ နံပါတ်များ."
+        },
+        "how": {
+          "budgetFlight": "LCC လေယာဉ်နှိုင်းယှဉ် — ခရီးဆောင်အိတ်ကြေး စစ်ပါ။",
+          "airportTrain": "Airport rail/ဘတ်စ် — တက္ကစီထက် သက်သာတတ်။",
+          "btsMrt": "မြို့တွင်း BTS/MRT။",
+          "grab": "ညပိုင်း/အိတ်ကြီးအတွက် Grab။"
+        },
+        "places": {
+          "grandPalace": "Grand Palace / Wat Pho (ဝတ်စားဆင်ယင် သိက္ခာရှိစွာ).",
+          "chatuchak": "Chatuchak ဈေး (စနေ/တနင်္ဂနွေ).",
+          "chaoPhraya": "Chao Phraya မြစ်လှေ။",
+          "iconSiam": "Iconsiam / mall အစားနှင့် အေးသောနေရာ။"
+        },
+        "food": {
+          "streetFood": "လမ်းစာ — လူများသောဆိုင် ရွေးပါ။",
+          "boatNoodle": "Boat noodle။",
+          "mangoSticky": "Mango sticky rice။"
+        },
+        "budgetLabels": {
+          "flight": "လေယာဉ်အသွားအပြန်",
+          "hotel": "ဟိုတယ် / ည",
+          "food": "အစား / ရက်",
+          "threeDay": "၃ ရက်ခရီး (budget)"
+        },
+        "budget": {
+          "flight": "S$120–280",
+          "hotel": "S$35–90",
+          "food": "S$20–45",
+          "threeDay": "~S$250–500"
+        },
+        "maps": {
+          "suvarnabhumi": "Suvarnabhumi",
+          "grandPalace": "Grand Palace",
+          "chatuchak": "Chatuchak"
+        },
+        "official": {
+          "thaiImmigration": "ထိုင်း Immigration",
+          "tat": "ထိုင်း ခရီးသွားအာဏာပိုင်"
+        },
+        "tips": {
+          "visaStamp": "ဝင်ခွင့်တံဆိပ်/QR နေရာ သိထားပါ။",
+          "esim": "Roamingကြေးများလျှင် မထွက်မီ eSIM တပ်ပါ။",
+          "watchBag": "ငွေခွဲထား; ဈေးထဲအိတ်သတိ။",
+          "bookHotelApp": "Grab ကုန်ကျမှု လျှော့ရန် BTS/MRT အနီး Agoda/Trip.com ဘိုကင်။"
+        },
+        "mistakes": {
+          "noVisa": "Visaမစစ်ဘဲ လေယာဉ်ပြန်မရနိုင်အောင် ဝယ်ခြင်း။",
+          "taxiScam": "မီတာမရှိ လေဆိပ်တက္ကစီ။",
+          "passportCopy": "ပတ်စ်ပို့မူရင်းမယူဘဲ တောင်းသောနေရာများ — မူရင်း/မိတ္တူ မူဝါဒ နားလည်ပါ။"
+        }
+      },
+      "phuket": {
+        "visaNote": "Bangkok ကဲ့သို့ ထိုင်းဝင်ခွင့် — မြန်မာပတ်စ်ပို့ visa စစ်ပြီးမှ လေယာဉ်ဝယ်ပါ။",
+        "overview": "Phuket သည် ကမ်းခြေဦးစားပေး ခရီး။ Transferနှင့် ကျွန်းခရီးကြောင့် Bangkok လမ်းစာခရီးထက် ကုန်ကျနိုင်။",
+        "need": {
+          "passport": "ပတ်စ်ပို့ မူရင်း။",
+          "visaCheck": "ထိုင်းဝင်ခွင့် အတည်ပြု။",
+          "leaveDays": "လေယာဉ်နှင့် ကမ်းခြေရက် ဖုံးသော ခွင့်။",
+          "flight": "Phuket လေယာဉ် (တိုက်ရိုက် သို့မဟုတ် Bangkok မှ).",
+          "beachBudget": "Tour၊ နေကာ၊ သွားလာရေး အရန်ငွေ။",
+          "bookingApp": "ဟိုတယ်ဘိုကင် (စနေတက် ကမ်းခြေပြည့်တတ်).",
+          "sunCare": "နေကာခရင်မ်၊ ဦးထုပ်.",
+          "esimPlan": "မြေပုံ/Grab အတွက် eSIM သို့မဟုတ် roaming.",
+          "powerBank": "Power bank.",
+          "emergencyContact": "အလုပ်ရှင် offline."
+        },
+        "how": {
+          "directFlight": "စင်္ကာပူမှ တိုက်ရိုက်/ချိတ်ဆက် လေယာဉ်။",
+          "airportTaxi": "လေဆိပ်တက္ကစီ/Grab — မီတာမရှိလျှင် ဇုန်စျေးရှင်းပါ။",
+          "songthaew": "Songthaew — ဟိုတယ်တွင် ခန့်မှန်းစျေးမေးပါ။"
+        },
+        "places": {
+          "patong": "Patong Beach — စည်ကား။",
+          "oldTown": "Phuket Old Town ကော်ဖီနှင့် ရောင်စုံလမ်း။",
+          "promthep": "Promthep Cape နေဝင်မြင်ကွင်း။",
+          "islandTrip": "ကျွန်းနေ့ခရီး (ယုံကြည်ရသော operator)."
+        },
+        "food": {
+          "seafood": "ပင်လယ်စာ — အလေးချိန်စျေး အတည်ပြု။",
+          "padThai": "Pad Thai / Old Town ကော်ဖီဆိုင်။",
+          "cafe": "နေပူရှောင်ရန် ကော်ဖီ/dessert။"
+        },
+        "budgetLabels": {
+          "flight": "လေယာဉ်အသွားအပြန်",
+          "hotel": "ဟိုတယ် / ည",
+          "food": "အစား / ရက်",
+          "threeDay": "၃ ရက်ခရီး (budget)"
+        },
+        "budget": {
+          "flight": "S$140–320",
+          "hotel": "S$45–120",
+          "food": "S$25–55",
+          "threeDay": "~S$300–600"
+        },
+        "maps": {
+          "phuketAirport": "Phuket လေဆိပ်",
+          "oldTown": "Phuket Old Town",
+          "patong": "Patong Beach"
+        },
+        "official": {
+          "thaiImmigration": "ထိုင်း Immigration",
+          "tat": "ထိုင်း ခရီးသွားအာဏာပိုင်"
+        },
+        "tips": {
+          "sun": "နေပြင်း — ဦးထုပ်၊ ရေ၊ အေးသောနေရာ။",
+          "bargain": "Tourစျေး ကွာသည် — ပါဝင်မှု ရေးသားရယူပါ။",
+          "esim": "မြေပုံ/Grab အတွက် eSIM အဆင်ပြေ။",
+          "bookHotelApp": "Patong နှင့် တိတ်ဆိတ်သောနေရာ Agoda/Trip.com တွင် နှိုင်းယှဉ်ပါ။"
+        },
+        "mistakes": {
+          "noVisa": "နိုင်ငံတိုင်း exemption ရသည်ဟု ယူဆခြင်း။",
+          "jetSkiScam": "Jet-ski ပျက်စီးကြေး scam — ရှောင်ပါ သို့မဟုတ် ဆိုင်ယုံသာ။",
+          "cashOnBeach": "ကမ်းခြေတွင် အိတ်မထားရစ်ပါနှင့်။"
+        }
+      }
+    },
+    "bookingTitle": "ဟိုတယ်နှင့် booking app များ",
+    "bookingIntro": "မသွားမီ Agoda သို့မဟုတ် Trip.com တွင် အခန်းနှိုင်းယှဉ်ပါ။ App သုံးချင်ရင် ထည့်ပါ။",
+    "bookingApps": {
+      "agoda": "Agoda — ဟိုတယ် (website)",
+      "trip": "Trip.com — ဟိုတယ်နှင့် လေယာဉ် (website)",
+      "agodaApp": "Agoda app ဒေါင်းလုပ်",
+      "tripApp": "Trip.com app ဒေါင်းလုပ်"
+    },
+    "bookingAffiliateNote": "အပေါ်က partner ခလုတ်များသည် referral လင့်ခ်ရှိလျှင် အဲဒီကို သုံးသည်။ Partner မသတ်မှတ်ရသေးမှသာ တရားဝင်ဆိုက်လင့်ခ် ပေါ်သည်။",
+    "bookingCity": {
+      "agoda": "Agoda — {place} ဟိုတယ်များ",
+      "trip": "Trip.com — {place} ဟိုတယ်များ"
+    },
+    "sectionPhotos": "နေရာဓာတ်ပုံများ",
+    "sectionBooking": "နေရာဘိုကင်နှင့် ခရီးသွားကိရိယာများ",
+    "sectionBookingIntro": "ဤနေရာအတွက် ဟိုတယ်နှိုင်းရန် အောက်ခလုတ်မှ Agoda / Trip.com ဖွင့်ပါ။ Check-in တွင် ပြနိုင်သော ဘိုကင်ကို ဦးစားပေးပါ။",
+    "photoCredit": "ဓာတ်ပုံ",
+    "photos": {
+      "jbSkyline": "Johor Bahru မြို့မြင်ကွင်း",
+      "jbSquare": "JB City Square အနီး",
+      "melakaChurch": "Christ Church, Melaka",
+      "melakaJonker": "Jonker Walk, Melaka",
+      "batamBridge": "Barelang Bridge, Batam",
+      "bintanBeach": "Bintan ကမ်းခြေ",
+      "bangkokWatArun": "Wat Arun, Bangkok",
+      "bangkokPalace": "Grand Palace, Bangkok",
+      "phuketPatong": "Patong Beach, Phuket",
+      "phuketOldTown": "Phuket Old Town"
+    }
+  },
+  "referralPartners": {
+    "recommended": "အကြံပြု",
+    "openCta": "လုံခြုံစွာ ဖွင့်ရန်",
+    "placeHotelTitle": "{partner} — {place} ဟိုတယ်များ",
+    "placeHotelHint": "{place} စျေးနှိုင်းပြီး check-in တွင် ပြနိုင်သော အခန်းဘိုကင်လုပ်ပါ။",
+    "benefits": {
+      "agoda": "မသွားမီ ဟိုတယ်ဈေးနှိုင်းပါ — check-in တွင် ပြနိုင်သော ဘိုကင်လုပ်ပါ။",
+      "trip": "ဟိုတယ်နှင့် လေယာဉ် တစ်နေရာတည်း — ခွင့်တိုခရီးအတွက် အဆင်ပြေ။",
+      "airalo": "နိုင်ငံခြားတွင် မြေပုံ/ချတ်အတွက် travel eSIM — roaming စရိတ်ကြီးကို ရှောင်နိုင်။",
+      "youtrip": "နိုင်ငံခြားသုံး multi-currency ကတ် — မထွက်မီ SGD ထည့်သွင်းနိုင်။",
+      "circles": "လိုအပ်လျှင် စင်္ကာပူ local SIM ရွေးချယ်စရာ။",
+      "remitly": "အိမ်သို့ ငွေပို့ — fee ရှင်းလင်းစွာ မြင်ရသည်။ မပေးမီ ငွေပမာဏ စစ်ပါ။",
+      "worldremit": "နိုင်ငံတကာ လွှဲငွေ ရွေးချယ်စရာ — အခြား လိုင်စင်ရှိ app များနှင့် fee/အချိန် နှိုင်းပါ။",
+      "revolut": "Digital account / wallet signup — Revolut ယုံလျှင် အသုံးဝင်။",
+      "ocbc-frank": "စင်္ကာပူနေ့စဉ်ဘဏ်အတွက် OCBC FRANK ရွေးချယ်စရာ။"
+    }
+  },
+  "housing": {
+    "badge": "အခန်းနှင့် အိပ်ဆောင်",
+    "title": "အိမ်ရာ ဘုတ်",
+    "subtitle": "အလုပ်သမားများ တင်သော အခန်းများ။ Hello SG က အိမ်ရှင်ကို အတည်မပြုပါ — လုံခြုံစွာ တွေ့ပြီး အစိမ်းသူထံ စရံမပို့ပါနှင့်။",
+    "disclaimer": "User-posted · Hello SG အတည်မပြု။ ပတ်စ်ပို့၊ FIN၊ OTP မမျှဝေပါနှင့်။ မပေးမီ အခန်းကို ကိုယ်တိုင်ကြည့်ပါ။",
+    "postCta": "အခန်းတင်ရန်",
+    "empty": "အတည်ပြုပြီး အခန်း မရှိသေးပါ။",
+    "beFirst": "ပထမဆုံး တင်သူ ဖြစ်ပါ",
+    "area": "နေရာ",
+    "perMonth": "လ",
+    "userPosted": "User-posted",
+    "backToList": "အိမ်ရာစာရင်းသို့",
+    "postTitle": "အခန်းတင်ရန်",
+    "postSubtitle": "Admin စစ်ဆေးပြီးမှ အများပြည်သူ မြင်ရမည်။",
+    "fieldTitle": "ခေါင်းစဉ်",
+    "fieldArea": "ရပ်ကွက် / နေရာ",
+    "areaPlaceholder": "ဥပမာ Jurong, Little India, Bedok",
+    "fieldPrice": "လစဉ်ငှားခ (SGD)",
+    "fieldContact": "ဆက်သွယ်ရန် (ဖုန်း / WhatsApp / Telegram)",
+    "contactPlaceholder": "WhatsApp +65… သို့မဟုတ် Telegram @…",
+    "fieldDescription": "အသေးစိတ်",
+    "fieldPhotos": "ဓာတ်ပုံ (မဖြစ်မနေ မဟုတ်)",
+    "photoHint": "အများဆုံး {count} ပုံ · JPG/PNG/WebP · တစ်ပုံ 3 MB",
+    "maxPhotos": "အများဆုံး {count} ပုံသာ။",
+    "uploading": "တင်နေသည်…",
+    "removePhoto": "ပုံဖယ်ရန်",
+    "uploadFailed": "ပုံတင်မရပါ။",
+    "postFailed": "တင်မရပါ။",
+    "invalidPrice": "SGD လစဉ်ငှားခ မှန်ကန်စွာ ထည့်ပါ။",
+    "networkError": "ကွန်ရက်အမှား။ ပြန်ကြိုးစားပါ။",
+    "postSuccess": "စစ်ဆေးရန် ပို့ပြီးပါပြီ။ Admin အတည်ပြုမှ ပေါ်မည်။",
+    "submitting": "ပို့နေသည်…",
+    "submit": "စစ်ဆေးရန် ပို့မည်",
+    "safetyNote": "ပတ်စ်ပို့၊ FIN၊ NRIC မရေးပါနှင့်။ မကြည့်မီ စရံမတောင်းပါနှင့်။",
+    "notFoundTitle": "စာရင်း မတွေ့ပါ",
+    "notFoundBody": "သက်တမ်းကုန်၊ ဖယ်ရှားခံ၊ သို့မဟုတ် စစ်ဆေးဆဲ ဖြစ်နိုင်သည်။",
+    "aboutRoom": "အခန်းအကြောင်း",
+    "contactLabel": "တင်သူကို ဆက်သွယ်ရန်",
+    "contactHint": "သတိထားဆက်သွယ်ပါ။ Hello SG က ငှားရမ်းစာချုပ်၏ ပါတီ မဟုတ်ပါ။",
+    "reportTitle": "ဤစာရင်းကို တိုင်ကြားရန်",
+    "reportIntro": "လိမ်လည်မှု၊ အတုပုံ၊ မလုံခြုံသော တောင်းဆိုမှုကို တိုင်ပါ။ တိုင်ကြားမှု လုံလောက်ရင် အလိုအလျောက် ဖုံးမည်။",
+    "report": "တိုင်ကြားရန်",
+    "signInToReport": "တိုင်ရန် အကောင့်ဝင်ပါ",
+    "reportReason": "အကြောင်းရင်း",
+    "reasonScam": "လိမ်လည် / စရံလိမ်",
+    "reasonInappropriate": "မသင့်လျော်",
+    "reasonSpam": "Spam",
+    "reasonOther": "အခြား",
+    "submitReport": "တိုင်ကြားမှု ပို့မည်",
+    "cancel": "ပယ်ဖျက်",
+    "reportSuccess": "ကျေးဇူးတင်ပါသည် — လက်ခံရရှိပါပြီ။",
+    "reportFailed": "တိုင်မရပါ။",
+    "quotaNote": "ကန့်သတ်ချက်: တစ်ရက် {daily} · တစ်လ {monthly} · တစ်ချိန်တည်း အများဆုံး {active} ခု (pending သို့မဟုတ် live)။ အတည်ပြုပြီး {days} ရက်အထိ ပြသပြီး သက်တမ်းကုန်မည်။",
+    "expires": "သက်တမ်းကုန်မည့်ရက်"
+  },
+  "jobs": {
+    "badge": "အေဂျင်စီ အလုပ်များ",
+    "title": "အလုပ်ဘုတ်",
+    "subtitle": "စင်ကာပူရှိ အလုပ်သမားများအတွက် အေဂျင်စီတင်သည့် အလုပ်များ။ MOM လိုင်စင်ကို အမြဲစစ်ပါ။ Hello SG က အလုပ်ခန့်မည် မဟုတ်ပါ။",
+    "disclaimer": "အေဂျင်စီစာရင်း · Hello SG အလုပ် မဟုတ်ပါ။ လျှောက်လွှာကြေး မပေးပါနှင့်။ စာရွက်မပို့မီ MOM EA Directory တွင် အေဂျင်စီကို စစ်ပါ။",
+    "postCta": "အလုပ်တင်မည်",
+    "mineCta": "ကျွန်ုပ်၏အလုပ်များ",
+    "empty": "ထုတ်ပြန်ထားသော အလုပ် မရှိသေးပါ။",
+    "sector": "Sector",
+    "agencyListing": "အေဂျင်စီစာရင်း",
+    "featured": "အထူး",
+    "backToList": "အလုပ်များသို့ ပြန်ရန်",
+    "postTitle": "အလုပ်တင်မည်",
+    "postSubtitle": "Agency and admin accounts only. Listings wait for admin review.",
+    "agencyOnlyNote": "Only accounts with agency or admin role can publish. Contact Hello SG if you need an agency account.",
+    "fieldTitle": "Job title",
+    "fieldSector": "Sector",
+    "fieldLocation": "Area / workplace",
+    "locationPlaceholder": "e.g. Jurong, Tuas, Woodlands",
+    "fieldSalary": "Salary (optional)",
+    "salaryPlaceholder": "e.g. S$1,800 / month",
+    "fieldMomLicence": "MOM EA licence number",
+    "momLicencePlaceholder": "As shown on MOM EA Directory",
+    "fieldContact": "Contact (phone / WhatsApp / email)",
+    "contactPlaceholder": "WhatsApp +65… or email",
+    "fieldDescription": "Job description",
+    "fieldPhotos": "Photos (optional)",
+    "photoHint": "Up to {count} photos · JPG/PNG/WebP · max 3 MB each",
+    "maxPhotos": "Maximum {count} photos.",
+    "uploading": "Uploading…",
+    "removePhoto": "Remove photo",
+    "uploadFailed": "Could not upload photo.",
+    "postFailed": "Could not submit job.",
+    "networkError": "Network error. Try again.",
+    "postSuccess": "Submitted for review. It appears after an admin approves it.",
+    "submitting": "Submitting…",
+    "submit": "Submit for review",
+    "safetyNote": "Do not ask for application fees. Do not request passport, FIN or NRIC numbers in the listing.",
+    "notFoundTitle": "Job not found",
+    "notFoundBody": "This job may have expired, been removed, or is still under review.",
+    "aboutJob": "About this job",
+    "momLicenceLabel": "MOM licence",
+    "contactLabel": "Agency contact",
+    "contactHint": "Prefer in-app apply + messages. Verify the agency before sharing sensitive documents.",
+    "applyTitle": "လျှောက်မည်",
+    "applyIntro": "Send a short note. You can attach a CV (PDF or Word). The agency can reply in Messages.",
+    "signInToApply": "လျှောက်ရန် ဝင်ပါ",
+    "fieldCoverNote": "Cover note",
+    "coverNotePlaceholder": "Introduce yourself and your experience…",
+    "fieldCv": "CV (optional)",
+    "cvHint": "PDF or Word · max 2 MB · private to you and the agency",
+    "cvUploadFailed": "Could not upload CV.",
+    "applyFailed": "Could not submit application.",
+    "applySuccess": "Application sent. Check My jobs if you are the agency; workers will hear back via messages when the agency replies.",
+    "applySubmit": "Send application",
+    "reportTitle": "Report this job",
+    "reportIntro": "Report fee-upfront scams, fake licences, or spam. Enough reports hide the listing.",
+    "report": "အလုပ်ကို တိုင်ကြားမည်",
+    "signInToReport": "Sign in to report",
+    "reportReason": "Reason",
+    "reasonScam": "Scam",
+    "reasonFeeUpfront": "Asks for fee upfront",
+    "reasonInappropriate": "Inappropriate",
+    "reasonSpam": "Spam",
+    "reasonOther": "Other",
+    "submitReport": "Submit report",
+    "cancel": "Cancel",
+    "reportSuccess": "Thanks — we received your report.",
+    "reportFailed": "Could not send report.",
+    "mineTitle": "ကျွန်ုပ်၏အလုပ်များနှင့် လျှောက်သူများ",
+    "mineSubtitle": "Manage your listings, Featured boost, and applicant messages.",
+    "myListings": "My listings",
+    "noMyListings": "You have not posted any jobs yet.",
+    "viewPublic": "View public page",
+    "applicationsInbox": "Applications inbox",
+    "noApplications": "No applications yet.",
+    "featuredIntro": "Featured boost: S${price} for {days} days (KBZPay / WavePay). Admin approves the receipt, then your job stays near the top.",
+    "fieldPayMethod": "Payment method",
+    "fieldTxnRef": "Transaction reference",
+    "fieldReceipt": "Payment screenshot / receipt",
+    "receiptReady": "Receipt uploaded.",
+    "receiptRequired": "Upload a receipt first.",
+    "receiptUploadFailed": "Could not upload receipt.",
+    "featuredPayFailed": "Could not submit Featured payment.",
+    "featuredPaySuccess": "Payment submitted. Featured activates after admin approval.",
+    "featuredSubmit": "Submit Featured payment",
+    "openCv": "Open CV",
+    "refreshMessages": "Refresh messages",
+    "loadingMessages": "Loading messages…",
+    "noMessages": "No messages yet. Send the first reply.",
+    "fieldMessage": "Message",
+    "sendMessage": "Send",
+    "sending": "Sending…",
+    "messagesLoadFailed": "Could not load messages.",
+    "messageSendFailed": "Could not send message.",
+    "cvOpenFailed": "Could not open CV.",
+    "quotaNote": "ကန့်သတ်ချက်: တစ်ရက် {daily} · တစ်လ {monthly} · တစ်ချိန်တည်း အများဆုံး {active} ခု။ ထုတ်ပြန်ပြီး {days} ရက်အထိ ပြသပြီး သက်တမ်းကုန်မည်။",
+    "expires": "သက်တမ်းကုန်မည့်ရက်"
   }
 }

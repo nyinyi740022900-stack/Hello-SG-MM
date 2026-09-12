@@ -3,33 +3,26 @@ import { supabase } from "@/lib/supabase";
 export type ContentType = "news" | "event" | "directory";
 export type ContentPriority = "urgent" | "high" | "normal";
 export type ContentStatus = "pending" | "published" | "rejected";
+
+/**
+ * Home / news filter categories (6). Older DB values were remapped in
+ * 20260912010000_simplify_content_categories.sql.
+ */
 export type ContentCategory =
-  | "mom_policy"
-  | "embassy"
-  | "safety_scam"
-  | "finance"
-  | "legal"
+  | "work"
+  | "money"
+  | "safety"
   | "health"
-  | "community"
-  | "education"
-  | "transport"
-  | "jobs"
   | "housing"
-  | "cost_of_living";
+  | "community";
 
 export const CONTENT_CATEGORIES: ContentCategory[] = [
-  "mom_policy",
-  "embassy",
-  "safety_scam",
-  "finance",
-  "legal",
+  "work",
+  "money",
+  "safety",
   "health",
-  "community",
-  "education",
-  "transport",
-  "jobs",
   "housing",
-  "cost_of_living",
+  "community",
 ];
 
 export type ContentItem = {
@@ -66,6 +59,8 @@ export type ContentItem = {
   review_note: string | null;
   /** Machine translations by locale. Always shown with a label. */
   translations: Record<string, { title?: string; summary?: string; body?: string }> | null;
+  /** Object path in public content-images bucket (optional cover). */
+  image_path: string | null;
   published_at: string | null;
   created_at: string;
   updated_at: string;
@@ -76,7 +71,17 @@ const CONTENT_COLUMNS =
   "source_url,source_name,source_published_at,expires_at,tags," +
   "starts_at,ends_at,location_name,address," +
   "phone,website,opening_hours,languages,is_free," +
-  "status,created_by,reviewed_by,review_note,translations,published_at,created_at,updated_at";
+  "status,created_by,reviewed_by,review_note,translations,image_path,published_at,created_at,updated_at";
+
+const CONTENT_IMAGE_BUCKET = "content-images";
+
+/** Public URL for an optional news/content cover image. */
+export function contentImageUrl(path: string | null | undefined): string | null {
+  if (!path) return null;
+  const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!base) return null;
+  return `${base}/storage/v1/object/public/${CONTENT_IMAGE_BUCKET}/${path}`;
+}
 
 /**
  * Build a shareable slug from an English title: lowercase, strip to
@@ -333,6 +338,7 @@ export type ContentEditableFields = Pick<
   | "body_my"
   | "category"
   | "priority"
+  | "image_path"
 >;
 
 /**
@@ -394,6 +400,7 @@ export type ManualContentInput = {
   openingHours?: string;
   languages?: string[];
   isFree?: boolean;
+  imagePath?: string | null;
 };
 
 /** Admin manual post — publishes immediately (admin already trusts their own input). */
@@ -423,6 +430,7 @@ export async function createManualContentItem(
     opening_hours: input.openingHours?.trim() || null,
     languages: input.languages ?? null,
     is_free: input.isFree ?? null,
+    image_path: input.imagePath?.trim() || null,
     status: "published",
     created_by: "admin",
     published_at: new Date().toISOString(),

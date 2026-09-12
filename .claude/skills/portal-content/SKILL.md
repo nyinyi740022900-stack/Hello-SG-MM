@@ -82,22 +82,16 @@ separate from their reading language. Someone may read English and remit to Dhak
 6. **No personal data.** Never publish an individual worker's name, photo, FIN,
    passport number, employer, or case details, even from a public news story.
 
-## Category taxonomy
+## Category taxonomy (6)
 
 | Category | Covers |
 |---|---|
-| `mom_policy` | **Work & Pass** — rules that govern living and working here: MOM work passes, levies, rest days, contracts, workplace safety, plus ICA pass/PR matters and CPF changes affecting pass holders |
-| `embassy` | **Consular** — notices from any of the five missions in Singapore (Myanmar, India, China, Bangladesh, Malaysia): passport/ID services, appointments, opening hours, document requirements. Name the country in the title. |
-| `safety_scam` | Scams, loan sharks, deceptive agents, fake job offers, police/MOM advisories |
-| `finance` | Remittance channels, bank/wallet changes, fees, the 25% official-channel remittance rule |
-| `legal` | Salary claims (TADM), injury compensation, contract disputes, rights enforcement, free legal aid |
-| `health` | Clinics, medical insurance, MOM medical requirements, mental health support |
-| `community` | Community events and gatherings for any of the five communities: festivals, religious observances, migrant-worker centres, relief drives. Say who the event is for. |
-| `education` | Skills training, language classes, certification, free courses for migrant workers |
-| `transport` | MRT/bus disruptions, planned closures, fare changes, new lines and stations |
-| `jobs` | Hiring notices and job fairs — official sources only, see the rule below |
-| `housing` | Renting a room or flat: tenancy rights, deposits, HDB/URA subletting rules, agent fees, dormitory standards, utilities and disputes |
-| `cost_of_living` | GST and GST Vouchers, CDC vouchers, U-Save rebates, transport concessions, subsidy schemes — **always state who qualifies** |
+| `work` | Work & pass rules (MOM, ICA, CPF for pass holders); official jobs/fairs only; training/courses; consular notices (name the country in the title) |
+| `money` | Remittance, banks/wallets; GST/vouchers/rebates — **always state who qualifies** |
+| `safety` | Scams, loan sharks, fake jobs; TADM/legal rights and free legal aid |
+| `health` | Clinics, insurance, MOM medical, mental health, haze health |
+| `housing` | Rent/dorm news, tenancy, deposits, utilities (future: room listing board is separate) |
+| `community` | Events/gatherings; planned MRT/bus disruptions (not live delays) |
 
 Pick the single most relevant category. If an item fits none of these cleanly, it is
 probably not for us.
@@ -187,7 +181,7 @@ GST Vouchers, CDC vouchers, U-Save rebates and Assurance Package payouts do not
 go to Work Permit, S Pass or Employment Pass holders.
 
 An item about a payout that does not say who qualifies will be read by a pass
-holder as money coming to them. Every `cost_of_living` item must state the
+holder as money coming to them. Every `money` item about vouchers/rebates must state the
 eligibility in the summary, not buried in the body — and if a scheme excludes
 most of our readers, say that in the first sentence.
 
@@ -323,7 +317,7 @@ One `POST` per item to `/api/content/submit` with `Authorization: Bearer $AGENT_
 ```json
 {
   "type": "news",
-  "category": "mom_policy",
+  "category": "work",
   "priority": "normal",
   "titleEn": "...",
   "titleMy": "...",

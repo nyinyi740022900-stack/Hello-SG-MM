@@ -19,8 +19,7 @@ import { FULLY_TRANSLATED } from "@/i18n/routing";
  */
 export const TRANSLATABLE_CATEGORIES: ContentCategory[] = [
   "community",
-  "education",
-  "transport",
+  "housing",
 ];
 
 /**

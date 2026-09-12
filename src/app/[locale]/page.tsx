@@ -1,8 +1,27 @@
 import { getTranslations } from "next-intl/server";
 import Script from "next/script";
 import Image from "next/image";
+import {
+  BookOpen,
+  Building2,
+  Calculator,
+  CalendarCheck,
+  CalendarDays,
+  Car,
+  Dices,
+  Landmark,
+  ListChecks,
+  MapPin,
+  Megaphone,
+  Phone,
+  Plane,
+  Receipt,
+  ArrowLeftRight,
+  BedDouble,
+  Briefcase,
+} from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import AdBanner from "@/components/AdBanner";
+import PlacementAds from "@/components/PlacementAds";
 import GoogleAdSlot from "@/components/GoogleAdSlot";
 import ExpiryReminderBanner from "@/components/ExpiryReminderBanner";
 import { Suspense } from "react";
@@ -13,29 +32,16 @@ import SgConditionsBar from "@/components/SgConditionsBar";
 import SearchBar from "@/components/SearchBar";
 import { CATEGORY_STYLE } from "@/components/CategoryBadge";
 import CategoryTabs from "@/components/CategoryTabs";
-import {
-  BuildingIcon,
-  ChecklistIcon,
-  DocumentIcon,
-  PhoneAlertIcon,
-  ReceiptIcon,
-  CalculatorIcon,
-  CalendarCheckIcon,
-  MapPinIcon,
-  MegaphoneIcon,
-  BankIcon,
-  TransferIcon,
-} from "@/components/icons";
 import type { AppLocale } from "@/i18n/routing";
 import {
   listPublishedContent,
   listUpcomingEvents,
+  contentImageUrl,
   CONTENT_CATEGORIES,
   type ContentItem,
   type ContentCategory,
 } from "@/lib/content";
 import { getCategoryImages, type CategoryImageMap } from "@/lib/categoryImages";
-import { PASSPORT_FORM_DOWNLOAD_PATHS } from "@/lib/passportForms";
 
 type HomePageProps = {
   params: Promise<{ locale: string }>;
@@ -94,33 +100,45 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
   // Ordered by how often a Myanmar worker actually opens each one in real
   // life, not by feature area. Off-Day Guide and Salary Log are weekly
   // habits; Recruitment Fee and Accounts Guide matter enormously but only
-  // once, when a worker first arrives, so they move to the end rather than
-  // disappearing — a newly-arrived reader still needs them.
+  // once, when a worker first arrives, so they move toward the end rather
+  // than disappearing — a newly-arrived reader still needs them.
   //
-  // Passport used to be three separate tiles (wizard, checklist, guide) for
-  // one task. They still all exist and are reachable from the drawer nav and
-  // from links on the checklist page itself; the rail keeps only the one
-  // entry point, so a first-time reader is not asked to guess which of three
-  // icons starts the same job.
+  // Passport keeps one rail entry (checklist). Wizard + passport guide stay
+  // reachable from the drawer and checklist page.
   //
-  // Directory is added: it is a comparable real-life-urgency need to
-  // Emergency Contacts (where do I get help right now) and previously had no
-  // shortcut at all despite having live entries.
+  // Travel sits next to Transport (same “how do I get around / leave SG”
+  // moment). Guide covers rights/info that is not only rest-day or off-day.
+  // Events joins the rail when at least one upcoming event exists — an empty
+  // Events page from the home rail costs trust.
   //
-  // Rates and Events are deliberately absent. Rates duplicates the exchange
-  // panel already on this page (see below); Events currently has zero
-  // published items, and a shortcut to a reliably empty page costs more
-  // trust than an occasional miss from the drawer.
+  // Rates stays out: the exchange panel is already on this page.
   const shortcuts = [
-    { href: "/off-day-guide", icon: MapPinIcon, label: t("toolOffDayGuide") },
-    { href: "/salary-log", icon: ReceiptIcon, label: t("toolSalaryLog") },
-    { href: "/directory", icon: BuildingIcon, label: tCommon("directory") },
-    { href: "/emergency-contacts", icon: PhoneAlertIcon, label: t("quickEmergency") },
-    { href: "/passport/checklist", icon: ChecklistIcon, label: t("quickChecklist") },
-    { href: "/rest-day-rights", icon: CalendarCheckIcon, label: t("toolRestDay") },
-    { href: "/transport", icon: TransferIcon, label: tCommon("transport") },
-    { href: "/recruitment-fee", icon: CalculatorIcon, label: t("toolRecruitmentFee") },
-    { href: "/accounts-guide", icon: BankIcon, label: t("quickAccountsGuide") },
+    { href: "/off-day-guide", icon: MapPin, label: t("toolOffDayGuide") },
+    { href: "/salary-log", icon: Receipt, label: t("toolSalaryLog") },
+    { href: "/directory", icon: Building2, label: tCommon("directory") },
+    { href: "/emergency-contacts", icon: Phone, label: t("quickEmergency") },
+    { href: "/passport/checklist", icon: ListChecks, label: t("quickChecklist") },
+    { href: "/rest-day-rights", icon: CalendarCheck, label: t("toolRestDay") },
+    { href: "/guide", icon: BookOpen, label: tCommon("guide") },
+    { href: "/transport", icon: ArrowLeftRight, label: tCommon("transport") },
+    { href: "/travel", icon: Plane, label: t("toolTravel") },
+    { href: "/housing", icon: BedDouble, label: t("toolHousing") },
+    { href: "/jobs", icon: Briefcase, label: t("toolJobs") },
+    {
+      href: "/driving-license",
+      icon: Car,
+      label: t("toolDrivingLicense"),
+    },
+    {
+      href: "/recruitment-fee",
+      icon: Calculator,
+      label: t("toolRecruitmentFee"),
+    },
+    { href: "/accounts-guide", icon: Landmark, label: t("quickAccountsGuide") },
+    { href: "/lottery", icon: Dices, label: t("toolLottery") },
+    ...(events.length > 0
+      ? [{ href: "/events", icon: CalendarDays, label: tCommon("events") }]
+      : []),
   ];
 
   return (
@@ -154,37 +172,13 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
                 className="flex w-20 shrink-0 flex-col items-center gap-1.5 rounded-lg px-1 py-1 text-center transition hover:bg-brand-soft"
               >
                 <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-brand-strong">
-                  <Icon className="h-5 w-5" />
+                  <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
                 </span>
                 <span className="line-clamp-2 text-xs leading-tight text-ink-muted">
                   {label}
                 </span>
               </Link>
             ))}
-            <a
-              href={PASSPORT_FORM_DOWNLOAD_PATHS.general}
-              download
-              className="flex w-20 shrink-0 flex-col items-center gap-1.5 rounded-lg px-1 py-1 text-center transition hover:bg-brand-soft"
-            >
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-brand-strong">
-                <DocumentIcon className="h-5 w-5" />
-              </span>
-              <span className="line-clamp-2 text-xs leading-tight text-ink-muted">
-                {t("formGeneralShort")}
-              </span>
-            </a>
-            <a
-              href={PASSPORT_FORM_DOWNLOAD_PATHS.maid}
-              download
-              className="flex w-20 shrink-0 flex-col items-center gap-1.5 rounded-lg px-1 py-1 text-center transition hover:bg-brand-soft"
-            >
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-brand-strong">
-                <DocumentIcon className="h-5 w-5" />
-              </span>
-              <span className="line-clamp-2 text-xs leading-tight text-ink-muted">
-                {t("formMaidShort")}
-              </span>
-            </a>
           </div>
         </div>
         {/* A partially-cropped icon at the edge hints there is more, but not
@@ -220,7 +214,7 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
           className="flex items-start gap-3 border-b-4 border-danger bg-danger-soft px-4 py-3 transition hover:opacity-90"
         >
           <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface text-danger">
-            <MegaphoneIcon className="h-4 w-4" />
+            <Megaphone className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
           </span>
           <span className="min-w-0">
             <span className="block text-[11px] font-bold uppercase tracking-wide text-danger">
@@ -288,15 +282,8 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
         </div>
       ) : null}
 
-      <div className="px-4 py-4">
-        <AdBanner
-          placement="home_bottom"
-          sponsorName={t("sponsorLabel")}
-          headline={t("sponsorHeadline")}
-          description={t("sponsorDescription")}
-          ctaText={t("sponsorCta")}
-          targetUrl="/owner/income"
-        />
+      <div className="px-4 py-4 empty:hidden">
+        <PlacementAds placement="home_bottom" />
       </div>
 
       {homeAdSlot && adSenseClientId ? (
@@ -333,7 +320,8 @@ function FeedRowWithAd({
   adSlot?: string;
 }) {
   const title = isMy ? item.title_my : item.title_en;
-  const thumb = images[item.category];
+  const coverUrl = contentImageUrl(item.image_path);
+  const thumb = coverUrl ?? images[item.category] ?? null;
 
   // Ads sit between stories at a fixed cadence rather than beside them. Kept
   // deliberately sparse: this audience is on metered mobile data, so every

@@ -8,14 +8,12 @@ import { generateSlug } from "@/lib/content";
 export const contentSubmitSchema = z.object({
   type: z.enum(["news", "event", "directory"]).default("news"),
   category: z.enum([
-    "mom_policy",
-    "embassy",
-    "safety_scam",
-    "finance",
-    "legal",
+    "work",
+    "money",
+    "safety",
     "health",
+    "housing",
     "community",
-    "education",
   ]),
   priority: z.enum(["urgent", "high", "normal"]).default("normal"),
   titleEn: z.string().min(4).max(200),

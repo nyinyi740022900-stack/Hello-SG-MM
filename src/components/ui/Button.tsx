@@ -3,7 +3,7 @@ import { Link } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
 
 type Variant = "primary" | "secondary" | "ghost" | "danger";
-type Size = "md" | "lg";
+type Size = "sm" | "md" | "lg";
 
 const VARIANT_CLASS: Record<Variant, string> = {
   primary:
@@ -15,6 +15,7 @@ const VARIANT_CLASS: Record<Variant, string> = {
 };
 
 const SIZE_CLASS: Record<Size, string> = {
+  sm: "h-9 px-3 text-xs",
   md: "h-11 px-4 text-sm",
   lg: "h-13 px-6 text-base",
 };
@@ -31,10 +32,12 @@ export function Button({
   variant = "primary",
   size = "md",
   className = "",
+  type = "button",
   ...props
 }: ButtonProps) {
   return (
     <button
+      type={type}
       className={`${BASE} ${VARIANT_CLASS[variant]} ${SIZE_CLASS[size]} ${className}`}
       {...props}
     />

@@ -173,6 +173,22 @@ export function TransferIcon({ className = base }: IconProps) {
   );
 }
 
+export function CarIcon({ className = base }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className={className} aria-hidden="true">
+      <path
+        d="M5 16.5V15l1.2-4.2A2 2 0 0 1 8.1 9.5h7.8a2 2 0 0 1 1.9 1.3L19 15v1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M5 16.5h14" strokeLinecap="round" />
+      <circle cx="7.5" cy="16.5" r="1.5" />
+      <circle cx="16.5" cy="16.5" r="1.5" />
+      <path d="M8 9.5 9.2 6.8A1 1 0 0 1 10.1 6h3.8a1 1 0 0 1 .9.8L16 9.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function IdCardIcon({ className = base }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className={className} aria-hidden="true">
@@ -189,6 +205,28 @@ export function WalletIcon({ className = base }: IconProps) {
       <rect x="3" y="6.5" width="18" height="12" rx="2" />
       <path d="M3 10h18" strokeLinecap="round" />
       <circle cx="16.5" cy="14.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+export function PlaneIcon({ className = base }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className={className} aria-hidden="true">
+      <path d="M10.5 4.5 21 14.5l-2.2.7-3.3-1.1-2.4 6.2-2-.7 1.6-6.1-4.1-3.3.6-2.2z" strokeLinejoin="round" />
+      <path d="M3 16.5h5.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function DiceIcon({ className = base }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className={className} aria-hidden="true">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="3" />
+      <circle cx="8.5" cy="8.5" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="15.5" cy="8.5" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="8.5" cy="15.5" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="15.5" cy="15.5" r="1.1" fill="currentColor" stroke="none" />
     </svg>
   );
 }

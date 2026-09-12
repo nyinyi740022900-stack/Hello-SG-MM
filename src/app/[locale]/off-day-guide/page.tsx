@@ -235,6 +235,16 @@ export default async function OffDayGuidePage({
         </div>
 
         <p className="text-xs text-ink-subtle">{t("sourceDisclaimer")}</p>
+        {/* Deliberately not also rendering PageDiscussionSection here: each
+            place already carries its own PlaceComments thread above, which
+            was built with a 90-day expiry specifically because this
+            audience is targeted by scam operators and unmoderated content
+            that never ages out is a real risk for exactly this reader base
+            (see the migration comment on place_comments for the full
+            reasoning). A second, page-wide, non-expiring thread stacked on
+            top would quietly undo that. PageDiscussionSection is still the
+            right choice on pages with no per-item comment system of their
+            own, e.g. /directory and /events. */}
       </section>
     </PageCard>
   );

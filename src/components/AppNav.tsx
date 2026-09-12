@@ -2,30 +2,36 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import type { LucideIcon } from "lucide-react";
+import {
+  ArrowLeftRight,
+  BedDouble,
+  BookOpen,
+  Building2,
+  Calculator,
+  CalendarCheck,
+  Car,
+  CircleHelp,
+  ClipboardPen,
+  Dices,
+  Home,
+  Briefcase,
+  Landmark,
+  ListChecks,
+  Mail,
+  MapPin,
+  Megaphone,
+  Menu,
+  Phone,
+  Plane,
+  Receipt,
+  User,
+  Wallet,
+  X,
+} from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useAuth } from "@/context/AuthContext";
 import type { AppLocale } from "@/i18n/routing";
-import { PASSPORT_FORM_DOWNLOAD_PATHS } from "@/lib/passportForms";
-import {
-  BankIcon,
-  CalculatorIcon,
-  CalendarCheckIcon,
-  ChecklistIcon,
-  CloseIcon,
-  GuideIcon,
-  HelpIcon,
-  HomeIcon,
-  BuildingIcon,
-  MapPinIcon,
-  MegaphoneIcon,
-  MenuIcon,
-  UserIcon,
-  TransferIcon,
-  WalletIcon,
-  PhoneAlertIcon,
-  ReceiptIcon,
-  WizardIcon,
-} from "@/components/icons";
 
 type AppNavProps = {
   locale: AppLocale;
@@ -34,23 +40,22 @@ type AppNavProps = {
 type NavLink = {
   href: string;
   label: string;
-  icon: (props: { className?: string }) => React.ReactElement;
+  icon: LucideIcon;
 };
 
 /**
  * Side drawer navigation.
  *
- * This replaced a five-slot bottom tab bar. As the portal grew past twenty
- * destinations, a fixed bar could only reach a quarter of them and the rest
- * were effectively unreachable; a grouped drawer shows everything at once,
- * which is why Yahoo uses the same pattern for a site of this shape.
+ * Grouped to match how people actually look for things: daily information,
+ * money/travel tools, passport, rights, then help and account. Lottery lives
+ * under Tools once (not duplicated under Information). Passport forms are
+ * reached from the checklist page, so they are not repeated here.
  */
 export default function AppNav({ locale }: AppNavProps) {
   const t = useTranslations("common");
   const tMenu = useTranslations("menu");
   const tHome = useTranslations("home");
   const tLegal = useTranslations("legal");
-  const tForms = useTranslations("formDownloads");
   const pathname = usePathname();
   const { user } = useAuth();
 
@@ -60,12 +65,10 @@ export default function AppNav({ locale }: AppNavProps) {
 
   const close = useCallback(() => setIsOpen(false), []);
 
-  // Close on navigation: the drawer must not stay open over the page you asked for.
   useEffect(() => {
     queueMicrotask(close);
   }, [pathname, close]);
 
-  // Escape closes, and the page behind must not scroll while the drawer is over it.
   useEffect(() => {
     if (!isOpen) return;
 
@@ -78,14 +81,11 @@ export default function AppNav({ locale }: AppNavProps) {
     document.body.style.overflow = "hidden";
     panelRef.current?.focus();
 
-    // Captured now: by cleanup time the ref may point elsewhere.
     const trigger = triggerRef.current;
 
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = previousOverflow;
-      // Send focus back where it came from, so keyboard users are not dropped
-      // at the top of the document.
       trigger?.focus();
     };
   }, [isOpen, close]);
@@ -95,54 +95,85 @@ export default function AppNav({ locale }: AppNavProps) {
       {
         title: tMenu("sectionMain"),
         links: [
-          { href: "/", label: t("home"), icon: HomeIcon },
-          { href: "/news", label: t("news"), icon: MegaphoneIcon },
-          { href: "/events", label: t("events"), icon: CalendarCheckIcon },
-          { href: "/directory", label: t("directory"), icon: BuildingIcon },
-          { href: "/transport", label: t("transport"), icon: TransferIcon },
-          { href: "/rates", label: t("rates"), icon: WalletIcon },
-        ],
-      },
-      {
-        title: tMenu("sectionPassport"),
-        links: [
-          { href: "/passport/wizard", label: t("wizard"), icon: WizardIcon },
-          { href: "/passport/checklist", label: t("checklist"), icon: ChecklistIcon },
+          { href: "/", label: t("home"), icon: Home },
+          { href: "/news", label: t("news"), icon: Megaphone },
+          { href: "/events", label: t("events"), icon: CalendarCheck },
+          { href: "/directory", label: t("directory"), icon: Building2 },
+          { href: "/rates", label: t("rates"), icon: Wallet },
         ],
       },
       {
         title: tMenu("sectionTools"),
         links: [
-          { href: "/salary-log", label: tHome("toolSalaryLog"), icon: ReceiptIcon },
-          { href: "/recruitment-fee", label: tHome("toolRecruitmentFee"), icon: CalculatorIcon },
-          { href: "/accounts-guide", label: tHome("quickAccountsGuide"), icon: BankIcon },
+          { href: "/transport", label: t("transport"), icon: ArrowLeftRight },
+          { href: "/travel", label: t("travel"), icon: Plane },
+          { href: "/housing", label: t("housing"), icon: BedDouble },
+          { href: "/jobs", label: t("jobs"), icon: Briefcase },
+          {
+            href: "/driving-license",
+            label: t("drivingLicense"),
+            icon: Car,
+          },
+          { href: "/lottery", label: t("lottery"), icon: Dices },
+          { href: "/salary-log", label: tHome("toolSalaryLog"), icon: Receipt },
+          {
+            href: "/recruitment-fee",
+            label: tHome("toolRecruitmentFee"),
+            icon: Calculator,
+          },
+          {
+            href: "/accounts-guide",
+            label: tHome("quickAccountsGuide"),
+            icon: Landmark,
+          },
+        ],
+      },
+      {
+        title: tMenu("sectionPassport"),
+        links: [
+          { href: "/passport/wizard", label: t("wizard"), icon: ClipboardPen },
+          {
+            href: "/passport/checklist",
+            label: t("checklist"),
+            icon: ListChecks,
+          },
         ],
       },
       {
         title: tMenu("sectionRights"),
         links: [
-          { href: "/rest-day-rights", label: tHome("toolRestDay"), icon: CalendarCheckIcon },
-          { href: "/off-day-guide", label: tHome("toolOffDayGuide"), icon: MapPinIcon },
-          { href: "/guide", label: t("guide"), icon: GuideIcon },
+          {
+            href: "/rest-day-rights",
+            label: tHome("toolRestDay"),
+            icon: CalendarCheck,
+          },
+          {
+            href: "/off-day-guide",
+            label: tHome("toolOffDayGuide"),
+            icon: MapPin,
+          },
+          { href: "/guide", label: t("guide"), icon: BookOpen },
         ],
       },
       {
         title: tMenu("sectionHelp"),
         links: [
-          { href: "/emergency-contacts", label: t("contacts"), icon: PhoneAlertIcon },
-          { href: "/help", label: t("help"), icon: HelpIcon },
-          { href: "/contact", label: t("contact"), icon: HelpIcon },
+          {
+            href: "/emergency-contacts",
+            label: t("contacts"),
+            icon: Phone,
+          },
+          { href: "/help", label: t("help"), icon: CircleHelp },
+          { href: "/contact", label: t("contact"), icon: Mail },
         ],
       },
       {
-        // Sign-in is hidden from the header on phones to keep the product name
-        // readable, so it has to be reachable here or it is reachable nowhere.
         title: tMenu("sectionAccount"),
         links: user
-          ? [{ href: "/account", label: t("account"), icon: UserIcon }]
+          ? [{ href: "/account", label: t("account"), icon: User }]
           : [
-              { href: "/login", label: t("login"), icon: UserIcon },
-              { href: "/register", label: t("register"), icon: UserIcon },
+              { href: "/login", label: t("login"), icon: User },
+              { href: "/register", label: t("register"), icon: User },
             ],
       },
     ],
@@ -151,7 +182,9 @@ export default function AppNav({ locale }: AppNavProps) {
 
   const isActive = (href: string) => {
     const routePath = href === "/" ? `/${locale}` : `/${locale}${href}`;
-    return href === "/" ? pathname === routePath : pathname.startsWith(routePath);
+    return href === "/"
+      ? pathname === routePath
+      : pathname.startsWith(routePath);
   };
 
   return (
@@ -164,7 +197,7 @@ export default function AppNav({ locale }: AppNavProps) {
         aria-expanded={isOpen}
         className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface text-ink transition hover:border-brand hover:text-brand"
       >
-        <MenuIcon className="h-5 w-5" />
+        <Menu className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
       </button>
 
       {isOpen ? (
@@ -192,7 +225,7 @@ export default function AppNav({ locale }: AppNavProps) {
                 aria-label={tMenu("close")}
                 className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-ink-muted transition hover:bg-surface-muted hover:text-ink"
               >
-                <CloseIcon className="h-5 w-5" />
+                <X className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
               </button>
             </div>
 
@@ -206,7 +239,7 @@ export default function AppNav({ locale }: AppNavProps) {
                     {section.links.map(({ href, label, icon: Icon }) => {
                       const active = isActive(href);
                       return (
-                        <li key={href}>
+                        <li key={`${section.title}-${href}`}>
                           <Link
                             href={href}
                             locale={locale}
@@ -217,7 +250,11 @@ export default function AppNav({ locale }: AppNavProps) {
                                 : "text-ink hover:bg-surface-muted",
                             ].join(" ")}
                           >
-                            <Icon className="h-4.5 w-4.5 shrink-0" />
+                            <Icon
+                              className="h-5 w-5 shrink-0"
+                              strokeWidth={1.75}
+                              aria-hidden="true"
+                            />
                             <span className="truncate">{label}</span>
                           </Link>
                         </li>
@@ -226,38 +263,6 @@ export default function AppNav({ locale }: AppNavProps) {
                   </ul>
                 </div>
               ))}
-
-              {/* Direct downloads, not routes — kept in the menu because this is
-                  the thing people most often come back for. */}
-              <div className="mb-3">
-                <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-ink-subtle">
-                  {tForms("title")}
-                </p>
-                <ul>
-                  <li>
-                    <a
-                      href={PASSPORT_FORM_DOWNLOAD_PATHS.general}
-                      download
-                      onClick={close}
-                      className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-ink transition hover:bg-surface-muted"
-                    >
-                      <span className="w-4.5 shrink-0 text-center">📄</span>
-                      <span className="truncate">{tForms("generalButton")}</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href={PASSPORT_FORM_DOWNLOAD_PATHS.maid}
-                      download
-                      onClick={close}
-                      className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-ink transition hover:bg-surface-muted"
-                    >
-                      <span className="w-4.5 shrink-0 text-center">📄</span>
-                      <span className="truncate">{tForms("maidButton")}</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
 
               <div className="border-t border-border pt-3">
                 <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-ink-subtle">

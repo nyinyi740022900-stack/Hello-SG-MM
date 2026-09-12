@@ -23,7 +23,26 @@ import type { AppLocale } from "@/i18n/routing";
  * Any observed reading — the kyat's or another currency's — names its source
  * beneath the figure. A number with no named source reads as authoritative by
  * default; naming where a reading came from is what lets someone weigh it.
+ *
+ * Street / bank / admin readings always beat the mid-market feed: they are
+ * what someone can actually transact at. Cron-copied mid-market rows
+ * (`provider: market`) only win when they are at least as fresh as the live
+ * feed — otherwise a missed cron day would pin the panel on yesterday's
+ * number while the feed already moved.
  */
+const FEED_SOURCE_NAME = "exchangerate-api.com (mid-market)";
+
+function isFeedFresher(
+  feedUpdatedAt: string | null | undefined,
+  recordedAt: string,
+): boolean {
+  if (!feedUpdatedAt) return false;
+  const feedMs = Date.parse(feedUpdatedAt);
+  const recordedMs = Date.parse(recordedAt);
+  if (!Number.isFinite(feedMs) || !Number.isFinite(recordedMs)) return false;
+  return feedMs > recordedMs;
+}
+
 export default async function ExchangeRatePanel({
   locale,
   selectedCountry,
@@ -45,8 +64,6 @@ export default async function ExchangeRatePanel({
   ]);
   const feedByCurrency = new Map(feedRates.map((rate) => [rate.currency, rate]));
 
-  const feedUpdatedAt = feedRates[0]?.updatedAt ?? null;
-
   return (
     <section
       aria-labelledby="exchange-rates-heading"
@@ -67,14 +84,27 @@ export default async function ExchangeRatePanel({
           const recorded = observedByPair.get(`SGD_${country.currency}`);
           const isSelected = country.code === selectedCountry;
 
-          // An observed money-changer reading beats the feed wherever we have
-          // one: it is what the reader can actually transact at.
-          const rate = recorded?.rate ?? feed?.rate ?? null;
-          const age = recorded
-            ? formatObservedAt(recorded.observed_at, locale)
-            : feedUpdatedAt
-              ? t("feedUpdated", { time: feedUpdatedAt })
-              : null;
+          const preferFeed =
+            Boolean(feed) &&
+            (!recorded ||
+              (recorded.provider === "market" &&
+                isFeedFresher(feed?.updatedAt, recorded.observed_at)));
+
+          const rate = preferFeed
+            ? (feed?.rate ?? null)
+            : (recorded?.rate ?? feed?.rate ?? null);
+          const age = preferFeed
+            ? feed?.updatedAt
+              ? formatObservedAt(feed.updatedAt, locale)
+              : null
+            : recorded
+              ? formatObservedAt(recorded.observed_at, locale)
+              : feed?.updatedAt
+                ? formatObservedAt(feed.updatedAt, locale)
+                : null;
+          const sourceName = preferFeed
+            ? FEED_SOURCE_NAME
+            : (recorded?.source_name ?? (feed ? FEED_SOURCE_NAME : null));
 
           return (
             <li
@@ -108,9 +138,9 @@ export default async function ExchangeRatePanel({
                       {formatRate(rate, locale)}
                     </p>
                     {age ? <p className="text-[11px] text-ink-subtle">{age}</p> : null}
-                    {recorded?.source_name ? (
+                    {sourceName ? (
                       <p className="truncate text-[11px] text-ink-subtle">
-                        {recorded.source_name}
+                        {sourceName}
                       </p>
                     ) : null}
                   </>

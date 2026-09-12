@@ -11,6 +11,7 @@ import {
   type ContentItem,
 } from "@/lib/content";
 import PageCard from "@/components/ui/PageCard";
+import PageDiscussionSection from "@/components/PageDiscussionSection";
 
 export default async function DirectoryPage({
   params,
@@ -125,6 +126,7 @@ export default async function DirectoryPage({
         )}
 
         <p className="text-xs text-ink-subtle">{t("disclaimer")}</p>
+        <PageDiscussionSection pageKey="directory" />
       </section>
     </PageCard>
   );

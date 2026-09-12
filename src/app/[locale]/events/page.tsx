@@ -6,6 +6,7 @@ import CategoryBadge from "@/components/CategoryBadge";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { listUpcomingEvents, type ContentItem } from "@/lib/content";
 import PageCard from "@/components/ui/PageCard";
+import PageDiscussionSection from "@/components/PageDiscussionSection";
 
 function formatWhen(item: ContentItem, locale: AppLocale): string | null {
   if (!item.starts_at) {
@@ -125,6 +126,7 @@ export default async function EventsPage({
         )}
 
         <p className="text-xs text-ink-subtle">{t("disclaimer")}</p>
+        <PageDiscussionSection pageKey="events" />
       </section>
     </PageCard>
   );

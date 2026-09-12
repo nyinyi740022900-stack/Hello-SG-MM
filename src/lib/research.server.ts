@@ -27,23 +27,18 @@ const MAX_SEARCHES_PER_CATEGORY = 6;
 const MAX_ITEMS_PER_CATEGORY = 2;
 
 const CATEGORY_BRIEF: Record<ContentCategory, string> = {
-  mom_policy:
-    "Rules that govern living and working here: MOM work passes, levies, rest days, contracts and workplace safety, plus ICA pass/PR matters and CPF changes that affect pass holders",
-  embassy:
-    "Consular notices from the Myanmar, Indian, Chinese, Bangladeshi and Malaysian missions in Singapore: passport and ID services, appointment systems, opening-hour changes, document requirements. Name which country a notice applies to in the title — a reader from another country must be able to skip it at a glance.",
-  safety_scam: "Scams, loan sharks, deceptive employment agents, fake job offers, police/MOM advisories",
-  finance: "Remittance channels and fees, bank/wallet changes, the 25% official-channel remittance rule",
-  legal: "TADM salary claims, work injury compensation, contract disputes, free legal aid",
-  health: "Clinics, medical insurance, MOM medical requirements, mental health support, haze health advisories",
-  community:
-    "Community events and gatherings in Singapore for the Myanmar, Indian, Chinese, Bangladeshi and Malaysian communities: festivals, religious observances, migrant-worker centres, relief drives. Say who the event is for.",
-  education: "Skills training, language classes, certification, free courses open to migrant workers",
-  transport: "MRT/bus planned disruptions, track closures, fare changes, new lines and stations",
-  jobs: "Hiring notices and job fairs from OFFICIAL sources only — see the jobs rule",
+  work:
+    "Work passes, levies, rest days, contracts, workplace safety, ICA/CPF for pass holders; official job fairs and MyCareersFuture openings only (see jobs rule); skills training and free courses; consular notices from Myanmar, Indian, Chinese, Bangladeshi and Malaysian missions — name which country in the title when consular.",
+  money:
+    "Remittance channels and fees, bank/wallet changes, the 25% official-channel remittance rule; GST and GST Vouchers, CDC vouchers, U-Save rebates, transport concessions — ALWAYS state who qualifies (many schemes are citizens/PRs only).",
+  safety:
+    "Scams, loan sharks, deceptive employment agents, fake job offers, police/MOM advisories; TADM salary claims, work injury compensation, contract disputes, free legal aid.",
+  health:
+    "Clinics, medical insurance, MOM medical requirements, mental health support, haze health advisories.",
   housing:
-    "Renting a room or flat: tenancy rights and deposits, HDB/URA subletting rules, agent fees, dormitory standards, utility bills and disputes. This is where newcomers are most often overcharged, and almost none of the guidance exists outside English.",
-  cost_of_living:
-    "GST and GST Vouchers, CDC vouchers, U-Save utility rebates, transport concessions, subsidy schemes. ALWAYS state who qualifies — many schemes are for citizens and PRs only, and a pass holder reading otherwise wastes a rest day queueing for something they cannot get.",
+    "Renting a room or flat: tenancy rights and deposits, HDB/URA subletting rules, agent fees, dormitory standards, utility bills and disputes. Newcomers are most often overcharged here.",
+  community:
+    "Community events and gatherings for Myanmar, Indian, Chinese, Bangladeshi and Malaysian communities; festivals, migrant-worker centres, relief drives; planned MRT/bus disruptions naming line, stations and dates (never live minute-by-minute delays).",
 };
 
 const SYSTEM_PROMPT = `You research daily updates for Hello SG, an information portal published in English and Myanmar.
@@ -274,7 +269,7 @@ async function researchCategory(
   // a country on a transport pass invites it to force a national angle onto a
   // story that has none — which is how you get subtly wrong framing.
   const countryRelevant =
-    mode !== "news" || ["embassy", "community", "finance"].includes(category);
+    mode !== "news" || ["work", "community", "money"].includes(category);
 
   const coverageNote =
     countryRelevant && underserved.length > 0

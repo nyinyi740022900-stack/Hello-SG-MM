@@ -1,12 +1,13 @@
 import Script from "next/script";
 import { getTranslations } from "next-intl/server";
-import AdBanner from "@/components/AdBanner";
+import PlacementAds from "@/components/PlacementAds";
 import GoogleAdSlot from "@/components/GoogleAdSlot";
 import { PageHeader, Card } from "@/components/ui/Card";
 import PageCard from "@/components/ui/PageCard";
 import StatusMessage from "@/components/ui/StatusMessage";
 import CountryMissionCard from "@/components/CountryMissionCard";
 import { resolveSelectedCountry } from "@/lib/country.server";
+import PageDiscussionSection from "@/components/PageDiscussionSection";
 
 const STEP_KEYS = ["checkExpiry", "gatherDocuments", "checkAppointment", "fillSample", "reviewBeforeSubmit"] as const;
 
@@ -36,6 +37,7 @@ export default async function PassportGuidePage() {
               <span className="block">{tCountry("noGuideBody")}</span>
             </span>
           </StatusMessage>
+          <PageDiscussionSection pageKey="guide" />
         </section>
       </PageCard>
     );
@@ -59,14 +61,7 @@ export default async function PassportGuidePage() {
           </ol>
         </Card>
 
-        <AdBanner
-          placement="guide_bottom"
-          sponsorName={t("sponsorLabel")}
-          headline={t("sponsorHeadline")}
-          description={t("sponsorDescription")}
-          ctaText={t("sponsorCta")}
-          targetUrl="/owner/income"
-        />
+        <PlacementAds placement="guide_bottom" />
 
         {guideAdSlot ? (
           <>
@@ -85,6 +80,7 @@ export default async function PassportGuidePage() {
             />
           </>
         ) : null}
+        <PageDiscussionSection pageKey="guide" />
       </section>
     </PageCard>
   );

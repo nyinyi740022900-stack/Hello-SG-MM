@@ -155,6 +155,48 @@ export default async function AdminLayout({
         >
           Rates / ငွေလဲနှုန်း
         </Link>
+        <Link
+          href="/admin/referrals"
+          locale={resolvedLocale}
+          className="rounded-xl border border-border bg-surface px-4 py-2 text-sm font-medium text-ink-muted transition hover:border-accent-border hover:text-accent"
+        >
+          Referrals / Referral လင့်ခ်
+        </Link>
+        <Link
+          href="/admin/ads"
+          locale={resolvedLocale}
+          className="rounded-xl border border-border bg-surface px-4 py-2 text-sm font-medium text-ink-muted transition hover:border-accent-border hover:text-accent"
+        >
+          Ads / ကြော်ငြာ
+        </Link>
+        <Link
+          href="/admin/helpers"
+          locale={resolvedLocale}
+          className="rounded-xl border border-border bg-surface px-4 py-2 text-sm font-medium text-ink-muted transition hover:border-accent-border hover:text-accent"
+        >
+          Helpers / အကူအညီ
+        </Link>
+        <Link
+          href="/admin/housing"
+          locale={resolvedLocale}
+          className="rounded-xl border border-border bg-surface px-4 py-2 text-sm font-medium text-ink-muted transition hover:border-accent-border hover:text-accent"
+        >
+          Housing / အိမ်ရာ
+        </Link>
+        <Link
+          href="/admin/jobs"
+          locale={resolvedLocale}
+          className="rounded-xl border border-border bg-surface px-4 py-2 text-sm font-medium text-ink-muted transition hover:border-accent-border hover:text-accent"
+        >
+          Jobs / အလုပ်
+        </Link>
+        <Link
+          href="/admin/comments"
+          locale={resolvedLocale}
+          className="rounded-xl border border-border bg-surface px-4 py-2 text-sm font-medium text-ink-muted transition hover:border-accent-border hover:text-accent"
+        >
+          Comments / မှတ်ချက်
+        </Link>
       </div>
 
       {/* Admin content */}

@@ -19,6 +19,7 @@ import {
   REST_DAY_LINKS,
   WP_FACT_KEYS,
 } from "@/lib/restDayRights";
+import PageDiscussionSection from "@/components/PageDiscussionSection";
 
 const EXTERNAL_LINK_CLASS = "font-semibold text-brand-strong underline";
 
@@ -253,6 +254,7 @@ export default async function RestDayRightsPage({
         </div>
 
         <p className="text-xs text-ink-subtle">{t("sourceDisclaimer")}</p>
+        <PageDiscussionSection pageKey="rest-day-rights" />
       </section>
     </PageCard>
   );

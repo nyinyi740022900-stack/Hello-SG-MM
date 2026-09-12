@@ -27,6 +27,7 @@ import { Link } from "@/i18n/navigation";
  * the component.
  */
 const CLIENT_NAMESPACES = [
+  "account",
   "ads",
   "auth",
   "common",
@@ -34,11 +35,16 @@ const CLIENT_NAMESPACES = [
   "expiryReminder",
   "formDownloads",
   "home",
+  "housing",
+  "jobs",
   "legal",
+  "lottery",
   "menu",
   "news",
+  "pageDiscussion",
   "placeComments",
   "recruitmentFee",
+  "referralPartners",
   "salaryLog",
   "search",
   "translation",

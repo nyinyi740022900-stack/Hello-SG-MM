@@ -38,11 +38,22 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     mmkStreet,
   };
 
-  if (feed.errors.length > 0 || mmkStreet.errors.length > 0) {
+  // Market feed is required; MMK street scrape is best-effort. Failing the
+  // whole cron (HTTP 500) when only EG Currency blocks datacenter IPs would
+  // mark a successful four-currency sync as failed in Vercel Cron logs.
+  if (feed.errors.length > 0) {
     logServerEvent("error", "cron_rates_failed", {
       reason: combined.errors.join("; "),
     });
     return NextResponse.json({ status: "error", ...combined }, { status: 500 });
+  }
+
+  if (mmkStreet.errors.length > 0) {
+    logServerEvent("warn", "cron_rates_partial", {
+      reason: mmkStreet.errors.join("; "),
+      inserted: combined.inserted,
+    });
+    return NextResponse.json({ status: "partial", ...combined });
   }
 
   logServerEvent("info", "cron_rates_ok", { inserted: combined.inserted });

@@ -55,6 +55,8 @@ const SOURCE_URL = "https://www.exchangerate-api.com/";
  * `is_visible` remains the kill switch if it turns out to be wrong.
  */
 const EG_CURRENCY_URL = "https://egcurrency.com/en/currency/MMK/blackMarket";
+/** Datacenter IPs (including Vercel) often get 403 from EG Currency directly. */
+const EG_CURRENCY_READER_URL = `https://r.jina.ai/http://egcurrency.com/en/currency/MMK/blackMarket`;
 const EG_CURRENCY_NOTE_EN =
   "From an independent rate-tracking site, not a bank or licensed remitter. " +
   "Its methodology is not published and could not be independently confirmed. " +
@@ -63,6 +65,13 @@ const EG_CURRENCY_NOTE_MY =
   "ဘဏ် သို့မဟုတ် လိုင်စင်ရ ငွေလွှဲကုမ္ပဏီ မဟုတ်ဘဲ သီးခြား ငွေလဲနှုန်း မှတ်တမ်းတင် site တစ်ခုမှ ရယူထားပါသည်။ " +
   "ထိုနှုန်း ဘယ်လို တွက်ချက်သည်ကို site က ထုတ်ဖော်မထားပြီး သီးခြား အတည်ပြု၍ မရပါ။ " +
   "ခန့်မှန်းချက်အနေဖြင့်သာ သတ်မှတ်ပြီး ငွေမပို့မီ သင့်ဝန်ဆောင်မှုပေးသူ၏ app တွင် တကယ့်နှုန်းကို အတည်ပြုပါ။";
+
+const EG_FETCH_HEADERS = {
+  accept: "text/html,application/xhtml+xml,text/plain;q=0.9,*/*;q=0.8",
+  "accept-language": "en-US,en;q=0.9",
+  "user-agent":
+    "Mozilla/5.0 (compatible; MyanmarGlobalHubRates/1.0; +https://sg-migrant-worker-app.vercel.app)",
+};
 
 export type RateSyncResult = {
   inserted: number;
@@ -177,7 +186,7 @@ export async function syncExchangeRates(): Promise<RateSyncResult> {
  * its markup this returns null rather than guessing, so a broken parse fails
  * closed instead of inserting whatever number happens to be nearby.
  */
-function parseSgdMmkRow(html: string): { buy: number; sell: number } | null {
+function parseSgdMmkHtml(html: string): { buy: number; sell: number } | null {
   const anchor = html.indexOf("Singapore Dollar");
   if (anchor === -1) return null;
 
@@ -185,8 +194,27 @@ function parseSgdMmkRow(html: string): { buy: number; sell: number } | null {
   const cells = [...window.matchAll(/class="text-danger">([\d,]+\.\d+)</g)];
   if (cells.length < 2) return null;
 
-  const buy = Number(cells[0][1].replace(/,/g, ""));
-  const sell = Number(cells[1][1].replace(/,/g, ""));
+  return sanitizeSgdMmkPair(cells[0][1], cells[1][1]);
+}
+
+/**
+ * Same numbers via the Jina reader markdown table used when EG Currency
+ * blocks the direct request (common from cloud datacenter IPs).
+ */
+function parseSgdMmkMarkdown(md: string): { buy: number; sell: number } | null {
+  const match = md.match(
+    /Singapore Dollar[^\n]*?\|\s*([\d,]+\.\d+)\s*\|\s*([\d,]+\.\d+)/i,
+  );
+  if (!match) return null;
+  return sanitizeSgdMmkPair(match[1], match[2]);
+}
+
+function sanitizeSgdMmkPair(
+  buyRaw: string,
+  sellRaw: string,
+): { buy: number; sell: number } | null {
+  const buy = Number(buyRaw.replace(/,/g, ""));
+  const sell = Number(sellRaw.replace(/,/g, ""));
   if (!Number.isFinite(buy) || !Number.isFinite(sell) || buy <= 0 || sell <= 0) {
     return null;
   }
@@ -200,6 +228,43 @@ function parseSgdMmkRow(html: string): { buy: number; sell: number } | null {
   return { buy, sell };
 }
 
+async function fetchEgCurrencyBody(): Promise<
+  { kind: "html" | "markdown"; body: string } | { error: string }
+> {
+  try {
+    const direct = await fetch(EG_CURRENCY_URL, {
+      cache: "no-store",
+      headers: EG_FETCH_HEADERS,
+    });
+    if (direct.ok) {
+      return { kind: "html", body: await direct.text() };
+    }
+    logServerEvent("warn", "mmk_street_rate_direct_blocked", {
+      reason: `status_${direct.status}`,
+    });
+  } catch (error) {
+    logServerEvent("warn", "mmk_street_rate_direct_failed", {
+      reason: error instanceof Error ? error.message : "unknown",
+    });
+  }
+
+  try {
+    const reader = await fetch(EG_CURRENCY_READER_URL, {
+      cache: "no-store",
+      headers: { ...EG_FETCH_HEADERS, accept: "text/plain" },
+    });
+    if (!reader.ok) {
+      return { error: `EG Currency reader responded ${reader.status}.` };
+    }
+    return { kind: "markdown", body: await reader.text() };
+  } catch (error) {
+    logServerEvent("error", "mmk_street_rate_fetch_failed", {
+      reason: error instanceof Error ? error.message : "unknown",
+    });
+    return { error: "Could not reach EG Currency." };
+  }
+}
+
 export async function syncMmkStreetRate(): Promise<RateSyncResult> {
   const result: RateSyncResult = { inserted: 0, skipped: [], errors: [] };
 
@@ -209,26 +274,16 @@ export async function syncMmkStreetRate(): Promise<RateSyncResult> {
     return result;
   }
 
-  let html: string;
-  try {
-    const response = await fetch(EG_CURRENCY_URL, {
-      cache: "no-store",
-      headers: { accept: "text/html" },
-    });
-    if (!response.ok) {
-      result.errors.push(`EG Currency responded ${response.status}.`);
-      return result;
-    }
-    html = await response.text();
-  } catch (error) {
-    logServerEvent("error", "mmk_street_rate_fetch_failed", {
-      reason: error instanceof Error ? error.message : "unknown",
-    });
-    result.errors.push("Could not reach EG Currency.");
+  const fetched = await fetchEgCurrencyBody();
+  if ("error" in fetched) {
+    result.errors.push(fetched.error);
     return result;
   }
 
-  const parsed = parseSgdMmkRow(html);
+  const parsed =
+    fetched.kind === "html"
+      ? parseSgdMmkHtml(fetched.body)
+      : parseSgdMmkMarkdown(fetched.body);
   if (!parsed) {
     result.skipped.push("SGD/MMK row not found or out of bounds on EG Currency");
     return result;

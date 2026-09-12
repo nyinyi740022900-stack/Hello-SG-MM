@@ -29,6 +29,7 @@ import {
   TAX_DOCUMENT_KEYS,
   VISIT_KEYS,
 } from "@/lib/passportRenewal";
+import PageDiscussionSection from "@/components/PageDiscussionSection";
 
 const EXTERNAL_LINK_CLASS = "font-semibold text-brand-strong underline";
 
@@ -89,6 +90,13 @@ export default async function PassportChecklistPage() {
             with the labels swapped. */}
         {country.hasLocalPassportGuide ? (
           <>
+            <div className="flex flex-wrap gap-3">
+              <LinkButton href="/guide" variant="secondary">
+                {t("ctaGuide")}
+              </LinkButton>
+              <LinkButton href="/passport/wizard">{t("ctaWizard")}</LinkButton>
+            </div>
+
             <StatusMessage variant="error">
               <span className="block space-y-2">
                 <span className="block font-medium">{t("scamWarningTitle")}</span>
@@ -434,6 +442,7 @@ export default async function PassportChecklistPage() {
             </div>
           </>
         )}
+        <PageDiscussionSection pageKey="passport-checklist" />
       </section>
     </PageCard>
   );

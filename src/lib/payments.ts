@@ -222,12 +222,18 @@ export async function reviewPayment(
     return { error: "Supabase is not configured.", entitlementCreated: false };
   }
 
-  // First, fetch the payment to get user_id and purpose
+  // First, fetch the payment to get user_id, purpose, and reference (e.g. job id)
   const { data: payment, error: fetchError } = await supabase
     .from("payments")
-    .select("id,user_id,purpose,status")
+    .select("id,user_id,purpose,reference_id,status")
     .eq("id", paymentId)
-    .single<{ id: string; user_id: string; purpose: string; status: string }>();
+    .single<{
+      id: string;
+      user_id: string;
+      purpose: string;
+      reference_id: string | null;
+      status: string;
+    }>();
 
   if (fetchError || !payment) {
     logServerEvent("warn", "payment_review_not_found", {
@@ -275,7 +281,7 @@ export async function reviewPayment(
     return { error: updateError.message, entitlementCreated: false };
   }
 
-  // If approved, create entitlement based on payment purpose
+  // If approved, create entitlement and/or activate product side-effects
   let entitlementCreated = false;
   if (status === "completed") {
     const productCode = PURPOSE_TO_PRODUCT_CODE[payment.purpose];
@@ -301,6 +307,30 @@ export async function reviewPayment(
         };
       } else {
         entitlementCreated = true;
+      }
+    }
+
+    // Featured job boost: reference_id must be the job_listings.id
+    if (payment.purpose === "job_featured" && payment.reference_id) {
+      const { activateJobFeaturedFromPayment } = await import(
+        "@/lib/jobListings.server"
+      );
+      const { featuredUntilFromNow } = await import("@/lib/jobListings");
+      const { error: featuredError } = await activateJobFeaturedFromPayment({
+        jobId: payment.reference_id,
+        featuredUntilIso: featuredUntilFromNow(),
+      });
+      if (featuredError) {
+        logServerEvent("error", "payment_review_job_featured_failed", {
+          paymentId,
+          jobId: payment.reference_id,
+          reason: featuredError,
+        });
+        return {
+          error:
+            "Payment approved, but Featured boost failed to activate. Retry from admin jobs.",
+          entitlementCreated,
+        };
       }
     }
   }

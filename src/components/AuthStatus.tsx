@@ -5,8 +5,13 @@ import { useAuth } from "@/context/AuthContext";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import type { AppLocale } from "@/i18n/routing";
-import { fetchUserProfile, type UserProfileRole } from "@/lib/payments";
 import { LinkButton } from "@/components/ui/Button";
+import {
+  avatarUrl,
+  fetchEditableProfile,
+  initialsFor,
+  type EditableProfile,
+} from "@/lib/profile";
 
 type AuthStatusProps = {
   locale: AppLocale;
@@ -17,26 +22,36 @@ export default function AuthStatus({ locale }: AuthStatusProps) {
   const router = useRouter();
   const pathname = usePathname();
   const t = useTranslations("auth");
-  const [role, setRole] = useState<UserProfileRole | null>(null);
+  const [profile, setProfile] = useState<EditableProfile | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     let mounted = true;
-    const loadRole = async () => {
+    const loadProfile = async () => {
       if (!user) {
-        queueMicrotask(() => setRole(null));
+        queueMicrotask(() => setProfile(null));
         return;
       }
-      const { data } = await fetchUserProfile(user.id);
+      const { data } = await fetchEditableProfile(user.id);
       if (!mounted) return;
+      if (data) {
+        setProfile(data);
+        return;
+      }
       const metadataRole =
         typeof user.user_metadata?.role === "string"
-          ? (user.user_metadata.role as UserProfileRole)
-          : null;
-      setRole(data?.role ?? metadataRole ?? null);
+          ? (user.user_metadata.role as EditableProfile["role"])
+          : "user";
+      setProfile({
+        id: user.id,
+        email: user.email ?? "",
+        role: metadataRole,
+        display_name: null,
+        avatar_path: null,
+      });
     };
-    void loadRole();
+    void loadProfile();
     return () => {
       mounted = false;
     };
@@ -98,7 +113,10 @@ export default function AuthStatus({ locale }: AuthStatusProps) {
     );
   }
 
-  const avatarLabel = user.email?.slice(0, 1).toUpperCase() || "U";
+  const role = profile?.role ?? null;
+  const photoUrl = avatarUrl(profile?.avatar_path);
+  const avatarLabel = initialsFor(profile?.display_name, user.email);
+  const menuName = profile?.display_name?.trim() || user.email;
   const isAdmin = role === "admin";
 
   return (
@@ -108,20 +126,25 @@ export default function AuthStatus({ locale }: AuthStatusProps) {
         onClick={() => setIsMenuOpen((prev) => !prev)}
         aria-haspopup="menu"
         aria-expanded={isMenuOpen}
-        aria-label={user.email ?? undefined}
+        aria-label={menuName ?? undefined}
         className="inline-flex h-9 items-center gap-1.5 rounded-full border border-border bg-surface p-0.5 shadow-sm transition hover:border-border-strong sm:h-10 sm:gap-2 sm:pr-3"
       >
         <span
           className={[
-            "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold sm:h-7 sm:w-7",
+            "inline-flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full text-xs font-semibold sm:h-7 sm:w-7",
             isAdmin ? "bg-accent-soft text-accent" : "bg-brand-soft text-brand-strong",
           ].join(" ")}
           aria-hidden="true"
         >
-          {avatarLabel}
+          {photoUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={photoUrl} alt="" className="h-full w-full object-cover" />
+          ) : (
+            avatarLabel
+          )}
         </span>
         <span className="hidden max-w-36 truncate text-xs font-medium text-ink-muted sm:inline">
-          {user.email}
+          {menuName}
         </span>
         <svg
           viewBox="0 0 24 24"
@@ -141,7 +164,17 @@ export default function AuthStatus({ locale }: AuthStatusProps) {
           className="absolute right-0 z-30 mt-2 w-64 rounded-xl border border-border bg-surface p-2 shadow-xl"
         >
           <div className="rounded-lg bg-surface-muted px-3 py-2">
-            <p className="truncate text-xs font-semibold text-ink">{user.email}</p>
+            {profile?.display_name ? (
+              <p className="truncate text-xs font-semibold text-ink">{profile.display_name}</p>
+            ) : null}
+            <p
+              className={[
+                "truncate text-xs",
+                profile?.display_name ? "mt-0.5 text-ink-subtle" : "font-semibold text-ink",
+              ].join(" ")}
+            >
+              {user.email}
+            </p>
             <p className="mt-0.5 text-[11px] text-ink-subtle">
               {isAdmin ? t("menuRoleAdmin") : t("menuRoleUser")}
             </p>
@@ -185,6 +218,24 @@ export default function AuthStatus({ locale }: AuthStatusProps) {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {t("menuAdminNews")}
+                </Link>
+                <Link
+                  href="/admin/housing"
+                  locale={locale}
+                  role="menuitem"
+                  className="rounded-lg px-3 py-2 text-sm font-medium text-accent transition hover:bg-accent-soft"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Housing
+                </Link>
+                <Link
+                  href="/admin/jobs"
+                  locale={locale}
+                  role="menuitem"
+                  className="rounded-lg px-3 py-2 text-sm font-medium text-accent transition hover:bg-accent-soft"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Jobs
                 </Link>
               </>
             ) : null}

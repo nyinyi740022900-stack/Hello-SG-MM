@@ -15,6 +15,7 @@ import {
   TAP_KEYS,
   TRANSFER_KEYS,
 } from "@/lib/transportGuide";
+import PageDiscussionSection from "@/components/PageDiscussionSection";
 
 function StepNumber({ index }: { index: number }) {
   return (
@@ -149,6 +150,7 @@ export default async function TransportPage({
         </div>
 
         <p className="text-xs text-ink-subtle">{t("disclaimer")}</p>
+        <PageDiscussionSection pageKey="transport" />
       </section>
     </PageCard>
   );

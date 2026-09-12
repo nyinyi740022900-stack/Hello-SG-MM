@@ -8,6 +8,7 @@ import { routing } from "@/i18n/routing";
 import PageCard from "@/components/ui/PageCard";
 import CountryMissionCard from "@/components/CountryMissionCard";
 import { resolveSelectedCountry } from "@/lib/country.server";
+import PageDiscussionSection from "@/components/PageDiscussionSection";
 
 type PassportWizardPageProps = {
   params: Promise<{ locale: string }>;
@@ -43,6 +44,7 @@ export default async function PassportWizardPage({ params }: PassportWizardPageP
               <span className="block">{tCountry("noGuideBody")}</span>
             </span>
           </StatusMessage>
+          <PageDiscussionSection pageKey="passport-wizard" />
         </section>
       </PageCard>
     );
@@ -58,6 +60,7 @@ export default async function PassportWizardPage({ params }: PassportWizardPageP
         <PassportWizardForm />
 
         <p className="text-xs text-ink-subtle">{t("sourceDisclaimer")}</p>
+        <PageDiscussionSection pageKey="passport-wizard" />
       </section>
     </PageCard>
   );

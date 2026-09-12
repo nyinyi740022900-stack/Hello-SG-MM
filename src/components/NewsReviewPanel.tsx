@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, type ChangeEvent } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -11,6 +11,7 @@ import {
   listPendingContent,
   rejectContentItem,
   updateContentItem,
+  contentImageUrl,
   CONTENT_CATEGORIES,
   type ContentCategory,
   type ContentEditableFields,
@@ -23,18 +24,12 @@ import FormField, { INPUT_CLASS } from "@/components/ui/FormField";
 import StatusMessage from "@/components/ui/StatusMessage";
 
 const CATEGORY_LABELS: Record<ContentCategory, string> = {
-  mom_policy: "Work & Pass",
-  embassy: "Consular",
-  safety_scam: "Safety / Scam Alert",
-  finance: "Money",
-  legal: "Rights",
+  work: "Work",
+  money: "Money",
+  safety: "Safety",
   health: "Health",
-  community: "Community",
-  education: "Training",
-  transport: "Transport",
-  jobs: "Jobs",
   housing: "Housing",
-  cost_of_living: "Cost of Living",
+  community: "Community",
 };
 
 const PRIORITY_LABELS: Record<ContentPriority, string> = {
@@ -72,6 +67,7 @@ function toEditState(item: ContentItem): EditState {
     body_my: item.body_my,
     category: item.category,
     priority: item.priority,
+    image_path: item.image_path,
   };
 }
 
@@ -111,6 +107,10 @@ export default function ContentReviewPanel() {
   const [rejectReason, setRejectReason] = useState("");
   const [isRejecting, setIsRejecting] = useState(false);
 
+  const [manualImagePath, setManualImagePath] = useState<string | null>(null);
+  const [manualUploading, setManualUploading] = useState(false);
+  const [editUploading, setEditUploading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -119,7 +119,7 @@ export default function ContentReviewPanel() {
   } = useForm<ManualFormValues>({
     resolver: zodResolver(manualSchema),
     defaultValues: {
-      category: "mom_policy",
+      category: "work",
       titleEn: "",
       titleMy: "",
       bodyEn: "",
@@ -127,6 +127,43 @@ export default function ContentReviewPanel() {
       sourceUrl: "",
     },
   });
+
+  async function uploadContentImage(file: File): Promise<string | null> {
+    const body = new FormData();
+    body.append("file", file);
+    const response = await fetch("/api/admin/content/upload", {
+      method: "POST",
+      body,
+    });
+    const payload = (await response.json()) as { path?: string; error?: string };
+    if (!response.ok || !payload.path) {
+      setActionError(payload.error ?? "Could not upload image.");
+      return null;
+    }
+    return payload.path;
+  }
+
+  const onManualImageChange = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+    setActionError(null);
+    setManualUploading(true);
+    const path = await uploadContentImage(file);
+    setManualUploading(false);
+    if (path) setManualImagePath(path);
+  };
+
+  const onEditImageChange = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file || !editState) return;
+    setActionError(null);
+    setEditUploading(true);
+    const path = await uploadContentImage(file);
+    setEditUploading(false);
+    if (path) updateEditField("image_path", path);
+  };
 
   const refresh = useCallback(async () => {
     setIsLoading(true);
@@ -256,12 +293,14 @@ export default function ContentReviewPanel() {
       bodyEn: values.bodyEn,
       bodyMy: values.bodyMy,
       sourceUrl: values.sourceUrl || undefined,
+      imagePath: manualImagePath,
     });
     if (error) {
       setActionError(error);
       return;
     }
     reset();
+    setManualImagePath(null);
     setManualSuccess(true);
   };
 
@@ -305,7 +344,39 @@ export default function ContentReviewPanel() {
           <FormField label="Source URL (optional)" error={errors.sourceUrl?.message}>
             <input className={INPUT_CLASS} placeholder="https://..." {...register("sourceUrl")} />
           </FormField>
-          <Button type="submit" disabled={isSubmitting}>
+          <FormField label="Cover image (optional)">
+            <div className="space-y-2">
+              <input
+                type="file"
+                accept="image/jpeg,image/png,image/webp,image/gif"
+                disabled={manualUploading || isSubmitting}
+                onChange={(e) => void onManualImageChange(e)}
+                className="block w-full text-sm text-ink-muted file:mr-3 file:rounded-lg file:border-0 file:bg-brand-soft file:px-3 file:py-2 file:text-sm file:font-semibold file:text-brand-strong"
+              />
+              <p className="text-xs text-ink-subtle">
+                {manualUploading ? "Uploading…" : "JPG, PNG, WebP or GIF · max 3 MB"}
+              </p>
+              {manualImagePath && contentImageUrl(manualImagePath) ? (
+                <div className="space-y-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={contentImageUrl(manualImagePath)!}
+                    alt=""
+                    className="mt-1 max-h-40 w-full rounded-xl border border-border object-cover"
+                  />
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    size="sm"
+                    onClick={() => setManualImagePath(null)}
+                  >
+                    Remove image
+                  </Button>
+                </div>
+              ) : null}
+            </div>
+          </FormField>
+          <Button type="submit" disabled={isSubmitting || manualUploading}>
             {isSubmitting ? "Publishing…" : "Publish now"}
           </Button>
           {manualSuccess ? <StatusMessage variant="success">Published.</StatusMessage> : null}
@@ -474,6 +545,40 @@ export default function ContentReviewPanel() {
                       />
                     </FormField>
 
+                    <FormField label="Cover image (optional)">
+                      <div className="space-y-2">
+                        <input
+                          type="file"
+                          accept="image/jpeg,image/png,image/webp,image/gif"
+                          disabled={editUploading || isSaving}
+                          onChange={(e) => void onEditImageChange(e)}
+                          className="block w-full text-sm text-ink-muted file:mr-3 file:rounded-lg file:border-0 file:bg-brand-soft file:px-3 file:py-2 file:text-sm file:font-semibold file:text-brand-strong"
+                        />
+                        <p className="text-xs text-ink-subtle">
+                          {editUploading ? "Uploading…" : "JPG, PNG, WebP or GIF · max 3 MB"}
+                        </p>
+                        {editState.image_path && contentImageUrl(editState.image_path) ? (
+                          <div className="space-y-2">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={contentImageUrl(editState.image_path)!}
+                              alt=""
+                              className="max-h-40 w-full rounded-xl border border-border object-cover"
+                            />
+                            <Button
+                              type="button"
+                              variant="secondary"
+                              size="sm"
+                              disabled={isSaving}
+                              onClick={() => updateEditField("image_path", null)}
+                            >
+                              Remove image
+                            </Button>
+                          </div>
+                        ) : null}
+                      </div>
+                    </FormField>
+
                     <div className="flex gap-2 pt-1">
                       <Button
                         size="md"
@@ -520,6 +625,14 @@ export default function ContentReviewPanel() {
                         {item.body_my}
                       </p>
                     </div>
+                    {item.image_path && contentImageUrl(item.image_path) ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={contentImageUrl(item.image_path)!}
+                        alt=""
+                        className="max-h-36 w-full rounded-xl border border-border object-cover sm:max-w-xs"
+                      />
+                    ) : null}
                     {item.source_name || item.source_url ? (
                       <p className="text-xs text-ink-subtle">
                         Source: {item.source_name ?? "Unknown"}

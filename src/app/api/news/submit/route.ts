@@ -36,8 +36,14 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     return errorResponse(firstError, 400);
   }
 
-  // 'exchange_rate' widened into 'finance' in the new 8-category taxonomy.
-  const category = parsed.data.category === "exchange_rate" ? "finance" : parsed.data.category;
+  // Legacy agent categories → simplified 6-category taxonomy.
+  const LEGACY_CATEGORY_MAP = {
+    mom_policy: "work",
+    exchange_rate: "money",
+    safety_scam: "safety",
+    community: "community",
+  } as const;
+  const category = LEGACY_CATEGORY_MAP[parsed.data.category];
 
   const forwardedRequest = new NextRequest(request.url, {
     method: "POST",
