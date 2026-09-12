@@ -24,7 +24,7 @@ export default function AppleIcon() {
             fontFamily: "sans-serif",
           }}
         >
-          M
+          h
         </div>
       </div>
     ),

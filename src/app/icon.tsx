@@ -40,7 +40,7 @@ export default function Icon({ id }: { id: string }) {
             fontFamily: "sans-serif",
           }}
         >
-          M
+          h
         </div>
       </div>
     ),
