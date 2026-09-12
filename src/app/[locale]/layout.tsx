@@ -74,6 +74,9 @@ export default async function LocaleLayout({
   const tLegal = await getTranslations("legal");
   const resolvedLocale = locale as AppLocale;
   const selectedCountry = await getSelectedCountryCode();
+  const appName = tCommon("appName");
+  const [appNameLead, ...appNameRestParts] = appName.split(" ");
+  const appNameRest = appNameRestParts.join(" ");
 
   return (
     <NextIntlClientProvider messages={messages}>
@@ -83,8 +86,14 @@ export default async function LocaleLayout({
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between gap-3">
                 <Link href="/" locale={resolvedLocale} className="min-w-0">
-                  <h1 className="truncate text-lg font-bold tracking-tight text-ink sm:text-xl">
-                    {tCommon("appName")}
+                  <h1 className="truncate text-lg font-extrabold tracking-tight sm:text-xl">
+                    <span className="text-brand">{appNameLead}</span>
+                    {appNameRest && (
+                      <>
+                        {" "}
+                        <span className="text-accent">{appNameRest}</span>
+                      </>
+                    )}
                   </h1>
                   <p className="hidden text-xs text-ink-subtle sm:block">
                     {tCommon("tagline")}
