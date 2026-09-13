@@ -24,6 +24,7 @@ const PLACE_KEYS = new Set(OFF_DAY_PLACES.map((p) => p.key));
 const commentSchema = z.object({
   placeKey: z.string().min(1).max(60),
   body: z.string().trim().min(1).max(500),
+  parentId: z.string().uuid().optional().nullable(),
 });
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
@@ -70,10 +71,31 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ error: "Unknown place." }, { status: 400 });
   }
 
+  // A reply must point at a live, top-level comment on the same place. This
+  // keeps threading to one level, the same restriction page_comments applies,
+  // so a reply can never itself gain replies.
+  if (parsed.parentId) {
+    const { data: parent } = await supabase
+      .from("place_comments")
+      .select("id,place_key,parent_id,is_visible")
+      .eq("id", parsed.parentId)
+      .maybeSingle();
+
+    if (
+      !parent ||
+      !parent.is_visible ||
+      parent.place_key !== parsed.placeKey ||
+      parent.parent_id !== null
+    ) {
+      return NextResponse.json({ error: "Reply only to the main comment." }, { status: 400 });
+    }
+  }
+
   const { error } = await supabase.from("place_comments").insert({
     place_key: parsed.placeKey,
     author_id: user.id,
     body: parsed.body,
+    parent_id: parsed.parentId ?? null,
   });
 
   if (error) {

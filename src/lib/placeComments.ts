@@ -11,17 +11,21 @@ import { supabase } from "@/lib/supabase";
 export type PlaceComment = {
   id: string;
   place_key: string;
+  parent_id: string | null;
   body: string;
   created_at: string;
   author: {
     display_name: string | null;
     avatar_url: string | null;
   };
+  /** One level only — a reply's own `replies` is always empty. */
+  replies: PlaceComment[];
 };
 
 type CommentRow = {
   id: string;
   place_key: string;
+  parent_id: string | null;
   body: string;
   created_at: string;
   author_id: string;
@@ -29,7 +33,7 @@ type CommentRow = {
 };
 
 const COMMENT_COLUMNS =
-  "id,place_key,body,created_at,author_id,profiles(display_name,avatar_path)";
+  "id,place_key,parent_id,body,created_at,author_id,profiles(display_name,avatar_path)";
 
 /** Public URL for an avatar stored in the `avatars` bucket. */
 export function avatarUrl(path: string | null | undefined): string | null {
@@ -62,19 +66,38 @@ export async function listPlaceComments(
 
   if (error) return { data: [], error: error.message };
 
-  return {
-    data: (data ?? []).map((row) => ({
-      id: row.id,
-      place_key: row.place_key,
-      body: row.body,
-      created_at: row.created_at,
-      author: {
-        display_name: row.profiles?.display_name ?? null,
-        avatar_url: avatarUrl(row.profiles?.avatar_path),
-      },
-    })),
-    error: null,
-  };
+  const toComment = (row: CommentRow): PlaceComment => ({
+    id: row.id,
+    place_key: row.place_key,
+    parent_id: row.parent_id,
+    body: row.body,
+    created_at: row.created_at,
+    author: {
+      display_name: row.profiles?.display_name ?? null,
+      avatar_url: avatarUrl(row.profiles?.avatar_path),
+    },
+    replies: [],
+  });
+
+  const rows = data ?? [];
+  const parents = rows.filter((row) => !row.parent_id).map(toComment);
+
+  const repliesByParent = new Map<string, PlaceComment[]>();
+  for (const row of rows) {
+    if (!row.parent_id) continue;
+    const list = repliesByParent.get(row.parent_id) ?? [];
+    list.push(toComment(row));
+    repliesByParent.set(row.parent_id, list);
+  }
+
+  for (const parent of parents) {
+    // Oldest first within a thread, same as page_comments.
+    parent.replies = (repliesByParent.get(parent.id) ?? []).sort(
+      (a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
+    );
+  }
+
+  return { data: parents, error: null };
 }
 
 /** Comment counts for many places in one query, for the list view. */

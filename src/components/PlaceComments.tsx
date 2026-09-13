@@ -47,6 +47,20 @@ export default function PlaceComments({
   const [body, setBody] = useState("");
   const [state, setState] = useState<"idle" | "sending" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
+  const [replyTo, setReplyTo] = useState<string | null>(null);
+  const [replyBody, setReplyBody] = useState("");
+  const [replyState, setReplyState] = useState<"idle" | "sending" | "error">("idle");
+  const [replyError, setReplyError] = useState<string | null>(null);
+
+  const post = async (text: string, parentId: string | null) => {
+    const response = await fetch("/api/place-comments", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ placeKey, body: text, parentId }),
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.error ?? t("failed"));
+  };
 
   const submit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -56,23 +70,32 @@ export default function PlaceComments({
     setState("sending");
     setError(null);
     try {
-      const response = await fetch("/api/place-comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ placeKey, body: text }),
-      });
-      const payload = await response.json();
-      if (!response.ok) {
-        setState("error");
-        setError(payload.error ?? t("failed"));
-        return;
-      }
+      await post(text, null);
       setBody("");
       setState("idle");
       router.refresh();
-    } catch {
+    } catch (err) {
       setState("error");
-      setError(t("failed"));
+      setError(err instanceof Error ? err.message : t("failed"));
+    }
+  };
+
+  const submitReply = async (event: React.FormEvent, parentId: string) => {
+    event.preventDefault();
+    const text = replyBody.trim();
+    if (!text) return;
+
+    setReplyState("sending");
+    setReplyError(null);
+    try {
+      await post(text, parentId);
+      setReplyBody("");
+      setReplyState("idle");
+      setReplyTo(null);
+      router.refresh();
+    } catch (err) {
+      setReplyState("error");
+      setReplyError(err instanceof Error ? err.message : t("failed"));
     }
   };
 
@@ -106,13 +129,92 @@ export default function PlaceComments({
                       initialsFor(comment.author.display_name)
                     )}
                   </span>
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <p className="text-xs font-medium text-ink">
                       {comment.author.display_name ?? t("someone")}
                     </p>
                     <p className="whitespace-pre-line text-sm text-ink-muted">
                       {comment.body}
                     </p>
+                    {user ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setReplyTo((current) => (current === comment.id ? null : comment.id));
+                          setReplyBody("");
+                          setReplyError(null);
+                        }}
+                        className="mt-1 text-[11px] font-medium text-brand-strong hover:underline"
+                      >
+                        {t("reply")}
+                      </button>
+                    ) : null}
+
+                    {replyTo === comment.id ? (
+                      <form
+                        onSubmit={(event) => submitReply(event, comment.id)}
+                        className="mt-2 space-y-1.5"
+                      >
+                        <textarea
+                          value={replyBody}
+                          onChange={(event) => setReplyBody(event.target.value)}
+                          placeholder={t("replyPlaceholder")}
+                          rows={2}
+                          maxLength={500}
+                          autoFocus
+                          className="w-full rounded-xl border border-border bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-brand"
+                        />
+                        <div className="flex items-center gap-3">
+                          <button
+                            type="submit"
+                            disabled={replyState === "sending" || !replyBody.trim()}
+                            className="rounded-xl bg-brand px-3 py-1.5 text-xs font-semibold text-ink-on-brand disabled:opacity-60"
+                          >
+                            {replyState === "sending" ? t("sending") : t("postReply")}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setReplyTo(null)}
+                            className="text-xs text-ink-subtle hover:underline"
+                          >
+                            {t("cancel")}
+                          </button>
+                          {replyError ? (
+                            <span className="text-xs text-danger">{replyError}</span>
+                          ) : null}
+                        </div>
+                      </form>
+                    ) : null}
+
+                    {comment.replies.length > 0 ? (
+                      <ul className="mt-2 ml-2 space-y-2 border-l border-border pl-3 sm:ml-4">
+                        {comment.replies.map((reply) => (
+                          <li key={reply.id} className="flex gap-2">
+                            <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center overflow-hidden rounded-full bg-brand-soft text-[10px] font-semibold text-brand-strong">
+                              {reply.author.avatar_url ? (
+                                <Image
+                                  src={reply.author.avatar_url}
+                                  alt=""
+                                  width={24}
+                                  height={24}
+                                  className="h-6 w-6 object-cover"
+                                />
+                              ) : (
+                                initialsFor(reply.author.display_name)
+                              )}
+                            </span>
+                            <div className="min-w-0">
+                              <p className="text-xs font-medium text-ink">
+                                {reply.author.display_name ?? t("someone")}
+                              </p>
+                              <p className="whitespace-pre-line text-sm text-ink-muted">
+                                {reply.body}
+                              </p>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
                   </div>
                 </li>
               ))}
