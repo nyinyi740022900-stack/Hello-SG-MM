@@ -8,6 +8,7 @@ import AuthGate from "@/components/AuthGate";
 import StatusMessage from "@/components/ui/StatusMessage";
 import JobApplicationMessages from "@/components/JobApplicationMessages";
 import JobFeaturedPaymentForm from "@/components/JobFeaturedPaymentForm";
+import JobListingDeleteButton from "@/components/JobListingDeleteButton";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { createServerSupabaseClient } from "@/lib/authz";
 import {
@@ -73,15 +74,18 @@ export default async function JobsMinePage({
                               : ""}
                           </p>
                         </div>
-                        {job.status === "published" ? (
-                          <Link
-                            href={`/jobs/${job.id}`}
-                            locale={resolvedLocale}
-                            className="text-xs font-medium text-brand-strong underline"
-                          >
-                            {t("viewPublic")}
-                          </Link>
-                        ) : null}
+                        <div className="flex shrink-0 items-center gap-3">
+                          {job.status === "published" ? (
+                            <Link
+                              href={`/jobs/${job.id}`}
+                              locale={resolvedLocale}
+                              className="text-xs font-medium text-brand-strong underline"
+                            >
+                              {t("viewPublic")}
+                            </Link>
+                          ) : null}
+                          <JobListingDeleteButton jobId={job.id} />
+                        </div>
                       </div>
                       {job.status === "published" && !isJobFeatured(job) ? (
                         <JobFeaturedPaymentForm jobId={job.id} />

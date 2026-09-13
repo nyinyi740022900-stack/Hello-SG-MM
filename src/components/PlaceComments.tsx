@@ -52,6 +52,18 @@ export default function PlaceComments({
   const [replyBody, setReplyBody] = useState("");
   const [replyState, setReplyState] = useState<"idle" | "sending" | "error">("idle");
   const [replyError, setReplyError] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  const handleDelete = async (id: string) => {
+    if (!window.confirm(t("deleteConfirm"))) return;
+    setDeletingId(id);
+    try {
+      await fetch(`/api/place-comments?id=${id}`, { method: "DELETE" });
+      router.refresh();
+    } finally {
+      setDeletingId(null);
+    }
+  };
 
   const post = async (text: string, parentId: string | null) => {
     const response = await fetch("/api/place-comments", {
@@ -141,19 +153,31 @@ export default function PlaceComments({
                     <p className="whitespace-pre-line text-sm text-ink-muted">
                       {comment.body}
                     </p>
-                    {user ? (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setReplyTo((current) => (current === comment.id ? null : comment.id));
-                          setReplyBody("");
-                          setReplyError(null);
-                        }}
-                        className="mt-1 text-[11px] font-medium text-brand-strong hover:underline"
-                      >
-                        {t("reply")}
-                      </button>
-                    ) : null}
+                    <div className="mt-1 flex items-center gap-3">
+                      {user ? (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setReplyTo((current) => (current === comment.id ? null : comment.id));
+                            setReplyBody("");
+                            setReplyError(null);
+                          }}
+                          className="text-[11px] font-medium text-brand-strong hover:underline"
+                        >
+                          {t("reply")}
+                        </button>
+                      ) : null}
+                      {user?.id === comment.author_id ? (
+                        <button
+                          type="button"
+                          onClick={() => void handleDelete(comment.id)}
+                          disabled={deletingId === comment.id}
+                          className="text-[11px] text-ink-subtle hover:text-danger hover:underline disabled:opacity-60"
+                        >
+                          {t("delete")}
+                        </button>
+                      ) : null}
+                    </div>
 
                     {replyTo === comment.id ? (
                       <form
@@ -219,6 +243,16 @@ export default function PlaceComments({
                               <p className="whitespace-pre-line text-sm text-ink-muted">
                                 {reply.body}
                               </p>
+                              {user?.id === reply.author_id ? (
+                                <button
+                                  type="button"
+                                  onClick={() => void handleDelete(reply.id)}
+                                  disabled={deletingId === reply.id}
+                                  className="mt-1 text-[11px] text-ink-subtle hover:text-danger hover:underline disabled:opacity-60"
+                                >
+                                  {t("delete")}
+                                </button>
+                              ) : null}
                             </div>
                           </li>
                         ))}

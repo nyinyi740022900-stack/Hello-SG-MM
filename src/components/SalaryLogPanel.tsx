@@ -12,7 +12,9 @@ import {
   deleteSalaryEntry,
   listSalaryEntries,
   summarizeSalaryEntries,
+  updateSalaryEntry,
   type SalaryEntry,
+  type SalaryEntryInput,
 } from "@/lib/salaryLog";
 import FormField, { INPUT_CLASS } from "@/components/ui/FormField";
 import StatusMessage from "@/components/ui/StatusMessage";
@@ -45,6 +47,10 @@ export default function SalaryLogPanel() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [fullName, setFullName] = useState("");
   const [exportState, setExportState] = useState<ExportState>({ phase: "idle" });
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editValues, setEditValues] = useState<SalaryEntryInput | null>(null);
+  const [editError, setEditError] = useState<string | null>(null);
+  const [isSavingEdit, setIsSavingEdit] = useState(false);
 
   const {
     register,
@@ -100,6 +106,38 @@ export default function SalaryLogPanel() {
 
   const handleDelete = async (id: string) => {
     await deleteSalaryEntry(id);
+    void refresh();
+  };
+
+  const startEdit = (entry: SalaryEntry) => {
+    setEditingId(entry.id);
+    setEditError(null);
+    setEditValues({
+      entryDate: entry.entry_date,
+      expectedAmount: entry.expected_amount,
+      receivedAmount: entry.received_amount,
+      currency: entry.currency,
+      note: entry.note ?? "",
+    });
+  };
+
+  const cancelEdit = () => {
+    setEditingId(null);
+    setEditValues(null);
+    setEditError(null);
+  };
+
+  const saveEdit = async (id: string) => {
+    if (!editValues) return;
+    setIsSavingEdit(true);
+    setEditError(null);
+    const { error } = await updateSalaryEntry(id, editValues);
+    setIsSavingEdit(false);
+    if (error) {
+      setEditError(error);
+      return;
+    }
+    cancelEdit();
     void refresh();
   };
 
@@ -228,6 +266,90 @@ export default function SalaryLogPanel() {
         <div className="space-y-2">
           {entries.map((entry) => {
             const shortfall = entry.expected_amount - entry.received_amount;
+
+            if (editingId === entry.id && editValues) {
+              return (
+                <div
+                  key={entry.id}
+                  className="space-y-2 rounded-xl border border-brand bg-surface p-3"
+                >
+                  <div className="grid gap-2 sm:grid-cols-2">
+                    <input
+                      type="date"
+                      value={editValues.entryDate}
+                      onChange={(e) =>
+                        setEditValues({ ...editValues, entryDate: e.target.value })
+                      }
+                      className={INPUT_CLASS}
+                    />
+                    <select
+                      value={editValues.currency}
+                      onChange={(e) =>
+                        setEditValues({ ...editValues, currency: e.target.value })
+                      }
+                      className={INPUT_CLASS}
+                    >
+                      <option value="SGD">SGD</option>
+                      <option value="USD">USD</option>
+                      <option value="MMK">MMK</option>
+                    </select>
+                    <input
+                      type="number"
+                      step="0.01"
+                      min="0"
+                      value={editValues.expectedAmount}
+                      onChange={(e) =>
+                        setEditValues({
+                          ...editValues,
+                          expectedAmount: Number(e.target.value),
+                        })
+                      }
+                      className={INPUT_CLASS}
+                      placeholder={t("fieldExpected")}
+                    />
+                    <input
+                      type="number"
+                      step="0.01"
+                      min="0"
+                      value={editValues.receivedAmount}
+                      onChange={(e) =>
+                        setEditValues({
+                          ...editValues,
+                          receivedAmount: Number(e.target.value),
+                        })
+                      }
+                      className={INPUT_CLASS}
+                      placeholder={t("fieldReceived")}
+                    />
+                    <input
+                      type="text"
+                      value={editValues.note}
+                      onChange={(e) => setEditValues({ ...editValues, note: e.target.value })}
+                      className={`${INPUT_CLASS} sm:col-span-2`}
+                      placeholder={t("fieldNoteHint")}
+                    />
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Button
+                      type="button"
+                      onClick={() => void saveEdit(entry.id)}
+                      disabled={isSavingEdit}
+                    >
+                      {isSavingEdit ? t("sending") : t("save")}
+                    </Button>
+                    <button
+                      type="button"
+                      onClick={cancelEdit}
+                      className="text-xs text-ink-subtle underline"
+                    >
+                      {t("cancel")}
+                    </button>
+                    {editError ? <StatusMessage variant="error">{editError}</StatusMessage> : null}
+                  </div>
+                </div>
+              );
+            }
+
             return (
               <div
                 key={entry.id}
@@ -251,6 +373,13 @@ export default function SalaryLogPanel() {
                       {t("ok")}
                     </span>
                   )}
+                  <button
+                    type="button"
+                    onClick={() => startEdit(entry)}
+                    className="text-xs text-ink-subtle underline hover:text-brand-strong"
+                  >
+                    {t("edit")}
+                  </button>
                   <button
                     type="button"
                     onClick={() => void handleDelete(entry.id)}

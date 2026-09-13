@@ -88,3 +88,34 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
   return NextResponse.json({ listing: data }, { status: 201 });
 }
+
+/** Poster delists their own room, published or not. Admin-only otherwise. */
+export async function DELETE(request: NextRequest): Promise<NextResponse> {
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) {
+    return NextResponse.json({ error: "Server not configured." }, { status: 500 });
+  }
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) {
+    return NextResponse.json({ error: "Sign in first." }, { status: 401 });
+  }
+
+  const id = new URL(request.url).searchParams.get("id");
+  if (!id) {
+    return NextResponse.json({ error: "Missing listing id." }, { status: 400 });
+  }
+
+  // No ownership check here on purpose: the delete policy already restricts
+  // this to the row's own poster, so a request for someone else's listing
+  // deletes nothing rather than confirming the listing exists.
+  const { error } = await supabase.from("room_listings").delete().eq("id", id);
+
+  if (error) {
+    return NextResponse.json({ error: "Could not remove the listing." }, { status: 500 });
+  }
+
+  return NextResponse.json({ status: "ok" });
+}

@@ -97,6 +97,28 @@ export async function addSalaryEntry(
   return { error: error?.message ?? null };
 }
 
+export async function updateSalaryEntry(
+  entryId: string,
+  input: SalaryEntryInput,
+): Promise<{ error: string | null }> {
+  if (!supabase) {
+    return { error: "Supabase is not configured." };
+  }
+
+  const { error } = await supabase
+    .from("salary_entries")
+    .update({
+      entry_date: input.entryDate,
+      expected_amount: input.expectedAmount,
+      received_amount: input.receivedAmount,
+      currency: input.currency,
+      note: input.note?.trim() || null,
+    })
+    .eq("id", entryId);
+
+  return { error: error?.message ?? null };
+}
+
 export async function deleteSalaryEntry(entryId: string): Promise<{ error: string | null }> {
   if (!supabase) {
     return { error: "Supabase is not configured." };

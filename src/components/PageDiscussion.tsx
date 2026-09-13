@@ -69,6 +69,18 @@ export default function PageDiscussion({
     useState<PageCommentReportReason>("inappropriate");
   const [reportDetails, setReportDetails] = useState("");
   const [reportMsg, setReportMsg] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  const handleDelete = async (id: string) => {
+    if (!window.confirm(t("deleteConfirm"))) return;
+    setDeletingId(id);
+    try {
+      await fetch(`/api/page-comments?id=${id}`, { method: "DELETE" });
+      router.refresh();
+    } finally {
+      setDeletingId(null);
+    }
+  };
 
   const post = async (text: string, parentId: string | null) => {
     setState("sending");
@@ -242,6 +254,16 @@ export default function PageDiscussion({
                         {t("report")}
                       </button>
                     ) : null}
+                    {user?.id === comment.author_id ? (
+                      <button
+                        type="button"
+                        onClick={() => void handleDelete(comment.id)}
+                        disabled={deletingId === comment.id}
+                        className="text-xs font-medium text-ink-subtle hover:text-danger hover:underline disabled:opacity-60"
+                      >
+                        {t("delete")}
+                      </button>
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -261,18 +283,30 @@ export default function PageDiscussion({
                         <p className="whitespace-pre-line text-sm text-ink-muted">
                           {reply.body}
                         </p>
-                        {user ? (
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setReportFor(reply.id);
-                              setReportMsg(null);
-                            }}
-                            className="mt-1 text-xs font-medium text-ink-subtle hover:text-danger hover:underline"
-                          >
-                            {t("report")}
-                          </button>
-                        ) : null}
+                        <div className="mt-1 flex flex-wrap gap-3">
+                          {user ? (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setReportFor(reply.id);
+                                setReportMsg(null);
+                              }}
+                              className="text-xs font-medium text-ink-subtle hover:text-danger hover:underline"
+                            >
+                              {t("report")}
+                            </button>
+                          ) : null}
+                          {user?.id === reply.author_id ? (
+                            <button
+                              type="button"
+                              onClick={() => void handleDelete(reply.id)}
+                              disabled={deletingId === reply.id}
+                              className="text-xs font-medium text-ink-subtle hover:text-danger hover:underline disabled:opacity-60"
+                            >
+                              {t("delete")}
+                            </button>
+                          ) : null}
+                        </div>
                       </div>
                     </li>
                   ))}

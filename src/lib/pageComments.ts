@@ -15,6 +15,7 @@ export type PageComment = {
   id: string;
   page_key: string;
   parent_id: string | null;
+  author_id: string;
   body: string;
   created_at: string;
   author: CommentAuthor;
@@ -63,6 +64,7 @@ function mapRow(row: CommentRow): Omit<PageComment, "replies"> {
     id: row.id,
     page_key: row.page_key,
     parent_id: row.parent_id,
+    author_id: row.author_id,
     body: row.body,
     created_at: row.created_at,
     author: {

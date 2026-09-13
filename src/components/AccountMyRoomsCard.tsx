@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { Card } from "@/components/ui/Card";
 import { LinkButton } from "@/components/ui/Button";
 import StatusMessage from "@/components/ui/StatusMessage";
@@ -30,6 +31,19 @@ export default function AccountMyRoomsCard({
   rooms,
 }: AccountMyRoomsCardProps) {
   const t = useTranslations("account");
+  const router = useRouter();
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  const handleDelete = async (id: string) => {
+    if (!window.confirm(t("roomDeleteConfirm"))) return;
+    setDeletingId(id);
+    try {
+      await fetch(`/api/room-listings?id=${id}`, { method: "DELETE" });
+      router.refresh();
+    } finally {
+      setDeletingId(null);
+    }
+  };
 
   return (
     <Card className="space-y-3">
@@ -77,13 +91,23 @@ export default function AccountMyRoomsCard({
                       {expiry ? ` · ${t("expiresOn", { date: expiry })}` : ""}
                     </p>
                   </div>
-                  <Link
-                    href="/housing"
-                    locale={locale}
-                    className="text-xs font-medium text-brand-strong underline"
-                  >
-                    {t("browseHousing")}
-                  </Link>
+                  <div className="flex shrink-0 items-center gap-3">
+                    <Link
+                      href="/housing"
+                      locale={locale}
+                      className="text-xs font-medium text-brand-strong underline"
+                    >
+                      {t("browseHousing")}
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => void handleDelete(room.id)}
+                      disabled={deletingId === room.id}
+                      className="text-xs font-medium text-ink-subtle underline hover:text-danger disabled:opacity-60"
+                    >
+                      {t("roomDelete")}
+                    </button>
+                  </div>
                 </div>
                 {room.status === "rejected" && room.admin_note ? (
                   <p className="text-xs text-danger">
