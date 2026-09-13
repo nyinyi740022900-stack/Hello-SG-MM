@@ -54,7 +54,7 @@ export default async function AdminLayout({
 
   // Not authenticated => redirect to login
   if (authResult.status === "not_authenticated") {
-    redirect(`/${resolvedLocale}/login?next=/${resolvedLocale}/admin/payments`);
+    redirect(`/${resolvedLocale}/login?next=/admin/payments`);
   }
 
   // Not admin => show not authorized message

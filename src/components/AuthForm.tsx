@@ -59,8 +59,7 @@ export default function AuthForm({ locale, mode }: AuthFormProps) {
     setVerificationNotice(null);
 
     const nextPath = searchParams.get("next");
-    const safeNextPath =
-      nextPath && nextPath.startsWith(`/${locale}`) ? nextPath : `/${locale}/passport/wizard`;
+    const safeNextPath = nextPath && nextPath.startsWith("/") ? nextPath : "/passport/wizard";
 
     if (mode === "login") {
       const errorMessage = await signIn(values.email, values.password);
