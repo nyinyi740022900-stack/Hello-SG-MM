@@ -170,7 +170,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
         <div className="rounded-2xl border border-border bg-surface-muted p-4">
           <p className="text-sm text-ink-muted">
             {isMy ? "မေးခွန်းများအတွက် —" : "Questions about these terms —"}{" "}
-            <span className="font-medium text-ink">support@sgmigrantworkerapp.com</span>
+            <span className="font-medium text-ink">hellosgmm@gmail.com</span>
           </p>
         </div>
       </section>

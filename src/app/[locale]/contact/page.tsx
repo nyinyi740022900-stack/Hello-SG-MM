@@ -40,7 +40,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
           </p>
         </div>
         <div className="rounded-2xl border border-border bg-surface-muted p-4 text-sm text-ink-muted">
-          support@sgmigrantworkerapp.com
+          hellosgmm@gmail.com
         </div>
 
         <SponsorInquiryForm />

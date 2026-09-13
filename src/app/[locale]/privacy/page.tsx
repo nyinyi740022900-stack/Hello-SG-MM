@@ -246,7 +246,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
               : "For privacy questions or account deletion —"}
           </p>
           <p className="text-sm font-medium text-ink">
-            support@sgmigrantworkerapp.com
+            hellosgmm@gmail.com
           </p>
         </div>
       </section>
