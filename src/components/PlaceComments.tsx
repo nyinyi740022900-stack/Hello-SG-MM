@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { useAuth } from "@/context/AuthContext";
+import AvatarLightbox from "@/components/ui/AvatarLightbox";
 import type { PlaceComment } from "@/lib/placeComments";
 
 /**
@@ -116,7 +117,11 @@ export default function PlaceComments({
             <ul className="space-y-3">
               {comments.map((comment) => (
                 <li key={comment.id} className="flex gap-2.5">
-                  <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden rounded-full bg-brand-soft text-[11px] font-semibold text-brand-strong">
+                  <AvatarLightbox
+                    avatarUrl={comment.author.avatar_url}
+                    label={comment.author.display_name ?? undefined}
+                    className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden rounded-full bg-brand-soft text-[11px] font-semibold text-brand-strong"
+                  >
                     {comment.author.avatar_url ? (
                       <Image
                         src={comment.author.avatar_url}
@@ -128,7 +133,7 @@ export default function PlaceComments({
                     ) : (
                       initialsFor(comment.author.display_name)
                     )}
-                  </span>
+                  </AvatarLightbox>
                   <div className="min-w-0 flex-1">
                     <p className="text-xs font-medium text-ink">
                       {comment.author.display_name ?? t("someone")}
@@ -190,7 +195,11 @@ export default function PlaceComments({
                       <ul className="mt-2 ml-2 space-y-2 border-l border-border pl-3 sm:ml-4">
                         {comment.replies.map((reply) => (
                           <li key={reply.id} className="flex gap-2">
-                            <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center overflow-hidden rounded-full bg-brand-soft text-[10px] font-semibold text-brand-strong">
+                            <AvatarLightbox
+                              avatarUrl={reply.author.avatar_url}
+                              label={reply.author.display_name ?? undefined}
+                              className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center overflow-hidden rounded-full bg-brand-soft text-[10px] font-semibold text-brand-strong"
+                            >
                               {reply.author.avatar_url ? (
                                 <Image
                                   src={reply.author.avatar_url}
@@ -202,7 +211,7 @@ export default function PlaceComments({
                               ) : (
                                 initialsFor(reply.author.display_name)
                               )}
-                            </span>
+                            </AvatarLightbox>
                             <div className="min-w-0">
                               <p className="text-xs font-medium text-ink">
                                 {reply.author.display_name ?? t("someone")}

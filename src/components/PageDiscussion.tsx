@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { useAuth } from "@/context/AuthContext";
+import AvatarLightbox from "@/components/ui/AvatarLightbox";
 import type { PageComment, PageCommentReportReason } from "@/lib/pageComments";
 import type { PageDiscussionKey } from "@/lib/pageDiscussionKeys";
 
@@ -30,13 +31,17 @@ function Avatar({
   url: string | null;
 }) {
   return (
-    <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-brand-soft text-[11px] font-semibold text-brand-strong">
+    <AvatarLightbox
+      avatarUrl={url}
+      label={name ?? undefined}
+      className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-brand-soft text-[11px] font-semibold text-brand-strong"
+    >
       {url ? (
         <Image src={url} alt="" width={32} height={32} className="h-8 w-8 object-cover" />
       ) : (
         initialsFor(name)
       )}
-    </span>
+    </AvatarLightbox>
   );
 }
 

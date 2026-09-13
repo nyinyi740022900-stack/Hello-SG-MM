@@ -13,6 +13,7 @@ import {
   type EditableProfile,
 } from "@/lib/profile";
 import StatusMessage from "@/components/ui/StatusMessage";
+import AvatarLightbox from "@/components/ui/AvatarLightbox";
 
 function roleClass(role: EditableProfile["role"] | null) {
   if (role === "admin") return "border-accent-border bg-accent-soft text-accent";
@@ -147,9 +148,9 @@ export default function AccountProfileCard() {
 
       <div className="mt-4 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
         <div className="relative">
-          <span
+          <AvatarLightbox
+            avatarUrl={previewUrl}
             className="inline-flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-brand-soft text-xl font-semibold text-brand-strong"
-            aria-hidden="true"
           >
             {previewUrl ? (
               // eslint-disable-next-line @next/next/no-img-element -- local blob preview + storage URL
@@ -161,7 +162,7 @@ export default function AccountProfileCard() {
             ) : (
               initials
             )}
-          </span>
+          </AvatarLightbox>
         </div>
 
         <div className="space-y-2">
