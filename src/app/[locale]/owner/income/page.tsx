@@ -27,18 +27,17 @@ export default function OwnerIncomePage() {
           <h2 className="text-lg font-semibold text-ink">Do this now</h2>
           <ol className="list-decimal space-y-2 pl-5 text-sm text-ink">
             <li>
-              Open each partner program link below and apply (Agoda, Airalo first).
+              Open each partner program link below and apply (Trip.com, Airalo,
+              Circles.Life — registered via Impact.com / Involve Asia).
             </li>
             <li>
-              When approved, go to <strong>Admin → Referrals</strong>, filter by Exchange /
-              Travel / Accounts, click <strong>Paste tracking URL</strong>, save as{" "}
+              When approved, go to <strong>Admin → Referrals</strong>, filter by{" "}
+              <strong>Travel</strong>, click <strong>Paste tracking URL</strong>, save as{" "}
               <strong>Affiliate</strong>.
             </li>
             <li>
-              Confirm cards appear on <strong>Exchange</strong> (`remittance`) and{" "}
-              <strong>Travel</strong> (`travel`).
+              Confirm cards appear on <strong>Travel</strong> (`travel`).
             </li>
-            <li>Optional: OCBC FRANK / Revolut for Accounts Guide (`bank`).</li>
             <li>Sponsored ads / Contact form stay available for direct B2B deals.</li>
           </ol>
         </Card>
