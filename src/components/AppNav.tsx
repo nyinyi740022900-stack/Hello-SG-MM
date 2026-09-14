@@ -24,6 +24,7 @@ import {
   Menu,
   Phone,
   Plane,
+  Radio,
   Receipt,
   User,
   Wallet,
@@ -115,6 +116,7 @@ export default function AppNav({ locale }: AppNavProps) {
             icon: Car,
           },
           { href: "/lottery", label: t("lottery"), icon: Dices },
+          { href: "/radio", label: t("radio"), icon: Radio },
           { href: "/salary-log", label: tHome("toolSalaryLog"), icon: Receipt },
           {
             href: "/recruitment-fee",
