@@ -1087,7 +1087,7 @@
       "momSalary": "MOM — salary payment rules (work pass)"
     },
     "partnersTitle": "Send with a trusted partner",
-    "partnersSubtitle": "Open Remitly or WorldRemit from here to compare fees and keep this free app running. Always prefer MAS-licensed services and check the final amount before you pay.",
+    "partnersSubtitle": "Open a partner app from here to compare fees and keep this free app running. Always prefer MAS-licensed services and check the final amount before you pay.",
     "mistakesTitle": "Mistakes that cost money",
     "mistakes": {
       "mistakeUnlicensed": "Sending through an unlicensed person — no MAS complaint path if funds vanish.",
@@ -2118,8 +2118,6 @@
       "airalo": "Buy a travel eSIM so maps and chat work abroad without expensive roaming.",
       "youtrip": "Multi-currency card for spending abroad — load SGD before you leave.",
       "circles": "Optional Singapore SIM plan if you need a local number.",
-      "remitly": "Send money home with clear fees — check the final amount before you pay.",
-      "worldremit": "International transfer option — compare fees and speed with other licensed apps.",
       "revolut": "Digital account / wallet signup — useful if you already trust Revolut.",
       "ocbc-frank": "OCBC FRANK account option for everyday banking in Singapore."
     }

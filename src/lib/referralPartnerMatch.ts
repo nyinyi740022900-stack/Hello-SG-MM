@@ -12,8 +12,6 @@ export type IncomePartnerKey =
   | "airalo"
   | "youtrip"
   | "circles"
-  | "remitly"
-  | "worldremit"
   | "revolut"
   | "ocbc-frank";
 
@@ -23,8 +21,6 @@ const PARTNER_ALIASES: Record<IncomePartnerKey, readonly string[]> = {
   airalo: ["airalo"],
   youtrip: ["youtrip", "you.co/sg/youtrip"],
   circles: ["circles.life", "circles"],
-  remitly: ["remitly"],
-  worldremit: ["worldremit", "world remit", "instarem"],
   revolut: ["revolut"],
   "ocbc-frank": ["ocbc frank", "frank debit"],
 };
