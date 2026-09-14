@@ -61,6 +61,14 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} ${myanmarFont.variable} h-full antialiased`}
     >
+      <head>
+        {/* Airalo/Impact.com affiliate program: site-ownership verification. */}
+        <meta
+          name="impact-site-verification"
+          content="191be97f-1153-4236-a8aa-b786fe2e929f"
+          {...({ value: "191be97f-1153-4236-a8aa-b786fe2e929f" } as Record<string, string>)}
+        />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
