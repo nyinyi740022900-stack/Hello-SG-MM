@@ -27,7 +27,7 @@ export default function OwnerIncomePage() {
           <h2 className="text-lg font-semibold text-ink">Do this now</h2>
           <ol className="list-decimal space-y-2 pl-5 text-sm text-ink">
             <li>
-              Open each partner program link below and apply (Remitly, Agoda, Airalo first).
+              Open each partner program link below and apply (Agoda, Airalo first).
             </li>
             <li>
               When approved, go to <strong>Admin → Referrals</strong>, filter by Exchange /

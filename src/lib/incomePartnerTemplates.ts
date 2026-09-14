@@ -22,32 +22,6 @@ export type IncomePartnerTemplate = {
 
 export const INCOME_PARTNER_TEMPLATES: readonly IncomePartnerTemplate[] = [
   {
-    id: "remitly",
-    title: "Remitly — send money home",
-    partnerName: "Remitly",
-    description:
-      "Licensed remittance. Paste your Remitly affiliate tracking URL, set type to Affiliate.",
-    url: "https://www.remitly.com/sg/en",
-    applyUrl: "https://www.remitly.com/sg/en/landing/partner-program",
-    linkType: "invitation",
-    placement: "remittance",
-    ctaLabel: "Open Remitly",
-    sortOrder: 0,
-  },
-  {
-    id: "worldremit",
-    title: "WorldRemit — international transfer",
-    partnerName: "WorldRemit",
-    description:
-      "Remittance option. Paste affiliate tracking URL, set type to Affiliate.",
-    url: "https://www.worldremit.com/en/singapore",
-    applyUrl: "https://www.worldremit.com/en/partners-and-affiliates",
-    linkType: "invitation",
-    placement: "remittance",
-    ctaLabel: "Open WorldRemit",
-    sortOrder: 1,
-  },
-  {
     id: "agoda",
     title: "Agoda — book hotels",
     partnerName: "Agoda",

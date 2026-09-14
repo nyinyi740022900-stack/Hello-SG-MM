@@ -471,7 +471,7 @@ export default function AdminReferralLinksPanel({
               className={INPUT_CLASS}
               value={form.title}
               onChange={(e) => setForm((prev) => ({ ...prev, title: e.target.value }))}
-              placeholder="e.g. Remitly — send money home"
+              placeholder="e.g. Instarem — send money home"
             />
           </FormField>
           <FormField label="Partner name">
@@ -479,7 +479,7 @@ export default function AdminReferralLinksPanel({
               className={INPUT_CLASS}
               value={form.partnerName}
               onChange={(e) => setForm((prev) => ({ ...prev, partnerName: e.target.value }))}
-              placeholder="Remitly / Agoda / Airalo"
+              placeholder="Instarem / Agoda / Airalo"
             />
           </FormField>
           <div className="sm:col-span-2">

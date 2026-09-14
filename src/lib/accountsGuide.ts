@@ -59,7 +59,7 @@ export const REFERRAL_PLACEMENT_META: Record<
     category: "exchange",
     menuPath: "Menu → Exchange",
     publicPath: "/rates",
-    hint: "Remitly, WorldRemit, Instarem — paste tracking URL when approved",
+    hint: "Instarem — paste tracking URL when approved",
   },
   travel: {
     category: "travel",
