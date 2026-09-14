@@ -77,7 +77,6 @@ export default async function LocaleLayout({
   const selectedCountry = await getSelectedCountryCode();
   const appName = tCommon("appName");
   const [appNameLead, ...appNameRestParts] = appName.split(" ");
-  const appNameRest = appNameRestParts.join(" ");
 
   return (
     <NextIntlClientProvider messages={messages}>
@@ -90,12 +89,21 @@ export default async function LocaleLayout({
                 <Link href="/" locale={resolvedLocale} className="min-w-0">
                   <h1 className="truncate text-lg font-extrabold tracking-tight sm:text-xl">
                     <span className="text-brand">{appNameLead}</span>
-                    {appNameRest && (
-                      <>
-                        {" "}
-                        <span className="text-accent">{appNameRest}</span>
-                      </>
-                    )}
+                    {/* "SG" and "MM" render as two distinct colored tags, like
+                        airport codes — not one merged word — since MM is
+                        specifically short for Myanmar, a separate country
+                        from Singapore. */}
+                    {appNameRestParts.map((part, index) => (
+                      <span
+                        key={part}
+                        className={[
+                          "ml-1.5 inline-flex items-center rounded-md px-1.5 py-0.5 align-middle text-[0.62em] leading-none text-ink-on-brand",
+                          index % 2 === 0 ? "bg-brand" : "bg-accent",
+                        ].join(" ")}
+                      >
+                        {part}
+                      </span>
+                    ))}
                   </h1>
                   <p className="hidden text-xs text-ink-subtle sm:block">
                     {tCommon("tagline")}
