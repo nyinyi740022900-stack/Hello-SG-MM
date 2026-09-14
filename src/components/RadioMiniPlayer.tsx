@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { Pause, Play, X } from "lucide-react";
+import { LoaderCircle, Pause, Play, TriangleAlert, X } from "lucide-react";
 import { useRadio } from "@/context/RadioContext";
 
 /**
@@ -12,31 +12,55 @@ import { useRadio } from "@/context/RadioContext";
 export default function RadioMiniPlayer() {
   const locale = useLocale();
   const isMy = locale === "my";
-  const { current, isPlaying, toggle, stop } = useRadio();
+  const { current, status, toggle, stop } = useRadio();
 
   if (!current) return null;
+
+  const statusLabel =
+    status === "loading"
+      ? isMy
+        ? "ချိတ်ဆက်နေသည်…"
+        : "Connecting…"
+      : status === "playing"
+        ? isMy
+          ? "ဖွင့်နေသည်"
+          : "Playing"
+        : status === "error"
+          ? isMy
+            ? "ချိတ်ဆက်လို့ မရပါ"
+            : "Could not connect"
+          : isMy
+            ? "ခဏရပ်ထား"
+            : "Paused";
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface px-4 py-2 shadow-lg">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-2">
           <span
-            className={`h-2 w-2 shrink-0 rounded-full ${isPlaying ? "animate-pulse bg-danger" : "bg-ink-subtle"}`}
+            className={`h-2 w-2 shrink-0 rounded-full ${status === "playing" ? "animate-pulse bg-danger" : status === "error" ? "bg-danger" : "bg-ink-subtle"}`}
             aria-hidden="true"
           />
           <span className="truncate text-sm font-medium text-ink">{current.name}</span>
-          <span className="shrink-0 text-xs text-ink-subtle">
-            {isPlaying ? (isMy ? "ဖွင့်နေသည်" : "Playing") : isMy ? "ခဏရပ်ထား" : "Paused"}
-          </span>
+          <span className="shrink-0 text-xs text-ink-subtle">{statusLabel}</span>
         </div>
         <div className="flex shrink-0 items-center gap-2">
           <button
             type="button"
             onClick={() => toggle(current)}
-            aria-label={isPlaying ? "Pause" : "Play"}
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-ink-on-brand"
+            disabled={status === "loading"}
+            aria-label={status === "playing" ? "Pause" : "Play"}
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-ink-on-brand disabled:opacity-70"
           >
-            {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+            {status === "loading" ? (
+              <LoaderCircle className="h-4 w-4 animate-spin" />
+            ) : status === "error" ? (
+              <TriangleAlert className="h-4 w-4" />
+            ) : status === "playing" ? (
+              <Pause className="h-4 w-4" />
+            ) : (
+              <Play className="h-4 w-4" />
+            )}
           </button>
           <button
             type="button"

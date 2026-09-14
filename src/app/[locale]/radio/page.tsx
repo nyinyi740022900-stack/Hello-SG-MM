@@ -33,6 +33,7 @@ const LIVE_STATIONS = [
     descMy: "ရန်ကုန်မှ သီချင်း၊ သတင်းနှင့် ဆွေးနွေးမှု အစီအစဉ်များ",
     kind: "audio" as const,
     streamUrl: "https://cherry.akiyaresearch.com:444/stream/89/;",
+    websiteUrl: "https://cherryfmmym.com",
   },
   {
     id: "star-fm",
@@ -41,6 +42,7 @@ const LIVE_STATIONS = [
     descMy: "ရန်ကုန်မှ သီချင်းနှင့် ဖျော်ဖြေရေး အစီအစဉ်များ",
     kind: "audio" as const,
     streamUrl: "https://cast3.my-control-panel.com/proxy/starfmky/stream",
+    websiteUrl: "https://starfmradio.live",
   },
 ];
 
@@ -108,6 +110,7 @@ export default async function RadioPage({ params }: RadioPageProps) {
               <RadioStationButton
                 station={{ id: station.id, name: station.name, streamUrl: station.streamUrl }}
                 isMy={isMy}
+                websiteUrl={station.websiteUrl}
               />
             )}
           </Card>
