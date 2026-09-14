@@ -9,6 +9,8 @@ import AppNav from "@/components/AppNav";
 import AuthStatus from "@/components/AuthStatus";
 import CookieNoticeBanner from "@/components/CookieNoticeBanner";
 import { AuthProvider } from "@/context/AuthContext";
+import { RadioProvider } from "@/context/RadioContext";
+import RadioMiniPlayer from "@/components/RadioMiniPlayer";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 
@@ -81,6 +83,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages}>
       <AuthProvider>
+      <RadioProvider>
         <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-5 px-4 pb-6 pt-4 sm:px-6 sm:pt-6">
           <header className="sticky top-0 z-30 -mx-4 border-b border-border bg-surface px-4 py-3 sm:static sm:mx-0 sm:rounded-2xl sm:border sm:p-5 sm:shadow-sm">
             <div className="flex flex-col gap-4">
@@ -147,6 +150,8 @@ export default async function LocaleLayout({
           </div>
         </footer>
         <CookieNoticeBanner locale={resolvedLocale} />
+        <RadioMiniPlayer />
+      </RadioProvider>
       </AuthProvider>
     </NextIntlClientProvider>
   );

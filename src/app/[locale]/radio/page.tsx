@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { PageHeader, Card } from "@/components/ui/Card";
 import PageCard from "@/components/ui/PageCard";
+import RadioStationButton from "@/components/RadioStationButton";
 
 type RadioPageProps = {
   params: Promise<{ locale: string }>;
@@ -26,6 +27,7 @@ const LIVE_STATIONS = [
     embedUrl: "https://tunein.com/embed/player/s260714/",
   },
   {
+    id: "cherry-fm",
     name: "Cherry FM",
     descEn: "Music, news and talk from Yangon",
     descMy: "ရန်ကုန်မှ သီချင်း၊ သတင်းနှင့် ဆွေးနွေးမှု အစီအစဉ်များ",
@@ -33,6 +35,7 @@ const LIVE_STATIONS = [
     streamUrl: "https://cherry.akiyaresearch.com:444/stream/89/;",
   },
   {
+    id: "star-fm",
     name: "Star FM 90.3",
     descEn: "Music and entertainment from Yangon",
     descMy: "ရန်ကုန်မှ သီချင်းနှင့် ဖျော်ဖြေရေး အစီအစဉ်များ",
@@ -102,9 +105,10 @@ export default async function RadioPage({ params }: RadioPageProps) {
                 </p>
               </>
             ) : (
-              <audio controls preload="none" className="w-full">
-                <source src={station.streamUrl} />
-              </audio>
+              <RadioStationButton
+                station={{ id: station.id, name: station.name, streamUrl: station.streamUrl }}
+                isMy={isMy}
+              />
             )}
           </Card>
         ))}
