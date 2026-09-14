@@ -11,26 +11,48 @@ type RadioPageProps = {
 const EXTERNAL_LINK_CLASS = "font-semibold text-brand-strong underline";
 
 /**
- * Other Myanmar FM stations do not offer a public embeddable stream — only
- * Padamyar FM is listed on TuneIn, whose embed player is designed for exactly
- * this (any public station, no station-owner account needed). For the rest,
- * linking to their own official site/page is more honest than faking a
- * player around a URL that might not even be a real stream.
+ * Stations with a real, stable audio stream, playable directly with a plain
+ * <audio> element. Each URL is the station's own broadcast infrastructure
+ * (found by resolving where a station directory's redirect actually lands),
+ * not a scraped page or a third party's proxy — the same URL the station's
+ * own site would point a player at.
+ */
+const LIVE_STATIONS = [
+  {
+    name: "Padamyar FM",
+    descEn: "News, education and entertainment programming",
+    descMy: "News, education နှင့် ဖျော်ဖြေရေး အစီအစဉ်များ",
+    kind: "tunein" as const,
+    embedUrl: "https://tunein.com/embed/player/s260714/",
+  },
+  {
+    name: "Cherry FM",
+    descEn: "Music, news and talk from Yangon",
+    descMy: "ရန်ကုန်မှ သီချင်း၊ သတင်းနှင့် ဆွေးနွေးမှု အစီအစဉ်များ",
+    kind: "audio" as const,
+    streamUrl: "https://cherry.akiyaresearch.com:444/stream/89/;",
+  },
+  {
+    name: "Star FM 90.3",
+    descEn: "Music and entertainment from Yangon",
+    descMy: "ရန်ကုန်မှ သီချင်းနှင့် ဖျော်ဖြေရေး အစီအစဉ်များ",
+    kind: "audio" as const,
+    streamUrl: "https://cast3.my-control-panel.com/proxy/starfmky/stream",
+  },
+];
+
+/**
+ * Stations known to broadcast, but with no public stream to point a player
+ * at — only their own site or Facebook page. Linking out is more honest
+ * than guessing at a URL that might not even be a real stream.
  */
 const OTHER_STATIONS = [
   {
     name: "Shwe FM",
-    nameMy: "Shwe FM",
     url: "https://shwefmradio.net",
   },
   {
-    name: "Cherry FM",
-    nameMy: "Cherry FM",
-    url: "https://cherryfmmym.com",
-  },
-  {
     name: "Mandalay FM",
-    nameMy: "Mandalay FM",
     url: "https://www.facebook.com/MandalayFmRadioStation/",
   },
 ];
@@ -55,29 +77,37 @@ export default async function RadioPage({ params }: RadioPageProps) {
           }
         />
 
-        <Card className="space-y-3">
-          <h3 className="font-semibold text-ink">Padamyar FM</h3>
-          <p className="text-sm text-ink-muted">
-            {isMy
-              ? "News, education နှင့် ဖျော်ဖြေရေး အစီအစဉ်များ — Live"
-              : "News, education and entertainment programming — Live"}
-          </p>
-          <div className="overflow-hidden rounded-xl border border-border">
-            <iframe
-              src="https://tunein.com/embed/player/s260714/"
-              title="Padamyar FM live stream"
-              width="100%"
-              height="100"
-              scrolling="no"
-              frameBorder="0"
-              allow="autoplay"
-              className="block w-full"
-            />
-          </div>
-          <p className="text-xs text-ink-subtle">
-            {isMy ? "TuneIn မှတစ်ဆင့် ပေးဆောင်ထားသည်" : "Powered by TuneIn"}
-          </p>
-        </Card>
+        {LIVE_STATIONS.map((station) => (
+          <Card key={station.name} className="space-y-3">
+            <h3 className="font-semibold text-ink">{station.name}</h3>
+            <p className="text-sm text-ink-muted">
+              {isMy ? station.descMy : station.descEn}
+            </p>
+            {station.kind === "tunein" ? (
+              <>
+                <div className="overflow-hidden rounded-xl border border-border">
+                  <iframe
+                    src={station.embedUrl}
+                    title={`${station.name} live stream`}
+                    width="100%"
+                    height="100"
+                    scrolling="no"
+                    frameBorder="0"
+                    allow="autoplay"
+                    className="block w-full"
+                  />
+                </div>
+                <p className="text-xs text-ink-subtle">
+                  {isMy ? "TuneIn မှတစ်ဆင့် ပေးဆောင်ထားသည်" : "Powered by TuneIn"}
+                </p>
+              </>
+            ) : (
+              <audio controls preload="none" className="w-full">
+                <source src={station.streamUrl} />
+              </audio>
+            )}
+          </Card>
+        ))}
 
         <Card className="space-y-3">
           <h3 className="font-semibold text-ink">
@@ -94,9 +124,7 @@ export default async function RadioPage({ params }: RadioPageProps) {
                 key={station.name}
                 className="flex items-center justify-between gap-2 rounded-xl border border-border bg-surface-muted p-3"
               >
-                <span className="text-sm font-medium text-ink">
-                  {isMy ? station.nameMy : station.name}
-                </span>
+                <span className="text-sm font-medium text-ink">{station.name}</span>
                 <a
                   href={station.url}
                   target="_blank"
