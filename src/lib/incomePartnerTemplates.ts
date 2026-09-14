@@ -54,7 +54,7 @@ export const INCOME_PARTNER_TEMPLATES: readonly IncomePartnerTemplate[] = [
     description:
       "Hotels for nearby trips. Paste Agoda affiliate URL, set type to Affiliate.",
     url: "https://www.agoda.com/",
-    applyUrl: "https://www.agoda.com/info/agoda-affiliate-program.html",
+    applyUrl: "https://partners.agoda.com/en-us/",
     linkType: "invitation",
     placement: "travel",
     ctaLabel: "Open Agoda",
