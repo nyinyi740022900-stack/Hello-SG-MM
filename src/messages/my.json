@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "Hello SG",
+    "appName": "Hello SG MM",
     "tagline": "စင်္ကာပူတွင် နေထိုင်ရေးအတွက် သတင်းနှင့် အထောက်အကူများ",
     "home": "ပင်မ",
     "checklist": "စာရင်း",
@@ -880,7 +880,7 @@
     "contact": "ဆက်သွယ်ရန်",
     "cookies": "Cookies မူဝါဒ",
     "registerConsent": "အကောင့်ဖွင့်ခြင်းဖြင့် <terms>ဝန်ဆောင်မှုသတ်မှတ်ချက်များ</terms> နှင့် <privacy>ကိုယ်ရေးအချက်အလက် မူဝါဒ</privacy> ကို လက်ခံသည်ဟု မှတ်ယူသည်။",
-    "footerCopyright": "© {year} Hello SG",
+    "footerCopyright": "© {year} Hello SG MM",
     "cookieNoticeText": "ကျွန်ုပ်တို့သည် မရှိမဖြစ် cookies နှင့် analytics/ad cookies များကို အသုံးပြုပါသည်။",
     "cookieNoticeLearnMore": "ပိုမိုသိရှိရန်",
     "cookieNoticeAccept": "နားလည်ပါပြီ"
@@ -1610,7 +1610,7 @@
     "title": "စင်္ကာပူမှ အနီးခရီးများ",
     "subtitle": "Rest day / ခွင့်တိုဖြင့် သွားနိုင်သော အနီးနေရာများ — လိုအပ်သည်များ၊ သွားနည်း၊ အစားအစာ၊ နေရာလှများနှင့် SGD ခန့်မှန်းစရိတ်။ Partner လင့်ခ်များက ဤအခမဲ့ app အတွက် referral ရနိုင်သည်။",
     "topWarning": "စင်္ကာပူမှ ထွက်ရန် အလုပ်ရှင် ခွင့်ပြုချက်နှင့် စာရွက်စာတမ်း မှန်ကန်ရမည်။ လူဝင်မှု စည်းမျဉ်း ပြောင်းနိုင်သည် — လက်မှတ်မဝယ်မီ သင့်ပတ်စ်ပို့အတွက် visa/ဝင်ခွင့် စစ်ပါ။",
-    "incomeNote": "ဟိုတယ်၊ eSIM၊ travel card ခလုတ်များသည် worker များသုံးနေကျ app များသို့ ဖွင့်သည် — ကျွန်ုပ်တို့ partner လင့်ခ်ကို နှိပ်ခြင်းက Hello SG အခမဲ့ ဆက်ထားရန် ကူညီသည်။",
+    "incomeNote": "ဟိုတယ်၊ eSIM၊ travel card ခလုတ်များသည် worker များသုံးနေကျ app များသို့ ဖွင့်သည် — ကျွန်ုပ်တို့ partner လင့်ခ်ကို နှိပ်ခြင်းက Hello SG MM အခမဲ့ ဆက်ထားရန် ကူညီသည်။",
     "prepTitle": "စင်္ကာပူမှ မထွက်မီ",
     "prepIntro": "JB တစ်ရက်ခရီးအပါအဝင် ခရီးတိုင်း ဤစာရင်းကို သုံးပါ။",
     "prep": {
@@ -2127,8 +2127,8 @@
   "housing": {
     "badge": "အခန်းနှင့် အိပ်ဆောင်",
     "title": "အိမ်ရာ ဘုတ်",
-    "subtitle": "အလုပ်သမားများ တင်သော အခန်းများ။ Hello SG က အိမ်ရှင်ကို အတည်မပြုပါ — လုံခြုံစွာ တွေ့ပြီး အစိမ်းသူထံ စရံမပို့ပါနှင့်။",
-    "disclaimer": "User-posted · Hello SG အတည်မပြု။ ပတ်စ်ပို့၊ FIN၊ OTP မမျှဝေပါနှင့်။ မပေးမီ အခန်းကို ကိုယ်တိုင်ကြည့်ပါ။",
+    "subtitle": "အလုပ်သမားများ တင်သော အခန်းများ။ Hello SG MM က အိမ်ရှင်ကို အတည်မပြုပါ — လုံခြုံစွာ တွေ့ပြီး အစိမ်းသူထံ စရံမပို့ပါနှင့်။",
+    "disclaimer": "User-posted · Hello SG MM အတည်မပြု။ ပတ်စ်ပို့၊ FIN၊ OTP မမျှဝေပါနှင့်။ မပေးမီ အခန်းကို ကိုယ်တိုင်ကြည့်ပါ။",
     "postCta": "အခန်းတင်ရန်",
     "empty": "အတည်ပြုပြီး အခန်း မရှိသေးပါ။",
     "beFirst": "ပထမဆုံး တင်သူ ဖြစ်ပါ",
@@ -2162,7 +2162,7 @@
     "notFoundBody": "သက်တမ်းကုန်၊ ဖယ်ရှားခံ၊ သို့မဟုတ် စစ်ဆေးဆဲ ဖြစ်နိုင်သည်။",
     "aboutRoom": "အခန်းအကြောင်း",
     "contactLabel": "တင်သူကို ဆက်သွယ်ရန်",
-    "contactHint": "သတိထားဆက်သွယ်ပါ။ Hello SG က ငှားရမ်းစာချုပ်၏ ပါတီ မဟုတ်ပါ။",
+    "contactHint": "သတိထားဆက်သွယ်ပါ။ Hello SG MM က ငှားရမ်းစာချုပ်၏ ပါတီ မဟုတ်ပါ။",
     "reportTitle": "ဤစာရင်းကို တိုင်ကြားရန်",
     "reportIntro": "လိမ်လည်မှု၊ အတုပုံ၊ မလုံခြုံသော တောင်းဆိုမှုကို တိုင်ပါ။ တိုင်ကြားမှု လုံလောက်ရင် အလိုအလျောက် ဖုံးမည်။",
     "report": "တိုင်ကြားရန်",
@@ -2182,8 +2182,8 @@
   "jobs": {
     "badge": "အေဂျင်စီ အလုပ်များ",
     "title": "အလုပ်ဘုတ်",
-    "subtitle": "စင်ကာပူရှိ အလုပ်သမားများအတွက် အေဂျင်စီတင်သည့် အလုပ်များ။ MOM လိုင်စင်ကို အမြဲစစ်ပါ။ Hello SG က အလုပ်ခန့်မည် မဟုတ်ပါ။",
-    "disclaimer": "အေဂျင်စီစာရင်း · Hello SG အလုပ် မဟုတ်ပါ။ လျှောက်လွှာကြေး မပေးပါနှင့်။ စာရွက်မပို့မီ MOM EA Directory တွင် အေဂျင်စီကို စစ်ပါ။",
+    "subtitle": "စင်ကာပူရှိ အလုပ်သမားများအတွက် အေဂျင်စီတင်သည့် အလုပ်များ။ MOM လိုင်စင်ကို အမြဲစစ်ပါ။ Hello SG MM က အလုပ်ခန့်မည် မဟုတ်ပါ။",
+    "disclaimer": "အေဂျင်စီစာရင်း · Hello SG MM အလုပ် မဟုတ်ပါ။ လျှောက်လွှာကြေး မပေးပါနှင့်။ စာရွက်မပို့မီ MOM EA Directory တွင် အေဂျင်စီကို စစ်ပါ။",
     "postCta": "အလုပ်တင်မည်",
     "mineCta": "ကျွန်ုပ်၏အလုပ်များ",
     "empty": "ထုတ်ပြန်ထားသော အလုပ် မရှိသေးပါ။",
@@ -2193,7 +2193,7 @@
     "backToList": "အလုပ်များသို့ ပြန်ရန်",
     "postTitle": "အလုပ်တင်မည်",
     "postSubtitle": "Agency and admin accounts only. Listings wait for admin review.",
-    "agencyOnlyNote": "Only accounts with agency or admin role can publish. Contact Hello SG if you need an agency account.",
+    "agencyOnlyNote": "Only accounts with agency or admin role can publish. Contact Hello SG MM if you need an agency account.",
     "fieldTitle": "Job title",
     "fieldSector": "Sector",
     "fieldLocation": "Area / workplace",

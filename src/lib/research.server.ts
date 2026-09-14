@@ -41,7 +41,7 @@ const CATEGORY_BRIEF: Record<ContentCategory, string> = {
     "Community events and gatherings for Myanmar, Indian, Chinese, Bangladeshi and Malaysian communities; festivals, migrant-worker centres, relief drives; planned MRT/bus disruptions naming line, stations and dates (never live minute-by-minute delays).",
 };
 
-const SYSTEM_PROMPT = `You research daily updates for Hello SG, an information portal published in English and Myanmar.
+const SYSTEM_PROMPT = `You research daily updates for Hello SG MM, an information portal published in English and Myanmar.
 
 WHO IT IS FOR: anyone who has to understand Singapore in a second language. That is the 1.6 million people here on a work pass — Work Permit, S Pass, Employment Pass — plus their families, foreign students, new PRs, and residents who read Chinese, Tamil, Malay or Bengali more comfortably than English. Readers come mainly from Myanmar, India, China, Bangladesh and Malaysia.
 

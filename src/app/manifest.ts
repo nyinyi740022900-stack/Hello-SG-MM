@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Hello SG — News & Everyday Help for Singapore",
-    short_name: "Hello SG",
+    name: "Hello SG MM — News & Everyday Help for Singapore",
+    short_name: "Hello SG MM",
     description:
       "Bilingual (English/Myanmar) news, weather, remittance rates, guides and practical tools for anyone living in Singapore.",
     start_url: "/",

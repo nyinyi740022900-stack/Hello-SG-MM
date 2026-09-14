@@ -9,7 +9,7 @@ type PrivacyPageProps = {
 };
 
 export const metadata = {
-  title: "Privacy Policy — Hello SG",
+  title: "Privacy Policy — Hello SG MM",
 };
 
 export default async function PrivacyPage({ params }: PrivacyPageProps) {
@@ -34,8 +34,8 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
 
         <p className="text-ink-muted">
           {isMy
-            ? "Hello SG (\"ကျွန်ုပ်တို့\") သည် စင်္ကာပူတွင် နေထိုင်သူများအတွက် သတင်း၊ လမ်းညွှန်နှင့် ကိရိယာများ ပေးသည့် ဝန်ဆောင်မှုဖြစ်သည်။ ဤမူဝါဒသည် ကျွန်ုပ်တို့ ဘာသိမ်းဆည်းသည်၊ ဘာကြောင့် သိမ်းဆည်းသည်နှင့် သင်မည်သို့ ထိန်းချုပ်နိုင်ကြောင်း ရှင်းပြသည်။"
-            : 'Hello SG ("we", "our") provides news, guides and tools for people living in Singapore. This policy explains what data we collect, why we collect it, and how you control it.'}
+            ? "Hello SG MM (\"ကျွန်ုပ်တို့\") သည် စင်္ကာပူတွင် နေထိုင်သူများအတွက် သတင်း၊ လမ်းညွှန်နှင့် ကိရိယာများ ပေးသည့် ဝန်ဆောင်မှုဖြစ်သည်။ ဤမူဝါဒသည် ကျွန်ုပ်တို့ ဘာသိမ်းဆည်းသည်၊ ဘာကြောင့် သိမ်းဆည်းသည်နှင့် သင်မည်သို့ ထိန်းချုပ်နိုင်ကြောင်း ရှင်းပြသည်။"
+            : 'Hello SG MM ("we", "our") provides news, guides and tools for people living in Singapore. This policy explains what data we collect, why we collect it, and how you control it.'}
         </p>
 
         <div className="space-y-3">

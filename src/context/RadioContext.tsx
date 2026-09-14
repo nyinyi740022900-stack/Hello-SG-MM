@@ -95,7 +95,7 @@ export function RadioProvider({ children }: { children: React.ReactNode }) {
         // eslint-disable-next-line no-undef -- MediaMetadata is a browser global, not a Node type
         navigator.mediaSession.metadata = new MediaMetadata({
           title: station.name,
-          artist: "Hello SG Radio",
+          artist: "Hello SG MM Radio",
         });
       }
     },

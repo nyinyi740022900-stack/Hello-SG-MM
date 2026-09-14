@@ -9,7 +9,7 @@ type TermsPageProps = {
 };
 
 export const metadata = {
-  title: "Terms of Service — Hello SG",
+  title: "Terms of Service — Hello SG MM",
 };
 
 export default async function TermsPage({ params }: TermsPageProps) {
@@ -34,8 +34,8 @@ export default async function TermsPage({ params }: TermsPageProps) {
 
         <p className="text-ink-muted">
           {isMy
-            ? "Hello SG ကို အသုံးပြုခြင်းဖြင့် ဤသတ်မှတ်ချက်များကို လက်ခံသည်ဟု မှတ်ယူသည်။ မသဘောတူပါက app ကို အသုံးမပြုပါနှင့်။"
-            : "By using Hello SG you agree to these terms. If you do not agree, please stop using the app."}
+            ? "Hello SG MM ကို အသုံးပြုခြင်းဖြင့် ဤသတ်မှတ်ချက်များကို လက်ခံသည်ဟု မှတ်ယူသည်။ မသဘောတူပါက app ကို အသုံးမပြုပါနှင့်။"
+            : "By using Hello SG MM you agree to these terms. If you do not agree, please stop using the app."}
         </p>
 
         <div className="space-y-3">
@@ -46,8 +46,8 @@ export default async function TermsPage({ params }: TermsPageProps) {
           </h3>
           <p className="text-ink-muted">
             {isMy
-              ? "Hello SG သည် စင်္ကာပူတွင် နေထိုင်သူများအတွက် သတင်း၊ လမ်းညွှန်နှင့် ကိရိယာများ ပေးသည် (ပတ်စပို့၊ သွားလာရေး၊ ယာဉ်မောင်းလိုင်စင်၊ လစာမှတ်တမ်း စသည်)။ Legal advice မဟုတ်ပါ။ အစိုးရ / သံရုံး / Traffic Police / LTA / MOM စည်းမျဉ်းများကို အမြဲ တရားဝင် ရင်းမြစ်တွင် အတည်ပြုပါ။"
-              : "Hello SG provides news, guides and tools for people in Singapore (passport help, transport, driving licence, salary log, and more). It is not legal advice. Always verify government, embassy, Traffic Police, LTA, MOM and similar rules on official sources."}
+              ? "Hello SG MM သည် စင်္ကာပူတွင် နေထိုင်သူများအတွက် သတင်း၊ လမ်းညွှန်နှင့် ကိရိယာများ ပေးသည် (ပတ်စပို့၊ သွားလာရေး၊ ယာဉ်မောင်းလိုင်စင်၊ လစာမှတ်တမ်း စသည်)။ Legal advice မဟုတ်ပါ။ အစိုးရ / သံရုံး / Traffic Police / LTA / MOM စည်းမျဉ်းများကို အမြဲ တရားဝင် ရင်းမြစ်တွင် အတည်ပြုပါ။"
+              : "Hello SG MM provides news, guides and tools for people in Singapore (passport help, transport, driving licence, salary log, and more). It is not legal advice. Always verify government, embassy, Traffic Police, LTA, MOM and similar rules on official sources."}
           </p>
           <p className="text-sm text-ink-muted">
             {isMy

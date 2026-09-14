@@ -9,7 +9,7 @@ type CookiesPageProps = {
 };
 
 export const metadata = {
-  title: "Cookies Policy — Hello SG",
+  title: "Cookies Policy — Hello SG MM",
 };
 
 export default async function CookiesPage({ params }: CookiesPageProps) {

@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "Hello SG",
+    "appName": "Hello SG MM",
     "tagline": "News and everyday help for life in Singapore",
     "home": "Home",
     "checklist": "Checklist",
@@ -880,7 +880,7 @@
     "contact": "Contact",
     "cookies": "Cookies Policy",
     "registerConsent": "By creating an account you agree to our <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>.",
-    "footerCopyright": "© {year} Hello SG",
+    "footerCopyright": "© {year} Hello SG MM",
     "cookieNoticeText": "We use essential cookies plus analytics/ad cookies.",
     "cookieNoticeLearnMore": "Learn more",
     "cookieNoticeAccept": "OK"
@@ -1610,7 +1610,7 @@
     "title": "Short trips from Singapore",
     "subtitle": "Rest-day and short-leave guides for nearby places — what you need, how to go, food, sights, and rough SGD budgets. Partner links may earn this free app a referral fee.",
     "topWarning": "Leaving Singapore needs your employer's approval and valid documents. Immigration rules change — confirm visa and entry requirements for your passport before you buy tickets.",
-    "incomeNote": "Hotel, eSIM and travel-card buttons below open the same apps workers already use — tapping our partner link helps keep Hello SG free.",
+    "incomeNote": "Hotel, eSIM and travel-card buttons below open the same apps workers already use — tapping our partner link helps keep Hello SG MM free.",
     "prepTitle": "Before you leave Singapore",
     "prepIntro": "Use this checklist for every trip, even a day trip to Johor.",
     "prep": {
@@ -2127,8 +2127,8 @@
   "housing": {
     "badge": "Rooms & dorms",
     "title": "Housing board",
-    "subtitle": "User-posted rooms near Singapore workplaces. Hello SG does not verify landlords — meet safely and never send deposits to strangers.",
-    "disclaimer": "User-posted · not verified by Hello SG. Never share passport, FIN or OTP. Prefer viewing the room in person before paying.",
+    "subtitle": "User-posted rooms near Singapore workplaces. Hello SG MM does not verify landlords — meet safely and never send deposits to strangers.",
+    "disclaimer": "User-posted · not verified by Hello SG MM. Never share passport, FIN or OTP. Prefer viewing the room in person before paying.",
     "postCta": "Post a room",
     "empty": "No published rooms yet.",
     "beFirst": "Be the first to post",
@@ -2162,7 +2162,7 @@
     "notFoundBody": "This room may have expired, been removed, or is still under review.",
     "aboutRoom": "About this room",
     "contactLabel": "Contact the poster",
-    "contactHint": "Message carefully. Hello SG is not a party to any rental agreement.",
+    "contactHint": "Message carefully. Hello SG MM is not a party to any rental agreement.",
     "reportTitle": "Report this listing",
     "reportIntro": "Report scams, fake photos, or unsafe requests. Enough reports hide the listing automatically.",
     "report": "Report listing",
@@ -2182,8 +2182,8 @@
   "jobs": {
     "badge": "Agency jobs",
     "title": "Jobs board",
-    "subtitle": "Agency-posted openings for workers in Singapore. Always verify the MOM licence. Hello SG does not hire anyone.",
-    "disclaimer": "Agency listing · not a Hello SG job. Never pay an application or processing fee. Confirm the agency on MOM’s EA Directory before you share documents.",
+    "subtitle": "Agency-posted openings for workers in Singapore. Always verify the MOM licence. Hello SG MM does not hire anyone.",
+    "disclaimer": "Agency listing · not a Hello SG MM job. Never pay an application or processing fee. Confirm the agency on MOM’s EA Directory before you share documents.",
     "postCta": "Post a job",
     "mineCta": "My jobs & applicants",
     "empty": "No published jobs yet.",
@@ -2193,7 +2193,7 @@
     "backToList": "Back to jobs",
     "postTitle": "Post a job",
     "postSubtitle": "Agency and admin accounts only. Listings wait for admin review.",
-    "agencyOnlyNote": "Only accounts with agency or admin role can publish. Contact Hello SG if you need an agency account.",
+    "agencyOnlyNote": "Only accounts with agency or admin role can publish. Contact Hello SG MM if you need an agency account.",
     "fieldTitle": "Job title",
     "fieldSector": "Sector",
     "fieldLocation": "Area / workplace",

@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "Hello SG",
+    "appName": "Hello SG MM",
     "tagline": "সিঙ্গাপুরে জীবনযাত্রার জন্য খবর এবং প্রতিদিনের সাহায্য",
     "home": "হোম",
     "checklist": "চেকলিস্ট",
@@ -125,8 +125,8 @@
   "jobs": {
     "badge": "Agency jobs",
     "title": "Jobs board",
-    "subtitle": "Agency-posted openings for workers in Singapore. Always verify the MOM licence. Hello SG does not hire anyone.",
-    "disclaimer": "Agency listing · not a Hello SG job. Never pay an application or processing fee. Confirm the agency on MOM’s EA Directory before you share documents.",
+    "subtitle": "Agency-posted openings for workers in Singapore. Always verify the MOM licence. Hello SG MM does not hire anyone.",
+    "disclaimer": "Agency listing · not a Hello SG MM job. Never pay an application or processing fee. Confirm the agency on MOM’s EA Directory before you share documents.",
     "postCta": "Post a job",
     "mineCta": "My jobs & applicants",
     "empty": "No published jobs yet.",
@@ -136,7 +136,7 @@
     "backToList": "Back to jobs",
     "postTitle": "Post a job",
     "postSubtitle": "Agency and admin accounts only. Listings wait for admin review.",
-    "agencyOnlyNote": "Only accounts with agency or admin role can publish. Contact Hello SG if you need an agency account.",
+    "agencyOnlyNote": "Only accounts with agency or admin role can publish. Contact Hello SG MM if you need an agency account.",
     "fieldTitle": "Job title",
     "fieldSector": "Sector",
     "fieldLocation": "Area / workplace",

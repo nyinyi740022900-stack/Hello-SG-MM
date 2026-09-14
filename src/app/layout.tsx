@@ -22,8 +22,8 @@ const myanmarFont = Noto_Sans_Myanmar({
 
 export const metadata: Metadata = {
   title: {
-    default: "Hello SG",
-    template: "%s · Hello SG",
+    default: "Hello SG MM",
+    template: "%s · Hello SG MM",
   },
   description:
     "Bilingual (English/Myanmar) news and everyday help for life in Singapore",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Hello SG",
+    title: "Hello SG MM",
   },
 };
 
