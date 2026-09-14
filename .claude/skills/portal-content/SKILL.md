@@ -210,19 +210,40 @@ health advisories, a monsoon warning affecting outdoor work — and file it unde
 `mom.gov.sg`, `tal.sg` / TADM, `police.gov.sg` / `scamalert.sg`, `cpf.gov.sg`,
 `ica.gov.sg`, `moh.gov.sg`, `myanmarembassy.sg`, `mwc.org.sg`, `lta.gov.sg`,
 `smrt.com.sg`, `sbstransit.com.sg`, `nea.gov.sg`, `mycareersfuture.gov.sg`,
-`wsg.gov.sg`, `gov.sg` and `data.gov.sg`
+`wsg.gov.sg`, `gov.sg`, `data.gov.sg`, and `eservices.mas.gov.sg/fid` (MAS
+Financial Institutions Directory — confirms a money-changer/remittance agent is
+actually licensed before it's named in a scam-safety item). `mol.gov.mm`
+(Myanmar Ministry of Labour) is also Tier 1 for overseas-worker rule text (e.g.
+the mandatory 25%-remittance rule) — it is the post-coup military government's
+ministry, so cite it as "official but not neutral," never as a neutral source.
 
 **Tier 2 — reputable, acceptable**
-Straits Times, CNA, TODAY, Mothership, Yahoo SG, and the migrant-worker NGOs
-TWC2 (`twc2.org.sg`) and HOME (`home.org.sg`)
+Straits Times (usable, but spot-check longer "premium"-flagged features —
+MOM-policy/scam/work-permit briefs render in full), CNA, Mothership, Yahoo SG,
+and the migrant-worker NGOs TWC2 (`twc2.org.sg`) and HOME (`home.org.sg`).
+TODAY (`todayonline.com`) merged into CNA's newsroom on 1 Oct 2024 and no
+longer publishes separately (it redirects to channelnewsasia.com) — don't cite
+it as a distinct source.
+
+Independent Myanmar media (not state-controlled, verified freely readable):
+The Irrawaddy (irrawaddy.com — actively covers overseas-worker/remittance
+policy; WebFetch may 403 it, retry with a browser-based fetch) and DVB /
+Democratic Voice of Burma (english.dvb.no — skews toward conflict/politics,
+migrant-worker content is occasional, not a dedicated section). Two more to
+use only with care: Radio Free Asia Burmese (rfa.org/burmese) halted most news
+operations in Oct 2025 after US funding cuts and laid off most staff — still
+live but output may be reduced or stop, re-verify it is still active before
+relying on it; Myanmar Now (myanmar-now.org) carries a subscription paywall
+prompt, only cite if the specific article actually loads in full.
 
 **Tier 3 — needs a Tier 1/2 corroborating source before submitting**
 Facebook groups, Telegram channels, TikTok, forum posts, community WhatsApp
 messages, unattributed blogs
 
 Never use content farms, scraped aggregators, or AI-generated news sites. For
-anything about a Myanmar government rule, prefer the embassy or a Tier 2 report over
-Myanmar-domestic outlets, which may be subject to state control or be unreachable.
+anything about a Myanmar government rule, prefer the embassy, `mol.gov.mm`, or
+a Tier 2 report — a state-run Myanmar outlet not listed above may be subject to
+censorship or state framing and needs a corroborating source.
 
 ## Recency
 
