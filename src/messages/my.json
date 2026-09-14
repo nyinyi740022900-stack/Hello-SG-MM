@@ -1417,6 +1417,9 @@
   },
   "country": {
     "switcherLabel": "မိခင်နိုင်ငံ",
+    "switcherButtonLabel": "ဘာသာစကားနှင့် မိခင်နိုင်ငံ",
+    "sectionLanguage": "ဘာသာစကား",
+    "done": "ပြီးပါပြီ",
     "choosePrompt": "နိုင်ငံ",
     "menuHint": "သင့်မိခင်နိုင်ငံကို ရွေးပါ",
     "missionInSingapore": "စင်္ကာပူရှိ သင့်နိုင်ငံ၏ သံရုံး",

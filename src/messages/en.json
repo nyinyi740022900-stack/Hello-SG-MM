@@ -1417,6 +1417,9 @@
   },
   "country": {
     "switcherLabel": "Home country",
+    "switcherButtonLabel": "Language and home country",
+    "sectionLanguage": "Language",
+    "done": "Done",
     "choosePrompt": "Country",
     "menuHint": "Choose your home country",
     "missionInSingapore": "Your country's mission in Singapore",

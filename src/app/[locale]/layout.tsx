@@ -2,8 +2,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { getMessages, getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import CountrySwitcher from "@/components/CountrySwitcher";
+import RegionLanguageSwitcher from "@/components/RegionLanguageSwitcher";
 import { getSelectedCountryCode } from "@/lib/country.server";
 import AppNav from "@/components/AppNav";
 import AuthStatus from "@/components/AuthStatus";
@@ -103,8 +102,7 @@ export default async function LocaleLayout({
                   </p>
                 </Link>
                 <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-                  <CountrySwitcher selected={selectedCountry} />
-                  <LanguageSwitcher />
+                  <RegionLanguageSwitcher selectedCountry={selectedCountry} />
                   <AuthStatus locale={resolvedLocale} />
                   <AppNav locale={resolvedLocale} />
                 </div>
