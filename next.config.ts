@@ -13,6 +13,19 @@ const supabaseHostname = (() => {
 })();
 
 const nextConfig: NextConfig = {
+  // The app now has its own domain; send anyone who still has the old
+  // Vercel-assigned URL bookmarked or linked somewhere on to it, rather
+  // than serving the same site under two names.
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "sg-migrant-worker-app.vercel.app" }],
+        destination: "https://hellosgmm.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: supabaseHostname
       ? [
