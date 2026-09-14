@@ -59,6 +59,10 @@ export default function AppNav({ locale }: AppNavProps) {
   const tLegal = useTranslations("legal");
   const pathname = usePathname();
   const { user } = useAuth();
+  const authNextQuery =
+    pathname && pathname !== "/login" && pathname !== "/register"
+      ? `?next=${encodeURIComponent(pathname)}`
+      : "";
 
   const [isOpen, setIsOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement | null>(null);
@@ -174,12 +178,12 @@ export default function AppNav({ locale }: AppNavProps) {
         links: user
           ? [{ href: "/account", label: t("account"), icon: User }]
           : [
-              { href: "/login", label: t("login"), icon: User },
-              { href: "/register", label: t("register"), icon: User },
+              { href: `/login${authNextQuery}`, label: t("login"), icon: User },
+              { href: `/register${authNextQuery}`, label: t("register"), icon: User },
             ],
       },
     ],
-    [t, tMenu, tHome, user],
+    [t, tMenu, tHome, user, authNextQuery],
   );
 
   const isActive = (href: string) => {

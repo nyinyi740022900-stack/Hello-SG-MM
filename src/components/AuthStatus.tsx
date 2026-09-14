@@ -21,6 +21,13 @@ export default function AuthStatus({ locale }: AuthStatusProps) {
   const { user, isLoading, signOut } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
+  // Send them back to the page they were reading, not always to the same
+  // hardcoded default — someone signing in from /rates should land back on
+  // /rates, not on an unrelated tool page.
+  const authNextQuery =
+    pathname && pathname !== "/login" && pathname !== "/register"
+      ? `?next=${encodeURIComponent(pathname)}`
+      : "";
   const t = useTranslations("auth");
   const [profile, setProfile] = useState<EditableProfile | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -95,7 +102,7 @@ export default function AuthStatus({ locale }: AuthStatusProps) {
       // where an existing account holder will look for it anyway.
       <div className="flex items-center gap-1.5 sm:gap-2">
         <LinkButton
-          href="/login"
+          href={`/login${authNextQuery}`}
           locale={locale}
           variant="secondary"
           size="md"
@@ -106,7 +113,7 @@ export default function AuthStatus({ locale }: AuthStatusProps) {
         >
           {t("loginTitle")}
         </LinkButton>
-        <LinkButton href="/register" locale={locale} variant="primary" size="md" className="h-9 px-2.5 text-xs sm:px-4">
+        <LinkButton href={`/register${authNextQuery}`} locale={locale} variant="primary" size="md" className="h-9 px-2.5 text-xs sm:px-4">
           {t("registerTitle")}
         </LinkButton>
       </div>

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Link, useRouter } from "@/i18n/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { useAuth } from "@/context/AuthContext";
 import AvatarLightbox from "@/components/ui/AvatarLightbox";
 import type { PlaceComment } from "@/lib/placeComments";
@@ -43,6 +43,8 @@ export default function PlaceComments({
   const t = useTranslations("placeComments");
   const { user } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
+  const loginHref = pathname ? `/login?next=${encodeURIComponent(pathname)}` : "/login";
 
   const [isOpen, setIsOpen] = useState(false);
   const [body, setBody] = useState("");
@@ -293,7 +295,7 @@ export default function PlaceComments({
             </form>
           ) : (
             <p className="text-xs text-ink-subtle">
-              <Link href="/login" className="font-medium text-brand-strong underline">
+              <Link href={loginHref} className="font-medium text-brand-strong underline">
                 {t("signInToComment")}
               </Link>
             </p>
