@@ -15,6 +15,8 @@ export const LOTTERY_LINKS = {
     "https://www.singaporepools.com.sg/en/product/sr/Pages/toto_results.aspx",
   fourDRules:
     "https://www.singaporepools.com.sg/en/rules/Pages/pdf/4d-game-rules.pdf",
+  sweepResults:
+    "https://www.singaporepools.com.sg/en/product/Pages/sweep_results.aspx",
   account: "https://www.singaporepools.com.sg/ms/spa/en/index.html",
   outlets: "https://www.singaporepools.com.sg/en/faq/Pages/betting-at-outlets.html",
   responsiblePlay: "https://www.ncpg.org.sg/",
@@ -26,6 +28,7 @@ const DATA_BASE =
 
 const FOUR_D_TOP = `${DATA_BASE}/fourd_result_top_draws_en.html`;
 const TOTO_TOP = `${DATA_BASE}/toto_result_top_draws_en.html`;
+const SWEEP_TOP = `${DATA_BASE}/sweep_result_top_draws_en.html`;
 const FOUR_D_LIST = `${DATA_BASE}/fourd_result_draw_list_en.html`;
 const TOTO_LIST = `${DATA_BASE}/toto_result_draw_list_en.html`;
 const FOUR_D_PAGE =
@@ -33,8 +36,19 @@ const FOUR_D_PAGE =
 const TOTO_PAGE =
   "https://www.singaporepools.com.sg/en/product/sr/Pages/toto_results.aspx";
 
-/** Cache draw fragments for 6 hours — enough for period analysis reuse. */
+/** Cache historical per-draw fragments for 6 hours — a past draw never changes. */
 const REVALIDATE_SECONDS = 60 * 60 * 6;
+
+/**
+ * The "latest results" fragment is a different story: it's the one page a
+ * reader opens right after a draw to see if they won, and a draw result is
+ * final within minutes of the draw closing (around 6:30pm SGT on draw
+ * nights). A 6-hour cache here meant a reader checking at 7pm could still see
+ * the PREVIOUS draw if the cache had last filled before 6:30pm — "results are
+ * late" was this cache, not Singapore Pools being slow. 10 minutes keeps load
+ * on their site low while staying well inside what a reader will wait.
+ */
+const LATEST_REVALIDATE_SECONDS = 60 * 10;
 
 /** Year windows can be large; cap fetches so the API stays within serverless time. */
 const YEAR_DRAW_CAP = 48;
@@ -63,9 +77,25 @@ export type TotoDraw = {
   additional: number | null;
 };
 
+/**
+ * Singapore Sweep — a monthly draw sold on pre-printed tickets with a fixed
+ * 7-digit number, not a number a player picks. So unlike 4D/TOTO there is no
+ * checker, generator, or bet-size calculator for it here — just the latest
+ * result, which is all a reader with a physical ticket needs.
+ */
+export type SweepDraw = {
+  drawNo: number;
+  drawDateLabel: string;
+  drawDateMs: number;
+  first: string;
+  second: string;
+  third: string;
+};
+
 export type LotteryBundle = {
   fourD: FourDDraw[];
   toto: TotoDraw[];
+  sweep: SweepDraw[];
   fetchedAt: string;
   source: "singapore-pools";
   error: string | null;
@@ -194,6 +224,61 @@ function parseTotoBlock(block: string): TotoDraw | null {
   };
 }
 
+/**
+ * Sweep's markup doesn't share 4D/TOTO's `tables-wrap` block marker (its
+ * desktop table is `class='tables-wrap pure-desktop-only'`, which splitBlocks'
+ * exact-match regex doesn't catch), so each draw is split on its mobile
+ * section instead — present in every draw and compact enough that the top 3
+ * prizes always land within the slice.
+ */
+function splitSweepBlocks(html: string): string[] {
+  return html
+    .split(/class=['"]mobile-only['"]/i)
+    .slice(1)
+    .map((chunk) => chunk.slice(0, 4000));
+}
+
+/**
+ * A Sweep prize number (7 digits) renders as a leading run of digits plus a
+ * nested `<span class='underline'>` for the rest, e.g.
+ * `445<span class='underline'>4125</span>` for 4454125 — unlike 4D/TOTO's
+ * prize values, which are plain digits with no nested markup.
+ */
+function sweepPrizeValue(block: string, cssClass: string): string | null {
+  const match = block.match(
+    new RegExp(`class=['"]${cssClass}['"]>(\\d+)<span[^>]*>(\\d+)</span>`, "i"),
+  );
+  if (!match) return null;
+  return `${match[1]}${match[2]}`;
+}
+
+function parseSweepBlock(block: string): SweepDraw | null {
+  const drawNoRaw = firstMatch(block, /Draw No\.\s*(\d+)/i);
+  const drawDateLabel = firstMatch(block, /class=['"]drawDate['"]>([^<]+)/i);
+  const first = sweepPrizeValue(block, "valueFirstPrize");
+  const second = sweepPrizeValue(block, "valueSecondPrize");
+  const third = sweepPrizeValue(block, "valueThirdPrize");
+  if (!drawNoRaw || !drawDateLabel || !first || !second || !third) return null;
+
+  const drawDateMs = parseDrawDateLabel(drawDateLabel);
+  if (drawDateMs == null) return null;
+
+  return {
+    drawNo: Number(drawNoRaw),
+    drawDateLabel,
+    drawDateMs,
+    first,
+    second,
+    third,
+  };
+}
+
+export function parseSweepTopDraws(html: string): SweepDraw[] {
+  return splitSweepBlocks(html)
+    .map(parseSweepBlock)
+    .filter((d): d is SweepDraw => Boolean(d));
+}
+
 export function parseFourDTopDraws(html: string): FourDDraw[] {
   return splitBlocks(html)
     .map(parseFourDBlock)
@@ -240,10 +325,13 @@ export function parseTotoDrawList(html: string): DrawListEntry[] {
   return entries;
 }
 
-async function fetchHtml(url: string): Promise<string | null> {
+async function fetchHtml(
+  url: string,
+  revalidateSeconds: number = REVALIDATE_SECONDS,
+): Promise<string | null> {
   try {
     const response = await fetch(url, {
-      next: { revalidate: REVALIDATE_SECONDS },
+      next: { revalidate: revalidateSeconds },
       headers: {
         accept: "text/html,*/*",
         "user-agent":
@@ -320,20 +408,24 @@ async function fetchTotoDraws(entries: DrawListEntry[]): Promise<TotoDraw[]> {
 }
 
 export async function getLotteryResults(): Promise<LotteryBundle> {
-  const [fourDHtml, totoHtml] = await Promise.all([
-    fetchHtml(FOUR_D_TOP),
-    fetchHtml(TOTO_TOP),
+  const [fourDHtml, totoHtml, sweepHtml] = await Promise.all([
+    fetchHtml(FOUR_D_TOP, LATEST_REVALIDATE_SECONDS),
+    fetchHtml(TOTO_TOP, LATEST_REVALIDATE_SECONDS),
+    fetchHtml(SWEEP_TOP, LATEST_REVALIDATE_SECONDS),
   ]);
 
   const fourD = fourDHtml ? parseFourDTopDraws(fourDHtml) : [];
   const toto = totoHtml ? parseTotoTopDraws(totoHtml) : [];
+  const sweep = sweepHtml ? parseSweepTopDraws(sweepHtml) : [];
   const errors: string[] = [];
   if (!fourDHtml || fourD.length === 0) errors.push("4D");
   if (!totoHtml || toto.length === 0) errors.push("TOTO");
+  if (!sweepHtml || sweep.length === 0) errors.push("Sweep");
 
   return {
     fourD,
     toto,
+    sweep,
     fetchedAt: new Date().toISOString(),
     source: "singapore-pools",
     error:

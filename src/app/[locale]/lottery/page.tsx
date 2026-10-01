@@ -47,6 +47,45 @@ export default async function LotteryPage({
           />
         </Card>
 
+        <Card className="space-y-3">
+          <h3 className="font-semibold text-ink">{t("sweepTitle")}</h3>
+          <p className="text-sm text-ink-muted">{t("sweepIntro")}</p>
+          {results.sweep.length > 0 ? (
+            <div className="rounded-xl border border-border bg-surface-muted p-4">
+              <p className="text-sm font-medium text-ink">
+                {t("sweepDrawLabel", {
+                  draw: results.sweep[0].drawNo,
+                  date: results.sweep[0].drawDateLabel,
+                })}
+              </p>
+              <dl className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                {[
+                  { label: t("prizeFirst"), value: results.sweep[0].first },
+                  { label: t("prizeSecond"), value: results.sweep[0].second },
+                  { label: t("prizeThird"), value: results.sweep[0].third },
+                ].map(({ label, value }) => (
+                  <div key={label} className="rounded-lg bg-surface p-3 text-center">
+                    <dt className="text-xs text-ink-subtle">{label}</dt>
+                    <dd className="mt-1 font-mono text-lg font-bold tracking-wider text-brand-strong">
+                      {value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ) : (
+            <StatusMessage variant="warning">{t("sweepNoResults")}</StatusMessage>
+          )}
+          <a
+            href={LOTTERY_LINKS.sweepResults}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={EXTERNAL}
+          >
+            {t("linkSweepResults")}
+          </a>
+        </Card>
+
         <StatusMessage variant="info">{t("ageNotice")}</StatusMessage>
 
         <Card className="space-y-3">

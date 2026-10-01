@@ -1483,8 +1483,8 @@
   },
   "lottery": {
     "badge": "Singapore Pools",
-    "title": "Lottery — 4D & TOTO",
-    "subtitle": "Pick 4D or TOTO, check your numbers, see results, or generate picks. Real bets only through Singapore Pools.",
+    "title": "Lottery — 4D, TOTO & Sweep",
+    "subtitle": "Pick 4D or TOTO, check your numbers, see results, or generate picks. Singapore Sweep's latest draw is below. Real bets only through Singapore Pools.",
     "legalNotice": "Singapore Pools is the only legal lottery operator in Singapore. This app does not sell tickets or take bets.",
     "illegalAppsNotice": "Buying through any other app, Telegram bot, Facebook page, or unlicensed agent is illegal. Even if your number “wins”, you may get nothing — and if found out, you can face enforcement action.",
     "ageNotice": "You must be 18 or older to buy lottery tickets in Singapore.",
@@ -1607,7 +1607,12 @@
       "system11": "System 11: choose 11 numbers. Covers all Ordinary combinations (462 boards).",
       "system12": "System 12: choose 12 numbers. Covers all Ordinary combinations (924 boards).",
       "systemRoll": "System Roll: choose 5 numbers. The 6th number rolls through every other number 1–49 (44 boards)."
-    }
+    },
+    "sweepTitle": "Singapore Sweep — latest draw",
+    "sweepIntro": "Sweep tickets have a fixed printed number, so there's nothing to pick or check here — just the latest draw's top prizes.",
+    "sweepDrawLabel": "Draw No. {draw} · {date}",
+    "sweepNoResults": "No Sweep result loaded right now. Try again later, or open the official page.",
+    "linkSweepResults": "Official Sweep results page"
   },
   "travel": {
     "badge": "Travel",
