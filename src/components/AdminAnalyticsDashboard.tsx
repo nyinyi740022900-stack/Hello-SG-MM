@@ -183,88 +183,6 @@ function DateRangeFilter({
 }
 
 // ---------------------------------------------------------------------------
-// Simple Bar Chart components (SVG-based, no external library)
-// ---------------------------------------------------------------------------
-
-type BarChartItem = {
-  label: string;
-  value: number;
-  color: string;
-};
-
-type SimpleBarChartProps = {
-  title: string;
-  items: BarChartItem[];
-  maxValue?: number;
-};
-
-/** Simple horizontal bar chart using SVG */
-function SimpleBarChart({ title, items, maxValue }: SimpleBarChartProps) {
-  // Calculate max value for scaling bars
-  const max = maxValue ?? Math.max(...items.map((i) => i.value), 1);
-  const barHeight = 24;
-  const chartHeight = items.length * (barHeight + 8) + 20;
-
-  return (
-    <div className="rounded-lg border border-border bg-surface p-4">
-      <h4 className="text-sm font-semibold text-ink-muted mb-3">{title}</h4>
-      <svg
-        width="100%"
-        height={chartHeight}
-        viewBox={`0 0 300 ${chartHeight}`}
-        className="overflow-visible"
-        aria-label={title}
-      >
-        {items.map((item, index) => {
-          const y = index * (barHeight + 8);
-          const barWidth = max > 0 ? (item.value / max) * 200 : 0;
-          return (
-            <g key={item.label}>
-              {/* Label */}
-              <text
-                x={0}
-                y={y + barHeight / 2 + 4}
-                className="text-[10px] fill-slate-600"
-              >
-                {item.label}
-              </text>
-              {/* Bar background */}
-              <rect
-                x={70}
-                y={y}
-                width={200}
-                height={barHeight}
-                rx={4}
-                className="fill-slate-100"
-              />
-              {/* Bar value */}
-              <rect
-                x={70}
-                y={y}
-                width={barWidth}
-                height={barHeight}
-                rx={4}
-                fill={item.color}
-                className="transition-all duration-300"
-              />
-              {/* Value text */}
-              <text
-                x={280}
-                y={y + barHeight / 2 + 4}
-                className="text-[11px] font-medium fill-slate-700"
-                textAnchor="end"
-              >
-                {item.value.toLocaleString()}
-              </text>
-            </g>
-          );
-        })}
-      </svg>
-    </div>
-  );
-}
-
-// ---------------------------------------------------------------------------
 // Inquiry List component
 // ---------------------------------------------------------------------------
 
@@ -531,6 +449,30 @@ export default function AdminAnalyticsDashboard() {
       {analyticsData ? (
         <>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Visitors KPI — real site traffic (Vercel Web Analytics), separate
+                from the Ad Performance card below, which counts ad-banner
+                impressions only and fires on far fewer pages. */}
+            <KpiCard title="Visitors / လာရောက်သူ" icon="👥">
+              {analyticsData.visitors ? (
+                <>
+                  <KpiStat
+                    label="Visitors / လူဦးရေ"
+                    value={analyticsData.visitors.visitors.toLocaleString()}
+                    variant="success"
+                  />
+                  <KpiStat
+                    label="Page Views / ကြည့်ရှုမှု"
+                    value={analyticsData.visitors.pageviews.toLocaleString()}
+                  />
+                </>
+              ) : (
+                <p className="text-xs text-ink-subtle">
+                  Not set up yet. Add a Vercel Access Token (VERCEL_TOKEN) to enable this.
+                  {/* မြန်မာ: မသတ်မှတ်ရသေးပါ။ VERCEL_TOKEN ထည့်ပါ။ */}
+                </p>
+              )}
+            </KpiCard>
+
             {/* Revenue KPI */}
             <KpiCard title="Revenue / ဝင်ငွေ" icon="💰">
               <KpiStat
@@ -588,57 +530,6 @@ export default function AdminAnalyticsDashboard() {
               />
             </KpiCard>
           </div>
-
-          {/* Charts Section */}
-          <section className="space-y-3">
-            <h3 className="text-lg font-semibold text-ink">
-              Visual Charts / မြင်နိုင်သော ဇယားများ
-            </h3>
-            <p className="text-xs text-ink-subtle">
-              Visual breakdown of key metrics for the selected date range.
-              ရွေးချယ်ထားသော ရက်စွဲအပိုင်းအခြားအတွက် အဓိက မက်ထရစ်များ။
-            </p>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {/* Payment Status Chart */}
-              <SimpleBarChart
-                title="Payment Status / ငွေပေးချေမှု အခြေအနေ"
-                items={[
-                  {
-                    label: "Completed",
-                    value: analyticsData.revenueBreakdown.completed,
-                    color: "#16a34a", // green-600
-                  },
-                  {
-                    label: "Pending",
-                    value: analyticsData.revenueBreakdown.pending,
-                    color: "#f59e0b", // amber-500
-                  },
-                  {
-                    label: "Failed",
-                    value: analyticsData.revenueBreakdown.failed,
-                    color: "#dc2626", // red-600
-                  },
-                ]}
-              />
-
-              {/* Ad Metrics Chart */}
-              <SimpleBarChart
-                title="Ad Metrics / ကြော်ငြာ မက်ထရစ်"
-                items={[
-                  {
-                    label: "Impressions",
-                    value: analyticsData.adChartData.impressions,
-                    color: "#3b82f6", // blue-500
-                  },
-                  {
-                    label: "Clicks",
-                    value: analyticsData.adChartData.clicks,
-                    color: "#8b5cf6", // violet-500
-                  },
-                ]}
-              />
-            </div>
-          </section>
 
           {/* Recent Sponsor Inquiries */}
           <section className="space-y-3">

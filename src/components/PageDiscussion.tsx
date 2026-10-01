@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { useAuth } from "@/context/AuthContext";
 import AvatarLightbox from "@/components/ui/AvatarLightbox";
-import type { PageComment, PageCommentReportReason } from "@/lib/pageComments";
+import type { PageComment, PageCommentReportReason } from "@/lib/pageComments.server";
 import type { PageDiscussionKey } from "@/lib/pageDiscussionKeys";
 
 function initialsFor(displayName: string | null): string {

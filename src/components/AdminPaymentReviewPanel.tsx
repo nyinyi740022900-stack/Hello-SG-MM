@@ -6,7 +6,6 @@ import {
   fetchPendingPayments,
   fetchUserProfile,
   resolveReceiptAccessUrl,
-  reviewPayment,
   type PendingPaymentRow,
   type UserProfileRole,
 } from "@/lib/payments";
@@ -153,14 +152,22 @@ export default function AdminPaymentReviewPanel() {
 
     setActionState({ phase: "pending", message: "Updating payment…" });
 
-    const { error } = await reviewPayment(
-      paymentId,
-      decision,
-      noteById[paymentId] ?? "",
-    );
+    const response = await fetch("/api/admin/payments/review", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        paymentId,
+        status: decision,
+        adminNote: noteById[paymentId] ?? "",
+      }),
+    });
+    const result: { error?: string } = await response.json().catch(() => ({}));
 
-    if (error) {
-      setActionState({ phase: "error", message: `Update failed: ${error}` });
+    if (!response.ok) {
+      setActionState({
+        phase: "error",
+        message: `Update failed: ${result.error ?? "Unknown error"}`,
+      });
       return;
     }
 

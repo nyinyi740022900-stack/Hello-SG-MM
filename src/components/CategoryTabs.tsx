@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { CONTENT_CATEGORIES, type ContentCategory } from "@/lib/content";
@@ -27,6 +27,7 @@ export default function CategoryTabs({
   const t = useTranslations("news");
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   const activeRef = useRef<HTMLAnchorElement | null>(null);
+  const [topOffset, setTopOffset] = useState(57);
 
   useEffect(() => {
     const scroller = scrollerRef.current;
@@ -40,6 +41,32 @@ export default function CategoryTabs({
     scroller.scrollTo({ left: Math.max(0, target), behavior: "auto" });
   }, [activeCategory]);
 
+  // The hardcoded 57px this used to assume was only ever right for one exact
+  // header layout — it drifted the moment the header's own content changed
+  // height (wrapping language label, logo swap, safe-area inset on notched
+  // phones), leaving a gap or an overlap between header and tabs. Measuring
+  // the real header keeps this correct regardless of what the header does.
+  useEffect(() => {
+    const header = document.getElementById("site-header");
+    if (!header) return;
+
+    const measure = () => setTopOffset(header.getBoundingClientRect().height);
+    measure();
+
+    const observer = new ResizeObserver(measure);
+    observer.observe(header);
+    window.addEventListener("resize", measure);
+    // ResizeObserver doesn't always fire on initial web-font swap / image
+    // load inside the header, so a one-shot delayed re-measure catches that.
+    const timer = setTimeout(measure, 400);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", measure);
+      clearTimeout(timer);
+    };
+  }, []);
+
   const chip = (isActive: boolean) =>
     [
       "shrink-0 rounded-full px-3 py-1.5 text-xs transition",
@@ -49,7 +76,10 @@ export default function CategoryTabs({
     ].join(" ");
 
   return (
-    <div className="sticky top-[57px] z-20 border-b border-border bg-surface sm:static">
+    <div
+      className="sticky z-20 border-b border-border bg-surface sm:static"
+      style={{ top: `${topOffset}px` }}
+    >
       <div ref={scrollerRef} className="overflow-x-auto">
         <div className="flex gap-1 px-3 py-2">
           <Link

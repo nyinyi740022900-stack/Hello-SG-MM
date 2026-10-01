@@ -1,4 +1,5 @@
 import { NextIntlClientProvider, hasLocale } from "next-intl";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getMessages, getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
@@ -76,36 +77,38 @@ export default async function LocaleLayout({
   const resolvedLocale = locale as AppLocale;
   const selectedCountry = await getSelectedCountryCode();
   const appName = tCommon("appName");
-  const [appNameLead, ...appNameRestParts] = appName.split(" ");
 
   return (
     <NextIntlClientProvider messages={messages}>
       <AuthProvider>
       <RadioProvider>
         <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-5 px-4 pb-6 pt-4 sm:px-6 sm:pt-6">
-          <header className="sticky top-0 z-30 -mx-4 border-b border-border bg-surface px-4 py-3 sm:static sm:mx-0 sm:rounded-2xl sm:border sm:p-5 sm:shadow-sm">
+          <header
+            id="site-header"
+            className="sticky top-0 z-30 -mx-4 overflow-visible border-b border-border bg-surface px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:static sm:mx-0 sm:rounded-2xl sm:border sm:p-5 sm:pt-5 sm:shadow-sm"
+          >
             <div className="flex flex-col gap-4">
-              <div className="flex items-center justify-between gap-3">
-                <Link href="/" locale={resolvedLocale} className="min-w-0">
-                  <h1 className="truncate text-lg font-extrabold tracking-tight sm:text-xl">
-                    <span className="text-brand">{appNameLead}</span>
-                    {/* "SG" and "MM" render as two distinct colored tags, like
-                        airport codes — not one merged word — since MM is
-                        specifically short for Myanmar, a separate country
-                        from Singapore. */}
-                    {appNameRestParts.map((part, index) => (
-                      <span
-                        key={part}
-                        className={[
-                          "ml-1.5 inline-flex items-center rounded-md px-1.5 py-0.5 align-middle text-[0.62em] leading-none text-ink-on-brand",
-                          index % 2 === 0 ? "bg-brand" : "bg-accent",
-                        ].join(" ")}
-                      >
-                        {part}
-                      </span>
-                    ))}
-                  </h1>
-                  <p className="hidden text-xs text-ink-subtle sm:block">
+              <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
+                {/* A wordmark image instead of styled text: it's resolution
+                    independent (sharp on any display density) and keeps the
+                    brand mark visually identical to the one used in social
+                    cards and the app icon, instead of two divergent
+                    representations of the same name. */}
+                <Link
+                  href="/"
+                  locale={resolvedLocale}
+                  className="block max-w-[min(100%,14rem)] py-0.5 sm:max-w-[16rem]"
+                >
+                  <h1 className="sr-only">{appName}</h1>
+                  <Image
+                    src="/brand/hello-sg-mm-logo.png"
+                    alt=""
+                    width={432}
+                    height={86}
+                    priority
+                    className="h-8 w-auto object-contain object-left sm:h-9"
+                  />
+                  <p className="mt-1 hidden text-xs leading-snug text-ink-subtle sm:block">
                     {tCommon("tagline")}
                   </p>
                 </Link>

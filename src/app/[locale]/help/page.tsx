@@ -33,6 +33,22 @@ const FAQ = {
       a: "Download it from the home page or the Passport Checklist page, print it, then fill it in by hand and sign it before your embassy appointment.",
     },
     {
+      q: "What tools does the app have besides news?",
+      a: "The home page shortcuts and the menu (tap ☰) cover: Off-Day Guide, Salary Log, Rest Day Rights, Recruitment Fee Tracker, Emergency Contacts, Directory (free help services), Housing and Jobs listings, Travel guide, Driving Licence guide, Essential Accounts guide, Lottery result checker, Myanmar Radio, and live exchange rates. Tap More in the shortcuts row, or the menu icon, to see everything.",
+    },
+    {
+      q: "Can I post a job or a room for rent?",
+      a: "Yes. Open Jobs or Housing from the menu and use Post a job / Post a room. Job postings must be genuine — no fees requested from applicants, and no fake or scam listings. My jobs & applicants (under Jobs) shows what you've posted or applied to.",
+    },
+    {
+      q: "What languages can I read the app in?",
+      a: "English, Myanmar, Chinese, Tamil, Bengali and Malay — change it anytime with the language switcher next to the menu icon. English and Myanmar have the most complete translation; other languages fall back to English for anything not yet translated.",
+    },
+    {
+      q: "Where do I see today's exchange rates?",
+      a: "The home page shows live SGD rates for Myanmar, India, China, Bangladesh and Malaysia. These are indicative only — always confirm the exact rate in your remittance provider's own app before sending money.",
+    },
+    {
       q: "I cannot log in after registration. Why?",
       a: "Your email may still be unverified. Open your inbox and confirm your account first.",
     },
@@ -65,6 +81,22 @@ const FAQ = {
     {
       q: "ပတ်စပို့ သက်တမ်းတိုး ဖောင်ကို ဘယ်မှာ ရနိုင်လဲ?",
       a: "ပင်မစာမျက်နှာ (သို့) ပတ်စပို့ စာရင်း စာမျက်နှာကနေ download ဆွဲပြီး print ထုတ်ပါ။ ပြီးရင် လက်ရေးနဲ့ ဖြည့်ပြီး လက်မှတ်ထိုးကာ သံရုံးချိန်းသို့ ယူသွားပါ။",
+    },
+    {
+      q: "News အပြင် app ထဲမှာ ဘာတွေ ရှိသေးလဲ?",
+      a: "ပင်မစာမျက်နှာရဲ့ shortcut တန်းနှင့် menu (☰) ထဲမှာ — Off-Day Guide၊ Salary Log၊ Rest Day Rights၊ Recruitment Fee Tracker၊ Emergency Contacts၊ Directory (အခမဲ့ အကူအညီဌာနများ)၊ အိမ်ရာနှင့် အလုပ်အကိုင် ကြော်ငြာများ၊ Travel guide၊ Driving Licence guide၊ Essential Accounts guide၊ Lottery ရလဒ်စစ်ဆေးခြင်း၊ Myanmar Radio နှင့် ငွေလဲနှုန်း (live) တို့ ပါဝင်ပါသည်။ Shortcut တန်းရဲ့ More ကို (သို့) menu icon ကို နှိပ်ပြီး အားလုံးကို ကြည့်နိုင်ပါသည်။",
+    },
+    {
+      q: "အလုပ် (သို့) အိမ်ငှား ကြော်ငြာ တင်လို့ရလား?",
+      a: "ရပါတယ်။ Menu ထဲက Jobs (သို့) Housing ကို ဖွင့်ပြီး Post a job / Post a room ကို သုံးပါ။ အလုပ်ကြော်ငြာများသည် တကယ့် အလုပ်အမှန် ဖြစ်ရပါမည် — လျှောက်ထားသူထံမှ ကြေးမတောင်းရပါ၊ အတု (သို့) လိမ်လည် ကြော်ငြာများ ခွင့်မပြုပါ။ Jobs ထဲက 'My jobs & applicants' တွင် ကိုယ်တင်ထားသော (သို့) လျှောက်ထားသော ကြော်ငြာများကို ကြည့်နိုင်ပါသည်။",
+    },
+    {
+      q: "App ကို ဘာဘာသာစကားတွေနဲ့ ဖတ်လို့ရလဲ?",
+      a: "English၊ မြန်မာ၊ တရုတ်၊ တမီလ်၊ ဘင်္ဂါလီနှင့် မလေး — menu icon ဘေးက language switcher ဖြင့် အချိန်မရွေး ပြောင်းလို့ရပါသည်။ English နှင့် မြန်မာက အပြည့်စုံဆုံး ဘာသာပြန်ထားပြီး၊ ကျန်ဘာသာစကားများတွင် ဘာသာမပြန်ရသေးသော အပိုင်းများကို English ဖြင့် ပြပါမည်။",
+    },
+    {
+      q: "ဒီနေ့ ငွေလဲနှုန်းကို ဘယ်မှာ ကြည့်ရမလဲ?",
+      a: "ပင်မစာမျက်နှာတွင် မြန်မာ၊ အိန္ဒိယ၊ တရုတ်၊ ဘင်္ဂလားဒေ့ရှ်နှင့် မလေးရှားအတွက် SGD ငွေလဲနှုန်း (live) ကို ပြသထားပါသည်။ ဒါက ခန့်မှန်းချက်သာ ဖြစ်ပါသည် — ငွေမပို့မီ သင့်ဝန်ဆောင်မှုပေးသူ (remittance provider) ၏ app ထဲက တကယ့်နှုန်းကို အမြဲ အတည်ပြုပါ။",
     },
     {
       q: "Register ပြီး login မရတာ ဘာကြောင့်လဲ?",

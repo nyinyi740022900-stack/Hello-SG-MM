@@ -122,6 +122,26 @@ export default async function DrivingLicensePage({
           {bulletList(TEST_KEYS, "tests")}
         </Card>
 
+        {/* Deliberately styled apart from the "Official Links" card below —
+            this is a third-party app, not a Traffic Police / LTA resource,
+            and blending the two would let a reader mistake one for the
+            other. Placed right after Tests since that's the exact moment a
+            reader wants to know how to practice for what they just read. */}
+        <div className="space-y-3 rounded-2xl border border-accent-border bg-accent-soft p-4 sm:p-5">
+          <h3 className="font-semibold text-accent">{t("practiceAppTitle")}</h3>
+          <p className="text-sm text-ink">{t("practiceAppBody")}</p>
+          <a
+            href="https://theorylane.app/my"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-ink-on-brand transition hover:opacity-90"
+          >
+            {t("practiceAppCta")}
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+          <p className="text-xs text-ink-subtle">{t("practiceAppDisclaimer")}</p>
+        </div>
+
         <Card className="space-y-3">
           <h3 className="font-semibold text-ink">{t("passMarksTitle")}</h3>
           <p className="text-sm text-ink-muted">{t("passMarksIntro")}</p>

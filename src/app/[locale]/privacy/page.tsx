@@ -246,7 +246,9 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
               : "For privacy questions or account deletion —"}
           </p>
           <p className="text-sm font-medium text-ink">
-            hellosgmm@gmail.com
+            <a href="mailto:contact@hellosgmm.com" className="hover:underline">
+              contact@hellosgmm.com
+            </a>
           </p>
         </div>
       </section>

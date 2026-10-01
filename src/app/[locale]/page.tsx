@@ -2,25 +2,17 @@ import { getTranslations } from "next-intl/server";
 import Script from "next/script";
 import Image from "next/image";
 import {
-  BookOpen,
   Building2,
-  Calculator,
   CalendarCheck,
-  CalendarDays,
-  Car,
-  Dices,
-  Landmark,
-  ListChecks,
   MapPin,
   Megaphone,
   Phone,
-  Plane,
   Receipt,
-  ArrowLeftRight,
   BedDouble,
   Briefcase,
 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import SeeAllShortcut from "@/components/SeeAllShortcut";
 import PlacementAds from "@/components/PlacementAds";
 import GoogleAdSlot from "@/components/GoogleAdSlot";
 import ExpiryReminderBanner from "@/components/ExpiryReminderBanner";
@@ -97,48 +89,58 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
       day: "numeric",
     });
 
-  // Ordered by how often a Myanmar worker actually opens each one in real
-  // life, not by feature area. Off-Day Guide and Salary Log are weekly
-  // habits; Recruitment Fee and Accounts Guide matter enormously but only
-  // once, when a worker first arrives, so they move toward the end rather
-  // than disappearing — a newly-arrived reader still needs them.
+  // Trimmed to the 7 tools a Myanmar worker actually reaches for from the
+  // home rail week to week. Everything else (recruitment fee, accounts
+  // guide, lottery, driving license, travel, transport, guide, checklist,
+  // events) still lives one tap away in the nav drawer via the "More" tile
+  // below — nothing was removed from the app, only off this rail.
   //
-  // Passport keeps one rail entry (checklist). Wizard + passport guide stay
-  // reachable from the drawer and checklist page.
-  //
-  // Travel sits next to Transport (same “how do I get around / leave SG”
-  // moment). Guide covers rights/info that is not only rest-day or off-day.
-  // Events joins the rail when at least one upcoming event exists — an empty
-  // Events page from the home rail costs trust.
-  //
-  // Rates stays out: the exchange panel is already on this page.
+  // Each tile gets its own color (not one uniform brand tint) so the rail
+  // reads as distinct destinations at a glance rather than one undifferentiated
+  // row of icons.
   const shortcuts = [
-    { href: "/off-day-guide", icon: MapPin, label: t("toolOffDayGuide") },
-    { href: "/salary-log", icon: Receipt, label: t("toolSalaryLog") },
-    { href: "/directory", icon: Building2, label: tCommon("directory") },
-    { href: "/emergency-contacts", icon: Phone, label: t("quickEmergency") },
-    { href: "/passport/checklist", icon: ListChecks, label: t("quickChecklist") },
-    { href: "/rest-day-rights", icon: CalendarCheck, label: t("toolRestDay") },
-    { href: "/guide", icon: BookOpen, label: tCommon("guide") },
-    { href: "/transport", icon: ArrowLeftRight, label: tCommon("transport") },
-    { href: "/travel", icon: Plane, label: t("toolTravel") },
-    { href: "/housing", icon: BedDouble, label: t("toolHousing") },
-    { href: "/jobs", icon: Briefcase, label: t("toolJobs") },
     {
-      href: "/driving-license",
-      icon: Car,
-      label: t("toolDrivingLicense"),
+      href: "/off-day-guide",
+      icon: MapPin,
+      label: t("toolOffDayGuide"),
+      iconClass: "bg-violet-soft text-violet",
     },
     {
-      href: "/recruitment-fee",
-      icon: Calculator,
-      label: t("toolRecruitmentFee"),
+      href: "/salary-log",
+      icon: Receipt,
+      label: t("toolSalaryLog"),
+      iconClass: "bg-warning-soft text-warning",
     },
-    { href: "/accounts-guide", icon: Landmark, label: t("quickAccountsGuide") },
-    { href: "/lottery", icon: Dices, label: t("toolLottery") },
-    ...(events.length > 0
-      ? [{ href: "/events", icon: CalendarDays, label: tCommon("events") }]
-      : []),
+    {
+      href: "/emergency-contacts",
+      icon: Phone,
+      label: t("quickEmergency"),
+      iconClass: "bg-danger-soft text-danger",
+    },
+    {
+      href: "/rest-day-rights",
+      icon: CalendarCheck,
+      label: t("toolRestDay"),
+      iconClass: "bg-danger-soft text-danger",
+    },
+    {
+      href: "/jobs",
+      icon: Briefcase,
+      label: t("toolJobs"),
+      iconClass: "bg-brand-tint text-brand-strong",
+    },
+    {
+      href: "/housing",
+      icon: BedDouble,
+      label: t("toolHousing"),
+      iconClass: "bg-accent-soft text-accent",
+    },
+    {
+      href: "/directory",
+      icon: Building2,
+      label: tCommon("directory"),
+      iconClass: "bg-violet-soft text-violet",
+    },
   ];
 
   return (
@@ -163,15 +165,17 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
           every visit just to reach them. */}
       <div className="relative mt-2 border-y border-border bg-surface py-3">
         <div className="overflow-x-auto">
-          <div className="flex gap-1.5 px-3">
-            {shortcuts.map(({ href, icon: Icon, label }) => (
+          <div className="flex gap-1.5 px-3 sm:justify-center sm:gap-6">
+            {shortcuts.map(({ href, icon: Icon, label, iconClass }) => (
               <Link
                 key={href}
                 href={href}
                 locale={locale}
-                className="flex w-20 shrink-0 flex-col items-center gap-1.5 rounded-lg px-1 py-1 text-center transition hover:bg-brand-soft"
+                className="flex w-20 shrink-0 flex-col items-center gap-1.5 rounded-lg px-1 py-1 text-center transition hover:opacity-80"
               >
-                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-brand-strong">
+                <span
+                  className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl ${iconClass}`}
+                >
                   <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
                 </span>
                 <span className="line-clamp-2 text-xs leading-tight text-ink-muted">
@@ -179,6 +183,7 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
                 </span>
               </Link>
             ))}
+            <SeeAllShortcut label={t("viewMore")} />
           </div>
         </div>
         {/* A partially-cropped icon at the edge hints there is more, but not

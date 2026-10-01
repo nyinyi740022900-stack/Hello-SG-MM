@@ -28,12 +28,6 @@ export type RevenueBreakdown = {
   failed: number;
 };
 
-/** Ad metrics for charting */
-export type AdChartData = {
-  impressions: number;
-  clicks: number;
-};
-
 /** Ad performance KPI data */
 export type AdKpi = {
   impressions: number;
@@ -67,7 +61,13 @@ export type AnalyticsData = {
   sponsorLeads: SponsorLeadsKpi;
   recentInquiries: SponsorInquiryRow[];
   revenueBreakdown: RevenueBreakdown;
-  adChartData: AdChartData;
+  visitors: VisitorsKpi | null;
+};
+
+/** Real site-traffic KPI, sourced from Vercel Web Analytics (not ad impressions). */
+export type VisitorsKpi = {
+  visitors: number;
+  pageviews: number;
 };
 
 // ---------------------------------------------------------------------------
@@ -217,7 +217,7 @@ export async function fetchRevenueKpi(range: DateRange): Promise<{
  * Filters by date range on created_at column.
  */
 export async function fetchAdKpi(range: DateRange): Promise<{
-  data: (AdKpi & AdChartData) | null;
+  data: AdKpi | null;
   error: string | null;
 }> {
   if (!supabase) {
@@ -373,11 +373,12 @@ export async function fetchAllAnalytics(range: DateRange): Promise<{
   data: AnalyticsData | null;
   error: string | null;
 }> {
-  const [revenueResult, adResult, leadsResult, inquiriesResult] = await Promise.all([
+  const [revenueResult, adResult, leadsResult, inquiriesResult, visitorsResult] = await Promise.all([
     fetchRevenueKpi(range),
     fetchAdKpi(range),
     fetchSponsorLeadsKpi(range),
     fetchRecentSponsorInquiries(range),
+    fetchVisitorsKpi(range),
   ]);
 
   // Check for any errors
@@ -412,19 +413,45 @@ export async function fetchAllAnalytics(range: DateRange): Promise<{
       },
       sponsorLeads: leadsResult.data,
       recentInquiries: inquiriesResult.data,
+      // Real site traffic — errors here (e.g. Vercel token not set up yet)
+      // don't block the rest of the dashboard from loading.
+      visitors: visitorsResult.data,
       // Chart data
       revenueBreakdown: {
         completed: revenueResult.data.completed,
         pending: revenueResult.data.pending,
         failed: revenueResult.data.failed,
       },
-      adChartData: {
-        impressions: adResult.data.impressions,
-        clicks: adResult.data.clicks,
-      },
     },
     error: null,
   };
+}
+
+/**
+ * Fetch real visitor/pageview counts from Vercel Web Analytics via our own
+ * admin-only API route (the Vercel Access Token is a server secret and can't
+ * be called directly from the browser). Returns { data: null } rather than an
+ * error when the token hasn't been configured yet, so the rest of the
+ * dashboard still loads.
+ */
+export async function fetchVisitorsKpi(
+  range: DateRange
+): Promise<{ data: VisitorsKpi | null; error: string | null }> {
+  try {
+    const params = new URLSearchParams({
+      startDate: range.startDate,
+      endDate: range.endDate,
+    });
+    const res = await fetch(`/api/admin/analytics/visitors?${params.toString()}`);
+    const json = await res.json();
+
+    if (!res.ok) {
+      return { data: null, error: null };
+    }
+    return { data: json.data ?? null, error: null };
+  } catch {
+    return { data: null, error: null };
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -441,6 +468,15 @@ export function generateAnalyticsCSV(data: AnalyticsData, range: DateRange): str
   // Header with date range info
   rows.push(`"Analytics Export - ${range.startDate} to ${range.endDate}"`);
   rows.push("");
+
+  // Visitors section (real site traffic, not ad impressions)
+  if (data.visitors) {
+    rows.push('"Visitors"');
+    rows.push('"Metric","Value"');
+    rows.push(`"Visitors","${data.visitors.visitors}"`);
+    rows.push(`"Page Views","${data.visitors.pageviews}"`);
+    rows.push("");
+  }
 
   // Revenue KPI section
   rows.push('"Revenue Summary"');

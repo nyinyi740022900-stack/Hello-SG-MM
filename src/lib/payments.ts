@@ -1,3 +1,4 @@
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabase";
 import { createEntitlement, PRODUCT_CODES } from "@/lib/entitlements";
 import { logServerEvent } from "@/lib/serverLogger";
@@ -217,13 +218,18 @@ export async function reviewPayment(
   paymentId: string,
   status: "completed" | "failed",
   adminNote: string,
+  client: SupabaseClient | null = supabase,
+  // A service-role client has no browser session for client.auth.getUser(),
+  // so a server route authorizing via checkAdminAuth() must pass the admin's
+  // id explicitly instead.
+  approvedByUserId?: string,
 ): Promise<{ error: string | null; entitlementCreated: boolean }> {
-  if (!supabase) {
+  if (!client) {
     return { error: "Supabase is not configured.", entitlementCreated: false };
   }
 
   // First, fetch the payment to get user_id, purpose, and reference (e.g. job id)
-  const { data: payment, error: fetchError } = await supabase
+  const { data: payment, error: fetchError } = await client
     .from("payments")
     .select("id,user_id,purpose,reference_id,status")
     .eq("id", paymentId)
@@ -260,14 +266,19 @@ export async function reviewPayment(
   };
 
   if (status === "completed") {
-    const { data: userData } = await supabase.auth.getUser();
-    if (userData.user) {
-      payload.approved_by = userData.user.id;
+    if (approvedByUserId) {
+      payload.approved_by = approvedByUserId;
       payload.approved_at = new Date().toISOString();
+    } else {
+      const { data: userData } = await client.auth.getUser();
+      if (userData.user) {
+        payload.approved_by = userData.user.id;
+        payload.approved_at = new Date().toISOString();
+      }
     }
   }
 
-  const { error: updateError } = await supabase
+  const { error: updateError } = await client
     .from("payments")
     .update(payload)
     .eq("id", paymentId);
@@ -287,12 +298,15 @@ export async function reviewPayment(
     const productCode = PURPOSE_TO_PRODUCT_CODE[payment.purpose];
     if (productCode) {
       // Create entitlement with 1 export, no expiry
-      const { error: entitlementError } = await createEntitlement({
-        userId: payment.user_id,
-        productCode: productCode as typeof PRODUCT_CODES.PASSPORT_RENEWAL_PDF,
-        totalExports: 1,
-        sourcePaymentId: paymentId,
-      });
+      const { error: entitlementError } = await createEntitlement(
+        {
+          userId: payment.user_id,
+          productCode: productCode as typeof PRODUCT_CODES.PASSPORT_RENEWAL_PDF,
+          totalExports: 1,
+          sourcePaymentId: paymentId,
+        },
+        client,
+      );
 
       if (entitlementError) {
         logServerEvent("error", "payment_review_entitlement_failed", {

@@ -1338,6 +1338,10 @@
       "practical": "Practical driving / riding test — on-road assessment after lessons and theory. Pass before you get a Qualified Driving Licence (QDL).",
       "booking": "Book tests through your driving centre’s website or counter. Bring FIN/pass and follow their photo / eye-check rules."
     },
+    "practiceAppTitle": "Practice BTT/FTT/RTT questions in Burmese",
+    "practiceAppBody": "TheoryLane has 1,100+ practice questions with instant feedback for BTT, FTT and RTT, plus road-sign and demerit-point references — in English and Burmese. Free tier included; no account needed to start.",
+    "practiceAppCta": "Open TheoryLane",
+    "practiceAppDisclaimer": "Independent app, not run by Traffic Police or LTA. Use it to practice — always confirm real test rules on the official pages below.",
     "classesTitle": "6. Common licence classes (cars & bikes)",
     "classesIntro": "Class names appear on your Singapore licence. Confirm what your foreign licence maps to at conversion.",
     "classes": {

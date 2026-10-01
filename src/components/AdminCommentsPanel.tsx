@@ -4,7 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import type { AdminCommentReport } from "@/lib/pageComments";
+import type { AdminCommentReport } from "@/lib/pageComments.server";
 
 type AdminCommentsPanelProps = {
   initialReports: AdminCommentReport[];

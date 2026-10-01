@@ -1,5 +1,5 @@
 import PageDiscussion from "@/components/PageDiscussion";
-import { listPageComments } from "@/lib/pageComments";
+import { listPageComments } from "@/lib/pageComments.server";
 import type { PageDiscussionKey } from "@/lib/pageDiscussionKeys";
 
 /** Server wrapper: load comments for a page and render the discussion UI. */

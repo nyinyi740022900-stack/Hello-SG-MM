@@ -74,6 +74,14 @@ export default function AppNav({ locale }: AppNavProps) {
     queueMicrotask(close);
   }, [pathname, close]);
 
+  // The home page's "More" shortcut tile isn't part of this component tree,
+  // so it opens the drawer through a plain DOM event rather than a prop.
+  useEffect(() => {
+    const open = () => setIsOpen(true);
+    window.addEventListener("hellosgmm:open-nav", open);
+    return () => window.removeEventListener("hellosgmm:open-nav", open);
+  }, []);
+
   useEffect(() => {
     if (!isOpen) return;
 

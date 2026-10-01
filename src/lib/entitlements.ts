@@ -150,18 +150,21 @@ export async function consumeExportEntitlement(params: {
  * Create an entitlement for a user after payment approval.
  * This should only be called by admin actions.
  */
-export async function createEntitlement(params: {
-  userId: string;
-  productCode: ProductCode;
-  totalExports: number;
-  sourcePaymentId: string;
-  expiresAt?: Date;
-}): Promise<{ entitlementId: string | null; error: string | null }> {
-  if (!supabase) {
+export async function createEntitlement(
+  params: {
+    userId: string;
+    productCode: ProductCode;
+    totalExports: number;
+    sourcePaymentId: string;
+    expiresAt?: Date;
+  },
+  client: SupabaseClient | null = supabase,
+): Promise<{ entitlementId: string | null; error: string | null }> {
+  if (!client) {
     return { entitlementId: null, error: "Supabase is not configured." };
   }
 
-  const { data, error } = await supabase
+  const { data, error } = await client
     .from("export_entitlements")
     .insert({
       user_id: params.userId,

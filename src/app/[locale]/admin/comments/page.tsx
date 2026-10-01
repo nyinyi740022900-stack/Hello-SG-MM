@@ -1,6 +1,6 @@
 import { PageHeader } from "@/components/ui/Card";
 import AdminCommentsPanel from "@/components/AdminCommentsPanel";
-import { getAdminCommentReports } from "@/lib/pageComments";
+import { getAdminCommentReports } from "@/lib/pageComments.server";
 
 export const dynamic = "force-dynamic";
 

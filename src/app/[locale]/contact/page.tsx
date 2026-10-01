@@ -40,7 +40,9 @@ export default async function ContactPage({ params }: ContactPageProps) {
           </p>
         </div>
         <div className="rounded-2xl border border-border bg-surface-muted p-4 text-sm text-ink-muted">
-          hellosgmm@gmail.com
+          <a href="mailto:contact@hellosgmm.com" className="text-brand-strong hover:underline">
+            contact@hellosgmm.com
+          </a>
         </div>
 
         <SponsorInquiryForm />
