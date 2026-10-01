@@ -197,6 +197,13 @@ export default async function AdminLayout({
         >
           Comments / မှတ်ချက်
         </Link>
+        <Link
+          href="/admin/users"
+          locale={resolvedLocale}
+          className="rounded-xl border border-border bg-surface px-4 py-2 text-sm font-medium text-ink-muted transition hover:border-accent-border hover:text-accent"
+        >
+          Users / အသုံးပြုသူ
+        </Link>
       </div>
 
       {/* Admin content */}
